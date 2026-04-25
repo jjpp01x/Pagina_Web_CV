@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Formación y experiencia de Jose Palacios Beortegui">
+    <title>Jose Palacios | Formación y Experiencia</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- NAVEGACIÓN -->
+    <nav class="navbar">
+        <div class="nav-contenedor">
+            <a href="index.html" class="nav-logo">Jose Palacios Beortegui</a>
+            <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" role="list">
+               <li><a href="index.html" class="nav-link" data-i18n="nav.inicio">Inicio</a></li>
+                <li><a href="education.html" class="nav-link activo" data-i18n="nav.formacion">Formación</a></li>
+                <li><a href="projects.html" class="nav-link" data-i18n="nav.proyectos">Proyectos</a></li>
+                <li><a href="contact.html" class="nav-link" data-i18n="nav.contacto">Contacto</a></li>
+            </ul>
+            <div class="lang-selector" role="navigation" aria-label="Selección de idioma">
+                <button class="lang-btn" data-lang="es" onclick="aplicarIdioma('es')" aria-label="Español">ES</button>
+                <button class="lang-btn" data-lang="en" onclick="aplicarIdioma('en')" aria-label="English">EN</button>
+                <button class="lang-btn" data-lang="de" onclick="aplicarIdioma('de')" aria-label="Deutsch">DE</button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+
+        <!-- CABECERA DE PÁGINA -->
+        <section class="page-header">
+            <div class="contenedor">
+                <h1 data-i18n="edu.titulo">Formación y Experiencia</h1>
+                <p data-i18n="edu.subtitulo">Mi trayectoria académica y profesional</p>
+            </div>
+        </section>
+
+        <!-- FORMACIÓN ACADÉMICA -->
+        <section class="timeline-seccion" aria-label="Formación académica">
+            <div class="contenedor">
+                <h2 class="seccion-titulo" data-i18n="edu.academica">Formación Académica</h2>
+                <div class="timeline">
+
+                    <article class="timeline-item">
+                        <div class="timeline-fecha">2025 — 2028</div>
+                        <div class="timeline-contenido">
+                            <h3>Bachelor in Computer Engineering</h3>
+                            <p class="timeline-lugar">CESTE — Centro Universitario de Tecnología y Arte Digital · España</p>
+                            <p data-i18n="edu.degree1.desc">Programación, desarrollo de software, redes informáticas, bases de datos, ciberseguridad y computación en la nube.</p>
+                            <div class="tags" style="margin-top: 0.75rem;">
+                                <span class="tag" data-i18n="edu.en.curso">En curso</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="timeline-item">
+                        <div class="timeline-fecha">2021 — 2025</div>
+                        <div class="timeline-contenido">
+                            <h3>Bachelor in Business Management</h3>
+                            <p class="timeline-lugar">CESTE — Centro Universitario de Tecnología y Arte Digital · España</p>
+                            <p data-i18n="edu.degree2.desc">Gestión empresarial, gestión de proyectos, finanzas, contabilidad, logística y gestión de la cadena de suministro.</p>
+                            <div class="tags" style="margin-top: 0.75rem;">
+                                <span class="tag tag-cert" data-i18n="edu.completado">Completado</span>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCIA LABORAL -->
+        <section class="timeline-seccion fondo-alterno" aria-label="Experiencia laboral">
+            <div class="contenedor">
+                <h2 class="seccion-titulo" data-i18n="edu.laboral">Experiencia Laboral</h2>
+                <div class="timeline">
+
+                    <article class="timeline-item">
+                        <div class="timeline-fecha">Oct 2025 — Abr 2026</div>
+                        <div class="timeline-contenido">
+                            <h3 data-i18n="edu.job1.titulo">Auxiliar de Ventas</h3>
+                            <p class="timeline-lugar">Heierling GmbH · Davos, Suiza</p>
+                            <ul class="timeline-lista">
+                                <li data-i18n="edu.job1.li1">Atención personalizada a clientes internacionales de más de 15 nacionalidades</li>
+                                <li data-i18n="edu.job1.li2">Gestión de procesos de inventario y reposición mediante sistemas internos</li>
+                                <li data-i18n="edu.job1.li3">Comunicación profesional en inglés y alemán en entorno de alta demanda</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="timeline-item">
+                        <div class="timeline-fecha">Oct 2023 — Jun 2025</div>
+                        <div class="timeline-contenido">
+                            <h3 data-i18n="edu.job2.titulo">Coordinador Administrativo y Recepcionista</h3>
+                            <p class="timeline-lugar">Royal Hideaway Hotel by Barceló · Canfranc, España</p>
+                            <ul class="timeline-lista">
+                                <li data-i18n="edu.job2.li1">Punto de contacto principal para todas las solicitudes de huéspedes</li>
+                                <li data-i18n="edu.job2.li2">Administración de plataformas digitales de reservas y documentación financiera</li>
+                                <li data-i18n="edu.job2.li3">Coordinación multi-departamental durante temporada alta</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="timeline-item">
+                        <div class="timeline-fecha">May 2022 — Sep 2023</div>
+                        <div class="timeline-contenido">
+                            <h3 data-i18n="edu.job3.titulo">Asistente Administrativo</h3>
+                            <p class="timeline-lugar">Gabinete Jurídico Hispanidad · Zaragoza, España</p>
+                            <ul class="timeline-lista">
+                                <li data-i18n="edu.job3.li1">Gestión de sistemas de documentación digital con alta precisión y confidencialidad</li>
+                                <li data-i18n="edu.job3.li2">Coordinación de agenda de clientes y archivo en múltiples casos activos</li>
+                                <li data-i18n="edu.job3.li3">Procesamiento de facturas y registros financieros</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="timeline-item">
+                        <div class="timeline-fecha">Jul 2021 — Sep 2021</div>
+                        <div class="timeline-contenido">
+                            <h3 data-i18n="edu.job4.titulo">Encargado de Compras y Logística</h3>
+                            <p class="timeline-lugar">El Corte Inglés · Zaragoza, España</p>
+                            <ul class="timeline-lista">
+                                <li data-i18n="edu.job4.li1">Coordinación de aprovisionamiento y logística entrante</li>
+                                <li data-i18n="edu.job4.li2">Aplicación de principios Lean para optimizar flujos de almacén</li>
+                                <li data-i18n="edu.job4.li3">Gestión de sistemas de inventario y control de stock</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="timeline-item">
+                        <div class="timeline-fecha">Feb 2020 — Feb 2022</div>
+                        <div class="timeline-contenido">
+                            <h3 data-i18n="edu.job5.titulo">Especialista en Ventas y Logística</h3>
+                            <p class="timeline-lugar">El Corte Inglés / ZARA · Zaragoza, España</p>
+                            <ul class="timeline-lista">
+                                <li data-i18n="edu.job5.li1">Ventas al cliente en entorno de alto volumen</li>
+                                <li data-i18n="edu.job5.li2">Gestión de merchandising y reposición de producto</li>
+                                <li data-i18n="edu.job5.li3">Operativa de almacén y recepción de mercancía</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="footer">
+        <div class="contenedor footer-contenido">
+            <p data-i18n="footer.copy">© 2025 Jose Palacios Beortegui</p>
+            <div class="footer-links">
+                <a href="mailto:palaciosbeortegui@gmail.com" aria-label="Enviar email">Email</a>
+                <a href="https://www.linkedin.com/in/jose-palacios-beortegui/" target="_blank" rel="noopener" aria-label="LinkedIn de Jose Palacios">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+    <script src="js/translations.js"></script>
+    <script src="js/i18n.js"></script>
+    <script>
+        const toggle = document.querySelector('.nav-toggle');
+        const menu = document.querySelector('.nav-menu');
+        toggle.addEventListener('click', () => {
+            const abierto = menu.classList.toggle('abierto');
+            toggle.setAttribute('aria-expanded', abierto);
+        });
+    </script>
+
+</body>
+</html>
