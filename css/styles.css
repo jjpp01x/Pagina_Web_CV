@@ -186,12 +186,13 @@ html {
 }
 
 .btn-download {
-   diplay: inline-flex;
+   diaplay: inline-flex;
    align-items: center;
    gap: 8px;
    padding: 10px 20px;
-   background-color: Transparent;
-   color: tu-color-de-acento;
+   background-color: transparent;
+   color: var(--color--acento);
+   border: 2px solid ver(--color-acento);
    border-radius: 6px;
    text-decoration: none;
    font-weight: 600;
@@ -199,7 +200,7 @@ html {
 }
 
 .btn-download:hover {
-   background-color: tu-color-de-acento;
+   background-color: var(--color-acento);
    color: white;
 }
 
