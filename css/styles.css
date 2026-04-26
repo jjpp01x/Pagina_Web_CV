@@ -816,7 +816,18 @@ html {
     color: var(--color-blanco);
 }
 
-/* En móvil ocultar si no cabe */
 @media (max-width: 480px) {
     .lang-selector { display: none; }
+
+    .lang-movil {
+        display: flex;
+        gap: 0.5rem;
+        padding-top: 0.5rem;
+        border-top: 1px solid #334155;
+        margin-top: 0.5rem;
+    }
+}
+
+.lang-movil {
+    display: none;
 }
