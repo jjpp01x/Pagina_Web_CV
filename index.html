@@ -9,48 +9,6 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
-    <script src="js/translations.js"></script>
-    <script src="js/i18n.js"></script>
-    <script>
-        // ── Menú hamburguesa ──────────────────────────
-        const toggle = document.querySelector('.nav-toggle');
-        const menu = document.querySelector('.nav-menu');
-        toggle.addEventListener('click', () => {
-            const abierto = menu.classList.toggle('abierto');
-            toggle.setAttribute('aria-expanded', abierto);
-        });
-
-        // ── Scroll reveal (animaciones de entrada) ────
-        document.querySelectorAll(
-            '.dato-card, .habilidad-categoria, .timeline-item, .proyecto-card, .contacto-item, .formulario-contenedor, .sobre-mi-texto, .sobre-mi-datos'
-        ).forEach(el => el.classList.add('animar'));
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.15 });
-
-        document.querySelectorAll('.animar').forEach(el => observer.observe(el));
-
-        // ── Botón volver arriba ───────────────────────
-        const btnTop = document.createElement('button');
-        btnTop.className = 'btn-top';
-        btnTop.setAttribute('aria-label', 'Volver al inicio de la página');
-        btnTop.innerHTML = '↑';
-        document.body.appendChild(btnTop);
-
-        window.addEventListener('scroll', () => {
-            btnTop.classList.toggle('visible', window.scrollY > 400);
-        });
-
-        btnTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    </script>
 <body>
 
     <!-- NAVEGACIÓN --> 
@@ -222,6 +180,47 @@
             </div>
         </div>
     </footer>
+ <script src="js/translations.js"></script>
+    <script src="js/i18n.js"></script>
+    <script>
+        // ── Menú hamburguesa ──────────────────────────
+        const toggle = document.querySelector('.nav-toggle');
+        const menu = document.querySelector('.nav-menu');
+        toggle.addEventListener('click', () => {
+            const abierto = menu.classList.toggle('abierto');
+            toggle.setAttribute('aria-expanded', abierto);
+        });
 
+        // ── Scroll reveal (animaciones de entrada) ────
+        document.querySelectorAll(
+            '.dato-card, .habilidad-categoria, .timeline-item, .proyecto-card, .contacto-item, .formulario-contenedor, .sobre-mi-texto, .sobre-mi-datos'
+        ).forEach(el => el.classList.add('animar'));
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.animar').forEach(el => observer.observe(el));
+
+        // ── Botón volver arriba ───────────────────────
+        const btnTop = document.createElement('button');
+        btnTop.className = 'btn-top';
+        btnTop.setAttribute('aria-label', 'Volver al inicio de la página');
+        btnTop.innerHTML = '↑';
+        document.body.appendChild(btnTop);
+
+        window.addEventListener('scroll', () => {
+            btnTop.classList.toggle('visible', window.scrollY > 400);
+        });
+
+        btnTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
 </body>
 </html>
