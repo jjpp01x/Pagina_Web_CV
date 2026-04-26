@@ -207,12 +207,20 @@
                 }
             });
 
-            // Si todo es válido, mostrar mensaje de éxito
-            if (valido) {
-                formulario.reset();
-                document.getElementById('exito-msg').hidden = false;
-            }
-        });
+            // Si todo es válido, enviar a Formspree
+        if (valido) {
+            const data = new FormData(formulario);
+            fetch(formulario.action, {
+                method: 'POST',
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    formulario.reset();
+                    document.getElementById('exito-msg').hidden = false;
+                }
+            });
+        }
     </script>
 
 </body>
