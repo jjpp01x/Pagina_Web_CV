@@ -192,7 +192,7 @@ html {
    padding: 10px 20px;
    background-color: transparent;
    color: var(--color--acento);
-   border: 2px solid ver(--color-acento);
+   border: 2px solid var(--color-acento);
    border-radius: 6px;
    text-decoration: none;
    font-weight: 600;
