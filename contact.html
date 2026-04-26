@@ -84,7 +84,7 @@
                         </div>
                     </div>
 
-                    <!-- FORMULARIO -->
+                   <!-- FORMULARIO -->
                     <div class="formulario-contenedor">
                         <h2 class="seccion-titulo" data-i18n="contact.form.titulo">Envíame un mensaje</h2>
 
@@ -95,10 +95,10 @@
                                 <input
                                     type="text"
                                     id="nombre"
-                                    name="nombre"
-                                    placeholder="Tu nombre" data-i18n-ph="contact.nombre.ph"
+                                    name="nombre"    
+                                    placeholder="Tu nombre"
+                                    data-i18n-ph="contact.nombre.ph"
                                     required
-                                    aria-required="true"
                                     autocomplete="name"
                                 >
                                 <span class="error-msg" aria-live="polite"></span>
@@ -111,8 +111,8 @@
                                     id="email"
                                     name="email"
                                     placeholder="tu@email.com"
+                                    data-i18n-ph="contact.email.ph"
                                     required
-                                    aria-required="true"
                                     autocomplete="email"
                                 >
                                 <span class="error-msg" aria-live="polite"></span>
@@ -124,9 +124,9 @@
                                     type="text"
                                     id="asunto"
                                     name="asunto"
-                                    placeholder="¿De qué se trata?" data-i18n-ph="contact.asunto.ph"
+                                    placeholder="¿De qué se trata?"
+                                    data-i18n-ph="contact.asunto.ph"
                                     required
-                                    aria-required="true"
                                 >
                                 <span class="error-msg" aria-live="polite"></span>
                             </div>
@@ -137,20 +137,19 @@
                                     id="mensaje"
                                     name="mensaje"
                                     rows="5"
-                                    placeholder="Escribe tu mensaje aquí..." data-i18n-ph="contact.mensaje.ph"
+                                    placeholder="Escribe tu mensaje aquí..."
+                                    data-i18n-ph="contact.mensaje.ph"
                                     required
-                                    aria-required="true"
                                 ></textarea>
                                 <span class="error-msg" aria-live="polite"></span>
                             </div>
 
                             <button type="submit" class="btn btn-primario btn-enviar" data-i18n="contact.btn">
-                                    Enviar mensaje
+                                Enviar mensaje
                             </button>
 
-                            <!-- Mensaje de éxito -->
                             <div class="exito-msg" id="exito-msg" role="alert" aria-live="polite" hidden data-i18n="contact.exito">
-                                    ✅ ¡Mensaje enviado correctamente! Me pondré en contacto pronto.
+                                ✅ ¡Mensaje enviado correctamente! Me pondré en contacto pronto.
                             </div>
 
                         </form>
