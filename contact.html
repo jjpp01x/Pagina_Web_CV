@@ -88,7 +88,8 @@
                     <div class="formulario-contenedor">
                         <h2 class="seccion-titulo" data-i18n="contact.form.titulo">Envíame un mensaje</h2>
 
-                        <form class="formulario" id="formulario-contacto" novalidate>
+                        <form class="formulario" id="formulario-contacto" action="https://formspree.io/f/xkokeaky" method="POST" novalidate>
+                        <input type="hidden" name="_subject" value="Nuevo mensaje desde josepalacios.site">  
 
                             <div class="campo-grupo">
                                 <label for="nombre"><span data-i18n="contact.form.nombre.label">Nombre</span> <span aria-hidden="true">*</span></label>
