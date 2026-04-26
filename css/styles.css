@@ -185,6 +185,23 @@ html {
     transform: translateY(-2px);
 }
 
+.btn-download {
+   diplay: inline-flex;
+   align-items: center;
+   gap: 8px;
+   padding: 10px 20px;
+   background-color: Transparent;
+   color: tu-color-de-acento;
+   border-radius: 6px;
+   text-decoration: none;
+   font-weight: 600;
+   transition: all 0.2s ease; 
+}
+
+.btn-download:hover {
+   background-color: tu-color-de-acento;
+   color: white;
+
 /* FOTO */
 .hero-foto {
     width: 220px;
