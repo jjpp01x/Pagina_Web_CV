@@ -62,7 +62,7 @@ const translations = {
         "contact.disponible": "Abierto a roles Jr. en AI, Data & Tech",
 
         // Footer
-        "footer.copy": "© 2025 Jose Palacios Beortegui",
+        "footer.copy": "© 2026 Jose Palacios Beortegui",
                 // Education
         "edu.job1.titulo": "Auxiliar de Ventas",
         "edu.job1.li1": "Atención personalizada a clientes internacionales de más de 15 nacionalidades",
@@ -106,7 +106,7 @@ const translations = {
 
     en: {
         "nav.inicio": "Home",
-        "nav.formacion": "Education",
+        "nav.formacion": "Education",h
         "nav.proyectos": "Projects",
         "nav.contacto": "Contact",
 
@@ -157,7 +157,7 @@ const translations = {
         "contact.ubicacion": "Davos, Graubünden, Switzerland",
         "contact.disponible": "Open to Jr. roles in AI, Data & Tech",
 
-        "footer.copy": "© 2025 Jose Palacios Beortegui",
+        "footer.copy": "© 2026 Jose Palacios Beortegui",
                 "edu.job1.titulo": "Retail Sales Assistant",
         "edu.job1.li1": "Personalised consultations for international clients from over 15 nationalities",
         "edu.job1.li2": "Managed inventory processes and stock replenishment using internal systems",
@@ -249,7 +249,7 @@ const translations = {
         "contact.ubicacion": "Davos, Graubünden, Schweiz",
         "contact.disponible": "Offen für Einsteigerstellen in KI, Daten & Tech",
 
-        "footer.copy": "© 2025 Jose Palacios Beortegui",
+        "footer.copy": "© 2026 Jose Palacios Beortegui",
                 "edu.job1.titulo": "Verkaufsassistent",
         "edu.job1.li1": "Persönliche Beratung internationaler Kunden aus über 15 Nationalitäten",
         "edu.job1.li2": "Verwaltung von Inventarprozessen und Nachbestellung über interne Systeme",
