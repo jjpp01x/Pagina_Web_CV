@@ -11,7 +11,7 @@ const translations = {
         // Hero
         "hero.saludo": "Hola, soy",
         "hero.titulo": "Estudiante de Ingeniería Informática",
-        "hero.descripcion": "Combino una base sólida en gestión empresarial con conocimientos técnicos en ingeniería informática, IA y analítica de datos. Actualmente basado en Davos, Suiza.",
+        "hero.descripcion": "Combino una base sólida en gestión empresarial con conocimientos técnicos en ingeniería informática, IA y analítica de datos. Actualmente basado en Zurich, Suiza.",
         "hero.btn1": "Contactar",
         "hero.btn2": "Ver experiencia",
 
@@ -58,7 +58,7 @@ const translations = {
         "contact.mensaje.ph": "Escribe tu mensaje aquí...",
         "contact.btn": "Enviar mensaje",
         "contact.exito": "✅ ¡Mensaje enviado correctamente! Me pondré en contacto pronto.",
-        "contact.ubicacion": "Davos, Grisones, Suiza",
+        "contact.ubicacion": "Zurich, Suiza",
         "contact.disponible": "Abierto a roles Jr. en AI, Data & Tech",
 
         // Footer
