@@ -57,7 +57,16 @@
                 <div class="hero-botones">
                     <a href="contact.html" class="btn btn-primario" data-i18n="hero.btn1">Contactar</a>
                     <a href="education.html" class="btn btn-secundario" data-i18n="hero.btn2">Ver experiencia</a>
-                    <a href="docs/CV_Jose_Palacios.pdf" class="btn btn-download" download="CV_Jose_Palacios.pdf">Descargar CV</a>
+                    <div class="cv-download-selector">
+                        <button class="btn btn-download" onclick="this.nextElementSibling.classList.toggle('abierto')" aria-label="Descargar CV">
+                            Descargar CV ▾
+                        </button>
+                        <div class="cv-dropdown">
+                            <a href="docs/CV_Jose_Palacios_ES.pdf" download="CV_Jose_Palacios_ES.pdf">🇪🇸 Español</a>
+                            <a href="docs/CV_Jose_Palacios_EN.pdf" download="CV_Jose_Palacios_EN.pdf">🇬🇧 English</a>
+                            <a href="docs/CV_Jose_Palacios_DE.pdf" download="CV_Jose_Palacios_DE.pdf">🇩🇪 Deutsch</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
