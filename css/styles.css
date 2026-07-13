@@ -881,3 +881,16 @@ html {
     transition: background 0.2s;
 }
 .cv-dropdown a:hover { background: #2563eb; }
+/* Botón GitHub en cards de proyectos */
+.btn-github {
+    display: inline-block;
+    padding: 6px 14px;
+    background-color: #1f2937;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+.btn-github:hover { background-color: #374151; }
