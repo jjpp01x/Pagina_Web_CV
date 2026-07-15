@@ -112,7 +112,7 @@ const translations = {
 
         "hero.saludo": "Hi, I'm",
         "hero.titulo": "Computer Engineering Student",
-        "hero.descripcion": "I combine a solid background in business management with technical skills in computer engineering, AI and data analytics. Currently based in Davos, Switzerland.",
+        "hero.descripcion": "I combine a solid background in business management with technical skills in computer engineering, AI and data analytics. Currently based in Zurich, Switzerland.",
         "hero.btn1": "Contact me",
         "hero.btn2": "See experience",
 
@@ -154,7 +154,7 @@ const translations = {
         "contact.mensaje.ph": "Write your message here...",
         "contact.btn": "Send message",
         "contact.exito": "✅ Message sent successfully! I will get back to you soon.",
-        "contact.ubicacion": "Davos, Graubünden, Switzerland",
+        "contact.ubicacion": "Zurich, Switzerland",
         "contact.disponible": "Open to Jr. roles in AI, Data & Tech",
 
         "footer.copy": "© 2026 Jose Palacios Beortegui",
@@ -204,7 +204,7 @@ const translations = {
 
         "hero.saludo": "Hallo, ich bin",
         "hero.titulo": "Informatik-Student",
-        "hero.descripcion": "Ich verbinde eine solide Grundlage im Betriebswirtschaftsmanagement mit technischen Kenntnissen in Informatik, KI und Datenanalyse. Derzeit in Davos, Schweiz ansässig.",
+        "hero.descripcion": "Ich verbinde eine solide Grundlage im Betriebswirtschaftsmanagement mit technischen Kenntnissen in Informatik, KI und Datenanalyse. Derzeit in Zurich, Schweiz ansässig.",
         "hero.btn1": "Kontakt",
         "hero.btn2": "Erfahrung ansehen",
 
@@ -246,7 +246,7 @@ const translations = {
         "contact.mensaje.ph": "Schreiben Sie hier Ihre Nachricht...",
         "contact.btn": "Nachricht senden",
         "contact.exito": "✅ Nachricht erfolgreich gesendet! Ich melde mich bald.",
-        "contact.ubicacion": "Davos, Graubünden, Schweiz",
+        "contact.ubicacion": "Zurich, Schweiz",
         "contact.disponible": "Offen für Einsteigerstellen in KI, Daten & Tech",
 
         "footer.copy": "© 2026 Jose Palacios Beortegui",
