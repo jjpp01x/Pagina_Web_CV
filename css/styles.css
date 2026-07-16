@@ -900,4 +900,4 @@ html {
     align-items: center;
     transition: color 0.2s;
 }
-.nav-social:hover { color: var(--acento); }
+.nav-social:hover { color: var(--acento) !Important; }
