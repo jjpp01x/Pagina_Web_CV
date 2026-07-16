@@ -106,7 +106,7 @@ const translations = {
 
     en: {
         "nav.inicio": "Home",
-        "nav.formacion": "Education",h
+        "nav.formacion": "Education",
         "nav.proyectos": "Projects",
         "nav.contacto": "Contact",
 
