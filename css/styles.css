@@ -895,9 +895,9 @@ html {
 }
 .btn-github:hover { background-color: #374151; }
 .nav-social {
-    color: #FFFFFF !Important;
+    color: #FFFFFF !important;
     display: flex;
     align-items: center;
     transition: color 0.2s;
 }
-.nav-social:hover { color: var(--acento) !Important; }
+.nav-social:hover { color: var(--acento) !important; }
