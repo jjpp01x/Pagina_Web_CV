@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CV Web de Jose Palacios Beortegui - Estudiante de BSc (Hons) Applied Computing en University of Wales Trinity Saint David. Especializado en IA, Data Analytics y estrategia de negocio. Disponible para roles Jr. en AI & Tech.">    <title>Jose Palacios | Inicio</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <!-- NAVEGACIÓN --> 
+    <nav class="navbar">
+        <div class="nav-contenedor">
+            <!-- Logo / Nombre -->
+            <a href="index.html" class="nav-logo">Jose Palacios</a>
+
+            <!-- Botón menú hamburguesa (solo visible en móvil) -->
+            <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Enlaces de navegación -->
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link activo" data-i18n="nav.inicio">Inicio</a></li>
+                <li><a href="education.html" class="nav-link" data-i18n="nav.formacion">Formación</a></li>
+                <li><a href="projects.html" class="nav-link" data-i18n="nav.proyectos">Proyectos</a></li>
+                <li><a href="articulos.html" class="nav-link" data-i18n="nav.articulos">Artículos</a></li>
+                <li><a href="contact.html" class="nav-link" data-i18n="nav.contacto">Contacto</a></li>
+                <li class="lang-movil"></li>
+            </ul>
+            <!-- Selector de idioma -->
+            <div class="lang-selector" role="navigation" aria-label="Selección de idioma">
+                <button class="lang-btn" data-lang="es" onclick="aplicarIdioma('es')" aria-label="Español">ES</button>
+                <button class="lang-btn" data-lang="en" onclick="aplicarIdioma('en')" aria-label="English">EN</button>
+                <button class="lang-btn" data-lang="de" onclick="aplicarIdioma('de')" aria-label="Deutsch">DE</button>
+            </div>
+            <div class="nav-social-icons">
+                <a href="https://github.com/jjpp01x" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Jose Palacios" class="nav-social">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+                    </svg>
+                </a>
+
+                <a href="https://www.linkedin.com/in/jose-palacios-beortegui/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Jose Palacios" class="nav-social">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main>
+            <!-- SECCIÓN HERO (presentación principal) -->
+    <section class="hero" aria-label="Presentación">
+        <div class="hero-contenedor">
+
+            <!-- Texto de presentación -->
+            <div class="hero-texto">
+                <p class="hero-saludo" data-i18n="hero.saludo">Hola, soy</p>
+                <h1 class="hero-nombre">Jose Palacios Beortegui</h1>
+                <h2 class="hero-titulo" data-i18n="hero.titulo">Estudiante de BSc (Hons) Applied Computing | UWTSD</h2>
+                <p class="hero-descripcion" data-i18n="hero.descripcion">Combino una base sólida en gestion empresarial con conocimientos tecnicos en ingenieria informatica, IA  y analitica de datos. Actualmente basado en Zurich, Suiza.</p>
+
+                <div class="hero-botones">
+                    <a href="contact.html" class="btn btn-primario" data-i18n="hero.btn1">Contactar</a>
+                    <a href="education.html" class="btn btn-secundario" data-i18n="hero.btn2">Ver experiencia</a>
+                    <div class="cv-download-selector">
+                        <button class="btn btn-download" onclick="this.nextElementSibling.classList.toggle('abierto')" aria-label="Descargar CV">
+                            Descargar CV ▾
+                        </button>
+                        <div class="cv-dropdown">
+                            <a href="docs/CV_Jose_Palacios_ES.pdf" download="CV_Jose_Palacios_ES.pdf">🇪🇸 Español</a>
+                            <a href="docs/CV_Jose_Palacios_EN.pdf" download="CV_Jose_Palacios_EN.pdf">🇬🇧 English</a>
+                            <a href="docs/CV_Jose_Palacios_DE.pdf" download="CV_Jose_Palacios_DE.pdf">🇩🇪 Deutsch</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Foto / Avatar -->
+            <div class="hero-imagen">
+                <img
+                    src="img/jpalacios.JPG"
+                    alt="Foto de Jose Palacios Beortegui"
+                    class="hero-foto"
+                >
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECCIÓN SOBRE MÍ -->
+    <section class="sobre-mi" aria-label="Sobre mí">
+       <div class="contenedor">
+            <h2 class="seccion-titulo" data-i18n="sobre.titulo">Sobre mí</h2>
+            <div class="sobre-mi-grid">
+
+                <div class="sobre-mi-texto">
+                    <p data-i18n="sobre.p1">
+                        Graduado en BA (Hons) Business Management por University of Wales Trinity Saint David (2021–2025) y actualmente cursando BSc (Hons) Applied Computing — una combinación que me permite unir pensamiento estratégico con ejecución técnica.
+                    </p>
+                    <p data-i18n="sobre.p2">
+                        Me especializo en la intersección de <strong>IA, Data Analytics y estrategia
+                        de negocio</strong>, con especial interés en la digitalización de la cadena
+                        de suministro y la automatización de procesos.
+                    </p>
+                    <p data-i18n="sobre.p3">
+                        Experiencia profesional internacional en Suiza, España y entornos
+                        multilingües (español nativo, inglés profesional, alemán A2–B1).
+                    </p>
+                </div>
+
+                <!-- Tarjetas de datos rápidos -->
+                <div class="sobre-mi-datos">
+                    <div class="dato-card">
+                        <span class="dato-icono">📍</span>
+                        <span data-i18n="contact.ubicacion">Zurich, Suiza</span>
+                    </div>
+                    <div class="dato-card">
+                        <img src="img/uwtsd-logo.png" alt="University of Wales Trinity Saint David" style="height: 24px; width: auto; vertical-align: middle; margin-right: 8px;">
+                        <span data-i18n="sobre.universidad">BA Business Management · BSc Applied Computing — University of Wales Trinity Saint David</span>
+                    </div>
+                    <div class="dato-card">
+                        <span class="dato-icono">💼</span>
+                        <span data-i18n="sobre.disponible">Abierto a roles Jr. en AI & Tech</span>
+                    </div>
+                    <div class="dato-card">
+                        <span class="dato-icono">🌍</span>
+                        <span>ES · EN · DE</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- SECCIÓN HABILIDADES -->
+    <section class="habilidades" aria-label="Habilidades">
+        <div class="contenedor">
+            <h2 class="seccion-titulo" data-i18n="skills.titulo">Habilidades</h2>
+            <div class="habilidades-grid">
+
+                <div class="habilidad-categoria">
+                    <h3 data-i18n="skills.tech">Tecnología & IA</h3>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">AWS Cloud</span>
+                        <span class="tag">Prompt Engineering</span>
+                        <span class="tag">Data Analytics</span>
+                        <span class="tag">Salesforce</span>
+                    </div>
+                </div>
+
+                <div class="habilidad-categoria">
+                    <h3 data-i18n="skills.negocio">Negocio & Gestión</h3>
+                    <div class="tags">
+                        <span class="tag">Supply Chain</span>
+                        <span class="tag">Business Strategy</span>
+                        <span class="tag">Project Management</span>
+                        <span class="tag">Logística</span>
+                        <span class="tag">ERP Systems</span>
+                    </div>
+                </div>
+
+                <div class="habilidad-categoria">
+                    <h3 data-i18n="skills.idiomas">Idiomas</h3>
+                    <div class="tags">
+                        <span class="tag tag-idioma">🇪🇸 Español — Nativo</span>
+                        <span class="tag tag-idioma">🇬🇧 Inglés — Profesional</span>
+                        <span class="tag tag-idioma">🇩🇪 Alemán — A2/B1</span>
+                    </div>
+                </div>
+
+                <div class="habilidad-categoria">
+                    <h3 data-i18n="skills.certs">Certificaciones</h3>
+                    <div class="tags">
+                        <span class="tag tag-cert">Salesforce Trailhead</span>
+                        <span class="tag tag-cert">Claude Code in Action</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="footer">
+        <div class="contenedor footer-contenido">
+            <p data-i18n="footer.copy">© <span id="year">2026</span> Jose Palacios Beortegui</p>
+            <div class="footer-links">
+                <a href="mailto:palaciosbeortegui@gmail.com" aria-label="Enviar email">Email</a>
+                <a href="https://www.linkedin.com/in/jose-palacios-beortegui/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Jose Palacios">LinkedIn</a>
+                <a href="https://github.com/jjpp01x" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Jose Palacios">GitHub</a>
+            </div>
+        </div>
+    </footer>
+ <script src="js/translations.js"></script>
+    <script src="js/i18n.js"></script>
+    <script>
+        // ── Menú hamburguesa ──────────────────────────
+        const toggle = document.querySelector('.nav-toggle');
+        const menu = document.querySelector('.nav-menu');
+        toggle.addEventListener('click', () => {
+            const abierto = menu.classList.toggle('abierto');
+            toggle.setAttribute('aria-expanded', abierto);
+        });
+
+        // ── Scroll reveal (animaciones de entrada) ────
+        document.querySelectorAll(
+            '.dato-card, .habilidad-categoria, .timeline-item, .proyecto-card, .contacto-item, .formulario-contenedor, .sobre-mi-texto, .sobre-mi-datos'
+        ).forEach(el => el.classList.add('animar'));
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.animar').forEach(el => observer.observe(el));
+
+        // ── Botón volver arriba ───────────────────────
+        const btnTop = document.createElement('button');
+        btnTop.className = 'btn-top';
+        btnTop.setAttribute('aria-label', 'Volver al inicio de la página');
+        btnTop.innerHTML = '↑';
+        document.body.appendChild(btnTop);
+
+        window.addEventListener('scroll', () => {
+            btnTop.classList.toggle('visible', window.scrollY > 400);
+        });
+
+        btnTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        // Actualizar año automáticamente
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
