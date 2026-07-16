@@ -894,10 +894,10 @@ html {
     transition: background-color 0.2s ease;
 }
 .btn-github:hover { background-color: #374151; }
-.nav-github {
+.nav-social {
     color: var(--texto-secundario);
-    text-decoration: none;
-    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
     transition: color 0.2s;
 }
-.nav-github:hover { color: var(--acento); }
+.nav-social:hover { color: var(--acento); }
