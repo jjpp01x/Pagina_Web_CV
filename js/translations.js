@@ -10,18 +10,18 @@ const translations = {
 
         // Hero
         "hero.saludo": "Hola, soy",
-        "hero.titulo": "Estudiante de Ingeniería Informática",
+        "hero.titulo": "Estudiante de BSc (Hons) Applied Computing | UWTSD",
         "hero.descripcion": "Combino una base sólida en gestión empresarial con conocimientos técnicos en ingeniería informática, IA y analítica de datos. Actualmente basado en Zurich, Suiza.",
         "hero.btn1": "Contactar",
         "hero.btn2": "Ver experiencia",
 
         // Sobre mí
         "sobre.titulo": "Sobre mí",
-        "sobre.p1": "Graduado en Business Management (CESTE, 2021–2025) y actualmente cursando Computer Engineering — una combinación que me permite unir pensamiento estratégico con ejecución técnica.",
+        "sobre.p1": "Graduado en BA (Hons) Business Management por University of Wales Trinity Saint David (2021–2025) y actualmente cursando BSc (Hons) Applied Computing — una combinación que me permite unir pensamiento estratégico con ejecución técnica.",
         "sobre.p2": "Me especializo en la intersección de <strong>IA, Data Analytics y estrategia de negocio</strong>, con especial interés en la digitalización de la cadena de suministro y la automatización de procesos.",
         "sobre.p3": "Experiencia profesional internacional en Suiza, España y entornos multilingües (español nativo, inglés profesional, alemán A2–B1).",
         "sobre.disponible": "Abierto a roles Jr. en AI & Tech",
-        "sobre.universidad": "Computer Engineering (CESTE)",
+        "sobre.universidad": "BA Business Management · BSc Applied Computing — University of Wales Trinity Saint David",
 
         // Habilidades
         "skills.titulo": "Habilidades",
@@ -111,17 +111,17 @@ const translations = {
         "nav.contacto": "Contact",
 
         "hero.saludo": "Hi, I'm",
-        "hero.titulo": "Computer Engineering Student",
+        "hero.titulo": "BSc (Hons) Applied Computing Student | UWTSD",
         "hero.descripcion": "I combine a solid background in business management with technical skills in computer engineering, AI and data analytics. Currently based in Zurich, Switzerland.",
         "hero.btn1": "Contact me",
         "hero.btn2": "See experience",
 
         "sobre.titulo": "About me",
-        "sobre.p1": "Business Management graduate (CESTE, 2021–2025) currently studying Computer Engineering — a combination that lets me bridge strategic thinking with technical execution.",
+        "sobre.p1": "BA (Hons) Business Management graduate at University of Wales Trinity Saint David (2021–2025), currently studying BSc (Hons) Applied Computing — a combination that lets me bridge strategic thinking with technical execution.",
         "sobre.p2": "I specialise in the intersection of <strong>AI, Data Analytics and Business Strategy</strong>, with a strong interest in supply chain digitalisation and process automation.",
         "sobre.p3": "International professional experience in Switzerland and Spain, working in multilingual environments (native Spanish, professional English, German A2–B1).",
         "sobre.disponible": "Open to Jr. roles in AI & Tech",
-        "sobre.universidad": "Computer Engineering (CESTE)",
+        "sobre.universidad": "BA Business Management · BSc Applied Computing — University of Wales Trinity Saint David",
 
         "skills.titulo": "Skills",
         "skills.tech": "Technology & AI",
@@ -203,17 +203,17 @@ const translations = {
         "nav.contacto": "Kontakt",
 
         "hero.saludo": "Hallo, ich bin",
-        "hero.titulo": "Informatik-Student",
+        "hero.titulo": "BSc (Hons) Applied Computing Student | UWTSD",
         "hero.descripcion": "Ich verbinde eine solide Grundlage im Betriebswirtschaftsmanagement mit technischen Kenntnissen in Informatik, KI und Datenanalyse. Derzeit in Zurich, Schweiz ansässig.",
         "hero.btn1": "Kontakt",
         "hero.btn2": "Erfahrung ansehen",
 
         "sobre.titulo": "Über mich",
-        "sobre.p1": "Absolvent in Business Management (CESTE, 2021–2025) und derzeit im Studium der Informatik — eine Kombination, die strategisches Denken mit technischer Umsetzung verbindet.",
+        "sobre.p1": "Absolvent in BA (Hons) Business Management an der University of Wales Trinity Saint David (2021–2025), derzeit im Studium des BSc (Hons) Applied Computing — eine Kombination, die strategisches Denken mit technischer Umsetzung verbindet.",
         "sobre.p2": "Ich spezialisiere mich auf die Schnittstelle von <strong>KI, Datenanalyse und Unternehmensstrategie</strong>, mit besonderem Interesse an der Digitalisierung von Lieferketten.",
         "sobre.p3": "Internationale Berufserfahrung in der Schweiz und Spanien in mehrsprachigen Umgebungen (Spanisch Muttersprache, Englisch professionell, Deutsch A2–B1).",
         "sobre.disponible": "Offen für Einsteigerstellen in KI & Tech",
-        "sobre.universidad": "Informatik (CESTE)",
+        "sobre.universidad": "BA Business Management · BSc Applied Computing — University of Wales Trinity Saint David",
 
         "skills.titulo": "Fähigkeiten",
         "skills.tech": "Technologie & KI",
