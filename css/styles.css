@@ -901,3 +901,8 @@ html {
     transition: color 0.2s;
 }
 .nav-social:hover { color: var(--acento) !important; }
+.nav-social-icons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
