@@ -5,6 +5,7 @@ let idiomaActual = localStorage.getItem('idioma') || 'es';
 function aplicarIdioma(idioma) {
     idiomaActual = idioma;
     localStorage.setItem('idioma', idioma); // Lo recuerda al cambiar de página
+    document.documentElement.lang = idioma; // Cambia el atributo lang del HTML
 
     // Traduce texto normal
     document.querySelectorAll('[data-i18n]').forEach(el => {
