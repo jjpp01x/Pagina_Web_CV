@@ -12,16 +12,17 @@ const translations = {
         // Hero
         "hero.saludo": "Hola, soy",
         "hero.titulo": "Estudiante de BSc (Hons) Applied Computing | UWTSD",
-        "hero.descripcion": "Combino una base sólida en gestión empresarial con conocimientos técnicos en ingeniería informática, IA y analítica de datos. Actualmente basado en Zurich, Suiza.",
+        "hero.descripcion": "Combino una base sólida en gestión empresarial con la capacidad de evaluar y construir tecnología: ingeniería informática, IA y analítica de datos. Actualmente basado en Zurich, Suiza.",
         "hero.btn1": "Contactar",
         "hero.btn2": "Ver experiencia",
 
         // Sobre mí
         "sobre.titulo": "Sobre mí",
         "sobre.p1": "Graduado en BA (Hons) Business Management por University of Wales Trinity Saint David (2021–2025) y actualmente cursando BSc (Hons) Applied Computing — una combinación que me permite unir pensamiento estratégico con ejecución técnica.",
-        "sobre.p2": "Me especializo en la intersección de <strong>IA, Data Analytics y estrategia de negocio</strong>, con especial interés en la digitalización de la cadena de suministro y la automatización de procesos.",
+        "sobre.p2": "Me especializo en la intersección de <strong>IA, Data Analytics y estrategia de negocio</strong>: entender una tecnología lo bastante bien como para evaluar si funciona y qué riesgo conlleva, no solo para usarla. Especial interés en la digitalización de la cadena de suministro y la automatización de procesos.",
         "sobre.p3": "Experiencia profesional internacional en Suiza, España y entornos multilingües (español nativo, inglés profesional, alemán A2–B1).",
-        "sobre.disponible": "Abierto a roles Jr. en AI & Tech",
+        "sobre.p4": "Me interesa especialmente el lado de la evaluación: entender qué tecnología está lista para usarse en producción y cuál conlleva riesgo real, antes de que una empresa apueste por ella.",
+        "sobre.disponible": "Abierto a roles Jr. en Análisis Tecnológico, Investigación en IA & Tech",
         "sobre.universidad": "BA Business Management · BSc Applied Computing — University of Wales Trinity Saint David",
 
         // Habilidades
@@ -42,6 +43,8 @@ const translations = {
         // Página Proyectos
         "proy.titulo": "Proyectos",
         "proy.subtitulo": "Trabajos académicos y personales",
+        "proy.github.titulo": "Índice técnico completo en GitHub",
+        "proy.github.desc": "Cuatro herramientas de evaluación técnica con sus tests, sus métricas y sus límites declarados. Las cifras se verifican solas cada semana.",
         "proy.completado": "Completado",
         "proy.en.curso": "En desarrollo",
 
@@ -60,7 +63,7 @@ const translations = {
         "contact.btn": "Enviar mensaje",
         "contact.exito": "✅ ¡Mensaje enviado correctamente! Me pondré en contacto pronto.",
         "contact.ubicacion": "Zurich, Suiza",
-        "contact.disponible": "Abierto a roles Jr. en AI, Data & Tech",
+        "contact.disponible": "Abierto a roles Jr. en Análisis Tecnológico, IA, Data & Tech",
 
         // Footer
         "footer.copy": "© 2026 Jose Palacios Beortegui",
@@ -114,15 +117,16 @@ const translations = {
 
         "hero.saludo": "Hi, I'm",
         "hero.titulo": "BSc (Hons) Applied Computing Student | UWTSD",
-        "hero.descripcion": "I combine a solid background in business management with technical skills in computer engineering, AI and data analytics. Currently based in Zurich, Switzerland.",
+        "hero.descripcion": "I combine a solid background in business management with the ability to evaluate and build technology: computer engineering, AI and data analytics. Currently based in Zurich, Switzerland.",
         "hero.btn1": "Contact me",
         "hero.btn2": "See experience",
 
         "sobre.titulo": "About me",
         "sobre.p1": "BA (Hons) Business Management graduate at University of Wales Trinity Saint David (2021–2025), currently studying BSc (Hons) Applied Computing — a combination that lets me bridge strategic thinking with technical execution.",
-        "sobre.p2": "I specialise in the intersection of <strong>AI, Data Analytics and Business Strategy</strong>, with a strong interest in supply chain digitalisation and process automation.",
+        "sobre.p2": "I specialise in the intersection of <strong>AI, Data Analytics and Business Strategy</strong>: understanding a technology well enough to evaluate whether it works and what risk it carries, not just to use it. Strong interest in supply chain digitalisation and process automation.",
         "sobre.p3": "International professional experience in Switzerland and Spain, working in multilingual environments (native Spanish, professional English, German A2–B1).",
-        "sobre.disponible": "Open to Jr. roles in AI & Tech",
+        "sobre.p4": "I'm particularly interested in the evaluation side: understanding which technology is ready for real use and which carries real risk, before a business bets on it.",
+        "sobre.disponible": "Open to Jr. roles in Technology Analysis, AI Research & Tech",
         "sobre.universidad": "BA Business Management · BSc Applied Computing — University of Wales Trinity Saint David",
 
         "skills.titulo": "Skills",
@@ -140,6 +144,8 @@ const translations = {
 
         "proy.titulo": "Projects",
         "proy.subtitulo": "Academic and personal work",
+        "proy.github.titulo": "Full technical index on GitHub",
+        "proy.github.desc": "Four technical evaluation tools with their tests, their metrics and their stated limitations. The numbers re-verify themselves weekly.",
         "proy.completado": "Completed",
         "proy.en.curso": "In development",
 
@@ -157,7 +163,7 @@ const translations = {
         "contact.btn": "Send message",
         "contact.exito": "✅ Message sent successfully! I will get back to you soon.",
         "contact.ubicacion": "Zurich, Switzerland",
-        "contact.disponible": "Open to Jr. roles in AI, Data & Tech",
+        "contact.disponible": "Open to Jr. roles in Technology Analysis, AI, Data & Tech",
 
         "footer.copy": "© 2026 Jose Palacios Beortegui",
                 "edu.job1.titulo": "Retail Sales Assistant",
@@ -207,15 +213,16 @@ const translations = {
 
         "hero.saludo": "Hallo, ich bin",
         "hero.titulo": "BSc (Hons) Applied Computing Student | UWTSD",
-        "hero.descripcion": "Ich verbinde eine solide Grundlage im Betriebswirtschaftsmanagement mit technischen Kenntnissen in Informatik, KI und Datenanalyse. Derzeit in Zurich, Schweiz ansässig.",
+        "hero.descripcion": "Ich verbinde eine solide Grundlage im Betriebswirtschaftsmanagement mit der Fähigkeit, Technologie zu bewerten und zu entwickeln: Informatik, KI und Datenanalyse. Derzeit in Zurich, Schweiz ansässig.",
         "hero.btn1": "Kontakt",
         "hero.btn2": "Erfahrung ansehen",
 
         "sobre.titulo": "Über mich",
         "sobre.p1": "Absolvent in BA (Hons) Business Management an der University of Wales Trinity Saint David (2021–2025), derzeit im Studium des BSc (Hons) Applied Computing — eine Kombination, die strategisches Denken mit technischer Umsetzung verbindet.",
-        "sobre.p2": "Ich spezialisiere mich auf die Schnittstelle von <strong>KI, Datenanalyse und Unternehmensstrategie</strong>, mit besonderem Interesse an der Digitalisierung von Lieferketten.",
+        "sobre.p2": "Ich spezialisiere mich auf die Schnittstelle von <strong>KI, Datenanalyse und Unternehmensstrategie</strong>: eine Technologie so gut zu verstehen, dass ich bewerten kann, ob sie funktioniert und welches Risiko sie birgt — nicht nur, sie zu nutzen. Besonderes Interesse an der Digitalisierung von Lieferketten.",
         "sobre.p3": "Internationale Berufserfahrung in der Schweiz und Spanien in mehrsprachigen Umgebungen (Spanisch Muttersprache, Englisch professionell, Deutsch A2–B1).",
-        "sobre.disponible": "Offen für Einsteigerstellen in KI & Tech",
+        "sobre.p4": "Mich interessiert besonders die Bewertungsseite: zu verstehen, welche Technologie produktionsreif ist und welche echtes Risiko birgt, bevor ein Unternehmen darauf setzt.",
+        "sobre.disponible": "Offen für Einsteigerstellen in Technologieanalyse, KI-Research & Tech",
         "sobre.universidad": "BA Business Management · BSc Applied Computing — University of Wales Trinity Saint David",
 
         "skills.titulo": "Fähigkeiten",
@@ -233,6 +240,8 @@ const translations = {
 
         "proy.titulo": "Projekte",
         "proy.subtitulo": "Akademische und persönliche Arbeiten",
+        "proy.github.titulo": "Vollständiger technischer Index auf GitHub",
+        "proy.github.desc": "Vier Werkzeuge zur technischen Bewertung — mit Tests, Kennzahlen und offen erklärten Grenzen. Die Zahlen prüfen sich wöchentlich selbst.",
         "proy.completado": "Abgeschlossen",
         "proy.en.curso": "In Entwicklung",
 

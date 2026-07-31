@@ -1450,3 +1450,72 @@ html {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ============================================
+   LLAMADA AL PERFIL DE GITHUB (projects.html)
+   ============================================ */
+
+.github-callout-seccion {
+    padding: 2.5rem 0 0;
+}
+
+.github-callout {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.5rem 1.75rem;
+    background: var(--color-primario);
+    color: var(--color-blanco);
+    border-radius: var(--radio-borde);
+    box-shadow: var(--sombra);
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.github-callout:hover,
+.github-callout:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.25);
+}
+
+.github-callout__icono {
+    font-size: 1.75rem;
+    line-height: 1;
+    flex-shrink: 0;
+    color: var(--color-acento);
+}
+
+.github-callout__texto {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.github-callout__texto strong {
+    font-size: 1.1rem;
+}
+
+.github-callout__texto span {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    line-height: 1.5;
+}
+
+.github-callout__flecha {
+    margin-left: auto;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    color: var(--color-acento);
+}
+
+@media (max-width: 600px) {
+    .github-callout {
+        flex-wrap: wrap;
+        gap: 0.9rem;
+        padding: 1.25rem;
+    }
+
+    .github-callout__flecha {
+        margin-left: 0;
+    }
+}
