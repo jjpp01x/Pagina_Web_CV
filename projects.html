@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Proyectos técnicos de Jose Palacios Beortegui: sistemas en C y Python, redes en Virtualbox y Windows Server, y bases de datos PostgreSQL.">
+    <meta name="description" content="Proyectos de Jose Palacios Beortegui: cuatro herramientas de evaluación técnica de IA (due diligence, análisis de sensibilidad, auditoría de modelos, incidentes) más trabajo de ingeniería en C, Python, redes y PostgreSQL.">
     <title>Jose Palacios | Proyectos</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="canonical" href="https://josepalacios.site/projects.html">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Jose Palacios | Proyectos técnicos">
-    <meta property="og:description" content="Proyectos en PostgreSQL, Python, C, redes y desarrollo web, con código en GitHub y detalle del proceso.">
+    <meta property="og:description" content="Herramientas propias de evaluación técnica de IA y proyectos de ingeniería, con código en GitHub, tests y el detalle del proceso.">
     <meta property="og:url" content="https://josepalacios.site/projects.html">
     <meta property="og:image" content="https://josepalacios.site/img/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
@@ -71,7 +71,7 @@
         <section class="page-header">
             <div class="contenedor">
                 <h1 data-i18n="proy.titulo">Proyectos</h1>
-                <p data-i18n="proy.subtitulo">Trabajos académicos y personales</p>
+                <p data-i18n="proy.subtitulo">Herramientas de evaluación técnica y trabajo de ingeniería</p>
             </div>
         </section>
 
@@ -89,9 +89,114 @@
             </div>
         </section>
 
+        <!-- PROYECTOS DE IA Y ANÁLISIS TÉCNICO -->
+        <section class="proyectos-seccion" aria-label="Proyectos de IA y análisis técnico">
+            <div class="contenedor">
+                <h2 class="proyectos-grupo-titulo" data-i18n="proy.grupo1.titulo">IA y análisis técnico</h2>
+                <p class="proyectos-grupo-desc" data-i18n="proy.grupo1.desc">Cuatro herramientas propias que responden a la misma pregunta desde ángulos distintos: cómo se comprueba si una afirmación técnica se sostiene.</p>
+                <div class="proyectos-grid">
+
+                <!-- DD-COPILOT -->
+                <a href="proyectos/dd-copilot.html" class="proyecto-card-link">
+                <article class="proyecto-card">
+                    <div class="proyecto-header proyecto-header--azul">
+                        <span class="proyecto-icono" aria-hidden="true">🔍</span>
+                    </div>
+                    <div class="proyecto-cuerpo">
+                        <h2 data-i18n="proy.ia1.titulo">DD-Copilot</h2>
+                        <p data-i18n="proy.ia1.desc">Convierte la web o el whitepaper de una startup deep-tech en un informe de due diligence técnica, verificando cada cita contra el texto original.</p>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">LlamaIndex</span>
+                            <span class="tag">Claude</span>
+                            <span class="tag">RAG</span>
+                        </div>
+                    </div>
+                    <div class="proyecto-pie">
+                        <span class="proyecto-estado proyecto-estado--completado" data-i18n="proy.estado.repo">Repositorio público</span>
+                        <span class="btn btn-primario" data-i18n="proy.ver">Ver detalle →</span>
+                    </div>
+                </article>
+                </a>
+
+                <!-- AI READINESS MATRIX -->
+                <a href="proyectos/ai-readiness-matrix.html" class="proyecto-card-link">
+                <article class="proyecto-card">
+                    <div class="proyecto-header proyecto-header--verde">
+                        <span class="proyecto-icono" aria-hidden="true">⚖️</span>
+                    </div>
+                    <div class="proyecto-cuerpo">
+                        <h2 data-i18n="proy.ia2.titulo">AI Readiness Matrix</h2>
+                        <p data-i18n="proy.ia2.desc">Comprar, alquilar o construir. El criterio vive en YAML versionado y el análisis de sensibilidad muestra en qué rango de pesos aguanta la conclusión.</p>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">YAML</span>
+                            <span class="tag">Monte Carlo</span>
+                            <span class="tag">Streamlit</span>
+                        </div>
+                    </div>
+                    <div class="proyecto-pie">
+                        <span class="proyecto-estado proyecto-estado--completado" data-i18n="proy.estado.motor">Motor completo</span>
+                        <span class="btn btn-primario" data-i18n="proy.ver">Ver detalle →</span>
+                    </div>
+                </article>
+                </a>
+
+                <!-- MODEL CARD AUDITOR -->
+                <a href="proyectos/model-card-auditor.html" class="proyecto-card-link">
+                <article class="proyecto-card">
+                    <div class="proyecto-header proyecto-header--azul">
+                        <span class="proyecto-icono" aria-hidden="true">✅</span>
+                    </div>
+                    <div class="proyecto-cuerpo">
+                        <h2 data-i18n="proy.ia3.titulo">Model Card Auditor</h2>
+                        <p data-i18n="proy.ia3.desc">Audita la documentación de cualquier modelo de Hugging Face contra seis campos obligatorios y puede tumbar un build de CI si baja del umbral.</p>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Hugging Face</span>
+                            <span class="tag">CI/CD</span>
+                            <span class="tag">pytest</span>
+                        </div>
+                    </div>
+                    <div class="proyecto-pie">
+                        <span class="proyecto-estado proyecto-estado--completado" data-i18n="proy.estado.repo">Repositorio público</span>
+                        <span class="btn btn-primario" data-i18n="proy.ver">Ver detalle →</span>
+                    </div>
+                </article>
+                </a>
+
+                <!-- AI SAFETY INCIDENT TRACKER -->
+                <a href="proyectos/ai-safety-incidents.html" class="proyecto-card-link">
+                <article class="proyecto-card">
+                    <div class="proyecto-header proyecto-header--verde">
+                        <span class="proyecto-icono" aria-hidden="true">🛡️</span>
+                    </div>
+                    <div class="proyecto-cuerpo">
+                        <h2 data-i18n="proy.ia4.titulo">AI Safety Incident Tracker</h2>
+                        <p data-i18n="proy.ia4.desc">23 fallos reales de sistemas de IA en producción entre 2015 y 2025, clasificados por modo de fallo y severidad, con cada fila trazable a su fuente primaria.</p>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Streamlit</span>
+                            <span class="tag">pandas</span>
+                            <span class="tag">Data viz</span>
+                        </div>
+                    </div>
+                    <div class="proyecto-pie">
+                        <span class="proyecto-estado proyecto-estado--completado" data-i18n="proy.estado.produccion">En producción</span>
+                        <span class="btn btn-primario" data-i18n="proy.ver">Ver detalle →</span>
+                    </div>
+                </article>
+                </a>
+
+                </div>
+            </div>
+        </section>
+
         <!-- GRID DE PROYECTOS -->
         <section class="proyectos-seccion" aria-label="Lista de proyectos">
             <div class="contenedor">
+                <h2 class="proyectos-grupo-titulo" data-i18n="proy.grupo2.titulo">Ingeniería y trabajo académico</h2>
+                <p class="proyectos-grupo-desc" data-i18n="proy.grupo2.desc">La base técnica: bases de datos, sistemas en C y Python, redes y desarrollo web.</p>
                 <div class="proyectos-grid">
 
                 <!-- PROYECTO 1 -->

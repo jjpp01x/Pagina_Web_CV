@@ -1519,3 +1519,17 @@ html {
         margin-left: 0;
     }
 }
+
+/* Títulos de grupo dentro de la página de proyectos */
+.proyectos-grupo-titulo {
+    font-size: 1.6rem;
+    color: var(--color-primario);
+    margin-bottom: 0.4rem;
+}
+
+.proyectos-grupo-desc {
+    color: var(--color-texto-claro);
+    max-width: 62ch;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
