@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cómo separar una tendencia científica real del crecimiento general de la literatura: prueba de permutación sobre 4.113 papers de arXiv en robótica, IA y espacio.">
+    <title>Jose Palacios | 66 temas emergentes, uno real: cómo distinguir una tendencia del ruido</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="canonical" href="https://josepalacios.site/articulos/senal-o-ruido.html">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Jose Palacios | 66 temas emergentes, uno real: cómo distinguir una tendencia del ruido">
+    <meta property="og:description" content="Cómo separar una tendencia científica real del crecimiento general de la literatura: prueba de permutación sobre 4.113 papers de arXiv en robótica, IA y espacio.">
+    <meta property="og:url" content="https://josepalacios.site/articulos/senal-o-ruido.html">
+    <meta property="og:image" content="https://josepalacios.site/img/og-seguridad.png">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+    <!-- NAVEGACIÓN -->
+    <nav class="navbar">
+        <div class="nav-contenedor">
+            <a href="../index.html" class="nav-logo">Jose Palacios</a>
+            <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Inicio</a></li>
+                <li><a href="../education.html" class="nav-link">Formación</a></li>
+                <li><a href="../projects.html" class="nav-link">Proyectos</a></li>
+                <li><a href="../articulos.html" class="nav-link activo">Artículos</a></li>
+                <li><a href="../contact.html" class="nav-link">Contacto</a></li>
+                <li class="lang-movil"></li>
+            </ul>
+            <div class="lang-selector" role="navigation" aria-label="Selección de idioma">
+                <button class="lang-btn" data-lang="es" onclick="aplicarIdioma('es')" aria-label="Español">ES</button>
+                <button class="lang-btn" data-lang="en" onclick="aplicarIdioma('en')" aria-label="English">EN</button>
+                <button class="lang-btn" data-lang="de" onclick="aplicarIdioma('de')" aria-label="Deutsch">DE</button>
+            </div>
+            <div class="nav-social-icons">
+                <a href="https://github.com/jjpp01x" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Jose Palacios" class="nav-social">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/jose-palacios-beortegui/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Jose Palacios" class="nav-social">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+
+        <!-- CABECERA ARTÍCULO -->
+        <section class="page-header articulo-header">
+            <div class="contenedor">
+                <p class="articulo-breadcrumb">
+                    <a href="../articulos.html">← Artículos</a>
+                </p>
+                <div class="articulo-meta-top">
+                    <span class="articulo-categoria">Análisis Técnico</span>
+                    <span class="articulo-fecha">1 de agosto de 2026</span>
+                </div>
+                <h1>66 temas emergentes, uno real: cómo distinguir una tendencia del ruido</h1>
+                <p class="articulo-subtitulo">Construí un sistema que detecta temas emergentes en la literatura científica de robótica e IA. Lo interesante no fue el que encontró, sino los 65 que descartó.</p>
+                <div class="articulo-autor">
+                    <img src="../img/jpalacios.JPG" alt="Jose Palacios Beortegui" class="articulo-autor-foto">
+                    <div>
+                        <span class="articulo-autor-nombre">Jose Palacios Beortegui</span>
+                        <span class="articulo-autor-rol">BSc (Hons) Applied Computing · UWTSD</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTENIDO DEL ARTÍCULO -->
+        <article class="articulo-contenido">
+            <div class="contenedor articulo-body">
+
+                <p class="articulo-intro">
+                    Un tema de investigación creció un 49 % en un año. ¿Es una tendencia?
+                    No hay forma de saberlo con ese dato. Si toda la literatura creció un 58 %
+                    ese mismo año, ese 49 % no es una tendencia: es quedarse atrás.
+                </p>
+
+                <p>
+                    Ese es el error que comete casi cualquier panel de «temas emergentes»:
+                    presentar el crecimiento de una parte sin la referencia del todo. Y es un error
+                    caro, porque una cifra con aspecto de dato se cita, se reenvía y acaba
+                    sosteniendo una decisión.
+                </p>
+
+                <p>
+                    Construí <strong>Signal Radar</strong> para responder a la pregunta bien
+                    planteada: <em>¿este tema crece más de lo que explicaría el azar, dado cuánto
+                    creció el corpus entero?</em> Sobre 4.113 artículos de arXiv publicados entre
+                    noviembre de 2023 y julio de 2026 en robótica, IA, instrumentación astronómica
+                    y teoría de control, el sistema detectó 66 temas. <strong>Solo uno superó la
+                    prueba.</strong>
+                </p>
+
+                <h2>1. Por qué crecer no es una señal</h2>
+
+                <p>
+                    El volumen de publicación científica sube todos los años. Sube por financiación,
+                    por número de investigadores, por presión de publicar y por fechas de congresos.
+                    Un tema puede duplicar sus papers sin que nada haya cambiado en su interior:
+                    simplemente flota sobre una marea que sube.
+                </p>
+
+                <p>
+                    La pregunta útil no es «¿cuántos papers tiene?» sino «¿cuántos tendría si sus
+                    fechas fueran aleatorias?». Si la respuesta es «prácticamente los mismos», el
+                    crecimiento no contiene información.
+                </p>
+
+                <h2>2. La prueba: barajar las fechas</h2>
+
+                <p>
+                    La forma de responderla no requiere estadística exótica. Se llama
+                    <strong>prueba de permutación</strong> y funciona así:
+                </p>
+
+                <p>
+                    Se mantienen fijos los grupos de papers —qué artículo pertenece a qué tema— y se
+                    <strong>barajan las fechas de publicación entre todos los 4.113 artículos</strong>.
+                    Después se recalcula el crecimiento del tema. Y se repite diez mil veces.
+                </p>
+
+                <p>
+                    Eso produce la distribución del crecimiento que ese tema mostraría <em>si el
+                    momento en que se publican sus papers no llevara ninguna información</em>. Si el
+                    crecimiento real cae dentro de esa distribución, es ruido. Si queda fuera, hay algo.
+                </p>
+
+                <div class="articulo-destacado">
+                    <p>
+                        «La pregunta no es si el tema ha crecido. Es cuánto tendrían que cambiar las
+                        cosas para que dejara de parecer que ha crecido.»
+                    </p>
+                </div>
+
+                <h2>3. El resultado: 5,0× contra 1,58×</h2>
+
+                <p>
+                    De los 66 temas detectados, uno sobrevivió: un grupo de 215 papers sobre
+                    <strong>manipulación robótica condicionada por lenguaje</strong> —los llamados
+                    modelos visión-lenguaje-acción, y los modelos del mundo que los acompañan.
+                </p>
+
+                <p>
+                    Pasó de 30 papers en el año anterior a 150 en el último: un crecimiento de
+                    <strong>5,0×</strong>. En las mismas ventanas, el corpus entero creció
+                    <strong>1,58×</strong>. Creció 3,2 veces más rápido que la literatura en la que vive.
+                </p>
+
+                <p>
+                    <strong>Ninguna de las diez mil permutaciones alcanzó ese 5,0×.</strong> Ni una.
+                </p>
+
+                <p>
+                    Los otros 65 temas —incluidos varios que crecieron un 40 %, un 60 %, incluso más
+                    del doble— no se distinguen de lo que habría producido el azar. No son temas
+                    falsos. Son temas cuyo crecimiento no dice nada por encima de la marea general.
+                </p>
+
+                <h2>4. Lo que cambió dentro del tema</h2>
+
+                <p>
+                    La cifra dice que hay algo. Para saber qué, hay que leer. Ordené los 215 títulos
+                    por fecha y el desplazamiento es nítido:
+                </p>
+
+                <p>
+                    A finales de 2023 el trabajo consiste en <strong>acoplar un modelo de lenguaje a
+                    un manipulador</strong>: hacer que un robot entienda una instrucción. A mediados
+                    de 2026 consiste en <strong>aprender el modelo del mundo</strong>: entrenar sin
+                    datos reales, extraer habilidades de vídeos sin acciones anotadas, generar
+                    escenarios sintéticos.
+                </p>
+
+                <p>
+                    El cuello de botella se ha movido del modelo a los datos de interacción. Y ese
+                    desplazamiento importa fuera de la academia: es el punto en que un área de
+                    investigación empieza a producir empresas, porque el cuello de botella se
+                    convierte en algo que alguien puede poseer.
+                </p>
+
+                <h2>5. El dato incómodo</h2>
+
+                <p>
+                    Los 215 papers los firman <strong>1.375 autores distintos</strong>, y el más
+                    prolífico aparece en 6. No hay concentración institucional: no es el programa de
+                    un laboratorio escapándose a la literatura, es una ola amplia.
+                </p>
+
+                <p>
+                    Eso corta por los dos lados, y me parece la parte más útil del análisis. Una
+                    cantera amplia significa que se puede contratar y que la ciencia no depende de un
+                    grupo. También significa que <strong>ningún equipo tiene una ventaja
+                    investigadora defendible</strong>, y que una delantera técnica difícilmente será
+                    duradera por sí sola.
+                </p>
+
+                <h2>6. Lo que este análisis no puede sostener</h2>
+
+                <p>
+                    Esta sección es la que hace utilizable todo lo anterior, y va antes de que nadie
+                    cite una cifra:
+                </p>
+
+                <ul>
+                    <li>
+                        <strong>El corpus no es una muestra aleatoria de arXiv.</strong> Se construyó
+                        con una cuota fija por categoría y año más un barrido reciente. La prueba de
+                        permutación es robusta a eso —compara el tema contra el perfil temporal de
+                        <em>este</em> corpus—, pero ninguna cifra absoluta sobre el tamaño real del
+                        campo se puede sacar de aquí.
+                    </li>
+                    <li>
+                        <strong>El p-valor está censurado.</strong> Con diez mil permutaciones, el
+                        valor más pequeño expresable es 1/10.001. Los datos no distinguen entre «muy
+                        significativo» y «extremadamente significativo».
+                    </li>
+                    <li>
+                        <strong>Cuatro categorías, y nada más.</strong> No hay patentes, ni
+                        financiación, ni afiliaciones institucionales: arXiv no las da. Un campo que
+                        publica poco y patenta mucho es invisible aquí.
+                    </li>
+                    <li>
+                        <strong>La etiqueta del tema es mía.</strong> El sistema produce un grupo sin
+                        nombre; llamarlo «manipulación visión-lenguaje-acción» es mi lectura de los
+                        títulos, y no está validada de forma independiente.
+                    </li>
+                    <li>
+                        <strong>El agrupamiento es una elección defendible entre varias.</strong>
+                        Siete de cada ocho configuraciones de parámetros cercanas colapsan el corpus
+                        en dos bloques indiferenciados. Las fronteras entre temas son exactamente
+                        reproducibles con la semilla publicada, pero no son las únicas que un método
+                        razonable dibujaría.
+                    </li>
+                </ul>
+
+                <h2>Lo que me llevo</h2>
+
+                <p>
+                    Que la parte difícil de este tipo de trabajo no es encontrar el tema que crece.
+                    Es tener un procedimiento que sea capaz de decir «no» sesenta y cinco veces.
+                </p>
+
+                <p>
+                    Un sistema que marca todo como emergente es un sistema roto, aunque su tabla se
+                    vea impecable. Y esa clase de fallo no la detecta ninguna suite de tests en
+                    verde: la detecta ejecutarlo contra datos reales y comprobar que descarta cosas.
+                </p>
+
+                <div class="articulo-nota">
+                    <p>
+                        Todas las cifras de este artículo se regeneran desde el repositorio público
+                        con la semilla <code>20260731</code>; dos ejecuciones sobre el mismo corpus
+                        producen una salida idéntica byte a byte. El código, el método y el informe
+                        completo en formato de brief de inversión están en
+                        <a href="https://github.com/jjpp01x/signal-radar" target="_blank" rel="noopener noreferrer">github.com/jjpp01x/signal-radar</a>.
+                    </p>
+                </div>
+
+                <!-- ACCIONES -->
+                <div class="detalle-acciones">
+                    <a href="https://www.linkedin.com/in/jose-palacios-beortegui/" target="_blank" rel="noopener noreferrer" class="btn btn-primario">
+                        Conectar en LinkedIn
+                    </a>
+                    <a href="../articulos.html" class="btn btn-secundario" style="color: var(--color-texto); border-color: var(--color-texto);">
+                        ← Volver a Artículos
+                    </a>
+                </div>
+
+            </div>
+        </article>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="contenedor footer-contenido">
+            <p>© <span id="year">2026</span> Jose Palacios Beortegui</p>
+            <div class="footer-links">
+                <a href="mailto:palaciosbeortegui@gmail.com" aria-label="Enviar email">Email</a>
+                <a href="https://www.linkedin.com/in/jose-palacios-beortegui/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com/jjpp01x" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/translations.js"></script>
+    <script src="../js/i18n.js"></script>
+    <script>
+        const toggle = document.querySelector('.nav-toggle');
+        const menu = document.querySelector('.nav-menu');
+        toggle.addEventListener('click', () => {
+            const abierto = menu.classList.toggle('abierto');
+            toggle.setAttribute('aria-expanded', abierto);
+        });
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
