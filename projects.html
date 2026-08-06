@@ -93,8 +93,53 @@
         <section class="proyectos-seccion" aria-label="Proyectos de IA y análisis técnico">
             <div class="contenedor">
                 <h2 class="proyectos-grupo-titulo" data-i18n="proy.grupo1.titulo">IA y análisis técnico</h2>
-                <p class="proyectos-grupo-desc" data-i18n="proy.grupo1.desc">Cuatro herramientas propias que responden a la misma pregunta desde ángulos distintos: cómo se comprueba si una afirmación técnica se sostiene.</p>
+                <p class="proyectos-grupo-desc" data-i18n="proy.grupo1.desc">Seis herramientas propias que responden a la misma pregunta desde ángulos distintos: cómo se comprueba si una afirmación técnica se sostiene.</p>
                 <div class="proyectos-grid">
+
+                <!-- SIGNAL RADAR -->
+                <a href="proyectos/signal-radar.html" class="proyecto-card-link">
+                <article class="proyecto-card">
+                    <div class="proyecto-header proyecto-header--azul">
+                        <span class="proyecto-icono" aria-hidden="true">📡</span>
+                    </div>
+                    <div class="proyecto-cuerpo">
+                        <h2 data-i18n="proy.ia5.titulo">Signal Radar</h2>
+                        <p data-i18n="proy.ia5.desc">Escáner de señales de frontera en robótica y espacio: arXiv → embeddings → clustering → prueba de permutación que distingue crecimiento real de ruido. Genera briefs de decisión y declara insufficient_history en vez de fabricar veredictos.</p>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">DuckDB</span>
+                            <span class="tag">HDBSCAN</span>
+                            <span class="tag">arXiv</span>
+                        </div>
+                    </div>
+                    <div class="proyecto-pie">
+                        <span class="proyecto-estado proyecto-estado--completado" data-i18n="proy.estado.repo">Repositorio público</span>
+                        <span class="btn btn-primario" data-i18n="proy.ver">Ver detalle →</span>
+                    </div>
+                </article>
+                </a>
+
+                <!-- EXPERT PROBE -->
+                <a href="proyectos/expert-probe.html" class="proyecto-card-link">
+                <article class="proyecto-card">
+                    <div class="proyecto-header proyecto-header--verde">
+                        <span class="proyecto-icono" aria-hidden="true">🎙️</span>
+                    </div>
+                    <div class="proyecto-cuerpo">
+                        <h2 data-i18n="proy.ia6.titulo">Expert Probe</h2>
+                        <p data-i18n="proy.ia6.desc">Convierte los hallazgos de due diligence en guiones de entrevista falsables y recalcula la confianza sin LLM. Refutar una afirmación sube la confianza: mide calidad de la evidencia, no salud de la empresa.</p>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Due diligence</span>
+                            <span class="tag">Expert interviews</span>
+                        </div>
+                    </div>
+                    <div class="proyecto-pie">
+                        <span class="proyecto-estado proyecto-estado--completado" data-i18n="proy.estado.repo">Repositorio público</span>
+                        <span class="btn btn-primario" data-i18n="proy.ver">Ver detalle →</span>
+                    </div>
+                </article>
+                </a>
 
                 <!-- DD-COPILOT -->
                 <a href="proyectos/dd-copilot.html" class="proyecto-card-link">
@@ -166,7 +211,7 @@
                 </a>
 
                 <!-- AI SAFETY INCIDENT TRACKER -->
-                <a href="proyectos/ai-safety-incidents.html" class="proyecto-card-link">
+                <div class="proyecto-card-link">
                 <article class="proyecto-card">
                     <div class="proyecto-header proyecto-header--verde">
                         <span class="proyecto-icono" aria-hidden="true">🛡️</span>
@@ -183,10 +228,11 @@
                     </div>
                     <div class="proyecto-pie">
                         <span class="proyecto-estado proyecto-estado--completado" data-i18n="proy.estado.produccion">En producción</span>
-                        <span class="btn btn-primario" data-i18n="proy.ver">Ver detalle →</span>
+                        <a href="https://ai-safety-incidents.streamlit.app" target="_blank" rel="noopener noreferrer" class="btn btn-secundario" data-i18n="proy.demo">Demo live</a>
+                        <a href="proyectos/ai-safety-incidents.html" class="btn btn-primario" data-i18n="proy.ver">Ver detalle →</a>
                     </div>
                 </article>
-                </a>
+                </div>
 
                 </div>
             </div>
