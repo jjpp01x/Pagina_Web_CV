@@ -1414,6 +1414,28 @@ html {
     color: var(--color-texto);
 }
 
+.articulo-body ul,
+.articulo-body ol {
+    margin: 0 0 1.25rem;
+    padding-left: 1.5rem;
+}
+
+.articulo-body li {
+    color: var(--color-texto-claro);
+    line-height: 1.8;
+    margin-bottom: 0.6rem;
+    font-size: 1rem;
+}
+
+.articulo-body li::marker {
+    color: var(--color-acento);
+    font-weight: 600;
+}
+
+.articulo-body li:last-child {
+    margin-bottom: 0;
+}
+
 .articulo-body code {
     background: #f1f5f9;
     padding: 0.15rem 0.4rem;
