@@ -1231,6 +1231,12 @@ html {
     display: block;
 }
 
+/* El atributo hidden es display:none del navegador, con menos peso que la regla
+   de arriba: sin esto, el filtro marca las tarjetas como ocultas y se siguen viendo. */
+.articulo-card-link[hidden] {
+    display: none;
+}
+
 .articulo-card {
     background: white;
     border: 1px solid #e2e8f0;
@@ -1253,6 +1259,66 @@ html {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+/* ---------- Filtro de artículos por tema ---------- */
+
+.filtro-temas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.filtro-chip {
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-texto-claro);
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 0.45rem 0.95rem;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.filtro-chip:hover {
+    border-color: var(--color-acento);
+    color: var(--color-acento);
+}
+
+.filtro-chip:focus-visible {
+    outline: 2px solid var(--color-acento);
+    outline-offset: 2px;
+}
+
+.filtro-chip.activo {
+    background: var(--color-acento);
+    border-color: var(--color-acento);
+    color: #fff;
+}
+
+.filtro-chip-cuenta {
+    opacity: 0.65;
+    margin-left: 0.3rem;
+    font-weight: 500;
+}
+
+.filtro-vacio {
+    color: var(--color-texto-claro);
+    padding: 2rem 0;
+}
+
+@media (max-width: 640px) {
+    .filtro-temas {
+        gap: 0.4rem;
+    }
+
+    .filtro-chip {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.75rem;
+    }
 }
 
 .articulo-card-categoria {

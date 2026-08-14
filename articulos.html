@@ -68,13 +68,22 @@
 
         <section class="articulos-seccion">
             <div class="contenedor">
+                <div class="filtro-temas" role="group" aria-label="Filtrar artículos por tema">
+                    <button type="button" class="filtro-chip activo" data-tema="todos" aria-pressed="true">Todos<span class="filtro-chip-cuenta">17</span></button>
+                    <button type="button" class="filtro-chip" data-tema="evaluacion-metodo" aria-pressed="false">Evaluación y método<span class="filtro-chip-cuenta">5</span></button>
+                    <button type="button" class="filtro-chip" data-tema="ingenieria-ia" aria-pressed="false">Ingeniería de IA<span class="filtro-chip-cuenta">5</span></button>
+                    <button type="button" class="filtro-chip" data-tema="gobernanza-riesgo" aria-pressed="false">Gobernanza y riesgo<span class="filtro-chip-cuenta">3</span></button>
+                    <button type="button" class="filtro-chip" data-tema="negocio-estrategia" aria-pressed="false">Negocio y estrategia<span class="filtro-chip-cuenta">3</span></button>
+                    <button type="button" class="filtro-chip" data-tema="seguridad-web" aria-pressed="false">Seguridad web<span class="filtro-chip-cuenta">1</span></button>
+                </div>
+
                 <div class="articulos-grid">
 
                     <!-- ARTICULO CALENDARIO 33 -->
-                    <a href="articulos/fallo-que-ningun-test-detecto.html" class="articulo-card-link">
+                    <a href="articulos/fallo-que-ningun-test-detecto.html" class="articulo-card-link" data-tema="evaluacion-metodo">
                         <article class="articulo-card">
                             <div class="articulo-card-header">
-                                <span class="articulo-card-categoria">Análisis Técnico</span>
+                                <span class="articulo-card-categoria">Evaluación y método</span>
                                 <span class="articulo-card-fecha">28 octubre 2026</span>
                             </div>
                             <h2>Mis 60 tests estaban en verde y el sistema no podía dar un resultado positivo</h2>
@@ -87,10 +96,10 @@
                     </a>
 
                     <!-- ARTICULO CALENDARIO 31 -->
-                    <a href="articulos/que-sera-commodity-stack-ia.html" class="articulo-card-link">
+                    <a href="articulos/que-sera-commodity-stack-ia.html" class="articulo-card-link" data-tema="negocio-estrategia">
                         <article class="articulo-card">
                             <div class="articulo-card-header">
-                                <span class="articulo-card-categoria">Deep Tech</span>
+                                <span class="articulo-card-categoria">Negocio y estrategia</span>
                                 <span class="articulo-card-fecha">23 octubre 2026</span>
                             </div>
                             <h2>Qué será commodity en el stack de IA dentro de 5 años</h2>
@@ -103,10 +112,10 @@
                     </a>
 
                     <!-- ARTICULO CALENDARIO 29 -->
-                    <a href="articulos/metrica-que-no-bloquea-gate-ci.html" class="articulo-card-link">
+                    <a href="articulos/metrica-que-no-bloquea-gate-ci.html" class="articulo-card-link" data-tema="ingenieria-ia">
                         <article class="articulo-card">
                             <div class="articulo-card-header">
-                                <span class="articulo-card-categoria">MLOps</span>
+                                <span class="articulo-card-categoria">Ingeniería de IA</span>
                                 <span class="articulo-card-fecha">19 octubre 2026</span>
                             </div>
                             <h2>Por qué convertí un informe de calidad en un gate de CI</h2>
@@ -119,7 +128,7 @@
                     </a>
 
                     <!-- ARTICULO CALENDARIO 27 -->
-                    <a href="articulos/regex-primero-modelo-despues.html" class="articulo-card-link">
+                    <a href="articulos/regex-primero-modelo-despues.html" class="articulo-card-link" data-tema="ingenieria-ia">
                         <article class="articulo-card">
                             <div class="articulo-card-header">
                                 <span class="articulo-card-categoria">Ingeniería de IA</span>
@@ -135,10 +144,10 @@
                     </a>
 
                     <!-- ARTICULO CALENDARIO 25 -->
-                    <a href="articulos/energia-y-computo-startups-ia.html" class="articulo-card-link">
+                    <a href="articulos/energia-y-computo-startups-ia.html" class="articulo-card-link" data-tema="negocio-estrategia">
                         <article class="articulo-card">
                             <div class="articulo-card-header">
-                                <span class="articulo-card-categoria">Deep Tech</span>
+                                <span class="articulo-card-categoria">Negocio y estrategia</span>
                                 <span class="articulo-card-fecha">9 octubre 2026</span>
                             </div>
                             <h2>Energía y cómputo como cuello de botella real de las startups de IA</h2>
@@ -151,10 +160,10 @@
                     </a>
 
                     <!-- ARTICULO CALENDARIO 23 -->
-                    <a href="articulos/cadena-suministro-modelos-ia.html" class="articulo-card-link">
+                    <a href="articulos/cadena-suministro-modelos-ia.html" class="articulo-card-link" data-tema="gobernanza-riesgo">
                         <article class="articulo-card">
                             <div class="articulo-card-header">
-                                <span class="articulo-card-categoria">Seguridad de IA</span>
+                                <span class="articulo-card-categoria">Gobernanza y riesgo</span>
                                 <span class="articulo-card-fecha">5 octubre 2026</span>
                             </div>
                             <h2>Lo que aprendí analizando cuatro fallos de seguridad que parecían independientes</h2>
@@ -167,10 +176,10 @@
                     </a>
 
                     <!-- ARTICULO CALENDARIO 21 -->
-                    <a href="articulos/estimar-proyecto-de-ia.html" class="articulo-card-link">
+                    <a href="articulos/estimar-proyecto-de-ia.html" class="articulo-card-link" data-tema="negocio-estrategia">
                         <article class="articulo-card">
                             <div class="articulo-card-header">
-                                <span class="articulo-card-categoria">Gestión de Proyectos</span>
+                                <span class="articulo-card-categoria">Negocio y estrategia</span>
                                 <span class="articulo-card-fecha">30 septiembre 2026</span>
                             </div>
                             <h2>Estimar un proyecto de IA cuando la mitad del alcance es una pregunta</h2>
@@ -183,10 +192,10 @@
                     </a>
 
                     <!-- ARTICULO CALENDARIO 19 -->
-                    <a href="articulos/limitaciones-dentro-del-producto.html" class="articulo-card-link">
+                    <a href="articulos/limitaciones-dentro-del-producto.html" class="articulo-card-link" data-tema="evaluacion-metodo">
                         <article class="articulo-card">
                             <div class="articulo-card-header">
-                                <span class="articulo-card-categoria">Análisis Técnico</span>
+                                <span class="articulo-card-categoria">Evaluación y método</span>
                                 <span class="articulo-card-fecha">25 septiembre 2026</span>
                             </div>
                             <h2>Escribí las limitaciones de mi análisis en la misma pantalla que los gráficos</h2>
@@ -199,7 +208,7 @@
                     </a>
 
                     <!-- ARTICULO CALENDARIO 16 -->
-                    <a href="articulos/agentes-ia-fallo-a-medias.html" class="articulo-card-link">
+                    <a href="articulos/agentes-ia-fallo-a-medias.html" class="articulo-card-link" data-tema="ingenieria-ia">
                         <article class="articulo-card">
                             <div class="articulo-card-header">
                                 <span class="articulo-card-categoria">Ingeniería de IA</span>
@@ -215,10 +224,10 @@
                     </a>
 
                     <!-- ARTICULO CALENDARIO 14 -->
-                    <a href="articulos/punto-de-cambio-matriz-decision.html" class="articulo-card-link">
+                    <a href="articulos/punto-de-cambio-matriz-decision.html" class="articulo-card-link" data-tema="evaluacion-metodo">
                         <article class="articulo-card">
                             <div class="articulo-card-header">
-                                <span class="articulo-card-categoria">Análisis Técnico</span>
+                                <span class="articulo-card-categoria">Evaluación y método</span>
                                 <span class="articulo-card-fecha">14 septiembre 2026</span>
                             </div>
                             <h2>Cómo saber si tu matriz de decisión aguanta o se cae al primer empujón</h2>
@@ -231,10 +240,10 @@
                     </a>
 
                     <!-- ARTICULO CALENDARIO 12 -->
-                    <a href="articulos/suiza-eu-ai-act-due-diligence.html" class="articulo-card-link">
+                    <a href="articulos/suiza-eu-ai-act-due-diligence.html" class="articulo-card-link" data-tema="gobernanza-riesgo">
                         <article class="articulo-card">
                             <div class="articulo-card-header">
-                                <span class="articulo-card-categoria">Regulación de IA</span>
+                                <span class="articulo-card-categoria">Gobernanza y riesgo</span>
                                 <span class="articulo-card-fecha">9 septiembre 2026</span>
                             </div>
                             <h2>Suiza no tiene ley de IA — y esa frase es donde empiezan los errores de due diligence</h2>
@@ -247,10 +256,10 @@
                     </a>
 
                     <!-- ARTICULO CALENDARIO 10 -->
-                    <a href="articulos/funcion-de-perdida-forecasting.html" class="articulo-card-link">
+                    <a href="articulos/funcion-de-perdida-forecasting.html" class="articulo-card-link" data-tema="evaluacion-metodo">
                         <article class="articulo-card">
                             <div class="articulo-card-header">
-                                <span class="articulo-card-categoria">Análisis Técnico</span>
+                                <span class="articulo-card-categoria">Evaluación y método</span>
                                 <span class="articulo-card-fecha">4 septiembre 2026</span>
                             </div>
                             <h2>Por qué optimizar MAPE puede costarte dinero sin que te enteres</h2>
@@ -263,7 +272,7 @@
                     </a>
 
                     <!-- ARTICULO CALENDARIO 8 -->
-                    <a href="articulos/cascada-de-coste-llm.html" class="articulo-card-link">
+                    <a href="articulos/cascada-de-coste-llm.html" class="articulo-card-link" data-tema="ingenieria-ia">
                         <article class="articulo-card">
                             <div class="articulo-card-header">
                                 <span class="articulo-card-categoria">Ingeniería de IA</span>
@@ -279,10 +288,10 @@
                     </a>
 
                     <!-- ARTICULO CALENDARIO 5 -->
-                    <a href="articulos/eu-ai-act-que-exige-ya.html" class="articulo-card-link">
+                    <a href="articulos/eu-ai-act-que-exige-ya.html" class="articulo-card-link" data-tema="gobernanza-riesgo">
                         <article class="articulo-card">
                             <div class="articulo-card-header">
-                                <span class="articulo-card-categoria">Regulación de IA</span>
+                                <span class="articulo-card-categoria">Gobernanza y riesgo</span>
                                 <span class="articulo-card-fecha">24 agosto 2026</span>
                             </div>
                             <h2>Lo que el EU AI Act ya exige (y lo que todavía no, pase lo que diga el titular)</h2>
@@ -295,7 +304,7 @@
                     </a>
 
                     <!-- ARTICULO CALENDARIO 3 -->
-                    <a href="articulos/anti-alucinacion-ia.html" class="articulo-card-link">
+                    <a href="articulos/anti-alucinacion-ia.html" class="articulo-card-link" data-tema="ingenieria-ia">
                         <article class="articulo-card">
                             <div class="articulo-card-header">
                                 <span class="articulo-card-categoria">Ingeniería de IA</span>
@@ -311,10 +320,10 @@
                     </a>
 
                     <!-- ARTÍCULO 1 -->
-                    <a href="articulos/seguridad-web.html" class="articulo-card-link">
+                    <a href="articulos/seguridad-web.html" class="articulo-card-link" data-tema="seguridad-web">
                         <article class="articulo-card">
                             <div class="articulo-card-header">
-                                <span class="articulo-card-categoria">Seguridad Web</span>
+                                <span class="articulo-card-categoria">Seguridad web</span>
                                 <span class="articulo-card-fecha">11 agosto 2026</span>
                             </div>
                             <h2>La falsa confianza: por qué los sistemas no caen por ataques sofisticados</h2>
@@ -327,10 +336,10 @@
                     </a>
 
                     <!-- ARTÍCULO 2 -->
-                    <a href="articulos/senal-o-ruido.html" class="articulo-card-link">
+                    <a href="articulos/senal-o-ruido.html" class="articulo-card-link" data-tema="evaluacion-metodo">
                         <article class="articulo-card">
                             <div class="articulo-card-header">
-                                <span class="articulo-card-categoria">Análisis Técnico</span>
+                                <span class="articulo-card-categoria">Evaluación y método</span>
                                 <span class="articulo-card-fecha">1 agosto 2026</span>
                             </div>
                             <h2>66 temas emergentes, uno real: cómo distinguir una tendencia del ruido</h2>
@@ -342,6 +351,7 @@
                         </article>
                     </a>
                 </div>
+                <p class="filtro-vacio" hidden>No hay artículos de ese tema todavía.</p>
             </div>
         </section>
 
@@ -370,5 +380,6 @@
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 
+    <script src="js/filtro-articulos.js"></script>
 </body>
 </html>
