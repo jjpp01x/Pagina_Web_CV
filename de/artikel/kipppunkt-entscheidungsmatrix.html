@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Una matriz ponderada puede confirmar casi cualquier conclusión, porque los pesos los eliges tú. Cómo medir el margen real de una recomendación.">
-    <title>Análisis de sensibilidad de una matriz · Jose Palacios</title>
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="canonical" href="https://josepalacios.site/articulos/punto-de-cambio-matriz-decision.html">
+    <meta name="description" content="Eine gewichtete Matrix kann fast jede Schlussfolgerung bestätigen, denn Sie wählen die Gewichte. Wie sich der reale Abstand einer Empfehlung messen lässt.">
+    <title>Sensitivitätsanalyse einer Entscheidungsmatrix · Jose Palacios</title>
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="canonical" href="https://josepalacios.site/de/artikel/kipppunkt-entscheidungsmatrix.html">
     <link rel="alternate" hreflang="es" href="https://josepalacios.site/articulos/punto-de-cambio-matriz-decision.html">
     <link rel="alternate" hreflang="en" href="https://josepalacios.site/en/articles/switching-point-decision-matrix.html">
     <link rel="alternate" hreflang="de" href="https://josepalacios.site/de/artikel/kipppunkt-entscheidungsmatrix.html">
     <link rel="alternate" hreflang="x-default" href="https://josepalacios.site/articulos/punto-de-cambio-matriz-decision.html">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Análisis de sensibilidad de una matriz · Jose Palacios">
-    <meta property="og:description" content="Una matriz ponderada puede confirmar casi cualquier conclusión, porque los pesos los eliges tú. Cómo medir el margen real de una recomendación.">
-    <meta property="og:url" content="https://josepalacios.site/articulos/punto-de-cambio-matriz-decision.html">
+    <meta property="og:title" content="Sensitivitätsanalyse einer Entscheidungsmatrix · Jose Palacios">
+    <meta property="og:description" content="Eine gewichtete Matrix kann fast jede Schlussfolgerung bestätigen, denn Sie wählen die Gewichte. Wie sich der reale Abstand einer Empfehlung messen lässt.">
+    <meta property="og:url" content="https://josepalacios.site/de/artikel/kipppunkt-entscheidungsmatrix.html">
     <meta property="og:image" content="https://josepalacios.site/img/og/punto-de-cambio-matriz-decision.png">
     <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -24,16 +24,16 @@
     <!-- NAVEGACIÓN -->
     <nav class="navbar">
         <div class="nav-contenedor">
-            <a href="../index.html" class="nav-logo">Jose Palacios</a>
+            <a href="../../index.html" class="nav-logo">Jose Palacios</a>
             <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
             <ul class="nav-menu">
-                <li><a href="../index.html" class="nav-link">Inicio</a></li>
-                <li><a href="../education.html" class="nav-link">Formación</a></li>
-                <li><a href="../projects.html" class="nav-link">Proyectos</a></li>
-                <li><a href="../articulos.html" class="nav-link activo">Artículos</a></li>
-                <li><a href="../contact.html" class="nav-link">Contacto</a></li>
+                <li><a href="../../index.html" class="nav-link">Start</a></li>
+                <li><a href="../../education.html" class="nav-link">Ausbildung</a></li>
+                <li><a href="../../projects.html" class="nav-link">Projekte</a></li>
+                <li><a href="../../de/artikel.html" class="nav-link activo">Artikel</a></li>
+                <li><a href="../../contact.html" class="nav-link">Kontakt</a></li>
                 <li class="lang-movil"></li>
             </ul>
             <div class="lang-selector" role="navigation" aria-label="Selección de idioma">
@@ -58,16 +58,16 @@
         <section class="page-header articulo-header">
             <div class="contenedor">
                 <p class="articulo-breadcrumb">
-                    <a href="../articulos.html">← Artículos</a>
+                    <a href="../../de/artikel.html">← Artikel</a>
                 </p>
                 <div class="articulo-meta-top">
-                    <span class="articulo-categoria">Evaluación y método</span>
-                    <span class="articulo-fecha">14 de septiembre de 2026</span>
+                    <span class="articulo-categoria">Evaluation und Methode</span>
+                    <span class="articulo-fecha">14. September 2026</span>
                 </div>
-                <h1>Cómo saber si tu matriz de decisión aguanta o se cae al primer empujón</h1>
-                <p class="articulo-subtitulo">La honestidad de un análisis no está en el número. Está en el intervalo.</p>
+                <h1>Wie Sie erkennen, ob Ihre Entscheidungsmatrix hält oder beim ersten Stoss umfällt</h1>
+                <p class="articulo-subtitulo">Die Ehrlichkeit einer Analyse liegt nicht in der Zahl. Sie liegt im Intervall.</p>
                 <div class="articulo-autor">
-                    <img src="../img/jpalacios.JPG" alt="Jose Palacios Beortegui" class="articulo-autor-foto">
+                    <img src="../../img/jpalacios.JPG" alt="Jose Palacios Beortegui" class="articulo-autor-foto">
                     <div>
                         <span class="articulo-autor-nombre">Jose Palacios Beortegui</span>
                         <span class="articulo-autor-rol">BSc (Hons) Applied Computing · UWTSD</span>
@@ -80,24 +80,25 @@
         <article class="articulo-contenido">
             <div class="contenedor articulo-body">
 
-                <p class="articulo-intro">Una matriz ponderada tiene un problema estructural que rara vez se menciona: los pesos los eliges tú. Y en cuanto los eliges tú, la matriz puede confirmar prácticamente cualquier conclusión que ya tuvieras.</p>
+                <p class="articulo-intro">Eine gewichtete Matrix hat ein strukturelles Problem, das selten erwähnt wird: Sie wählen die Gewichte. Und sobald Sie sie wählen, kann die Matrix nahezu jede Schlussfolgerung bestätigen, die Sie ohnehin schon hatten.</p>
 
-                <p>No hace falta mala fe. Basta con que asignes 0,25 a un criterio donde tu favorita destaca en vez de 0,15. Nadie lo va a notar, y el resultado tendrá el mismo aspecto de objetividad: una tabla, unas puntuaciones, un ganador con decimales.</p>
+                <p>Dazu braucht es keine böse Absicht. Es genügt, einem Kriterium, bei dem Ihr Favorit glänzt, 0,25 statt 0,15 zuzuweisen. Niemand wird es bemerken, und das Ergebnis wird denselben Anschein von Objektivität haben: eine Tabelle, ein paar Punktzahlen, ein Sieger mit Nachkommastellen.</p>
 
-                <p>Por eso el resultado que a mí me importa no es el ganador, sino <strong>el margen</strong>.</p>
+                <p>Deshalb ist das Ergebnis, das mich interessiert, nicht der Sieger. Es ist der Abstand.</p>
 
-                <h2>Dos medidas que añadí al motor</h2>
+                <h2>Zwei Kennzahlen, die ich der Engine hinzugefügt habe</h2>
 
-                <p><strong>1. El punto de cambio por criterio.</strong> Para cada criterio, se calcula el peso exacto al que el ganador dejaría de serlo. Si ese punto está muy cerca del peso que asignaste, la conclusión depende de una decisión tuya que podría haber sido otra — y eso hay que reportarlo, no esconderlo.</p>
+                <ol>
+                    <li>Der Kipppunkt je Kriterium. Für jedes Kriterium berechnet die Engine das exakte Gewicht, bei dem der Sieger aufhören würde zu gewinnen. Liegt dieser Punkt sehr nahe an dem Gewicht, das Sie vergeben haben, hängt die Schlussfolgerung an einer Ihrer Entscheidungen, die ebenso gut anders hätte ausfallen können — und das gehört berichtet, nicht verborgen.</li>
+                    <li>Die globale Robustheit. Ein Gewicht nach dem anderen zu variieren genügt nicht, denn in der Praxis sind alle Gewichte gleichzeitig strittig. Also zieht die Engine Stichproben aus einer Dirichlet-Verteilung um die deklarierten Gewichte und löst die vollständige Matrix 10'000 Mal, wobei sie zählt, welchen Anteil der Szenarien jede Option gewinnt.</li>
+                </ol>
 
-                <p><strong>2. La robustez global.</strong> Perturbar un peso cada vez no basta, porque en la práctica todos los pesos son discutibles a la vez. Así que se muestrea una distribución de Dirichlet centrada en los pesos declarados y se resuelve la matriz completa 10.000 veces, contando qué fracción de escenarios gana cada opción.</p>
+                <p>Im analysierten Fall lautete das Ergebnis 82 % / 18 % / 0 %. Das ist handlungsleitend auf eine Weise, wie es eine Rangliste nicht ist: Die Siegeroption ist solide, aber nicht einstimmig, die zweite ist unter anderen Prioritäten eine vertretbare Alternative, und die dritte gewinnt in keinem vernünftigen Szenario.</p>
 
-                <p>En el caso que analicé, el resultado fue 82 % / 18 % / 0 %. Eso es información accionable de una forma que un ranking no lo es: la opción ganadora es sólida pero no unánime, la segunda es una alternativa defendible bajo otras prioridades, y la tercera no gana en ningún escenario razonable.</p>
-
-                <p>Un detalle que me parece innegociable: la semilla del muestreo está fijada y documentada. Cualquiera puede regenerar el informe y obtener exactamente las mismas cifras. Un análisis de sensibilidad irreproducible no es más creíble que la matriz que pretendía validar.</p>
+                <p>Ein Detail, das ich für nicht verhandelbar halte: Der Zufallsstartwert ist fixiert und dokumentiert. Jede Person kann den Bericht neu erzeugen und erhält exakt dieselben Zahlen. Eine nicht reproduzierbare Sensitivitätsanalyse ist nicht glaubwürdiger als die Matrix, die sie validieren sollte.</p>
 
                 <div class="articulo-nota">
-                    <p><strong>La lección que me llevo:</strong> presentar un ganador sin decir a qué distancia está del segundo es ocultar justo la información que necesita quien decide. La honestidad de un análisis no está en el número, está en el intervalo.</p>
+                    <p>Die Lehre, die ich daraus ziehe: Einen Sieger zu präsentieren, ohne zu sagen, wie weit er dem Zweitplatzierten voraus ist, verbirgt genau jene Information, die die entscheidende Person braucht. Die Ehrlichkeit einer Analyse liegt nicht in der Zahl. Sie liegt im Intervall.</p>
                 </div>
 
                 <!-- ACCIONES -->
@@ -105,8 +106,8 @@
                     <a href="https://www.linkedin.com/in/jose-palacios-beortegui/" target="_blank" rel="noopener noreferrer" class="btn btn-primario">
                         Conectar en LinkedIn
                     </a>
-                    <a href="../articulos.html" class="btn btn-secundario" style="color: var(--color-texto); border-color: var(--color-texto);">
-                        ← Volver a Artículos
+                    <a href="../../de/artikel.html" class="btn btn-secundario" style="color: var(--color-texto); border-color: var(--color-texto);">
+                        ← Zurück zu den Artikeln
                     </a>
                 </div>
 
@@ -127,8 +128,8 @@
         </div>
     </footer>
 
-    <script src="../js/translations.js"></script>
-    <script src="../js/i18n.js"></script>
+    <script src="../../js/translations.js"></script>
+    <script src="../../js/i18n.js"></script>
     <script>
         const toggle = document.querySelector('.nav-toggle');
         const menu = document.querySelector('.nav-menu');
@@ -139,6 +140,6 @@
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 
-    <script src="../js/i18n-articulos.js"></script>
+    <script src="../../js/i18n-articulos.js"></script>
 </body>
 </html>

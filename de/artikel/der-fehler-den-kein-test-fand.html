@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Con 63 contrastes y 1.000 permutaciones el q-valor mínimo es 0,063, por encima del umbral. Ningún tema podía salir positivo y los tests no lo vieron.">
-    <title>El suelo de Benjamini-Hochberg · Jose Palacios</title>
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="canonical" href="https://josepalacios.site/articulos/fallo-que-ningun-test-detecto.html">
+    <meta name="description" content="Bei 63 Themen und 1&#x27;000 Permutationen lag der kleinstmögliche q-Wert bei 0,063 — über der Schwelle von 0,05. Kein Thema konnte je markiert werden.">
+    <title>Der Fehler, den kein Test fand · Jose Palacios</title>
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="canonical" href="https://josepalacios.site/de/artikel/der-fehler-den-kein-test-fand.html">
     <link rel="alternate" hreflang="es" href="https://josepalacios.site/articulos/fallo-que-ningun-test-detecto.html">
     <link rel="alternate" hreflang="en" href="https://josepalacios.site/en/articles/the-failure-no-test-caught.html">
     <link rel="alternate" hreflang="de" href="https://josepalacios.site/de/artikel/der-fehler-den-kein-test-fand.html">
     <link rel="alternate" hreflang="x-default" href="https://josepalacios.site/articulos/fallo-que-ningun-test-detecto.html">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="El suelo de Benjamini-Hochberg · Jose Palacios">
-    <meta property="og:description" content="Con 63 contrastes y 1.000 permutaciones el q-valor mínimo es 0,063, por encima del umbral. Ningún tema podía salir positivo y los tests no lo vieron.">
-    <meta property="og:url" content="https://josepalacios.site/articulos/fallo-que-ningun-test-detecto.html">
+    <meta property="og:title" content="Der Fehler, den kein Test fand · Jose Palacios">
+    <meta property="og:description" content="Bei 63 Themen und 1&#x27;000 Permutationen lag der kleinstmögliche q-Wert bei 0,063 — über der Schwelle von 0,05. Kein Thema konnte je markiert werden.">
+    <meta property="og:url" content="https://josepalacios.site/de/artikel/der-fehler-den-kein-test-fand.html">
     <meta property="og:image" content="https://josepalacios.site/img/og/fallo-que-ningun-test-detecto.png">
     <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -24,16 +24,16 @@
     <!-- NAVEGACIÓN -->
     <nav class="navbar">
         <div class="nav-contenedor">
-            <a href="../index.html" class="nav-logo">Jose Palacios</a>
+            <a href="../../index.html" class="nav-logo">Jose Palacios</a>
             <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
             <ul class="nav-menu">
-                <li><a href="../index.html" class="nav-link">Inicio</a></li>
-                <li><a href="../education.html" class="nav-link">Formación</a></li>
-                <li><a href="../projects.html" class="nav-link">Proyectos</a></li>
-                <li><a href="../articulos.html" class="nav-link activo">Artículos</a></li>
-                <li><a href="../contact.html" class="nav-link">Contacto</a></li>
+                <li><a href="../../index.html" class="nav-link">Start</a></li>
+                <li><a href="../../education.html" class="nav-link">Ausbildung</a></li>
+                <li><a href="../../projects.html" class="nav-link">Projekte</a></li>
+                <li><a href="../../de/artikel.html" class="nav-link activo">Artikel</a></li>
+                <li><a href="../../contact.html" class="nav-link">Kontakt</a></li>
                 <li class="lang-movil"></li>
             </ul>
             <div class="lang-selector" role="navigation" aria-label="Selección de idioma">
@@ -58,16 +58,16 @@
         <section class="page-header articulo-header">
             <div class="contenedor">
                 <p class="articulo-breadcrumb">
-                    <a href="../articulos.html">← Artículos</a>
+                    <a href="../../de/artikel.html">← Artikel</a>
                 </p>
                 <div class="articulo-meta-top">
-                    <span class="articulo-categoria">Evaluación y método</span>
-                    <span class="articulo-fecha">28 de octubre de 2026</span>
+                    <span class="articulo-categoria">Evaluation und Methode</span>
+                    <span class="articulo-fecha">28. Oktober 2026</span>
                 </div>
-                <h1>Mis 60 tests estaban en verde y el sistema no podía dar un resultado positivo</h1>
-                <p class="articulo-subtitulo">Una conclusión fijada por la aritmética, presentada como un hallazgo empírico.</p>
+                <h1>Meine 60 Tests waren grün, und das System konnte kein positives Ergebnis liefern</h1>
+                <p class="articulo-subtitulo">Eine grüne Suite verifiziert, dass der Code tut, was Sie denken, nicht dass das Gedachte das Nötige ist.</p>
                 <div class="articulo-autor">
-                    <img src="../img/jpalacios.JPG" alt="Jose Palacios Beortegui" class="articulo-autor-foto">
+                    <img src="../../img/jpalacios.JPG" alt="Jose Palacios Beortegui" class="articulo-autor-foto">
                     <div>
                         <span class="articulo-autor-nombre">Jose Palacios Beortegui</span>
                         <span class="articulo-autor-rol">BSc (Hons) Applied Computing · UWTSD</span>
@@ -80,40 +80,40 @@
         <article class="articulo-contenido">
             <div class="contenedor articulo-body">
 
-                <p class="articulo-intro">Este es el fallo más instructivo que me he encontrado, y quiero contarlo entero porque salió bien por poco.</p>
+                <p class="articulo-intro">Das ist der lehrreichste Fehler, der mir untergekommen ist, und ich will ihn vollständig erzählen, weil es nur knapp gut ausging.</p>
 
-                <p>Mi sistema evalúa varios temas a la vez, así que corrige por comparaciones múltiples con Benjamini-Hochberg — el ajuste estándar para no dar por bueno un hallazgo que aparece solo porque has mirado en muchos sitios.</p>
+                <p>Mein System bewertet mehrere Themen gleichzeitig, deshalb korrigiert es für multiples Testen mit Benjamini-Hochberg — der Standardkorrektur, die verhindert, dass Sie einen Befund für bare Münze nehmen, der nur auftaucht, weil Sie an vielen Stellen gesucht haben.</p>
 
-                <p>Al mejorar el agrupamiento, pasé de detectar 3 temas a detectar 63. Mejor granularidad, mejor proyecto. La suite entera seguía en verde.</p>
+                <p>Bei der Verbesserung des Clusterings ging ich von 3 erkannten Themen auf 63. Bessere Granularität, besseres Projekt. Die gesamte Suite blieb grün.</p>
 
-                <p><strong>Lo que no vi:</strong> con k contrastes y n permutaciones, el q-valor más pequeño que Benjamini-Hochberg puede producir es k/(n+1).</p>
+                <p>Was ich nicht sah: Bei k Kontrasten und n Permutationen ist der kleinste q-Wert, den Benjamini-Hochberg erzeugen kann, k/(n+1).</p>
 
                 <ul>
-                    <li>Con 3 temas y 1.000 permutaciones: 0,003. Sin problema.</li>
-                    <li>Con <strong>63 temas</strong> y 1.000 permutaciones: <strong>0,063</strong>.</li>
+                    <li>Bei 3 Themen und 1'000 Permutationen: 0,003. Kein Problem.</li>
+                    <li>Bei 63 Themen und 1'000 Permutationen: 0,063.</li>
                 </ul>
 
-                <p>El umbral de significación es 0,05. <strong>0,063 &gt; 0,05.</strong></p>
+                <p>Die Signifikanzschwelle liegt bei 0,05. 0,063 &gt; 0,05.</p>
 
-                <p>Es decir: ningún tema podía salir marcado como emergente. Ninguno. Por mucha evidencia que tuviera, por extremo que fuera su crecimiento. La tabla entera habría dicho «indistinguible del ruido» — y habría parecido exactamente un resultado medido. Una conclusión fijada por la aritmética, presentada como un hallazgo empírico.</p>
+                <p>Mit anderen Worten: Kein Thema konnte je als aufkommend markiert werden. Keines. Egal wie viel Evidenz es hatte, egal wie extrem sein Wachstum war. Die gesamte Tabelle hätte "nicht von Rauschen unterscheidbar" gesagt — und es hätte exakt wie ein gemessenes Ergebnis ausgesehen. Eine von der Arithmetik festgelegte Schlussfolgerung, präsentiert als empirischer Befund.</p>
 
-                <p>Los 60 tests pasaban. Todos. Porque cada uno comprobaba que su pieza hacía lo que yo creía que debía hacer, y ninguno comprobaba que la combinación de dos decisiones correctas —agrupar más fino, corregir por multiplicidad— dejaba el sistema sin capacidad de afirmar nada.</p>
+                <p>Die 60 Tests liefen durch. Alle. Denn jeder prüfte, ob sein Baustein tat, was ich für richtig hielt, und keiner prüfte, ob die Kombination zweier korrekter Entscheidungen — feiner clustern, für Multiplizität korrigieren — das System ausserstande setzte, überhaupt etwas zu behaupten.</p>
 
-                <p><strong>La corrección</strong> fue añadir el cálculo del suelo y avisar cuando hace imposible alcanzar significación, diciendo cuántas permutaciones harían falta. Ahora la salida advierte, literalmente, de que «el veredicto lo fija la aritmética, no los datos».</p>
+                <p>Die Korrektur bestand darin, diese Untergrenze zu berechnen und zu warnen, wenn sie Signifikanz unerreichbar macht, samt Angabe, wie viele Permutationen nötig wären. Die Ausgabe sagt jetzt wörtlich, dass "das Urteil von der Arithmetik festgelegt wird, nicht von den Daten".</p>
 
-                <h2>Dos lecciones que me llevo</h2>
+                <h2>Zwei Lehren, die ich daraus ziehe</h2>
 
-                <p>La primera: una suite verde verifica que el código hace lo que crees, no que eso sea lo que hace falta. Para software de análisis, la revisión que lee el código razonando sobre el método encuentra cosas que ninguna ejecución encuentra.</p>
+                <p>Die erste: Eine grüne Suite verifiziert, dass der Code tut, was Sie denken, nicht dass das Gedachte das Nötige ist. Bei Analysesoftware findet die Durchsicht, die den Code liest und dabei über die Methode nachdenkt, Dinge, die kein Testlauf findet.</p>
 
-                <p>La segunda, y más incómoda: <strong>este fallo solo produce falsos negativos</strong>. Sistemas que sobre-afirman se descubren pronto, porque alguien comprueba una afirmación llamativa y no cuadra. Un sistema que calla se puede usar durante años pareciendo prudente.</p>
+                <p>Die zweite, unbequemere: Dieser Fehler erzeugt ausschliesslich falsch-negative Ergebnisse. Systeme, die zu viel behaupten, fliegen früh auf, weil jemand eine auffällige Aussage prüft und sie nicht aufgeht. Ein System, das schweigt, kann jahrelang genutzt werden und dabei umsichtig wirken.</p>
 
                 <!-- ACCIONES -->
                 <div class="detalle-acciones">
                     <a href="https://www.linkedin.com/in/jose-palacios-beortegui/" target="_blank" rel="noopener noreferrer" class="btn btn-primario">
                         Conectar en LinkedIn
                     </a>
-                    <a href="../articulos.html" class="btn btn-secundario" style="color: var(--color-texto); border-color: var(--color-texto);">
-                        ← Volver a Artículos
+                    <a href="../../de/artikel.html" class="btn btn-secundario" style="color: var(--color-texto); border-color: var(--color-texto);">
+                        ← Zurück zu den Artikeln
                     </a>
                 </div>
 
@@ -134,8 +134,8 @@
         </div>
     </footer>
 
-    <script src="../js/translations.js"></script>
-    <script src="../js/i18n.js"></script>
+    <script src="../../js/translations.js"></script>
+    <script src="../../js/i18n.js"></script>
     <script>
         const toggle = document.querySelector('.nav-toggle');
         const menu = document.querySelector('.nav-menu');
@@ -146,6 +146,6 @@
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 
-    <script src="../js/i18n-articulos.js"></script>
+    <script src="../../js/i18n-articulos.js"></script>
 </body>
 </html>
