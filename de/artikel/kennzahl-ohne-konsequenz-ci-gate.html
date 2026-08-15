@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MAPE penaliza igual pasarse que quedarse corto, pero casi ningún negocio pierde lo mismo en las dos direcciones. Elegir la métrica es el análisis.">
-    <title>MAPE vs pinball loss en previsión · Jose Palacios</title>
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="canonical" href="https://josepalacios.site/articulos/funcion-de-perdida-forecasting.html">
-    <link rel="alternate" hreflang="es" href="https://josepalacios.site/articulos/funcion-de-perdida-forecasting.html">
-    <link rel="alternate" hreflang="en" href="https://josepalacios.site/en/articles/loss-function-forecasting.html">
-    <link rel="alternate" hreflang="de" href="https://josepalacios.site/de/artikel/verlustfunktion-prognose.html">
-    <link rel="alternate" hreflang="x-default" href="https://josepalacios.site/articulos/funcion-de-perdida-forecasting.html">
+    <meta name="description" content="Ein Bericht wird im ersten Monat gelesen und ab dem vierten ignoriert. Warum eine Dokumentationsnote auf dem kritischen Pfad der Pipeline liegen muss.">
+    <title>Eine Qualitätskennzahl als CI-Gate · Jose Palacios</title>
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="canonical" href="https://josepalacios.site/de/artikel/kennzahl-ohne-konsequenz-ci-gate.html">
+    <link rel="alternate" hreflang="es" href="https://josepalacios.site/articulos/metrica-que-no-bloquea-gate-ci.html">
+    <link rel="alternate" hreflang="en" href="https://josepalacios.site/en/articles/metric-that-blocks-nothing-ci-gate.html">
+    <link rel="alternate" hreflang="de" href="https://josepalacios.site/de/artikel/kennzahl-ohne-konsequenz-ci-gate.html">
+    <link rel="alternate" hreflang="x-default" href="https://josepalacios.site/articulos/metrica-que-no-bloquea-gate-ci.html">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="MAPE vs pinball loss en previsión · Jose Palacios">
-    <meta property="og:description" content="MAPE penaliza igual pasarse que quedarse corto, pero casi ningún negocio pierde lo mismo en las dos direcciones. Elegir la métrica es el análisis.">
-    <meta property="og:url" content="https://josepalacios.site/articulos/funcion-de-perdida-forecasting.html">
-    <meta property="og:image" content="https://josepalacios.site/img/og/funcion-de-perdida-forecasting.png">
+    <meta property="og:title" content="Eine Qualitätskennzahl als CI-Gate · Jose Palacios">
+    <meta property="og:description" content="Ein Bericht wird im ersten Monat gelesen und ab dem vierten ignoriert. Warum eine Dokumentationsnote auf dem kritischen Pfad der Pipeline liegen muss.">
+    <meta property="og:url" content="https://josepalacios.site/de/artikel/kennzahl-ohne-konsequenz-ci-gate.html">
+    <meta property="og:image" content="https://josepalacios.site/img/og/metrica-que-no-bloquea-gate-ci.png">
     <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
@@ -24,16 +24,16 @@
     <!-- NAVEGACIÓN -->
     <nav class="navbar">
         <div class="nav-contenedor">
-            <a href="../index.html" class="nav-logo">Jose Palacios</a>
+            <a href="../../index.html" class="nav-logo">Jose Palacios</a>
             <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
             <ul class="nav-menu">
-                <li><a href="../index.html" class="nav-link">Inicio</a></li>
-                <li><a href="../education.html" class="nav-link">Formación</a></li>
-                <li><a href="../projects.html" class="nav-link">Proyectos</a></li>
-                <li><a href="../articulos.html" class="nav-link activo">Artículos</a></li>
-                <li><a href="../contact.html" class="nav-link">Contacto</a></li>
+                <li><a href="../../index.html" class="nav-link">Start</a></li>
+                <li><a href="../../education.html" class="nav-link">Ausbildung</a></li>
+                <li><a href="../../projects.html" class="nav-link">Projekte</a></li>
+                <li><a href="../../de/artikel.html" class="nav-link activo">Artikel</a></li>
+                <li><a href="../../contact.html" class="nav-link">Kontakt</a></li>
                 <li class="lang-movil"></li>
             </ul>
             <div class="lang-selector" role="navigation" aria-label="Selección de idioma">
@@ -58,16 +58,16 @@
         <section class="page-header articulo-header">
             <div class="contenedor">
                 <p class="articulo-breadcrumb">
-                    <a href="../articulos.html">← Artículos</a>
+                    <a href="../../de/artikel.html">← Artikel</a>
                 </p>
                 <div class="articulo-meta-top">
-                    <span class="articulo-categoria">Evaluación y método</span>
-                    <span class="articulo-fecha">4 de septiembre de 2026</span>
+                    <span class="articulo-categoria">KI-Engineering</span>
+                    <span class="articulo-fecha">19. Oktober 2026</span>
                 </div>
-                <h1>Por qué optimizar MAPE puede costarte dinero sin que te enteres</h1>
-                <p class="articulo-subtitulo">Elegir la función de pérdida es el análisis, no un detalle de implementación.</p>
+                <h1>Warum ich einen Qualitätsbericht in ein CI-Gate verwandelt habe</h1>
+                <p class="articulo-subtitulo">Eine Kennzahl ohne automatische Konsequenzen konkurriert mit Dingen, die welche haben — und verliert jedes Mal.</p>
                 <div class="articulo-autor">
-                    <img src="../img/jpalacios.JPG" alt="Jose Palacios Beortegui" class="articulo-autor-foto">
+                    <img src="../../img/jpalacios.JPG" alt="Jose Palacios Beortegui" class="articulo-autor-foto">
                     <div>
                         <span class="articulo-autor-nombre">Jose Palacios Beortegui</span>
                         <span class="articulo-autor-rol">BSc (Hons) Applied Computing · UWTSD</span>
@@ -80,33 +80,32 @@
         <article class="articulo-contenido">
             <div class="contenedor articulo-body">
 
-                <p class="articulo-intro">Casi todas las herramientas de previsión de demanda que vas a evaluar te venden lo mismo por defecto: mejoramos tu MAPE, o tu RMSE. Son métricas simétricas — penalizan igual pasarse que quedarse corto.</p>
+                <p class="articulo-intro">Ich habe dasselbe Muster mehrfach gesehen: Ein Team erzeugt einen Qualitätsbericht, prüft ihn im ersten Monat sorgfältig, im zweiten weniger sorgfältig, und ab dem vierten öffnet ihn niemand mehr. Der Bericht wird weiterhin erzeugt, tadellos, und verändert keine Entscheidung.</p>
 
-                <p>El problema es que casi ningún negocio pierde lo mismo en las dos direcciones.</p>
+                <p>Das ist kein Disziplinproblem. Es ist ein Designproblem. Eine Kennzahl ohne automatische Konsequenzen konkurriert um die Aufmerksamkeit eines Menschen mit Dingen, die Konsequenzen haben — und verliert jedes Mal.</p>
 
-                <p>Tomemos el caso con el que trabajé: un minorista especializado en botas de esquí que renueva catálogo cada temporada. Lo que no vende, sale de catálogo y se liquida con descuento la temporada siguiente. Esa pérdida de margen es permanente. Quedarse corto, en cambio, cuesta una venta perdida — molesto, pero recuperable, y a veces ni eso porque el cliente compra otro modelo.</p>
+                <p>Deshalb endet Model Card Auditor nicht in einem Bericht. Er endet in einem Gate: Er läuft im Batch über die Modelle, die ein Projekt verwendet, und lässt den Build scheitern, wenn die Dokumentationsnote unter den konfigurierten Schwellenwert fällt.</p>
 
-                <p>Sobre-prever y sub-prever <strong>no cuestan lo mismo</strong>. Y sin embargo, si evalúas herramientas por su MAPE, estás premiando a la que mejor optimiza una métrica que trata ambos errores como equivalentes.</p>
+                <p>Die Verhaltensänderung, die das auslöst, ist qualitativ, nicht quantitativ:</p>
 
-                <h2>Lo que hice en su lugar</h2>
+                <ul>
+                    <li>Ohne Gate lautet die Frage: "Hat sich jemand den Bericht angesehen?"</li>
+                    <li>Mit Gate lautet die Frage: "Warum baut es nicht?" — und die wird immer beantwortet</li>
+                </ul>
 
-                <p>El criterio que más pesa en la evaluación (0,30 de peso, el más alto de toda la matriz) es la capacidad de la herramienta para optimizar una <strong>pérdida asimétrica</strong> — concretamente pinball loss, la función que se usa en previsión por cuantiles y que permite penalizar la sobre-previsión más que la sub-previsión.</p>
-
-                <p>No es un tecnicismo. Es lo que distingue este problema de una previsión genérica, y por tanto es lo que tiene que distinguir la evaluación. Un criterio que no discrimina entre las opciones no aporta información; solo hace la tabla más larga.</p>
+                <p>Es gibt einen berechtigten Einwand: Builds wegen Dokumentation zu blockieren, kann übertrieben wirken. Deshalb ist der Schwellenwert konfigurierbar und die Bewertung je Feld gewichtbar. Ein Team, dessen einziges Risiko die Lizenz-Compliance ist, kann <code>license</code> mit 1 gewichten und alles andere mit 0. Das Werkzeug schreibt keine Richtlinie vor; es macht die von Ihnen gewählte ausführbar.</p>
 
                 <div class="articulo-nota">
-                    <p><strong>La lección que me llevo:</strong> elegir la función de pérdida <em>es</em> el análisis. Todo lo que viene después — el modelo, la herramienta, el ajuste de hiperparámetros — es aritmética sobre una decisión que ya tomaste, muchas veces sin darte cuenta de que la estabas tomando.</p>
+                    <p>Die Lehre, die ich daraus ziehe: Wenn eine Qualitätskennzahl das Verhalten eines Teams verändern soll, muss sie auf dem kritischen Pfad von etwas liegen, das dem Team ohnehin wichtig ist. In der Softwareentwicklung ist dieser Pfad die Pipeline. Alles andere ist ein Bericht, den man am Anfang liest.</p>
                 </div>
-
-                <p>Cuando evalúes cualquier sistema predictivo, la primera pregunta no es "¿qué precisión tiene?". Es "¿precisión medida cómo, y ese <em>cómo</em> refleja lo que de verdad te cuesta equivocarte?".</p>
 
                 <!-- ACCIONES -->
                 <div class="detalle-acciones">
                     <a href="https://www.linkedin.com/in/jose-palacios-beortegui/" target="_blank" rel="noopener noreferrer" class="btn btn-primario">
                         Conectar en LinkedIn
                     </a>
-                    <a href="../articulos.html" class="btn btn-secundario" style="color: var(--color-texto); border-color: var(--color-texto);">
-                        ← Volver a Artículos
+                    <a href="../../de/artikel.html" class="btn btn-secundario" style="color: var(--color-texto); border-color: var(--color-texto);">
+                        ← Zurück zu den Artikeln
                     </a>
                 </div>
 
@@ -127,8 +126,8 @@
         </div>
     </footer>
 
-    <script src="../js/translations.js"></script>
-    <script src="../js/i18n.js"></script>
+    <script src="../../js/translations.js"></script>
+    <script src="../../js/i18n.js"></script>
     <script>
         const toggle = document.querySelector('.nav-toggle');
         const menu = document.querySelector('.nav-menu');
@@ -138,7 +137,6 @@
         });
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
-
-    <script src="../js/i18n-articulos.js"></script>
+    <script src="../../js/i18n-articulos.js"></script>
 </body>
 </html>

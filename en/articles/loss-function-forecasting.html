@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MAPE penaliza igual pasarse que quedarse corto, pero casi ningún negocio pierde lo mismo en las dos direcciones. Elegir la métrica es el análisis.">
-    <title>MAPE vs pinball loss en previsión · Jose Palacios</title>
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="canonical" href="https://josepalacios.site/articulos/funcion-de-perdida-forecasting.html">
+    <meta name="description" content="MAPE penalises overshooting and undershooting equally, but almost no business loses the same in both directions. Choosing the metric is the analysis.">
+    <title>MAPE vs pinball loss in forecasting · Jose Palacios</title>
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="canonical" href="https://josepalacios.site/en/articles/loss-function-forecasting.html">
     <link rel="alternate" hreflang="es" href="https://josepalacios.site/articulos/funcion-de-perdida-forecasting.html">
     <link rel="alternate" hreflang="en" href="https://josepalacios.site/en/articles/loss-function-forecasting.html">
     <link rel="alternate" hreflang="de" href="https://josepalacios.site/de/artikel/verlustfunktion-prognose.html">
     <link rel="alternate" hreflang="x-default" href="https://josepalacios.site/articulos/funcion-de-perdida-forecasting.html">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="MAPE vs pinball loss en previsión · Jose Palacios">
-    <meta property="og:description" content="MAPE penaliza igual pasarse que quedarse corto, pero casi ningún negocio pierde lo mismo en las dos direcciones. Elegir la métrica es el análisis.">
-    <meta property="og:url" content="https://josepalacios.site/articulos/funcion-de-perdida-forecasting.html">
+    <meta property="og:title" content="MAPE vs pinball loss in forecasting · Jose Palacios">
+    <meta property="og:description" content="MAPE penalises overshooting and undershooting equally, but almost no business loses the same in both directions. Choosing the metric is the analysis.">
+    <meta property="og:url" content="https://josepalacios.site/en/articles/loss-function-forecasting.html">
     <meta property="og:image" content="https://josepalacios.site/img/og/funcion-de-perdida-forecasting.png">
     <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -24,16 +24,16 @@
     <!-- NAVEGACIÓN -->
     <nav class="navbar">
         <div class="nav-contenedor">
-            <a href="../index.html" class="nav-logo">Jose Palacios</a>
+            <a href="../../index.html" class="nav-logo">Jose Palacios</a>
             <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
             <ul class="nav-menu">
-                <li><a href="../index.html" class="nav-link">Inicio</a></li>
-                <li><a href="../education.html" class="nav-link">Formación</a></li>
-                <li><a href="../projects.html" class="nav-link">Proyectos</a></li>
-                <li><a href="../articulos.html" class="nav-link activo">Artículos</a></li>
-                <li><a href="../contact.html" class="nav-link">Contacto</a></li>
+                <li><a href="../../index.html" class="nav-link">Home</a></li>
+                <li><a href="../../education.html" class="nav-link">Education</a></li>
+                <li><a href="../../projects.html" class="nav-link">Projects</a></li>
+                <li><a href="../../en/articles.html" class="nav-link activo">Articles</a></li>
+                <li><a href="../../contact.html" class="nav-link">Contact</a></li>
                 <li class="lang-movil"></li>
             </ul>
             <div class="lang-selector" role="navigation" aria-label="Selección de idioma">
@@ -58,16 +58,16 @@
         <section class="page-header articulo-header">
             <div class="contenedor">
                 <p class="articulo-breadcrumb">
-                    <a href="../articulos.html">← Artículos</a>
+                    <a href="../../en/articles.html">← Articles</a>
                 </p>
                 <div class="articulo-meta-top">
-                    <span class="articulo-categoria">Evaluación y método</span>
-                    <span class="articulo-fecha">4 de septiembre de 2026</span>
+                    <span class="articulo-categoria">Evaluation and method</span>
+                    <span class="articulo-fecha">4 September 2026</span>
                 </div>
-                <h1>Por qué optimizar MAPE puede costarte dinero sin que te enteres</h1>
-                <p class="articulo-subtitulo">Elegir la función de pérdida es el análisis, no un detalle de implementación.</p>
+                <h1>Why optimising for MAPE can cost you money without you noticing</h1>
+                <p class="articulo-subtitulo">Choosing the loss function is the analysis, not an implementation detail.</p>
                 <div class="articulo-autor">
-                    <img src="../img/jpalacios.JPG" alt="Jose Palacios Beortegui" class="articulo-autor-foto">
+                    <img src="../../img/jpalacios.JPG" alt="Jose Palacios Beortegui" class="articulo-autor-foto">
                     <div>
                         <span class="articulo-autor-nombre">Jose Palacios Beortegui</span>
                         <span class="articulo-autor-rol">BSc (Hons) Applied Computing · UWTSD</span>
@@ -80,33 +80,33 @@
         <article class="articulo-contenido">
             <div class="contenedor articulo-body">
 
-                <p class="articulo-intro">Casi todas las herramientas de previsión de demanda que vas a evaluar te venden lo mismo por defecto: mejoramos tu MAPE, o tu RMSE. Son métricas simétricas — penalizan igual pasarse que quedarse corto.</p>
+                <p class="articulo-intro">Almost every demand forecasting tool you are going to evaluate sells you the same thing by default: we will improve your MAPE, or your RMSE. Those are symmetric metrics — they penalise overshooting exactly as much as undershooting.</p>
 
-                <p>El problema es que casi ningún negocio pierde lo mismo en las dos direcciones.</p>
+                <p>The problem is that almost no business loses the same amount in both directions.</p>
 
-                <p>Tomemos el caso con el que trabajé: un minorista especializado en botas de esquí que renueva catálogo cada temporada. Lo que no vende, sale de catálogo y se liquida con descuento la temporada siguiente. Esa pérdida de margen es permanente. Quedarse corto, en cambio, cuesta una venta perdida — molesto, pero recuperable, y a veces ni eso porque el cliente compra otro modelo.</p>
+                <p>Take the case I worked on: a retailer specialising in ski boots, refreshing its catalogue every season. Whatever does not sell comes off the catalogue and gets discounted the following season. That margin loss is permanent. Undershooting, by contrast, costs a lost sale — annoying, but recoverable, and sometimes not even that, because the customer buys another model.</p>
 
-                <p>Sobre-prever y sub-prever <strong>no cuestan lo mismo</strong>. Y sin embargo, si evalúas herramientas por su MAPE, estás premiando a la que mejor optimiza una métrica que trata ambos errores como equivalentes.</p>
+                <p>Over-forecasting and under-forecasting do not cost the same. And yet, if you evaluate tools on MAPE, you are rewarding whichever one best optimises a metric that treats both errors as equivalent.</p>
 
-                <h2>Lo que hice en su lugar</h2>
+                <h2>What I did instead</h2>
 
-                <p>El criterio que más pesa en la evaluación (0,30 de peso, el más alto de toda la matriz) es la capacidad de la herramienta para optimizar una <strong>pérdida asimétrica</strong> — concretamente pinball loss, la función que se usa en previsión por cuantiles y que permite penalizar la sobre-previsión más que la sub-previsión.</p>
+                <p>The highest-weighted criterion in the evaluation (0.30, the largest weight in the whole matrix) is the tool's ability to optimise an asymmetric loss — specifically pinball loss, the function used in quantile forecasting, which lets you penalise over-forecasting more heavily than under-forecasting.</p>
 
-                <p>No es un tecnicismo. Es lo que distingue este problema de una previsión genérica, y por tanto es lo que tiene que distinguir la evaluación. Un criterio que no discrimina entre las opciones no aporta información; solo hace la tabla más larga.</p>
+                <p>This is not a technicality. It is what separates this problem from generic forecasting, and therefore it is what has to separate the evaluation. A criterion that does not discriminate between the options carries no information; it just makes the table longer.</p>
 
                 <div class="articulo-nota">
-                    <p><strong>La lección que me llevo:</strong> elegir la función de pérdida <em>es</em> el análisis. Todo lo que viene después — el modelo, la herramienta, el ajuste de hiperparámetros — es aritmética sobre una decisión que ya tomaste, muchas veces sin darte cuenta de que la estabas tomando.</p>
+                    <p>The lesson I take from it: choosing the loss function is the analysis. Everything that comes afterwards — the model, the tool, the hyperparameter tuning — is arithmetic on top of a decision you already made, often without noticing you were making it.</p>
                 </div>
 
-                <p>Cuando evalúes cualquier sistema predictivo, la primera pregunta no es "¿qué precisión tiene?". Es "¿precisión medida cómo, y ese <em>cómo</em> refleja lo que de verdad te cuesta equivocarte?".</p>
+                <p>When you evaluate any predictive system, the first question is not "how accurate is it?". It is "accurate measured how, and does that how reflect what being wrong actually costs you?".</p>
 
                 <!-- ACCIONES -->
                 <div class="detalle-acciones">
                     <a href="https://www.linkedin.com/in/jose-palacios-beortegui/" target="_blank" rel="noopener noreferrer" class="btn btn-primario">
                         Conectar en LinkedIn
                     </a>
-                    <a href="../articulos.html" class="btn btn-secundario" style="color: var(--color-texto); border-color: var(--color-texto);">
-                        ← Volver a Artículos
+                    <a href="../../en/articles.html" class="btn btn-secundario" style="color: var(--color-texto); border-color: var(--color-texto);">
+                        ← Back to articles
                     </a>
                 </div>
 
@@ -127,8 +127,8 @@
         </div>
     </footer>
 
-    <script src="../js/translations.js"></script>
-    <script src="../js/i18n.js"></script>
+    <script src="../../js/translations.js"></script>
+    <script src="../../js/i18n.js"></script>
     <script>
         const toggle = document.querySelector('.nav-toggle');
         const menu = document.querySelector('.nav-menu');
@@ -138,7 +138,6 @@
         });
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
-
-    <script src="../js/i18n-articulos.js"></script>
+    <script src="../../js/i18n-articulos.js"></script>
 </body>
 </html>
