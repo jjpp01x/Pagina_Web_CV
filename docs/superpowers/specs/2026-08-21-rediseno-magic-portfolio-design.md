@@ -279,3 +279,21 @@ Del encargo, sin rebajar:
 - La agencia de data governance en la web.
 - Rediseñar `epokan.com`.
 - Traducir artículos futuros automáticamente.
+
+## 13. Pendientes aplazados por decisión de José (2026-08-21)
+
+- **Los tres CV en PDF (`docs/CV_Jose_Palacios_{ES,EN,DE}.pdf`).** Siguen enlazados para
+  descarga desde `index.html:110-112` y afirman, verificado con `pdftotext`:
+  - "Certificado AWS (AI Practitioner y Cloud Practitioner)" — **AWS está en curso, no
+    certificado**. Aparece en el resumen y otra vez en la sección de certificaciones.
+  - "Davos, Suiza" en la cabecera y "Residente en Davos con uso profesional diario del
+    alemán" — Heierling terminó en abril de 2026; el nivel real es A1.1.
+  - "Alemán (A2–B1, uso profesional diario)".
+
+  José decidió el 2026-08-21 aplazarlo y priorizar el lanzamiento. **Se retoma en Fase 4**,
+  con el generador versionado en el repo y verificación por `pdftotext` de que no queda
+  ningún "A2–B1" ni ningún "Davos" como residencia actual. Recomendación registrada y no
+  aceptada: retirar los tres enlaces mientras tanto.
+
+- **Nacionalidad.** Si es española, conviene declarar el acceso al permiso de trabajo suizo
+  por el acuerdo bilateral UE–Suiza. Sin confirmar.
