@@ -1,0 +1,48 @@
+---
+title: "Qué será commodity en el stack de IA dentro de 5 años"
+subtitle: "Qué capas del stack pierden valor al comoditizarse, y cuáles lo retienen."
+description: "Qué partes del stack de IA pierden valor al comoditizarse y cuáles lo retienen. Un marco para decidir dónde construir y dónde comprar."
+category: "Negocio y estrategia"
+date: "2026-10-23"
+image: "https://josepalacios.site/img/og/que-sera-commodity-stack-ia.png"
+lang: "es"
+translationKey: "que-sera-commodity-stack-ia"
+---
+
+TÍTULO: Qué será commodity en el stack de IA dentro de 5 años (y qué no) — y qué implica para contratar
+
+Voy a hacer una predicción a 5 años sobre qué capa del stack de IA se convierte en commodity y cuál no. Antes de llegar ahí, separo dos cosas que casi nunca se separan en este tipo de artículo: los datos que tengo verificados hoy, y la lectura que hago yo de esos datos hacia 2031. Lo primero lleva fuente. Lo segundo lleva mi nombre, no el de ningún informe.
+
+## LOS HECHOS QUE SOSTIENEN ESTO
+
+Hecho verificado (Epoch AI): el precio de la inferencia para una capacidad de modelo fija cae entre 9x y 900x al año según el benchmark que se mida. a16z documentó una caída de 1.000x en tres años para una capacidad equivalente a GPT-3. Es la caída de precio más rápida y sostenida que existe hoy en tecnología de consumo empresarial.
+
+Hecho verificado (Epoch AI, comparativa may-2026): pese a esa caída, el mejor modelo de pesos abiertos sigue, de media, entre 3,5 y 4 meses por detrás del mejor modelo cerrado, con un hueco de 7-8 puntos en su índice de capacidad — y ese hueco se ha ensanchado ligeramente en 2026 frente a 2025, no cerrado. En benchmarks concretos de código, algún modelo abierto ya supera a modelos cerrados de generación anterior: la distancia solo es nítida en la punta absoluta de la frontera.
+
+Hecho verificado (Menlo Ventures, encuesta a 495 responsables de IA empresarial, nov-2025): tres proveedores — Anthropic, OpenAI y Google — concentran el 88% de la cuota de mercado empresarial de modelos, con Anthropic subiendo del 24% al 40% en un año. Cita textual del informe: para casos de uso frontera como programación, "los usuarios son bastante insensibles al precio y pagarán más por rendimiento".
+
+Hecho verificado (mismo informe de Menlo): en la capa de infraestructura (bases vectoriales, orquestación, evaluación), los incumbentes retienen el 56% del gasto. En la capa de aplicación, las startups capturan el 63% del mercado frente al 36% del año anterior, a pesar de que los incumbentes tienen distribución, datos y balance.
+
+Hecho verificado (SemiAnalysis): el precio de alquiler de GPU H100 cayó un 58% entre 2023 y 2025 — comoditización de manual — y después subió cerca de un 40% entre octubre de 2025 y marzo de 2026, con la capacidad bajo demanda prácticamente agotada. Nvidia mantiene más del 60% del cómputo de IA instalado en el mundo (Stanford AI Index 2026) y aparece en el 91% de las citas de chips en papers de investigación (Air Street, jun-2026). La gran excepción es Google, que ya cubre cerca del 76% de su cómputo acumulado con TPU propio en vez de Nvidia — pero es la excepción, no la norma.
+
+Hecho verificado (McKinsey, 1.993 organizaciones, jun-jul 2025): solo el 13% de las empresas ha contratado especialistas en cumplimiento normativo de IA, y solo el 6% expertos en ética de IA. Hecho verificado (Stanford AI Index 2026): el índice de transparencia de modelos fundacionales cayó de 58 a 40 sobre 100, y 80 de los 95 modelos notables publicados en el último año no incluyen su código de entrenamiento.
+
+Hecho verificado (Stanford AI Index 2026): el empleo de desarrolladores de software jóvenes (22-25 años) cayó casi un 20% frente a 2024, concentrado en los puestos de entrada — mientras las menciones de habilidades de IA en ofertas de empleo en EE. UU. suben al 2,5% del total (+55% interanual) y el clúster de "IA agéntica" crece un 280% en un año.
+
+## MI PREDICCIÓN A 5 AÑOS (2031)
+
+→ Mi predicción: la capa de cómputo bruto (GPU, alquiler de nube) seguirá oscilando entre comoditización aparente y escasez puntual, pero no se convertirá en un commodity real. El chip, la fabricación (concentrada en TSMC) y el ecosistema de software alrededor de él seguirán siendo un moat salvo que más hiperescala repliquen el movimiento de Google hacia silicio propio — algo que hoy solo un actor ha hecho a esa escala.
+
+→ Mi predicción: el acceso a "una capacidad de modelo dada" seguirá abaratándose al ritmo histórico — eso ya es commodity de facto y lo será más. Pero la frontera absoluta no. Seguirá cara, seguirá concentrada en 2-4 proveedores, y ese oligopolio pondrá el precio de arriba, no el mercado.
+
+→ Mi predicción: la capa de aplicación seguirá siendo donde más valor nuevo se crea porque es la más fácil de empezar — y por eso mismo será la que más rápido se comoditice a nivel individual. Un producto que es "un prompt bien escrito sobre la API de otro" tendrá una ventaja competitiva de meses, no de años. Sobrevivirán las aplicaciones con datos propietarios, distribución previa o integración profunda en un flujo de trabajo real — no las que solo envuelven un modelo.
+
+→ Mi predicción, y la más fuerte de las cuatro: la capa de evaluación y gobernanza de IA es hoy la peor dotada de las cuatro — 13% y 6% de contratación específica, transparencia cayendo — mientras la regulación, aunque se ha retrasado, sigue empujando en esa dirección: el Digital Omnibus sobre IA (Reglamento (UE) 2026/1744, en vigor desde el 27 de julio de 2026) aplazó las obligaciones para sistemas de IA de alto riesgo del EU AI Act (Anexo III) del 2 de agosto de 2026 al 2 de diciembre de 2027 (Anexo I: 2 de agosto de 2028) — no las eliminó, y no tocó las prohibiciones del artículo 5, la alfabetización en IA del artículo 4 ni la transparencia del artículo 50, en vigor desde 2025. En cinco años dejará de ser un extra opcional para convertirse en función estructural. No será commodity. Será escasez de talento cualificado, precisamente porque casi nadie la está formando hoy.
+
+## QUÉ IMPLICA PARA CONTRATAR
+
+No contrates "para IA" en general — es una categoría demasiado ancha para significar algo en 2031. Contrata para la capa que no se comoditiza: integración profunda del modelo en un proceso de negocio real, criterio para decidir qué construir frente a qué comprar, y capacidad de evaluar si lo que devuelve un sistema de IA se sostiene o no.
+
+El perfil de "sabe usar el modelo X" tiene una vida útil corta — el propio modelo X será distinto, o más barato, o sustituido en dieciocho meses. El perfil de "sabe verificar cuándo un sistema de IA se equivoca, y bajo qué condiciones deja de ser fiable" no caduca con la próxima versión de ningún modelo. Es, de hecho, el rol que probablemente escasee más.
+
+¿En qué capa del stack estáis contratando ahora mismo — y coincide con dónde creéis que va a estar el valor dentro de cinco años?

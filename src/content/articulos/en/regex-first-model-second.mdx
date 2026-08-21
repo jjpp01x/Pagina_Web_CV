@@ -1,0 +1,30 @@
+---
+title: "The common case should not pay for an inference"
+subtitle: "Cost is an architecture decision, not an optimisation you do afterwards."
+description: "Regular expressions over headed sections resolve most model cards at zero cost. The inference call is reserved for the ambiguous ones."
+category: "AI engineering"
+date: "2026-10-14"
+image: "https://josepalacios.site/img/og/regex-primero-modelo-despues.png"
+lang: "en"
+translationKey: "regex-primero-modelo-despues"
+---
+
+There is a widespread reflex when building tools with AI: if the problem involves reading text, we call a language model. And it works. The problem is that it works at a cost nobody looks at until volume grows.
+
+In Model Card Auditor, the task is to extract six specific fields from a Markdown document. It could be solved by calling an LLM six times per model, and over a handful of models you would not even notice. Across a whole catalogue, on every CI build, it is another story.
+
+The design I used — a two-tier cascade:
+
+1. First, regular expressions over the headed sections. Well-structured model cards follow reasonably stable conventions: `## Limitations`, `## Bias, Risks and Limitations`, `## Training Data`. A regex resolves them in microseconds and at zero cost.
+
+2. Only when the regex fails does the model come in. That is: the inference call is reserved for the ambiguous cases, the badly structured or unconventionally written cards — which are exactly the cases where a model contributes something a regex cannot.
+
+The result is that most audits cost absolutely nothing, and the ones that cost something do so because the problem justified it.
+
+What I find important about this is not the optimisation itself, but when it is made. This is not something to "optimise later": it is a decision taken before writing the first line, splitting the problem into "the cheap, deterministic part" and "the part that genuinely needs a model". Doing it afterwards means rewriting the whole flow.
+
+<Nota>
+
+The lesson I take from it: in any system with AI, the design question is not "which model do I use?" but "which part of this problem does not need a model at all?". It is almost always more than it looks.
+
+</Nota>

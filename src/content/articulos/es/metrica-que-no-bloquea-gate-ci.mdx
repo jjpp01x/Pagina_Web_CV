@@ -1,0 +1,30 @@
+---
+title: "Por qué convertí un informe de calidad en un gate de CI"
+subtitle: "Una métrica sin consecuencias automáticas compite por la atención contra cosas que sí las tienen. Y pierde siempre."
+description: "Un informe de calidad se revisa el primer mes y no lo abre nadie al cuarto. No es disciplina, es diseño: sin consecuencias automáticas, se ignora."
+category: "Ingeniería de IA"
+date: "2026-10-19"
+image: "https://josepalacios.site/img/og/metrica-que-no-bloquea-gate-ci.png"
+lang: "es"
+translationKey: "metrica-que-no-bloquea-gate-ci"
+---
+
+He visto el mismo patrón varias veces: un equipo genera un informe de calidad, lo revisa con atención el primer mes, con menos atención el segundo, y hacia el cuarto ya nadie lo abre. El informe sigue generándose, impecable, y no cambia ninguna decisión.
+
+No es un problema de disciplina. Es un problema de diseño. Una métrica que no tiene consecuencias automáticas compite por la atención de alguien contra cosas que sí tienen consecuencias — y pierde siempre.
+
+Por eso Model Card Auditor no termina en un informe. Termina en un **gate**: se ejecuta en lote sobre los modelos que usa un proyecto y **falla el build** si la nota de documentación cae por debajo del umbral configurado.
+
+## El cambio de comportamiento que provoca es cualitativo, no cuantitativo
+
+- Sin gate, la pregunta es "¿alguien ha mirado el informe?"
+
+- Con gate, la pregunta es "¿por qué no compila?" — y esa siempre se responde
+
+Hay una objeción legítima: bloquear builds por documentación puede parecer excesivo. Por eso el umbral es configurable y la puntuación es ponderable por campo. Un equipo que solo se juega el cumplimiento de licencias puede dar peso 1 a `license` y 0 al resto. La herramienta no impone una política; hace ejecutable la que tú elijas.
+
+<Nota>
+
+**La lección que me llevo:** si quieres que una métrica de calidad cambie el comportamiento de un equipo, tiene que estar en el camino crítico de algo que ya les importa. En desarrollo de software, ese camino es el pipeline. Todo lo demás es un informe que se lee al principio.
+
+</Nota>

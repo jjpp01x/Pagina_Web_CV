@@ -1,0 +1,30 @@
+---
+title: "Der Normalfall sollte keine Inferenz bezahlen müssen"
+subtitle: "Kosten sind eine Architekturentscheidung, keine Optimierung für später."
+description: "Reguläre Ausdrücke über überschriebene Abschnitte lösen die meisten Model Cards zu null Kosten. Der Inferenzaufruf bleibt den mehrdeutigen vorbehalten."
+category: "KI-Engineering"
+date: "2026-10-14"
+image: "https://josepalacios.site/img/og/regex-primero-modelo-despues.png"
+lang: "de"
+translationKey: "regex-primero-modelo-despues"
+---
+
+Beim Bauen von Werkzeugen mit KI gibt es einen weit verbreiteten Reflex: Wenn das Problem Text lesen umfasst, rufen wir ein Sprachmodell auf. Und es funktioniert. Das Problem ist, dass es zu Kosten funktioniert, die niemand betrachtet, bis das Volumen wächst.
+
+In Model Card Auditor besteht die Aufgabe darin, sechs bestimmte Felder aus einem Markdown-Dokument zu extrahieren. Man könnte sie lösen, indem man je Modell sechsmal ein LLM aufruft, und bei einer Handvoll Modelle würden Sie es nicht einmal merken. Über einen ganzen Katalog hinweg, bei jedem CI-Build, ist das eine andere Geschichte.
+
+Das Design, das ich verwendet habe — eine zweistufige Kaskade:
+
+1. Zuerst reguläre Ausdrücke über die überschriebenen Abschnitte. Gut strukturierte Model Cards folgen einigermassen stabilen Konventionen: `## Limitations`, `## Bias, Risks and Limitations`, `## Training Data`. Eine Regex löst sie in Mikrosekunden und zu null Kosten.
+
+2. Erst wenn die Regex scheitert, kommt das Modell ins Spiel. Das heisst: Der Inferenzaufruf bleibt den mehrdeutigen Fällen vorbehalten, den schlecht strukturierten oder unkonventionell formulierten Cards — also genau jenen Fällen, in denen ein Modell etwas beiträgt, was eine Regex nicht kann.
+
+Das Ergebnis ist, dass die meisten Audits überhaupt nichts kosten, und diejenigen, die etwas kosten, tun es, weil das Problem es rechtfertigte.
+
+Wichtig daran finde ich nicht die Optimierung selbst, sondern den Zeitpunkt. Das ist nichts, was man "später optimiert": Es ist eine Entscheidung, die vor der ersten Codezeile fällt und das Problem in "den günstigen, deterministischen Teil" und "den Teil, der wirklich ein Modell braucht" zerlegt. Sie später zu treffen bedeutet, den gesamten Ablauf neu zu schreiben.
+
+<Nota>
+
+Die Lehre, die ich daraus ziehe: In jedem System mit KI lautet die Designfrage nicht "Welches Modell nehme ich?", sondern "Welcher Teil dieses Problems braucht überhaupt kein Modell?". Es ist fast immer mehr, als es scheint.
+
+</Nota>

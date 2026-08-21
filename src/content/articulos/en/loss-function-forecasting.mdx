@@ -1,0 +1,32 @@
+---
+title: "Why optimising for MAPE can cost you money without you noticing"
+subtitle: "Choosing the loss function is the analysis, not an implementation detail."
+description: "MAPE penalises overshooting and undershooting equally, but almost no business loses the same in both directions. Choosing the metric is the analysis."
+category: "Evaluation and method"
+date: "2026-09-04"
+image: "https://josepalacios.site/img/og/funcion-de-perdida-forecasting.png"
+lang: "en"
+translationKey: "funcion-de-perdida-forecasting"
+---
+
+Almost every demand forecasting tool you are going to evaluate sells you the same thing by default: we will improve your MAPE, or your RMSE. Those are symmetric metrics — they penalise overshooting exactly as much as undershooting.
+
+The problem is that almost no business loses the same amount in both directions.
+
+Take the case I worked on: a retailer specialising in ski boots, refreshing its catalogue every season. Whatever does not sell comes off the catalogue and gets discounted the following season. That margin loss is permanent. Undershooting, by contrast, costs a lost sale — annoying, but recoverable, and sometimes not even that, because the customer buys another model.
+
+Over-forecasting and under-forecasting do not cost the same. And yet, if you evaluate tools on MAPE, you are rewarding whichever one best optimises a metric that treats both errors as equivalent.
+
+## What I did instead
+
+The highest-weighted criterion in the evaluation (0.30, the largest weight in the whole matrix) is the tool's ability to optimise an asymmetric loss — specifically pinball loss, the function used in quantile forecasting, which lets you penalise over-forecasting more heavily than under-forecasting.
+
+This is not a technicality. It is what separates this problem from generic forecasting, and therefore it is what has to separate the evaluation. A criterion that does not discriminate between the options carries no information; it just makes the table longer.
+
+<Nota>
+
+The lesson I take from it: choosing the loss function is the analysis. Everything that comes afterwards — the model, the tool, the hyperparameter tuning — is arithmetic on top of a decision you already made, often without noticing you were making it.
+
+</Nota>
+
+When you evaluate any predictive system, the first question is not "how accurate is it?". It is "accurate measured how, and does that how reflect what being wrong actually costs you?".

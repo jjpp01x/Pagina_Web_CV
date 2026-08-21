@@ -1,0 +1,42 @@
+---
+title: "Energie und Rechenleistung: der echte Engpass für KI-Startups"
+subtitle: "Der Engpass ist nicht die Stromrechnung des Trainings. Es ist der Zugang zu Kapazität."
+description: "Rechenzentren verbrauchten 2025 485 TWh, ein Plus von 17 % in einem Jahr. Fünf Fragen zu den Stückkosten der Inferenz vor einer Investition."
+category: "Business und Strategie"
+date: "2026-10-09"
+image: "https://josepalacios.site/img/og/energia-y-computo-startups-ia.png"
+lang: "de"
+translationKey: "energia-y-computo-startups-ia"
+---
+
+Wenn mich jemand fragt, worauf zu achten ist, bevor man einem KI-Startup vertraut, beginne ich fast nie beim Modell. Ich beginne bei seiner Kostenstruktur für Inferenz — und zunehmend bei seinem Zugang zu Strom. Das klingt weniger interessant als ein Gespräch über Architektur. Es ist jedoch der Punkt, an dem sich entscheidet, welche Startups mit Marge skalieren und welchen sie ausgeht, auch wenn das Produkt einwandfrei funktioniert.
+
+Zuerst die Grössenordnung des Problems. Laut der Internationalen Energieagentur (IEA) verbrauchten Rechenzentren 2024 415 Terawattstunden (TWh) — 1,5 % des weltweiten Stroms. 2025 stieg das auf 485 TWh, ein Plus von 17 % in einem einzigen Jahr, gegenüber einem globalen Stromwachstum von 3 %. Speziell auf KI ausgerichtete Rechenzentren wuchsen allein 2025 um 50 %. Die IEA selbst prognostiziert für 2030 einen Rechenzentrumsverbrauch von rund 945-950 TWh — ungefähr der gesamte Stromverbrauch Japans heute.
+
+Goldman Sachs Research fasst dasselbe Phänomen in installierter Leistung: Die globale Rechenzentrumsnachfrage steigt von 55 Gigawatt 2025 (14 % davon KI zurechenbar) auf 122 GW 2030 — ein Plus von 165 % gegenüber 2023, wobei KI knapp 40 % dieser Nachfrage ausmacht. Die damit verbundenen Netzkosten: rund 720 Milliarden Dollar Investition bis 2030.
+
+Nun der Teil, der in der Due Diligence meist überrascht: Betrachtet man die Kostenaufschlüsselung des Trainings eines Frontier-Modells, macht Energie laut Epoch AI nur 2-6 % der Gesamtausgaben aus — Hardware (47-67 %) und F&E-Personal (29-49 %) wiegen weit schwerer. Der Engpass ist nicht die Stromrechnung des Trainings selbst. Es ist der Zugang zu Kapazität: die Warteschlange, um ein Rechenzentrum ans Netz zu bringen, das Megawatt, das nicht verfügbar ist, selbst wenn Sie das Kapital dafür hätten.
+
+Deshalb haben die vier grossen Hyperscaler (Microsoft, Amazon, Google, Meta) seit 2024 gemeinsam mehr als 9,8 GW an Nuklearverträgen unterzeichnet — Microsoft mit Constellation Energy zur Wiederinbetriebnahme von Three Mile Island (ein 20-Jahres-Vertrag, 835 MW, erste Einspeisung für 2027 erwartet), Amazon mit Talen Energy über 1'920 MW aus dem Kraftwerk Susquehanna bis 2042. Das ist keine grüne Diversifikation. Es ist die Sicherung fester Megawatt in einem Markt, in dem das Netz und nicht der Chip das knappe Gut ist.
+
+Auch die Effizienz ist nicht einheitlich. Der PUE (wie viel zusätzliche Energie Kühlung und Infrastruktur je Einheit verbrauchen, die beim Rechnen ankommt) stagniert laut der jährlichen Erhebung des Uptime Institute seit sechs Jahren bei einem weltweiten Mittel von 1,54. Google meldet für seine Hyperscale-Zentren einen PUE von 1,09 — eine reale Effizienzlücke zwischen dem Betrieb auf Hyperscaler-Niveau und dem übrigen Markt, die sich auch in den Stückkosten der Inferenz niederschlägt.
+
+Und dann gibt es die Seite, die tatsächlich fällt: Die Inferenzkosten pro Token sind bei fixer Modellfähigkeit je nach Benchmark um den Faktor 9 bis 900 pro Jahr gesunken, so die Analyse von Epoch AI zu Inferenzpreisen; a16z dokumentierte einen Rückgang um das 1'000-Fache in drei Jahren (~10x/Jahr) für ein Fähigkeitsniveau entsprechend GPT-3. Das sind reale Zahlen — aber es gibt eine Falle darin, wie sie in der Due Diligence gelesen werden.
+
+Die Falle ist der Rebound-Effekt oder das Jevons-Paradoxon: Die Kosten pro Token fallen, doch das Gesamtvolumen an Tokens wächst schneller als dieser Rückgang, sodass die aggregierte Rechnung steigt. Google berichtete auf seiner I/O-Keynote 2026, dass sein monatlich verarbeitetes Token-Volumen von 9,7 Billionen im Mai 2024 auf mehr als 3'200 Billionen (3,2 Billiarden) im Mai 2026 gestiegen sei — etwa das 330-Fache in zwei Jahren. Diese Zahl ist von Google selbst berichtet und nicht extern geprüft, sie sollte also als Selbstdarstellung des Unternehmens über seine Entwicklung behandelt werden, nicht als von Dritten verifizierter Branchenwert. Die Richtung deckt sich aber mit dem, was unabhängige Analysten berichten: Die Kosten, eine vollständige agentische Aufgabe abzuschliessen (mehrere Runden, mehr Kontext, mehr Tool-Aufrufe), steigen, auch während der Preis pro einzelnem Token weiter fällt.
+
+Hinzu kommt die Knappheit dedizierter Rechenleistung, nicht nur von Strom: SemiAnalysis, das GPU-Mietpreise mit Daten von mehr als 100 Anbietern auditiert, berichtet, dass der Preis für H100-Jahresverträge zwischen Oktober 2025 und März 2026 um knapp 40 % stieg, nachdem er zwischen 2023 und 2025 um 58 % gefallen war. On-Demand-Kapazität ist nach ihrem Index bei den meisten befragten Anbietern seit Februar 2026 praktisch erschöpft. Der Markt für KI-Rechenleistung ist keine Preiskurve, die nur nach unten geht — es ist eine Kurve, die sich zusammenzieht und dann wieder anspannt.
+
+Vor diesem Hintergrund würde ich in der technischen Due Diligence eines KI-Startups zusätzlich zum Offensichtlichen Folgendes fragen:
+
+1. Wie hoch sind die realen Stückkosten je vollständigem Anwendungsfall — nicht pro Token, sondern pro von Anfang bis Ende gelöster Aufgabe — und wie entwickeln sich diese Kosten, während das Produkt agentischer wird?
+
+2. Welcher Anteil der Rechenleistung liegt in fest zugesagten Verträgen zu fixem Preis gegenüber On-Demand-Kapazität, die einem Markt ausgesetzt ist, der gerade um 40 % in sechs Monaten gestiegen ist?
+
+3. Hängt das Unternehmen von einem einzigen Cloud- oder Chip-Anbieter ab, und was passiert mit seinen Margen, wenn dieser Anbieter die Preise erhöht oder Kapazität beschränkt?
+
+4. Wenn die Roadmap Training oder Fine-Tuning eigener Modelle in grossem Massstab vorsieht: Ist der Stromzugang für diese Phase bereits gesichert, oder hängt er an einer Netzanschluss-Warteschlange, die Jahre dauern kann?
+
+5. Berücksichtigt die ausgewiesene Bruttomarge bereits die erwartete Kostenentwicklung der Rechenleistung, oder unterstellt sie, dass der Preis pro Token unbegrenzt im historischen Tempo weiterfällt?
+
+Keine dieser Fragen steht im Pitch Deck. Alle entscheiden darüber, ob das Geschäft mit wachsender Marge skaliert oder ob es skaliert, indem es diese Marge an die Rechenrechnung abgibt.

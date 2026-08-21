@@ -1,0 +1,42 @@
+---
+title: "Ein KI-Projekt schätzen, wenn die Hälfte des Umfangs eine Frage ist"
+subtitle: "Ein Experiment wie eine Aufgabe zu budgetieren ist der häufigste Grund, warum ein KI-Termin platzt."
+description: "Ein Teil eines KI-Projekts heisst nicht bau es, sondern finde heraus, ob es geht. Ein begrenzter Spike und ein Entscheidungstor vor der Terminzusage."
+category: "Business und Strategie"
+date: "2026-09-30"
+image: "https://josepalacios.site/img/og/estimar-proyecto-de-ia.png"
+lang: "de"
+translationKey: "estimar-proyecto-de-ia"
+---
+
+Wenn jemand Sie nach einem Termin fragt, um "KI einzubauen", fragt er Sie unbemerkt nach zwei verschiedenen Dingen. Das eine ist, was es kostet, etwas zu bauen. Das andere ist, was es kostet herauszufinden, ob dieses Etwas mit der Zuverlässigkeit, die der Prozess braucht, überhaupt möglich ist. Das Erste ist eine normale Aufwandsschätzung. Das Zweite ist es nicht — und es so zu behandeln, als wäre es das, ist mit Abstand der häufigste Grund, warum ein KI-Termin platzt.
+
+Die Verwechslung ist nachvollziehbar. In einem klassischen Softwareprojekt ist fast der gesamte Umfang vorab bekannt: Sie wissen, welche Bildschirme zu bauen, welche Tabellen anzulegen, welche Schnittstellen zu lösen sind. Die Unsicherheit liegt im Wie lange, nicht im Ob es funktioniert. Bei einer KI-Komponente — besonders wenn sie von einem Sprachmodell abhängt — ist ein Teil des Umfangs nicht "bau es", sondern "finde heraus, ob das mit deinen echten Daten die nötige Zuverlässigkeit erreicht". Das ist keine Aufgabe mit schätzbaren Stunden. Es ist ein Experiment, dessen Ergebnis Sie noch nicht kennen.
+
+Beides zu budgetieren, als wäre es dasselbe, erzeugt genau den Termin, der später bricht: Das Team verpflichtet sich zu bauen, ohne zu wissen, ob das Gebaute tragfähig ist, und wenn sich der "Herausfinden"-Teil als härter erweist als gedacht, verschiebt sich der Termin nicht — er wird weiter gegen eine Frist gepresst, die nie real war.
+
+## In Phasen budgetieren, mit Entscheidungstoren
+
+Die Alternative ist nicht "keinen Termin nennen". Sie ist, für verschiedene Fragen verschiedene Termine zu nennen.
+
+Phase 0 — der zeitlich begrenzte Spike. Ein Spike ist eine Untersuchung mit fixer Zeit, fixem Umfang und einer einzigen technischen Frage, deren Ergebnis keine lauffähige Software ist, sondern Evidenz und eine Empfehlung. Zum Beispiel: "Erreicht das Retrieval über unsere echten Dokumente eine Zitiergenauigkeit, die eine menschliche Prüferin akzeptieren würde?" Das beantworten Sie nicht, indem Sie die Dokumentation eines Anbieters lesen. Sie beantworten es, indem Sie das kleinstmögliche Stück bauen, das eine ehrliche Antwort gibt, und es an echten Daten messen, nicht an denen der Demo.
+
+Entscheidungstor. Am Ende des Spikes steht eine ausdrückliche Entscheidung, getroffen auf Basis dessen, was der Spike gezeigt hat: mit dem Ansatz weitermachen, den Umfang neu definieren, weil er nur einen Teil des Problems löst, oder aufhören, weil die nötige Zuverlässigkeit mit dem heute Verfügbaren nicht erreichbar ist. Alle drei sind gültige Ergebnisse eines gut gestellten Spikes — selbst "aufhören" ist ein Erfolg, wenn es Monate Arbeit auf einem Fundament erspart, das den Anwendungsfall nie getragen hätte.
+
+Ein Detail entscheidet, ob das funktioniert oder Theorie bleibt: Die Grösse des Spikes bestimmt sich aus den Kosten des Irrtums, nicht aus technischer Neugier. Kostet ein Systemfehler nur eine wiederholte Aufgabe, genügt ein eintägiger Spike an echten Daten für die Entscheidung. Wird das System über Geld oder über Menschen entscheiden, muss der Spike anspruchsvoller sein, bevor Sie grünes Licht geben — aber er bleibt ein Spike: zeitlich begrenzt, mit einer Frage und nicht mit einem Produkt als Ergebnis.
+
+Phase 1 — auf dem Validierten bauen. Erst hier ergibt eine verbindliche Aufwandsschätzung Sinn, weil sie nicht mehr mit der Frage vermischt ist, ob es möglich ist. Sie ist eine echte Schätzung, keine als Termin verkleidete Intuition.
+
+Phase 2 — für den Produktivbetrieb härten. Fehlerbehandlung, Nachvollziehbarkeit und — wenn das System über Menschen oder Geld entscheidet — Governance-Kontrollen, bevor jemand sich ernsthaft darauf verlässt.
+
+## Was sich versprechen lässt und was nicht
+
+Versprechen lassen sich Kosten und Dauer des Spikes: Sie sind durch das Design begrenzt und günstig im Vergleich dazu, sich auf einen Gesamtsystemtermin festzulegen, ohne zu wissen, ob der Ansatz trägt. Versprechen lässt sich auch das exakte Kriterium, nach dem das Tor entschieden wird — geschrieben, bevor das Ergebnis vorliegt, und nicht danach, wenn es bequem wäre, dass es das Passende sagt.
+
+Was sich ehrlicherweise nicht versprechen lässt, ist der Liefertermin des Gesamtsystems, bevor der Spike die offene Frage beantwortet hat. Es trotzdem zu versprechen — weil der Kalender schon steht, weil niemand derjenige sein will, der in der Sitzung sagt "wir wissen es noch nicht" — ist genau das, was Budget, Termin und danach die Glaubwürdigkeit der Projektleitung verbrennt.
+
+Das ist keine Managementtheorie aus einem Buch. Bevor ich die Kostenkaskaden-Architektur von DD-Copilot festlegte — welche Analyseschritte ein günstiges Modell nutzen und welcher ein leistungsfähigeres braucht — musste ich mit echten Daten statt mit dem Versprechen eines Anbieters prüfen, welche Schritte tatsächlich Schlussfolgern erforderten und welche einfache Klassifikation waren. Diese Prüfung war der Spike; die Architektur kam danach und konnte nur deshalb eine echte Schätzung sein, weil sie die unbeantwortete Frage nicht mehr mittrug. In einem ganz anderen Projekt, dem Inventarsystem, das ich für SkiCraft Custom Boots (Heierling) baute, verbrauchte nicht das Schreiben des SQL die meiste reale Zeit, sondern die Modellierung von Entitäten und Beziehungen, bevor eine einzige Tabelle entstand — der "Herausfinden"-Teil, nicht der "Bauen"-Teil, verkleidet als Datenbankarbeit.
+
+## Was sich ändert, wenn Sie diejenige sind, die den Termin verlangt
+
+Wenn Sie eine Abteilung führen, die den Einsatz von KI in einem Prozess prüft, lautet die nützliche Frage nicht "Wann hast du es?". Sie lautet: "Was ist das billigste Experiment, das uns sagen würde, ob das möglich ist, und was zeigst du mir, wenn es fertig ist?" Diese Frage erzwingt die Trennung zwischen dem, was man bereits kann, und dem, was noch eine Unbekannte ist — und genau diese Trennung entscheidet, ob das Projekt in Produktion geht oder, gut aussehend, eine Demo bleibt.

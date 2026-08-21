@@ -1,0 +1,36 @@
+---
+title: "Mis 60 tests estaban en verde y el sistema no podía dar un resultado positivo"
+subtitle: "Una conclusión fijada por la aritmética, presentada como un hallazgo empírico."
+description: "Con 63 contrastes y 1.000 permutaciones el q-valor mínimo es 0,063, por encima del umbral. Ningún tema podía salir positivo y los tests no lo vieron."
+category: "Evaluación y método"
+date: "2026-10-28"
+image: "https://josepalacios.site/img/og/fallo-que-ningun-test-detecto.png"
+lang: "es"
+translationKey: "fallo-que-ningun-test-detecto"
+---
+
+Este es el fallo más instructivo que me he encontrado, y quiero contarlo entero porque salió bien por poco.
+
+Mi sistema evalúa varios temas a la vez, así que corrige por comparaciones múltiples con Benjamini-Hochberg — el ajuste estándar para no dar por bueno un hallazgo que aparece solo porque has mirado en muchos sitios.
+
+Al mejorar el agrupamiento, pasé de detectar 3 temas a detectar 63. Mejor granularidad, mejor proyecto. La suite entera seguía en verde.
+
+**Lo que no vi:** con k contrastes y n permutaciones, el q-valor más pequeño que Benjamini-Hochberg puede producir es k/(n+1).
+
+- Con 3 temas y 1.000 permutaciones: 0,003. Sin problema.
+
+- Con **63 temas** y 1.000 permutaciones: **0,063**.
+
+El umbral de significación es 0,05. **0,063 > 0,05.**
+
+Es decir: ningún tema podía salir marcado como emergente. Ninguno. Por mucha evidencia que tuviera, por extremo que fuera su crecimiento. La tabla entera habría dicho «indistinguible del ruido» — y habría parecido exactamente un resultado medido. Una conclusión fijada por la aritmética, presentada como un hallazgo empírico.
+
+Los 60 tests pasaban. Todos. Porque cada uno comprobaba que su pieza hacía lo que yo creía que debía hacer, y ninguno comprobaba que la combinación de dos decisiones correctas —agrupar más fino, corregir por multiplicidad— dejaba el sistema sin capacidad de afirmar nada.
+
+**La corrección** fue añadir el cálculo del suelo y avisar cuando hace imposible alcanzar significación, diciendo cuántas permutaciones harían falta. Ahora la salida advierte, literalmente, de que «el veredicto lo fija la aritmética, no los datos».
+
+## Dos lecciones que me llevo
+
+La primera: una suite verde verifica que el código hace lo que crees, no que eso sea lo que hace falta. Para software de análisis, la revisión que lee el código razonando sobre el método encuentra cosas que ninguna ejecución encuentra.
+
+La segunda, y más incómoda: **este fallo solo produce falsos negativos**. Sistemas que sobre-afirman se descubren pronto, porque alguien comprueba una afirmación llamativa y no cuadra. Un sistema que calla se puede usar durante años pareciendo prudente.

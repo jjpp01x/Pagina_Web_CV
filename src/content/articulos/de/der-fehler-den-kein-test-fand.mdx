@@ -1,0 +1,36 @@
+---
+title: "Meine 60 Tests waren grün, und das System konnte kein positives Ergebnis liefern"
+subtitle: "Eine grüne Suite verifiziert, dass der Code tut, was Sie denken, nicht dass das Gedachte das Nötige ist."
+description: "Bei 63 Themen und 1'000 Permutationen lag der kleinstmögliche q-Wert bei 0,063 — über der Schwelle von 0,05. Kein Thema konnte je markiert werden."
+category: "Evaluation und Methode"
+date: "2026-10-28"
+image: "https://josepalacios.site/img/og/fallo-que-ningun-test-detecto.png"
+lang: "de"
+translationKey: "fallo-que-ningun-test-detecto"
+---
+
+Das ist der lehrreichste Fehler, der mir untergekommen ist, und ich will ihn vollständig erzählen, weil es nur knapp gut ausging.
+
+Mein System bewertet mehrere Themen gleichzeitig, deshalb korrigiert es für multiples Testen mit Benjamini-Hochberg — der Standardkorrektur, die verhindert, dass Sie einen Befund für bare Münze nehmen, der nur auftaucht, weil Sie an vielen Stellen gesucht haben.
+
+Bei der Verbesserung des Clusterings ging ich von 3 erkannten Themen auf 63. Bessere Granularität, besseres Projekt. Die gesamte Suite blieb grün.
+
+Was ich nicht sah: Bei k Kontrasten und n Permutationen ist der kleinste q-Wert, den Benjamini-Hochberg erzeugen kann, k/(n+1).
+
+- Bei 3 Themen und 1'000 Permutationen: 0,003. Kein Problem.
+
+- Bei 63 Themen und 1'000 Permutationen: 0,063.
+
+Die Signifikanzschwelle liegt bei 0,05. 0,063 > 0,05.
+
+Mit anderen Worten: Kein Thema konnte je als aufkommend markiert werden. Keines. Egal wie viel Evidenz es hatte, egal wie extrem sein Wachstum war. Die gesamte Tabelle hätte "nicht von Rauschen unterscheidbar" gesagt — und es hätte exakt wie ein gemessenes Ergebnis ausgesehen. Eine von der Arithmetik festgelegte Schlussfolgerung, präsentiert als empirischer Befund.
+
+Die 60 Tests liefen durch. Alle. Denn jeder prüfte, ob sein Baustein tat, was ich für richtig hielt, und keiner prüfte, ob die Kombination zweier korrekter Entscheidungen — feiner clustern, für Multiplizität korrigieren — das System ausserstande setzte, überhaupt etwas zu behaupten.
+
+Die Korrektur bestand darin, diese Untergrenze zu berechnen und zu warnen, wenn sie Signifikanz unerreichbar macht, samt Angabe, wie viele Permutationen nötig wären. Die Ausgabe sagt jetzt wörtlich, dass "das Urteil von der Arithmetik festgelegt wird, nicht von den Daten".
+
+## Zwei Lehren, die ich daraus ziehe
+
+Die erste: Eine grüne Suite verifiziert, dass der Code tut, was Sie denken, nicht dass das Gedachte das Nötige ist. Bei Analysesoftware findet die Durchsicht, die den Code liest und dabei über die Methode nachdenkt, Dinge, die kein Testlauf findet.
+
+Die zweite, unbequemere: Dieser Fehler erzeugt ausschliesslich falsch-negative Ergebnisse. Systeme, die zu viel behaupten, fliegen früh auf, weil jemand eine auffällige Aussage prüft und sie nicht aufgeht. Ein System, das schweigt, kann jahrelang genutzt werden und dabei umsichtig wirken.

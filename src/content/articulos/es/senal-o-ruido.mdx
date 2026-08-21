@@ -1,0 +1,88 @@
+---
+title: "66 temas emergentes, uno real: cómo distinguir una tendencia del ruido"
+subtitle: "Construí un sistema que detecta temas emergentes en la literatura científica de robótica e IA. Lo interesante no fue el que encontró, sino los 65 que descartó."
+description: "Cómo separar una tendencia científica real del crecimiento general de la literatura: prueba de permutación sobre 4.113 papers de arXiv en robótica, IA y espacio."
+category: "Evaluación y método"
+date: "2026-08-01"
+image: "https://josepalacios.site/img/og-seguridad.png"
+lang: "es"
+translationKey: "senal-o-ruido"
+---
+
+Un tema de investigación creció un 49 % en un año. ¿Es una tendencia? No hay forma de saberlo con ese dato. Si toda la literatura creció un 58 % ese mismo año, ese 49 % no es una tendencia: es quedarse atrás.
+
+Ese es el error que comete casi cualquier panel de «temas emergentes»: presentar el crecimiento de una parte sin la referencia del todo. Y es un error caro, porque una cifra con aspecto de dato se cita, se reenvía y acaba sosteniendo una decisión.
+
+Construí **Signal Radar** para responder a la pregunta bien planteada: *¿este tema crece más de lo que explicaría el azar, dado cuánto creció el corpus entero?* Sobre 4.113 artículos de arXiv publicados entre noviembre de 2023 y julio de 2026 en robótica, IA, instrumentación astronómica y teoría de control, el sistema detectó 66 temas. **Solo uno superó la prueba.**
+
+## 1. Por qué crecer no es una señal
+
+El volumen de publicación científica sube todos los años. Sube por financiación, por número de investigadores, por presión de publicar y por fechas de congresos. Un tema puede duplicar sus papers sin que nada haya cambiado en su interior: simplemente flota sobre una marea que sube.
+
+La pregunta útil no es «¿cuántos papers tiene?» sino «¿cuántos tendría si sus fechas fueran aleatorias?». Si la respuesta es «prácticamente los mismos», el crecimiento no contiene información.
+
+## 2. La prueba: barajar las fechas
+
+La forma de responderla no requiere estadística exótica. Se llama **prueba de permutación** y funciona así:
+
+Se mantienen fijos los grupos de papers —qué artículo pertenece a qué tema— y se **barajan las fechas de publicación entre todos los 4.113 artículos**. Después se recalcula el crecimiento del tema. Y se repite diez mil veces.
+
+Eso produce la distribución del crecimiento que ese tema mostraría *si el momento en que se publican sus papers no llevara ninguna información*. Si el crecimiento real cae dentro de esa distribución, es ruido. Si queda fuera, hay algo.
+
+<Destacado>
+
+«La pregunta no es si el tema ha crecido. Es cuánto tendrían que cambiar las cosas para que dejara de parecer que ha crecido.»
+
+</Destacado>
+
+## 3. El resultado: 5,0× contra 1,58×
+
+De los 66 temas detectados, uno sobrevivió: un grupo de 215 papers sobre **manipulación robótica condicionada por lenguaje** —los llamados modelos visión-lenguaje-acción, y los modelos del mundo que los acompañan.
+
+Pasó de 30 papers en el año anterior a 150 en el último: un crecimiento de **5,0×**. En las mismas ventanas, el corpus entero creció **1,58×**. Creció 3,2 veces más rápido que la literatura en la que vive.
+
+**Ninguna de las diez mil permutaciones alcanzó ese 5,0×.** Ni una.
+
+Los otros 65 temas —incluidos varios que crecieron un 40 %, un 60 %, incluso más del doble— no se distinguen de lo que habría producido el azar. No son temas falsos. Son temas cuyo crecimiento no dice nada por encima de la marea general.
+
+## 4. Lo que cambió dentro del tema
+
+La cifra dice que hay algo. Para saber qué, hay que leer. Ordené los 215 títulos por fecha y el desplazamiento es nítido:
+
+A finales de 2023 el trabajo consiste en **acoplar un modelo de lenguaje a un manipulador**: hacer que un robot entienda una instrucción. A mediados de 2026 consiste en **aprender el modelo del mundo**: entrenar sin datos reales, extraer habilidades de vídeos sin acciones anotadas, generar escenarios sintéticos.
+
+El cuello de botella se ha movido del modelo a los datos de interacción. Y ese desplazamiento importa fuera de la academia: es el punto en que un área de investigación empieza a producir empresas, porque el cuello de botella se convierte en algo que alguien puede poseer.
+
+## 5. El dato incómodo
+
+Los 215 papers los firman **1.375 autores distintos**, y el más prolífico aparece en 6. No hay concentración institucional: no es el programa de un laboratorio escapándose a la literatura, es una ola amplia.
+
+Eso corta por los dos lados, y me parece la parte más útil del análisis. Una cantera amplia significa que se puede contratar y que la ciencia no depende de un grupo. También significa que **ningún equipo tiene una ventaja investigadora defendible**, y que una delantera técnica difícilmente será duradera por sí sola.
+
+## 6. Lo que este análisis no puede sostener
+
+Esta sección es la que hace utilizable todo lo anterior, y va antes de que nadie cite una cifra:
+
+- **El corpus no es una muestra aleatoria de arXiv.** Se construyó con una cuota fija por categoría y año más un barrido reciente. La prueba de permutación es robusta a eso —compara el tema contra el perfil temporal de *este* corpus—, pero ninguna cifra absoluta sobre el tamaño real del campo se puede sacar de aquí.
+
+- **El p-valor está censurado.** Con diez mil permutaciones, el valor más pequeño expresable es 1/10.001. Los datos no distinguen entre «muy significativo» y «extremadamente significativo».
+
+- **Cuatro categorías, y nada más.** No hay patentes, ni financiación, ni afiliaciones institucionales: arXiv no las da. Un campo que publica poco y patenta mucho es invisible aquí.
+
+- **La etiqueta del tema es mía.** El sistema produce un grupo sin nombre; llamarlo «manipulación visión-lenguaje-acción» es mi lectura de los títulos, y no está validada de forma independiente.
+
+- **El agrupamiento es una elección defendible entre varias.** Siete de cada ocho configuraciones de parámetros cercanas colapsan el corpus en dos bloques indiferenciados. Las fronteras entre temas son exactamente reproducibles con la semilla publicada, pero no son las únicas que un método razonable dibujaría.
+
+## Lo que me llevo
+
+Que la parte difícil de este tipo de trabajo no es encontrar el tema que crece. Es tener un procedimiento que sea capaz de decir «no» sesenta y cinco veces.
+
+Un sistema que marca todo como emergente es un sistema roto, aunque su tabla se vea impecable. Y esa clase de fallo no la detecta ninguna suite de tests en verde: la detecta ejecutarlo contra datos reales y comprobar que descarta cosas.
+
+Todo lo anterior no se queda en una tabla: el resultado final es un [brief de decisión sobre manipulación embodied visión-lenguaje-acción](https://github.com/jjpp01x/signal-radar/blob/main/briefs/2026-08-01-embodied-vla-manipulation.md), generado con [Signal Radar](https://github.com/jjpp01x/signal-radar), que condensa la señal, sus límites y lo que un lector con prisa necesita para decidir. Es el método de este artículo aplicado de principio a fin sobre un caso real.
+
+<Nota>
+
+Todas las cifras de este artículo se regeneran desde el repositorio público con la semilla `20260731`; dos ejecuciones sobre el mismo corpus producen una salida idéntica byte a byte. El código, el método y el informe completo en formato de brief de inversión están en [github.com/jjpp01x/signal-radar](https://github.com/jjpp01x/signal-radar).
+
+</Nota>

@@ -1,0 +1,34 @@
+---
+title: "AI agents in production: the question almost nobody asks"
+subtitle: "An agent that fails completely gets noticed. One that fails halfway leaves the system in a state nobody designed."
+description: "An agent that fails completely gets noticed. One that fails halfway leaves the system in a state nobody designed. What to ask before granting it permissions."
+category: "AI engineering"
+date: "2026-09-18"
+image: "https://josepalacios.site/img/og/agentes-ia-fallo-a-medias.png"
+lang: "en"
+translationKey: "agentes-ia-fallo-a-medias"
+---
+
+When someone evaluates an AI agent for production, they almost always ask the same thing: does it get it right? That is the incomplete question. The one that matters is different: what does the agent do when it fails halfway through an action that already had side effects?
+
+The difference is not subtle. A chatbot that gets it wrong produces an incorrect sentence the user can ignore. An agent that gets it wrong executes: it writes to a database, cancels an order, deploys code, sends an email, moves a row in an ERP. When that goes wrong midway, the damage is already done before anyone — human or system — has a chance to step in.
+
+In July 2025 this stopped being a design hypothesis and became a documented case. Jason Lemkin, founder of the SaaStr community, was testing Replit's coding agent under what he himself described as an explicit "code freeze": express instructions not to touch the production database. The agent deleted it anyway — more than 1,200 executive records across more than 1,190 companies. When Lemkin asked whether it could be recovered, the agent said no. That was false: Lemkin restored the data manually from a backup. Replit's CEO, Amjad Masad, called the incident "unacceptable" and announced mandatory separation between development and production databases, along with improvements to the rollback system.
+
+The detail I find most instructive is not the deletion. It is that the agent gave a confident, unreliable account of what it had just done. Asking it "can this be undone?" did not produce a verified answer. It produced a plausible one.
+
+In a different domain, this is the same problem that led me to write a non-negotiable rule into DD-Copilot, the tool I built to generate technical due diligence reports on deep-tech startups: every claim has to come with a citation that is automatically verified against the source text, and if it cannot be verified, the report says explicitly "not mentioned in the source" — it never fills the gap with something plausible. The question I asked myself while designing it was not "how well does the model answer?", it was "what does it do when it doesn't know?". For an agent that executes actions with real effects, the equivalent question is "what does it do when it fails halfway through an action that already had side effects?" — and the answer cannot be "trust its own account of what happened" either.
+
+For anyone deciding whether to adopt an AI agent for tasks with real effects — not a demo, a task that touches production systems — there are four design questions worth more than any model accuracy figure.
+
+**Idempotency.** If the same action is retried — because it failed midway, because of a timeout, because the agent itself decides to "try again" — is the result the same, or does the effect duplicate? An agent that charges twice because it retried a payment without checking whether the first one already went through is not a hypothetical: it is the kind of failure a naive design produces by default.
+
+**Compensation and rollback.** Is there an explicit path to undo each destructive action, documented and tested, or does "revert" in practice mean "hope the backup works"? The Replit case shows the difference: rollback existed, but not as part of the agent's design — it existed in spite of it, in a backup infrastructure a human had to trigger manually.
+
+**Default permissions.** Does the agent operate with the same credentials for reading and for writing, or is there a real boundary between "proposing an action" and "executing it"? An agent that can drop a table as easily as it can query it does not have an intelligence problem, it has a permissions architecture problem.
+
+**Independent traceability.** Is there an audit log that does not depend on the agent accurately reporting what it did? Because, as this case demonstrated, the agent itself can be wrong — or simply not know — about the real state of the system it just modified.
+
+None of these four questions shows up in a demo. A demo shows the happy path: the action that goes right, executed end to end without interruption. That is precisely the scenario that says least about whether a system is safe for production, because the scenario that matters — the one that should decide whether you adopt a tool — is the one that happens when something breaks halfway, not before and not after.
+
+The conclusion is not "don't use AI agents in production". It is that technical due diligence on an agent cannot stop at measuring how well it solves tasks. It has to ask, explicitly, what that agent does at the worst possible moment: once it has already acted, once there have already been side effects, and once something went wrong before it finished. No accuracy benchmark answers that question. The design answers it — and design, unlike product marketing, can be audited before you sign the contract.

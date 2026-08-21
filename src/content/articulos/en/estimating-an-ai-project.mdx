@@ -1,0 +1,44 @@
+---
+title: "Estimating an AI project when half the scope is a question"
+subtitle: "Budgeting an experiment as if it were a task is the most common reason an AI deadline breaks."
+description: "Part of an AI project is not build it, it is find out whether it is possible. A time-boxed spike and an explicit decision gate before committing to a date."
+category: "Business and strategy"
+date: "2026-09-30"
+image: "https://josepalacios.site/img/og/estimar-proyecto-de-ia.png"
+lang: "en"
+translationKey: "estimar-proyecto-de-ia"
+---
+
+When someone asks you for a date to "add AI" to a process, they are asking you two different things without realising it. One is how much it costs to build something. The other is how much it costs to find out whether that something is even possible at the reliability the process needs. The first is a normal engineering estimate. The second is not — and treating it as if it were is, by some distance, the most common reason an AI deadline gets missed.
+
+The confusion makes sense. In a conventional software project, almost all the scope is known up front: you know which screens to build, which tables to create, which integrations to resolve. The uncertainty is in how long, not in whether it works. With an AI component — especially one that depends on a language model — part of the scope is not "build it", it is "find out whether this reaches the reliability you need on your real data". That is not a task with estimable hours. It is an experiment whose result you do not yet know.
+
+Budgeting both as if they were the same thing is what produces the date that later breaks: the team commits to building without knowing whether what it is about to build is viable, and when the "find out" part turns out harder than expected, the date does not move — it keeps getting forced against a deadline that was never real.
+
+## Budget in phases, with decision gates
+
+The alternative is not "give no date". It is to give different dates for different questions.
+
+Phase 0 — the time-boxed spike. A spike is an investigation with fixed time, fixed scope and a single technical question, whose deliverable is not working software: it is evidence and a recommendation. For example: "does retrieval over our real documents reach a citation accuracy a human reviewer would accept?" You do not answer that by reading a vendor's documentation. You answer it by building the smallest possible piece that gives an honest answer, and measuring it against real data, not the demo's.
+
+Decision gate. At the end of the spike there is an explicit decision, made on what the spike showed: continue with the approach, redefine the scope because it only serves part of the problem, or stop because the required reliability is not achievable with what exists today. All three are valid outcomes of a well-framed spike — even "stop" is a success if it avoids months of work on a foundation that was never going to hold the use case.
+
+One detail decides whether this works or stays theoretical: the size of the spike is set by the cost of being wrong, not by technical curiosity. If a system failure only costs a repeated task, a one-day spike on real data is enough to decide. If the system is going to make decisions about money or about people, the spike has to be more demanding before you give a green light — but it is still a spike: time-boxed, with a question and not a product as its deliverable.
+
+Phase 1 — build on what was validated. Only here does a firm engineering estimate make sense, because it is no longer mixed up with the question of whether it is possible. It is a real estimate, not an intuition dressed as a date.
+
+Phase 2 — harden for production. Error handling, traceability, and — if the system makes decisions about people or money — governance controls before anyone seriously depends on it.
+
+## What you can promise, and what you cannot
+
+You can promise the cost and duration of the spike: they are bounded by design, and they are cheap compared with committing to a full-system date without knowing whether the approach works. You can also promise the exact criterion that will decide the gate — written before you have the result, not afterwards, when it would be convenient for it to say what suits.
+
+What you cannot honestly promise is the delivery date of the complete system before the spike answers the open question. Promising it anyway — because the calendar is already fixed, because nobody wants to be the one saying "we don't know yet" in the meeting — is exactly what burns the budget, the date, and afterwards the credibility of whoever led the project.
+
+This is not management theory I read in a book. Before fixing DD-Copilot's cost cascade architecture — which analysis steps use a cheap model and which one needs a more capable one — I had to check, with real data rather than a vendor's promise, which steps genuinely needed reasoning and which were simple classification. That check was the spike; the architecture came afterwards, and it could only be a real estimate because it was no longer carrying the unanswered question. On a very different project, the inventory system I built for SkiCraft Custom Boots (Heierling), the phase that consumed the most real time was not writing the SQL: it was modelling entities and relationships before creating a single table — the "find out" part, not the "build" part, disguised as database work.
+
+## What changes if you are the one asking for the date
+
+If you run a department evaluating putting AI into a process, the useful question is not "when will you have it?". It is: "what is the cheapest experiment that would tell us whether this is possible, and what will you show me when it's done?" That question forces a separation between what is already known how to do and what is still an unknown — and it is exactly that separation that decides whether the project reaches production or stays, looking good, as a demo.
+
+How do you budget the part of a project that is still an open question?

@@ -1,0 +1,32 @@
+---
+title: "Por qué optimizar MAPE puede costarte dinero sin que te enteres"
+subtitle: "Elegir la función de pérdida es el análisis, no un detalle de implementación."
+description: "MAPE penaliza igual pasarse que quedarse corto, pero casi ningún negocio pierde lo mismo en las dos direcciones. Elegir la métrica es el análisis."
+category: "Evaluación y método"
+date: "2026-09-04"
+image: "https://josepalacios.site/img/og/funcion-de-perdida-forecasting.png"
+lang: "es"
+translationKey: "funcion-de-perdida-forecasting"
+---
+
+Casi todas las herramientas de previsión de demanda que vas a evaluar te venden lo mismo por defecto: mejoramos tu MAPE, o tu RMSE. Son métricas simétricas — penalizan igual pasarse que quedarse corto.
+
+El problema es que casi ningún negocio pierde lo mismo en las dos direcciones.
+
+Tomemos el caso con el que trabajé: un minorista especializado en botas de esquí que renueva catálogo cada temporada. Lo que no vende, sale de catálogo y se liquida con descuento la temporada siguiente. Esa pérdida de margen es permanente. Quedarse corto, en cambio, cuesta una venta perdida — molesto, pero recuperable, y a veces ni eso porque el cliente compra otro modelo.
+
+Sobre-prever y sub-prever **no cuestan lo mismo**. Y sin embargo, si evalúas herramientas por su MAPE, estás premiando a la que mejor optimiza una métrica que trata ambos errores como equivalentes.
+
+## Lo que hice en su lugar
+
+El criterio que más pesa en la evaluación (0,30 de peso, el más alto de toda la matriz) es la capacidad de la herramienta para optimizar una **pérdida asimétrica** — concretamente pinball loss, la función que se usa en previsión por cuantiles y que permite penalizar la sobre-previsión más que la sub-previsión.
+
+No es un tecnicismo. Es lo que distingue este problema de una previsión genérica, y por tanto es lo que tiene que distinguir la evaluación. Un criterio que no discrimina entre las opciones no aporta información; solo hace la tabla más larga.
+
+<Nota>
+
+**La lección que me llevo:** elegir la función de pérdida *es* el análisis. Todo lo que viene después — el modelo, la herramienta, el ajuste de hiperparámetros — es aritmética sobre una decisión que ya tomaste, muchas veces sin darte cuenta de que la estabas tomando.
+
+</Nota>
+
+Cuando evalúes cualquier sistema predictivo, la primera pregunta no es "¿qué precisión tiene?". Es "¿precisión medida cómo, y ese *cómo* refleja lo que de verdad te cuesta equivocarte?".

@@ -1,0 +1,32 @@
+---
+title: "Wie Sie erkennen, ob Ihre Entscheidungsmatrix hält oder beim ersten Stoss umfällt"
+subtitle: "Die Ehrlichkeit einer Analyse liegt nicht in der Zahl. Sie liegt im Intervall."
+description: "Eine gewichtete Matrix kann fast jede Schlussfolgerung bestätigen, denn Sie wählen die Gewichte. Wie sich der reale Abstand einer Empfehlung messen lässt."
+category: "Evaluation und Methode"
+date: "2026-09-14"
+image: "https://josepalacios.site/img/og/punto-de-cambio-matriz-decision.png"
+lang: "de"
+translationKey: "punto-de-cambio-matriz-decision"
+---
+
+Eine gewichtete Matrix hat ein strukturelles Problem, das selten erwähnt wird: Sie wählen die Gewichte. Und sobald Sie sie wählen, kann die Matrix nahezu jede Schlussfolgerung bestätigen, die Sie ohnehin schon hatten.
+
+Dazu braucht es keine böse Absicht. Es genügt, einem Kriterium, bei dem Ihr Favorit glänzt, 0,25 statt 0,15 zuzuweisen. Niemand wird es bemerken, und das Ergebnis wird denselben Anschein von Objektivität haben: eine Tabelle, ein paar Punktzahlen, ein Sieger mit Nachkommastellen.
+
+Deshalb ist das Ergebnis, das mich interessiert, nicht der Sieger. Es ist der Abstand.
+
+## Zwei Kennzahlen, die ich der Engine hinzugefügt habe
+
+1. Der Kipppunkt je Kriterium. Für jedes Kriterium berechnet die Engine das exakte Gewicht, bei dem der Sieger aufhören würde zu gewinnen. Liegt dieser Punkt sehr nahe an dem Gewicht, das Sie vergeben haben, hängt die Schlussfolgerung an einer Ihrer Entscheidungen, die ebenso gut anders hätte ausfallen können — und das gehört berichtet, nicht verborgen.
+
+2. Die globale Robustheit. Ein Gewicht nach dem anderen zu variieren genügt nicht, denn in der Praxis sind alle Gewichte gleichzeitig strittig. Also zieht die Engine Stichproben aus einer Dirichlet-Verteilung um die deklarierten Gewichte und löst die vollständige Matrix 10'000 Mal, wobei sie zählt, welchen Anteil der Szenarien jede Option gewinnt.
+
+Im analysierten Fall lautete das Ergebnis 82 % / 18 % / 0 %. Das ist handlungsleitend auf eine Weise, wie es eine Rangliste nicht ist: Die Siegeroption ist solide, aber nicht einstimmig, die zweite ist unter anderen Prioritäten eine vertretbare Alternative, und die dritte gewinnt in keinem vernünftigen Szenario.
+
+Ein Detail, das ich für nicht verhandelbar halte: Der Zufallsstartwert ist fixiert und dokumentiert. Jede Person kann den Bericht neu erzeugen und erhält exakt dieselben Zahlen. Eine nicht reproduzierbare Sensitivitätsanalyse ist nicht glaubwürdiger als die Matrix, die sie validieren sollte.
+
+<Nota>
+
+Die Lehre, die ich daraus ziehe: Einen Sieger zu präsentieren, ohne zu sagen, wie weit er dem Zweitplatzierten voraus ist, verbirgt genau jene Information, die die entscheidende Person braucht. Die Ehrlichkeit einer Analyse liegt nicht in der Zahl. Sie liegt im Intervall.
+
+</Nota>

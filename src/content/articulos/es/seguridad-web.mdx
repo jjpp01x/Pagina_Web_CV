@@ -1,0 +1,66 @@
+---
+title: "La falsa confianza: por qué los sistemas no caen por ataques sofisticados"
+subtitle: "Análisis de los vectores de ataque más comunes y por qué siguen funcionando décadas después de haber sido documentados"
+description: "La falsa confianza: por qué los sistemas no caen por ataques sofisticados. Análisis de seguridad web por Jose Palacios Beortegui — permisos, SQL injection, contraseñas y cifrado."
+category: "Seguridad web"
+date: "2026-08-11"
+image: "https://josepalacios.site/img/og-seguridad.png"
+lang: "es"
+translationKey: "seguridad-web"
+---
+
+En 2017, la exfiltración de datos personales de 147 millones de personas en Equifax no empezó con un ataque de película. Empezó con una vulnerabilidad de inyección conocida y sin parchear.
+
+Esta es la constante que encontré al analizar la seguridad web para uno de mis módulos del grado: los sistemas más comprometidos no caen por sofisticación del atacante, sino por la **falsa confianza de sus diseñadores**. Se asumió que los datos de entrada serían legítimos, que los usuarios internos eran confiables, o que la oscuridad equivalía a seguridad.
+
+## 1. Permisos mal configurados: la puerta que nadie vigila
+
+Un servidor web con permisos incorrectos no necesita ser «hackeado»: está abierto. Directorios listables, archivos de configuración legibles y procesos corriendo con más privilegios de los necesarios convierten un despiste de administración en una brecha.
+
+El **principio de mínimo privilegio** no es una recomendación: es la primera línea de defensa. Cada proceso, usuario y servicio debe tener acceso únicamente a los recursos que necesita para funcionar — ni uno más. Un servidor web no necesita acceso de escritura a directorios de sistema. Un usuario de base de datos de solo lectura no necesita permisos `DROP TABLE`.
+
+La configuración incorrecta de permisos es sistémica porque es invisible: no rompe nada hasta que alguien lo explota. Por eso no se arregla.
+
+## 2. Inyección SQL: la crisis de identidad de los datos
+
+La inyección SQL funciona porque el servidor no distingue entre datos e instrucciones: un campo de formulario deja de ser un nombre y pasa a ser código ejecutable. Existen variantes in-band, inferenciales y out-of-band, pero todas comparten la misma raíz: **la entrada del usuario llega directamente al intérprete SQL sin validación**.
+
+La defensa principal lleva décadas disponible: **consultas parametrizadas**, complementadas con validación de entrada estricta y defensa en profundidad. No se trata de tecnología nueva ni de herramientas costosas. Se trata de un hábito de programación.
+
+Que la inyección SQL siga en el top del OWASP Top 10 dice más de nuestros hábitos colectivos como industria que de la sofisticación de los atacantes. Es una vulnerabilidad documentada, con contramedidas claras, que sigue siendo explotada a escala masiva.
+
+<Destacado>
+
+«La seguridad no falla porque los atacantes sean brillantes. Falla porque los defensores asumen que el sistema se usará como fue diseñado.»
+
+</Destacado>
+
+## 3. Contraseñas: el vector matemático y el humano
+
+Los ataques a credenciales combinan dos dimensiones que requieren contramedidas distintas: la **matemática** y la **psicología**.
+
+En el plano matemático: hashes débiles o sin salt, fuerza bruta facilitada por hardware moderno, y rainbow tables que convierten hashes en contraseñas en segundos. La defensa es técnica: algoritmos de hashing robustos y lentos por diseño (bcrypt, Argon2, scrypt), con salt único por contraseña para invalidar los ataques de tabla precalculada.
+
+En el plano psicológico: phishing, credential stuffing con bases de datos filtradas, y ataques man-in-the-middle. La defensa aquí es la **autenticación multifactor** — para que una contraseña robada no sea suficiente — y la formación de usuarios, que sigue siendo el eslabón más débil de cualquier cadena de seguridad.
+
+## 4. El canal: de la postal al candado
+
+Enviar datos por HTTP es enviar una postal: cualquiera en el camino puede leerla. Un atacante en la misma red, un ISP, un nodo intermedio. Las credenciales, las cookies de sesión, los datos personales — todo viaja en texto plano.
+
+**SSL/TLS**, apoyado en criptografía de clave pública, convierte esa postal en un sobre lacrado. El servidor presenta un certificado que prueba su identidad, se negocia una clave de sesión efímera, y a partir de ahí el canal está cifrado. Las VPN extienden esa protección a nivel de red para conexiones que van más allá del navegador.
+
+Sin canal cifrado, todo lo anterior es irrelevante: las credenciales más robustas, el código más defensivo, los permisos más restrictivos — todo se neutraliza si la transmisión viaja en claro.
+
+## La conclusión transversal
+
+Ninguna de estas cuatro defensas requiere tecnología exótica. Requieren asumir, en la **fase de diseño**, que la entrada será maliciosa, que la red está escuchando y que las credenciales acabarán filtrándose.
+
+La seguridad no es una capa que se añade al final del desarrollo: es una premisa desde la primera línea de código. El coste de incorporarla en diseño es marginal. El coste de añadirla después de una brecha — en datos, reputación y regulación — puede ser existencial.
+
+Equifax lo aprendió de la peor manera. La vulnerabilidad que les costó 147 millones de registros y 575 millones de dólares en acuerdos tenía parche disponible dos meses antes del ataque.
+
+<Nota>
+
+Este artículo resume el análisis que desarrollé en el módulo **Internet Technology and Security (CEAC4011)** de mi BSc (Hons) Applied Computing en University of Wales Trinity Saint David — un ensayo de 2.577 palabras con OWASP, NIST y el caso Equifax como fuentes principales. Encantado de discutirlo en comentarios.
+
+</Nota>
