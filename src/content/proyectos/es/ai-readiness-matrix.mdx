@@ -1,0 +1,66 @@
+---
+title: "AI Readiness Matrix"
+subtitle: "Comprar, alquilar o construir — y hasta dónde aguanta esa conclusión"
+description: "AI Readiness Matrix: motor reproducible de evaluación tecnológica con criterios en YAML versionado y análisis de sensibilidad sobre 10.000 escenarios."
+tipo: "Motor de evaluación · proyecto propio"
+pregunta: "¿Comprar, alquilar o construir?"
+estado: "Motor completo"
+repo: "https://github.com/jjpp01x/ai-readiness-matrix"
+image: "https://josepalacios.site/img/og-image.png"
+lang: "es"
+translationKey: "ai-readiness-matrix"
+stack: ["Python", "YAML", "Streamlit", "pytest", "Monte Carlo"]
+deepTech: true
+---
+
+## El problema
+
+Cualquiera puede montar una matriz ponderada que confirme la opción que ya tenía en mente. Basta con mover un peso. Por eso una matriz de decisión sin análisis de sensibilidad no es análisis: es una opinión con decimales.
+
+El caso de trabajo es real y concreto: un minorista de material de esquí renueva catálogo cada temporada, y lo que no vende se liquida con descuento la temporada siguiente. Sobre-prever y sub-prever no cuestan lo mismo — así que optimizar métricas simétricas como MAPE o RMSE, que es lo que vende por defecto la mayoría de herramientas de previsión, es la métrica equivocada para ese negocio.
+
+## Cómo funciona
+
+<Paso n="01" titulo="Criterios versionados">
+
+El criterio de decisión vive en un YAML con una rúbrica escrita para cada nivel del 1 al 5. Cambiar un peso y regenerar es la operación normal, no una excepción.
+
+</Paso>
+
+<Paso n="02" titulo="Evaluación con evidencia">
+
+Cada puntuación se justifica contra documentación concreta. Las cifras que son estimaciones se marcan como tales en la salida, en lugar de presentarse como mediciones.
+
+</Paso>
+
+<Paso n="03" titulo="Punto de cambio por criterio">
+
+Para cada criterio se calcula el peso exacto al que cambiaría el ganador. Si ese margen es estrecho, la recomendación es frágil y el informe lo dice.
+
+</Paso>
+
+<Paso n="04" titulo="Robustez global">
+
+Se perturban todos los pesos a la vez muestreando una distribución de Dirichlet sobre 10.000 escenarios con semilla fija, y se reporta qué fracción gana cada herramienta. Las cifras se reproducen exactamente.
+
+</Paso>
+
+<Paso n="05" titulo="Informe generado">
+
+El informe en Markdown se genera desde los datos. Ninguna cifra se escribe a mano.
+
+</Paso>
+
+## La decisión que más importa
+
+Elegir la función de pérdida *es* el análisis; todo lo que viene después es aritmética. El criterio que más pesa en esta evaluación es la capacidad de optimizar una pérdida asimétrica (pinball loss, previsión por cuantiles), porque es exactamente lo que distingue este problema de una previsión genérica.
+
+Sobre el caso concreto, el resultado es que la opción de construir gana el 82 % de los escenarios simulados, alquilar el 18 % y comprar el 0 %. Ese reparto dice mucho más que un ranking: cuantifica cuánta confianza merece la recomendación.
+
+## Qué *no* hace
+
+El motor no hace benchmarks de las herramientas. Las puntuaciones salen de documentación publicada, con sus limitaciones declaradas. Evalúa la evidencia disponible, no el rendimiento medido en tu propio dato.
+
+## Lo que aprendí
+
+Que la parte defendible de una recomendación no es el número final, sino el rango en el que ese número sobrevive. Presentar un ganador sin decir a qué distancia está del segundo es ocultar justo la información que necesita quien decide.

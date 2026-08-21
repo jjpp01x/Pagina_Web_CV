@@ -1,0 +1,58 @@
+---
+title: "FTP Network Lab"
+subtitle: "Red virtual con VirtualBox, Windows Server 2019, IIS y FileZilla · Networking"
+description: "FTP Network Lab — Red virtual con VirtualBox, Windows Server 2019, IIS y FileZilla. Configuración de usuarios y permisos. Proyecto académico de Jose Palacios Beortegui."
+estado: "Completado"
+modulo: "Networking & Infrastructure"
+institucion: "University of Wales Trinity Saint David / CESTE"
+repo: "https://github.com/jjpp01x/Level4-Computing-engeniering"
+image: "https://josepalacios.site/img/og-image.png"
+lang: "es"
+translationKey: "redes-vm"
+stack: ["VirtualBox", "Windows Server 2019", "IIS", "FileZilla Server", "FTP/FTPS", "Active Directory"]
+deepTech: false
+---
+
+## El problema
+
+El objetivo era diseñar e implementar una red local virtualizada con un servidor FTP funcional, simulando un entorno empresarial real. El sistema debía permitir la transferencia segura de archivos entre máquinas virtuales con control de acceso por usuarios y permisos por directorio.
+
+La restricción principal era implementarlo exclusivamente con herramientas de Windows Server, sin software adicional de terceros salvo FileZilla como cliente FTP para las pruebas.
+
+## Proceso de desarrollo
+
+<Paso n="01" titulo="Diseño de la topología de red">
+
+Configuración de VirtualBox con dos VMs: servidor (Windows Server 2019) y cliente (Windows 10). Red interna con adaptador host-only para aislamiento del entorno y asignación de IPs estáticas.
+
+</Paso>
+
+<Paso n="02" titulo="Instalación y configuración de Windows Server 2019">
+
+Instalación del sistema operativo servidor, configuración de red, habilitación de roles necesarios mediante Server Manager: Web Server (IIS) y FTP Server.
+
+</Paso>
+
+<Paso n="03" titulo="Configuración del servicio FTP en IIS">
+
+Creación del sitio FTP en IIS Manager, enlace al puerto 21, configuración de directorio raíz, habilitación de SSL/TLS para FTPS y configuración del firewall de Windows para permitir el tráfico FTP.
+
+</Paso>
+
+<Paso n="04" titulo="Gestión de usuarios y permisos">
+
+Creación de usuarios locales en Windows Server, asignación de permisos de lectura/escritura por directorio mediante IIS Authorization Rules. Configuración de directorios virtuales por usuario con aislamiento de sesión.
+
+</Paso>
+
+<Paso n="05" titulo="Pruebas con FileZilla">
+
+Verificación de conexión FTP y FTPS desde la VM cliente usando FileZilla. Pruebas de subida, descarga, creación de directorios y verificación de que los permisos por usuario funcionan correctamente.
+
+</Paso>
+
+## Lo que aprendí
+
+Configurar un servidor FTP desde cero en Windows Server me dio una comprensión real de cómo funcionan los protocolos de transferencia de archivos a nivel de infraestructura — algo que los servicios cloud abstraen completamente. Entender la diferencia entre FTP, FTPS y SFTP, y por qué el FTP sin cifrado es inaceptable en producción, fue un aprendizaje clave de seguridad.
+
+También fue mi primera experiencia seria con virtualización de red, un fundamento esencial para cualquier rol de IT o DevOps.

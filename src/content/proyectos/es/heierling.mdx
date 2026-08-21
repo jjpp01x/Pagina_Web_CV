@@ -1,0 +1,64 @@
+---
+title: "SkiCraft Custom Boots — Inventory DB"
+subtitle: "Sistema de gestión de inventario en PostgreSQL · Information Engineering (CEAC4010)"
+description: "SkiCraft Custom Boots — Sistema de gestión de inventario en PostgreSQL con PL/pgSQL, triggers y control de acceso por roles. Proyecto académico de Jose Palacios Beortegui."
+estado: "Completado"
+modulo: "Information Engineering — CEAC4010"
+institucion: "University of Wales Trinity Saint David / CESTE"
+repo: "https://github.com/jjpp01x/heierling"
+image: "https://josepalacios.site/img/og-image.png"
+lang: "es"
+translationKey: "heierling"
+stack: ["PostgreSQL", "PL/pgSQL", "Docker", "Debian Linux", "SQL"]
+deepTech: false
+---
+
+## El problema
+
+SkiCraft Custom Boots es una tienda especializada en botas de esquí a medida con sede en Davos. El negocio gestionaba su inventario mediante hojas de cálculo Excel, lo que generaba errores de stock, duplicados de datos y la imposibilidad de consultar el historial de pedidos de forma eficiente.
+
+El objetivo del proyecto era diseñar e implementar una base de datos relacional completa que sustituyera el sistema manual, con integridad referencial, acceso por roles y automatización de operaciones de negocio mediante funciones y disparadores.
+
+## Proceso de desarrollo
+
+<Paso n="01" titulo="Análisis de requisitos y modelado E/R">
+
+Identificación de entidades (Product, Customer, Order, Supplier, Employee), atributos y relaciones. Diseño del diagrama Entidad-Relación con cardinalidades y restricciones de integridad.
+
+</Paso>
+
+<Paso n="02" titulo="Implementación del esquema SQL">
+
+Traducción del modelo E/R a sentencias `CREATE TABLE` en PostgreSQL con claves primarias, foráneas, restricciones `CHECK`, valores por defecto y tipos de dato apropiados para cada entidad.
+
+</Paso>
+
+<Paso n="03" titulo="Funciones PL/pgSQL">
+
+Desarrollo de funciones almacenadas para todas las operaciones de negocio: registro de pedidos, actualización de stock, cálculo de totales, búsqueda de productos por categoría y generación de informes de inventario.
+
+</Paso>
+
+<Paso n="04" titulo="Triggers y automatización">
+
+Implementación de disparadores `AFTER INSERT` y `AFTER UPDATE` para actualizar automáticamente el stock al procesar pedidos y generar alertas cuando el inventario cae por debajo del umbral mínimo.
+
+</Paso>
+
+<Paso n="05" titulo="Control de acceso por roles">
+
+Creación de roles de base de datos (`admin`, `staff`, `readonly`) con permisos granulares mediante `GRANT` y `REVOKE`. Cada rol accede únicamente a las tablas y operaciones que le corresponden.
+
+</Paso>
+
+<Paso n="06" titulo="Entorno Docker">
+
+Despliegue de PostgreSQL en contenedor Docker sobre Debian Linux para reproducibilidad del entorno. El repositorio incluye instrucciones para levantar la base de datos en cualquier máquina con un único comando.
+
+</Paso>
+
+## Lo que aprendí
+
+Este proyecto fue mi primera implementación completa de una base de datos relacional de producción. La diferencia entre escribir SQL básico y diseñar un sistema con integridad referencial real, triggers y roles es sustancial — aprendí que la mayor parte del trabajo está en el modelado previo, no en el código SQL en sí.
+
+También fue mi primera experiencia con Docker como herramienta de reproducibilidad de entornos, un patrón que ahora uso en todos mis proyectos.
