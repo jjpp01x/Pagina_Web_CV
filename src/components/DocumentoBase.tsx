@@ -13,29 +13,29 @@ import {
   RevealFx,
   SpacingToken,
 } from "@once-ui-system/core";
-import { Footer, Header, RouteGuard, Providers } from "@/components";
-import { baseURL, effects, fonts, style, dataStyle, home, person } from "@/resources";
+import { Footer, Header, Providers } from "@/components";
+import { effects, fonts, style, dataStyle } from "@/resources";
+import type { Idioma } from "@/lib/rutas";
 
-export async function generateMetadata() {
-  return Meta.generate({
-    title: home.title,
-    description: home.description,
-    baseURL: baseURL,
-    path: home.path,
-    image: home.image,
-  });
-}
-
-export default async function RootLayout({
+/**
+ * Documento HTML compartido por los tres idiomas.
+ *
+ * Existe porque cada idioma necesita su propio <html lang>, y en Next eso
+ * obliga a tener un root layout por idioma. Para no triplicar este arbol, los
+ * tres layouts se limitan a envolver esto pasando su idioma.
+ */
+export function DocumentoBase({
+  lang,
   children,
 }: Readonly<{
+  lang: Idioma;
   children: React.ReactNode;
 }>) {
   return (
     <Flex
       suppressHydrationWarning
       as="html"
-      lang={person.locale ?? "en"}
+      lang={lang}
       fillWidth
       className={classNames(
         fonts.heading.variable,
@@ -159,7 +159,7 @@ export default async function RootLayout({
           <Header />
           <Flex zIndex={0} fillWidth padding="l" horizontal="center" flex={1}>
             <Flex horizontal="center" fillWidth minHeight="0">
-              <RouteGuard>{children}</RouteGuard>
+              {children}
             </Flex>
           </Flex>
           <Footer />
