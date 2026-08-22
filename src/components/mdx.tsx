@@ -77,8 +77,26 @@ function createImage({ alt, src, ...props }: MediaProps & { src: string }) {
   );
 }
 
-function slugify(str: string): string {
-  const strWithAnd = str.replace(/&/g, " and "); // Replace & with 'and'
+/**
+ * Texto plano de un arbol de nodos React.
+ *
+ * Hace falta porque un titular con negrita o codigo (`## Que **no** hace`) llega
+ * como array de nodos, no como cadena. La plantilla hacia `children as string` y
+ * llamaba a .replace() directamente, lo que rompia el prerenderizado con
+ * "b.replace is not a function" en cuanto un h2 llevaba marcado dentro.
+ */
+function textoDe(nodo: React.ReactNode): string {
+  if (nodo === null || nodo === undefined || typeof nodo === "boolean") return "";
+  if (typeof nodo === "string" || typeof nodo === "number") return String(nodo);
+  if (Array.isArray(nodo)) return nodo.map(textoDe).join("");
+  if (typeof nodo === "object" && "props" in nodo) {
+    return textoDe((nodo as { props?: { children?: React.ReactNode } }).props?.children);
+  }
+  return "";
+}
+
+function slugify(nodo: React.ReactNode): string {
+  const strWithAnd = textoDe(nodo).replace(/&/g, " and "); // Replace & with 'and'
   return transliterate(strWithAnd, {
     lowercase: true,
     separator: "-", // Replace spaces with -
@@ -90,7 +108,7 @@ function createHeading(as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6") {
     children,
     ...props
   }: Omit<React.ComponentProps<typeof HeadingLink>, "as" | "id">) => {
-    const slug = slugify(children as string);
+    const slug = slugify(children);
     return (
       <HeadingLink marginTop="24" marginBottom="12" as={as} id={slug} {...props}>
         {children}
@@ -205,7 +223,11 @@ const components = {
 };
 
 type CustomMDXProps = MDXRemoteProps & {
-  components?: typeof components;
+  /**
+   * Parcial a proposito: los MDX migrados solo aportan <Nota>, <Destacado> y
+   * <Paso>, y se fusionan sobre el mapa base en vez de reemplazarlo.
+   */
+  components?: Partial<typeof components> & Record<string, React.ComponentType<never>>;
 };
 
 export function CustomMDX(props: CustomMDXProps) {

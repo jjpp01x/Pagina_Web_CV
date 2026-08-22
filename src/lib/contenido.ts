@@ -88,6 +88,19 @@ export function getProyectos(lang: Idioma): Proyecto[] {
   );
 }
 
+/**
+ * Idioma en el que existen de verdad las fichas de proyecto.
+ *
+ * Por decision de Jose (2026-08-21) las fichas se traducen a ES y EN, no a DE.
+ * Un lector aleman va a la version inglesa, que le sirve; servirle espanol bajo
+ * /de/ no le sirve y ademas mentiria al hreflang.
+ */
+export function idiomaConProyectos(lang: Idioma): Idioma {
+  if (fs.existsSync(path.join(RAIZ, "proyectos", lang))) return lang;
+  if (fs.existsSync(path.join(RAIZ, "proyectos", "en"))) return "en";
+  return "es";
+}
+
 export function getProyecto(lang: Idioma, slug: string): Proyecto | undefined {
   return getProyectos(lang).find((p) => p.slug === slug);
 }
