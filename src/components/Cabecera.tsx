@@ -9,12 +9,50 @@
  * contacto— para que quien ya conocia la web no tenga que reaprenderla.
  */
 import { Row, ToggleButton } from "@once-ui-system/core";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
 
 import { ConmutadorIdioma } from "@/components/ConmutadorIdioma";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { persona } from "@/content/persona";
 import { textos } from "@/content/textos";
 import { construirMapaAlternativas } from "@/lib/alternativas";
 import { type Idioma, ruta } from "@/lib/rutas";
+
+/**
+ * Iconos de GitHub y LinkedIn, arriba a la derecha como en el sitio anterior.
+ * SVG de un set coherente (Font Awesome via react-icons), no emojis: el
+ * diagnostico numero 1 del encargo era precisamente usar emojis como iconos.
+ */
+function Sociales() {
+  const enlaces = [
+    { href: persona.github, etiqueta: "GitHub", Icono: FaGithub },
+    { href: persona.linkedin, etiqueta: "LinkedIn", Icono: FaLinkedinIn },
+  ];
+  return (
+    <Row gap="4" vertical="center">
+      {enlaces.map(({ href, etiqueta, Icono }) => (
+        <a
+          key={etiqueta}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={etiqueta}
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "2rem",
+            height: "2rem",
+            borderRadius: "var(--radius-s)",
+            color: "var(--neutral-on-background-weak)",
+          }}
+        >
+          <Icono size={16} aria-hidden="true" />
+        </a>
+      ))}
+    </Row>
+  );
+}
 
 export function Cabecera({ lang }: { lang: Idioma }) {
   const t = textos(lang);
@@ -50,6 +88,7 @@ export function Cabecera({ lang }: { lang: Idioma }) {
           ))}
         </Row>
         <Row gap="8" vertical="center">
+          <Sociales />
           <ConmutadorIdioma lang={lang} mapa={mapa} />
           <ThemeToggle />
         </Row>

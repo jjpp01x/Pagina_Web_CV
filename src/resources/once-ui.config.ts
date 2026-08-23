@@ -80,7 +80,7 @@ const style: StyleConfig = {
   border: "conservative", // rounded | playful | conservative | sharp
   surface: "filled", // filled | translucent
   transition: "all", // all | micro | macro
-  scaling: "100", // 90 | 95 | 100 | 105 | 110
+  scaling: "95", // 90 | 95 | 100 | 105 | 110
 };
 
 const dataStyle: DataStyleConfig = {

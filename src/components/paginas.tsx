@@ -31,13 +31,28 @@ import { type Idioma, ruta } from "@/lib/rutas";
 /** Carril de lectura. Once UI mide maxWidth en rem, no en cadena CSS. */
 const ANCHO = { maxWidth: 48 } as const;
 
-function Seccion({ titulo, children }: { titulo: string; children: React.ReactNode }) {
+function Seccion({
+  titulo,
+  children,
+  pie,
+}: {
+  titulo: string;
+  children: React.ReactNode;
+  pie?: { texto: string; href: string };
+}) {
   return (
-    <Column fillWidth gap="16" paddingY="32">
-      <Heading as="h2" variant="heading-strong-l">
+    <Column fillWidth gap="16" paddingY="40">
+      <Heading as="h2" variant="heading-strong-m">
         {titulo}
       </Heading>
       {children}
+      {pie && (
+        <Row paddingTop="4">
+          <Button href={pie.href} variant="tertiary" size="s" arrowIcon>
+            {pie.texto}
+          </Button>
+        </Row>
+      )}
     </Column>
   );
 }
@@ -57,13 +72,27 @@ function Cabecera({ titulo, subtitulo }: { titulo: string; subtitulo?: string })
   );
 }
 
+/** Los tres PDF, en el orden del sitio anterior. Sin banderas emoji. */
+const CV = [
+  { lang: "ES", href: "/docs/CV_Jose_Palacios_ES.pdf" },
+  { lang: "EN", href: "/docs/CV_Jose_Palacios_EN.pdf" },
+  { lang: "DE", href: "/docs/CV_Jose_Palacios_DE.pdf" },
+];
+
 export function Portada({ lang }: { lang: Idioma }) {
   const t = textos(lang);
+  const proyectos = getProyectos(lang).filter((p) => p.deepTech).slice(0, 3);
+  const articulos = getArticulos(lang).slice(0, 3);
 
   return (
     <Column fillWidth gap="8" horizontal="center" paddingX="l">
-      {/* Hero: foto, saludo, titular y descripcion, como en el sitio anterior. */}
-      <Row fillWidth gap="24" paddingY="48" vertical="center" wrap {...ANCHO}>
+      {/*
+        Hero: foto, saludo, titular y descripcion, como en el sitio anterior.
+        La fila se alinea arriba (vertical="start") para que el borde superior
+        de la foto cuadre con la linea del saludo; centrada, la foto quedaba
+        descolgada respecto al texto.
+      */}
+      <Row fillWidth gap="24" paddingY="40" vertical="start" wrap {...ANCHO}>
         {/*
           <img> nativo en vez del <Media> de Once UI: con output: export e
           images.unoptimized, Media emitia width="0" height="0" y la foto se
@@ -72,38 +101,62 @@ export function Portada({ lang }: { lang: Idioma }) {
         <img
           src={persona.foto}
           alt={persona.fotoAlt}
-          width={160}
-          height={160}
+          width={132}
+          height={132}
           loading="eager"
           style={{
-            width: "160px",
-            height: "160px",
-            minWidth: "160px",
+            width: "132px",
+            height: "132px",
+            minWidth: "132px",
             objectFit: "cover",
-            borderRadius: "var(--radius-l)",
+            objectPosition: "center 20%",
+            borderRadius: "var(--radius-m)",
             border: "1px solid var(--neutral-alpha-medium)",
           }}
         />
-        <Column gap="12" flex={1} style={{ minWidth: "16rem" }}>
-          <Text variant="body-default-m" onBackground="neutral-medium">
+        <Column gap="8" flex={1} style={{ minWidth: "17rem" }}>
+          <Text variant="body-default-s" onBackground="neutral-weak">
             {t.hero.saludo}{" "}
-            <Text as="span" variant="body-strong-m" onBackground="neutral-strong">
+            <Text as="span" variant="body-strong-s" onBackground="neutral-strong">
               {persona.nombreCompleto}
             </Text>
           </Text>
-          <Heading as="h1" variant="display-strong-s" wrap="balance">
+          {/*
+            Un escalon por debajo del display: el titular es largo y a tamano
+            display se comia la pantalla. Con heading-strong-l la jerarquia
+            entre titular, cuerpo y etiquetas queda proporcionada y se lee mas
+            formal, que es lo que pidio Jose.
+          */}
+          <Heading as="h1" variant="heading-strong-l" wrap="balance">
             {t.hero.titulo}
           </Heading>
-          <Text variant="body-default-m" onBackground="neutral-medium">
+          <Text variant="body-default-s" onBackground="neutral-medium">
             {t.hero.descripcion}
           </Text>
-          <Row gap="8" paddingTop="4" wrap>
-            <Button href={ruta.contacto(lang)} variant="primary" size="m">
+          <Row gap="8" paddingTop="8" wrap vertical="center">
+            <Button href={ruta.contacto(lang)} variant="primary" size="s">
               {t.hero.btn1}
             </Button>
-            <Button href={ruta.formacion(lang)} variant="secondary" size="m">
+            <Button href={ruta.formacion(lang)} variant="secondary" size="s">
               {t.hero.btn2}
             </Button>
+          </Row>
+          <Row gap="8" paddingTop="4" wrap vertical="center">
+            <Text variant="label-default-s" onBackground="neutral-weak">
+              {t.descargarCV}:
+            </Text>
+            {CV.map((cv) => (
+              <Button
+                key={cv.lang}
+                href={cv.href}
+                download
+                variant="tertiary"
+                size="s"
+                data-border="rounded"
+              >
+                {cv.lang}
+              </Button>
+            ))}
           </Row>
         </Column>
       </Row>
@@ -143,6 +196,31 @@ export function Portada({ lang }: { lang: Idioma }) {
               </Column>
             ))}
           </Grid>
+        </Seccion>
+
+        <Line background="neutral-alpha-weak" />
+
+        {/*
+          Muestra de tres proyectos y tres articulos, cada uno en su seccion y
+          con su enlace al listado completo. Los titulos son los que ya usaba el
+          sitio ("Proyectos", "Articulos"): no se inventa ninguno.
+        */}
+        <Seccion titulo={t.proyectos.titulo} pie={{ texto: t.nav.proyectos, href: ruta.proyectos(lang) }}>
+          <Grid columns="3" m={{ columns: 2 }} s={{ columns: 1 }} gap="12" fillWidth>
+            {proyectos.map((p) => (
+              <TarjetaProyecto key={p.slug} proyecto={p} lang={lang} />
+            ))}
+          </Grid>
+        </Seccion>
+
+        <Line background="neutral-alpha-weak" />
+
+        <Seccion titulo={t.articulos.titulo} pie={{ texto: t.nav.articulos, href: ruta.articulos(lang) }}>
+          <Column gap="12" fillWidth>
+            {articulos.map((a) => (
+              <TarjetaArticulo key={a.slug} articulo={a} lang={lang} />
+            ))}
+          </Column>
         </Seccion>
       </Column>
     </Column>
