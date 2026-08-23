@@ -30,6 +30,10 @@ export type Certificacion = {
 
 export const persona = {
   nombre: "José Palacios",
+  /** El del CV y el que abre la portada: nombre y dos apellidos. */
+  nombreCompleto: "José Palacios Beortegui",
+  foto: "/img/jpalacios.webp",
+  fotoAlt: "José Palacios Beortegui, sonriendo, en traje",
   rol: "Analista deep tech",
   /** Fijado por Jose el 2026-08-21. NO "Zurich": Heierling (Davos) acabo en abril de 2026. */
   ubicacion: "España–Suiza",

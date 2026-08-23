@@ -62,27 +62,74 @@ export function Portada({ lang }: { lang: Idioma }) {
 
   return (
     <Column fillWidth gap="24" horizontal="center" paddingX="l">
-      <Column fillWidth gap="16" paddingY="48" {...ANCHO}>
-        <Text variant="label-default-s" onBackground="neutral-medium">
-          {persona.nombre}
-        </Text>
-        <Heading as="h1" variant="display-strong-m" wrap="balance">
-          {t.hero.titular}
-        </Heading>
-        <Text variant="body-default-m" onBackground="neutral-medium">
-          {persona.rol} · BSc (Hons) Applied Computing, UWTSD · {persona.ubicacion}
-        </Text>
-        <Text variant="body-default-m" onBackground="neutral-medium">
-          {t.hero.entradilla}
-        </Text>
-        <Row gap="8" paddingTop="8" wrap>
-          <Button href={ruta.proyectos(lang)} variant="primary" size="m">
-            {t.hero.verProyectos}
-          </Button>
-          <Button href={ruta.articulos(lang)} variant="secondary" size="m">
-            {t.hero.leerArticulos}
-          </Button>
-        </Row>
+      {/*
+        Hero con foto y nombre, como en el sitio anterior. Sin la foto y sin el
+        nombre delante, la portada se leia como la de una agencia y no como la
+        de una persona. Lo que si cambia respecto al original es el orden del
+        mensaje: la propuesta va antes que la limitacion.
+      */}
+      <Row fillWidth gap="24" paddingY="48" vertical="center" wrap {...ANCHO}>
+        {/*
+          <img> nativo en vez del <Media> de Once UI: con output: export y
+          images.unoptimized, Media emitia width="0" height="0" y la foto se
+          veia como un hueco. La imagen ya viene optimizada (webp de 74 KB), asi
+          que no hay nada que ganar pasandola por next/image.
+        */}
+        <img
+          src={persona.foto}
+          alt={persona.fotoAlt}
+          width={160}
+          height={160}
+          loading="eager"
+          style={{
+            width: "160px",
+            height: "160px",
+            minWidth: "160px",
+            objectFit: "cover",
+            borderRadius: "var(--radius-l)",
+            border: "1px solid var(--neutral-alpha-medium)",
+          }}
+        />
+        <Column gap="8" flex={1} style={{ minWidth: "16rem" }}>
+          <Text variant="body-default-m" onBackground="neutral-medium">
+            {t.hero.saludo}{" "}
+            <Text as="span" variant="body-strong-m" onBackground="neutral-strong">
+              {persona.nombreCompleto}
+            </Text>
+          </Text>
+          <Heading as="h1" variant="display-strong-s" wrap="balance">
+            {t.hero.titular}
+          </Heading>
+          <Text variant="label-default-s" onBackground="neutral-weak">
+            {persona.rol} · BSc (Hons) Applied Computing, UWTSD · {persona.ubicacion}
+          </Text>
+        </Column>
+      </Row>
+
+      <Column fillWidth {...ANCHO}>
+        {/* Sobre mi en parrafo, justo debajo del hero: es una web de CV. */}
+        <Column fillWidth gap="12" paddingBottom="24">
+          <Text variant="body-default-l" onBackground="neutral-medium">
+            {t.portada.sobreMi}
+          </Text>
+          <Text variant="body-default-m" onBackground="neutral-medium">
+            <Text as="span" variant="body-strong-m" onBackground="neutral-strong">
+              {t.portada.ahoraTitulo}:{" "}
+            </Text>
+            {t.portada.ahora}
+          </Text>
+          <Row gap="8" paddingTop="8" wrap>
+            <Button href={ruta.proyectos(lang)} variant="primary" size="m">
+              {t.hero.verProyectos}
+            </Button>
+            <Button href={ruta.formacion(lang)} variant="secondary" size="m">
+              {t.portada.verExperiencia}
+            </Button>
+            <Button href={ruta.contacto(lang)} variant="tertiary" size="m">
+              {t.portada.contactar}
+            </Button>
+          </Row>
+        </Column>
       </Column>
 
       <Column fillWidth {...ANCHO}>
@@ -112,13 +159,6 @@ export function Portada({ lang }: { lang: Idioma }) {
           </Column>
         </Seccion>
 
-        <Line background="neutral-alpha-weak" />
-
-        <Seccion titulo={t.portada.sobreMiTitulo}>
-          <Text variant="body-default-m" onBackground="neutral-medium">
-            {t.portada.sobreMi}
-          </Text>
-        </Seccion>
       </Column>
     </Column>
   );

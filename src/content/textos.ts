@@ -13,12 +13,17 @@ import type { Idioma } from "@/lib/rutas";
 export type Textos = {
   nav: { inicio: string; proyectos: string; articulos: string; formacion: string; contacto: string };
   hero: {
+    saludo: string;
     titular: string;
     entradilla: string;
     verProyectos: string;
     leerArticulos: string;
   };
   portada: {
+    ahoraTitulo: string;
+    ahora: string;
+    verExperiencia: string;
+    contactar: string;
     proyectosTitulo: string;
     proyectosPie: string;
     articulosTitulo: string;
@@ -36,6 +41,7 @@ export type Textos = {
 const ES: Textos = {
   nav: { inicio: "Inicio", proyectos: "Proyectos", articulos: "Artículos", formacion: "Formación", contacto: "Contacto" },
   hero: {
+    saludo: "Hola, soy",
     titular:
       "Distingo qué tecnología está lista para producción y cuál conlleva riesgo real, antes de que una empresa apueste por ella.",
     entradilla:
@@ -44,6 +50,10 @@ const ES: Textos = {
     leerArticulos: "Leer artículos",
   },
   portada: {
+    ahoraTitulo: "Ahora mismo",
+    ahora: "Estudio BSc (Hons) Applied Computing en la UWTSD y dirijo Epokan, formación en IA y cumplimiento del Reglamento Europeo de IA. Antes trabajé en Davos atendiendo a clientes internacionales en inglés y alemán.",
+    verExperiencia: "Ver mi experiencia",
+    contactar: "Contactar",
     proyectosTitulo: "Trabajo que puedes verificar",
     proyectosPie: "Ver los proyectos",
     articulosTitulo: "Escrito recientemente",
@@ -91,6 +101,7 @@ const ES: Textos = {
 const EN: Textos = {
   nav: { inicio: "Home", proyectos: "Projects", articulos: "Articles", formacion: "Education", contacto: "Contact" },
   hero: {
+    saludo: "Hi, I am",
     titular:
       "I tell which technology is ready for production and which carries real risk, before a company bets on it.",
     entradilla:
@@ -99,6 +110,10 @@ const EN: Textos = {
     leerArticulos: "Read articles",
   },
   portada: {
+    ahoraTitulo: "Right now",
+    ahora: "I am studying BSc (Hons) Applied Computing at UWTSD and I run Epokan, training on AI and compliance with the European AI Act. Before that I worked in Davos serving international clients in English and German.",
+    verExperiencia: "See my experience",
+    contactar: "Get in touch",
     proyectosTitulo: "Work you can verify",
     proyectosPie: "See the projects",
     articulosTitulo: "Recently written",
@@ -146,6 +161,7 @@ const EN: Textos = {
 const DE: Textos = {
   nav: { inicio: "Start", proyectos: "Projekte", articulos: "Artikel", formacion: "Ausbildung", contacto: "Kontakt" },
   hero: {
+    saludo: "Hallo, ich bin",
     titular:
       "Ich unterscheide, welche Technologie produktionsreif ist und welche ein echtes Risiko birgt — bevor ein Unternehmen darauf setzt.",
     entradilla:
@@ -154,6 +170,10 @@ const DE: Textos = {
     leerArticulos: "Artikel lesen",
   },
   portada: {
+    ahoraTitulo: "Im Moment",
+    ahora: "Ich studiere BSc (Hons) Applied Computing an der UWTSD und leite Epokan, Schulungen zu KI und zur Einhaltung der EU-KI-Verordnung. Zuvor arbeitete ich in Davos und betreute internationale Kunden auf Englisch und Deutsch.",
+    verExperiencia: "Meine Erfahrung ansehen",
+    contactar: "Kontakt aufnehmen",
     proyectosTitulo: "Nachprüfbare Arbeit",
     proyectosPie: "Zu den Projekten",
     articulosTitulo: "Zuletzt geschrieben",
