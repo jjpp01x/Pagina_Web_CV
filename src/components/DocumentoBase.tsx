@@ -13,7 +13,9 @@ import {
   RevealFx,
   SpacingToken,
 } from "@once-ui-system/core";
-import { Footer, Header, Providers } from "@/components";
+import { Providers } from "@/components";
+import { Cabecera } from "@/components/Cabecera";
+import { Pie } from "@/components/Pie";
 import { effects, fonts, style, dataStyle } from "@/resources";
 import type { Idioma } from "@/lib/rutas";
 
@@ -156,13 +158,13 @@ export function DocumentoBase({
             />
           </RevealFx>
           <Flex fillWidth minHeight="16" s={{ hide: true }} />
-          <Header />
+          <Cabecera lang={lang} />
           <Flex zIndex={0} fillWidth padding="l" horizontal="center" flex={1}>
             <Flex horizontal="center" fillWidth minHeight="0">
               {children}
             </Flex>
           </Flex>
-          <Footer />
+          <Pie lang={lang} />
         </Column>
       </Providers>
     </Flex>

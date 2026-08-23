@@ -58,6 +58,10 @@ def extraer(ruta: str) -> dict:
         clave = CLAVES.get(sin_tildes(limpio(etiqueta.group(1))))
         valor = limpio(re.sub(r'(?s)<span class="detalle-meta-label".*?</span>', "", bloque))
         if clave and valor:
+            # Una URL sin esquema se convierte en enlace relativo al renderizar
+            # (demo: "josepalacios.site" -> /proyectos/josepalacios.site, un 404).
+            if clave == "demo" and not valor.startswith(("http://", "https://")):
+                valor = f"https://{valor}"
             meta[clave] = valor
 
     stack = [limpio(t) for t in re.findall(r'<span class="tag"[^>]*>(.*?)</span>', main)]
