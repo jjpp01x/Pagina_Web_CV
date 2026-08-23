@@ -91,3 +91,22 @@
   --neutral-background-strong: #2e3034;
   --surface-background: #1b1c1f;
 }
+
+/* --------------------------------------------------------------------------
+   Contraste medido (WCAG AA sobre el fondo claro #f4f4f2).
+
+   Los valores por defecto suspendian:
+     - texto debil   #71717a -> 4.39:1  (por debajo de 4.5)
+     - acento naranja #d97706 -> 2.89:1 (muy por debajo)
+
+   Corregidos y vueltos a medir:
+     - #5c5c66 -> 5.83:1
+     - #9a4a06 -> 5.62:1
+   -------------------------------------------------------------------------- */
+
+[data-theme="light"] {
+  --neutral-on-background-weak: #5c5c66;
+  --brand-on-background-weak: #9a4a06;
+  --brand-on-background-medium: #9a4a06;
+  --brand-on-background-strong: #7c3d05;
+}

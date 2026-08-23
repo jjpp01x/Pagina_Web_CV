@@ -33,7 +33,13 @@ export type Textos = {
     titulo: string; subtitulo: string; academica: string; laboral: string;
     certificaciones: string; idiomas: string; verificar: string; credencial: string;
   };
-  contacto: { titulo: string; subtitulo: string };
+  contacto: {
+    titulo: string; subtitulo: string; info: string; formTitulo: string;
+    nombre: string; nombrePh: string; emailPh: string; asunto: string; asuntoPh: string;
+    mensaje: string; mensajePh: string; enviar: string; enviando: string;
+    exito: string; error: string;
+    labelUbicacion: string; labelLinkedin: string; ubicacion: string;
+  };
   pie: { copy: string; atribucion: string };
 };
 
@@ -104,6 +110,22 @@ const ES: Textos = {
   contacto: {
     titulo: "Contacto",
     subtitulo: "¿Tienes una propuesta o quieres conectar? Escríbeme",
+    info: "Información",
+    formTitulo: "Envíame un mensaje",
+    nombre: "Nombre",
+    nombrePh: "Tu nombre",
+    emailPh: "tu@email.com",
+    asunto: "Asunto",
+    asuntoPh: "¿De qué se trata?",
+    mensaje: "Mensaje",
+    mensajePh: "Escribe tu mensaje aquí...",
+    enviar: "Enviar mensaje",
+    enviando: "Enviando…",
+    exito: "¡Mensaje enviado correctamente! Me pondré en contacto pronto.",
+    error: "No se pudo enviar. Escríbeme directamente a",
+    labelUbicacion: "Ubicación",
+    labelLinkedin: "LinkedIn",
+    ubicacion: "España–Suiza",
   },
   pie: {
     copy: "© 2026 Jose Palacios Beortegui",
@@ -178,6 +200,22 @@ const EN: Textos = {
   contacto: {
     titulo: "Contact",
     subtitulo: "Have a proposal or want to connect? Write to me",
+    info: "Information",
+    formTitulo: "Send me a message",
+    nombre: "Name",
+    nombrePh: "Your name",
+    emailPh: "your@email.com",
+    asunto: "Subject",
+    asuntoPh: "What is it about?",
+    mensaje: "Message",
+    mensajePh: "Write your message here...",
+    enviar: "Send message",
+    enviando: "Sending…",
+    exito: "Message sent successfully! I will get back to you soon.",
+    error: "Could not send. Write to me directly at",
+    labelUbicacion: "Location",
+    labelLinkedin: "LinkedIn",
+    ubicacion: "Spain–Switzerland",
   },
   pie: {
     copy: "© 2026 Jose Palacios Beortegui",
@@ -252,6 +290,22 @@ const DE: Textos = {
   contacto: {
     titulo: "Kontakt",
     subtitulo: "Haben Sie ein Angebot oder möchten Sie sich vernetzen?",
+    info: "Informationen",
+    formTitulo: "Schreib mir eine Nachricht",
+    nombre: "Name",
+    nombrePh: "Ihr Name",
+    emailPh: "ihre@email.com",
+    asunto: "Betreff",
+    asuntoPh: "Worum geht es?",
+    mensaje: "Nachricht",
+    mensajePh: "Schreiben Sie hier Ihre Nachricht...",
+    enviar: "Nachricht senden",
+    enviando: "Wird gesendet…",
+    exito: "Nachricht erfolgreich gesendet! Ich melde mich bald.",
+    error: "Konnte nicht gesendet werden. Schreiben Sie mir direkt an",
+    labelUbicacion: "Standort",
+    labelLinkedin: "LinkedIn",
+    ubicacion: "Spanien–Schweiz",
   },
   pie: {
     copy: "© 2026 Jose Palacios Beortegui",

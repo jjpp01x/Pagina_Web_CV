@@ -11,6 +11,7 @@ import { Button, Column, Grid, Heading, Line, Row, Tag, Text } from "@once-ui-sy
 
 import { componentesMDX } from "@/components/bloques";
 import { DescargaCV } from "@/components/DescargaCV";
+import { FormularioContacto } from "@/components/FormularioContacto";
 import { CustomMDX } from "@/components/mdx";
 import { FilaDato, TarjetaArticulo, TarjetaProyecto } from "@/components/tarjetas";
 import {
@@ -361,11 +362,34 @@ export function Contacto({ lang }: { lang: Idioma }) {
     <Column fillWidth horizontal="center" paddingX="l">
       <Column fillWidth gap="12" {...ANCHO}>
         <Cabecera titulo={t.contacto.titulo} subtitulo={t.contacto.subtitulo} />
-        <Column gap="8" paddingBottom="32">
-          <FilaDato etiqueta="Email" valor={persona.email} enlace={`mailto:${persona.email}`} />
-          <FilaDato etiqueta="GitHub" valor="jjpp01x" enlace={persona.github} />
-          <FilaDato etiqueta="LinkedIn" valor="jose-palacios-beortegui" enlace={persona.linkedin} />
-        </Column>
+
+        {/* Dos columnas: los datos a la izquierda y el formulario a la derecha,
+            como en el sitio anterior. En movil se apilan. */}
+        <Grid columns="2" m={{ columns: 1 }} gap="40" fillWidth paddingBottom="40">
+          <Column gap="16">
+            <Heading as="h2" variant="heading-strong-s">
+              {t.contacto.info}
+            </Heading>
+            <Column gap="4">
+              <FilaDato etiqueta="Email" valor={persona.email} enlace={`mailto:${persona.email}`} />
+              <FilaDato etiqueta={t.contacto.labelLinkedin} valor="jose-palacios-beortegui" enlace={persona.linkedin} />
+              <FilaDato etiqueta="GitHub" valor="jjpp01x" enlace={persona.github} />
+              <FilaDato etiqueta={t.contacto.labelUbicacion} valor={t.contacto.ubicacion} />
+            </Column>
+            <Row paddingTop="8">
+              <Tag size="s" variant="brand">
+                {t.sobre.disponible}
+              </Tag>
+            </Row>
+          </Column>
+
+          <Column gap="16">
+            <Heading as="h2" variant="heading-strong-s">
+              {t.contacto.formTitulo}
+            </Heading>
+            <FormularioContacto t={t.contacto} email={persona.email} />
+          </Column>
+        </Grid>
       </Column>
     </Column>
   );
