@@ -7,11 +7,13 @@
  * Y siempre lleva el enlace al repositorio: es la prueba, no un adorno.
  */
 import { Card, Column, Heading, Row, Tag, Text } from "@once-ui-system/core";
+import { FaGithub } from "react-icons/fa6";
 
 import { type Articulo, idiomaDeFicha, type Proyecto } from "@/lib/contenido";
 import type { Idioma } from "@/lib/rutas";
 import { ruta } from "@/lib/rutas";
 import { fechaLocalizada } from "@/content/textos";
+import { colorCategoria } from "@/content/categorias";
 
 export function TarjetaProyecto({ proyecto, lang }: { proyecto: Proyecto; lang: Idioma }) {
   return (
@@ -39,6 +41,19 @@ export function TarjetaProyecto({ proyecto, lang }: { proyecto: Proyecto; lang: 
           ))}
         </Row>
       )}
+      {/*
+        El enlace al repositorio, visible en la propia tarjeta. Sin esto el
+        visitante lee "dice que sabe"; con esto lee "puedo comprobarlo ahora",
+        que es toda la tesis del sitio.
+      */}
+      {proyecto.repo && (
+        <Row gap="8" vertical="center" paddingTop="4">
+          <FaGithub size={13} aria-hidden="true" />
+          <Text variant="label-default-s" onBackground="neutral-weak">
+            {proyecto.repo.replace("https://github.com/", "")}
+          </Text>
+        </Row>
+      )}
     </Card>
   );
 }
@@ -54,8 +69,10 @@ export function TarjetaArticulo({ articulo, lang }: { articulo: Articulo; lang: 
       radius="m"
       border="neutral-alpha-medium"
     >
-      <Row gap="8" vertical="center">
-        <Text variant="label-default-s" onBackground="brand-medium">
+      <Row gap="8" vertical="center" wrap>
+        {/* El color informa, pero nunca es el unico indicador: la etiqueta
+            lleva siempre su texto. */}
+        <Text variant="label-strong-s" style={{ color: colorCategoria(articulo.category) }}>
           {articulo.category}
         </Text>
         <Text variant="label-default-s" onBackground="neutral-weak">

@@ -21,6 +21,7 @@ import {
   idiomas,
   persona,
 } from "@/content/persona";
+import { colorCategoria } from "@/content/categorias";
 import { fechaLocalizada, textos } from "@/content/textos";
 import {
   type Articulo,
@@ -192,7 +193,7 @@ export function PaginaArticulo({ articulo, lang }: { articulo: Articulo; lang: I
     <Column fillWidth horizontal="center" paddingX="l">
       <Column fillWidth gap="12" {...ANCHO} paddingY="32">
         <Row gap="8" vertical="center">
-          <Text variant="label-default-s" onBackground="brand-medium">
+          <Text variant="label-strong-s" style={{ color: colorCategoria(articulo.category) }}>
             {articulo.category}
           </Text>
           <Text variant="label-default-s" onBackground="neutral-weak">
@@ -456,6 +457,39 @@ export function SobreMi({ lang }: { lang: Idioma }) {
                 </Text>
               </Column>
             ))}
+          </Grid>
+        </Seccion>
+
+        <Line background="neutral-alpha-weak" />
+
+        {/*
+          Certificaciones con enlace de verificacion EN VIVO. Estaban solo en
+          Formacion, a dos clics. Para un comite que duda, un enlace que se
+          comprueba en el momento vale mas que tres parrafos.
+        */}
+        <Seccion titulo={t.formacion.certificaciones}>
+          <Grid columns="2" s={{ columns: 1 }} gap="12" fillWidth>
+            {certificaciones
+              .filter((c) => c.verificar)
+              .map((c) => (
+                <Column
+                  key={c.titulo}
+                  gap="4"
+                  padding="16"
+                  radius="m"
+                  border="neutral-alpha-medium"
+                >
+                  <Text variant="label-strong-s">{c.titulo}</Text>
+                  <Text variant="body-default-xs" onBackground="neutral-weak">
+                    {c.emisor} · {c.fecha}
+                  </Text>
+                  <a href={c.verificar} rel="noopener noreferrer" target="_blank">
+                    <Text variant="label-default-s" onBackground="brand-medium">
+                      {t.formacion.verificar} →
+                    </Text>
+                  </a>
+                </Column>
+              ))}
           </Grid>
         </Seccion>
 

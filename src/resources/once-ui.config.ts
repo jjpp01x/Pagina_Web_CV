@@ -73,7 +73,7 @@ const fonts: FontsConfig = {
 const style: StyleConfig = {
   theme: "light", // dark | light | system
   neutral: "slate", // sand | gray | slate | mint | rose | dusk | custom
-  brand: "orange", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
+  brand: "emerald", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
   accent: "orange", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
   solid: "contrast", // color | contrast
   solidStyle: "flat", // flat | plastic

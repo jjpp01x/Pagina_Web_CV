@@ -110,3 +110,37 @@
   --brand-on-background-medium: #9a4a06;
   --brand-on-background-strong: #7c3d05;
 }
+
+/* --------------------------------------------------------------------------
+   Color por categoria de articulo. Ver src/content/categorias.ts para los
+   ratios de contraste medidos: todos por encima de 4.5:1 en ambos modos.
+   -------------------------------------------------------------------------- */
+
+[data-theme="light"] {
+  --cat-evaluacion: #0f766e;
+  --cat-ia:         #4338ca;
+  --cat-negocio:    #9a4a06;
+  --cat-gobernanza: #9f1239;
+  --cat-seguridad:  #6d28d9;
+}
+
+[data-theme="dark"] {
+  --cat-evaluacion: #5eead4;
+  --cat-ia:         #a5b4fc;
+  --cat-negocio:    #fbbf24;
+  --cat-gobernanza: #fda4af;
+  --cat-seguridad:  #c4b5fd;
+}
+
+/* Acento de marca: verde petroleo. Para probar indigo, cambiar estos dos
+   valores por #4338ca (claro) y #a5b4fc (oscuro). Ambos medidos y AA. */
+[data-theme="light"] {
+  --brand-on-background-weak:   #0f766e;
+  --brand-on-background-medium: #0f766e;
+  --brand-on-background-strong: #0b5c56;
+}
+[data-theme="dark"] {
+  --brand-on-background-weak:   #5eead4;
+  --brand-on-background-medium: #5eead4;
+  --brand-on-background-strong: #99f6e4;
+}
