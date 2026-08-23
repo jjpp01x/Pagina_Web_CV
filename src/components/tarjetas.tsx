@@ -8,7 +8,7 @@
  */
 import { Card, Column, Heading, Row, Tag, Text } from "@once-ui-system/core";
 
-import { type Articulo, idiomaConProyectos, type Proyecto } from "@/lib/contenido";
+import { type Articulo, idiomaDeFicha, type Proyecto } from "@/lib/contenido";
 import type { Idioma } from "@/lib/rutas";
 import { ruta } from "@/lib/rutas";
 import { fechaLocalizada } from "@/content/textos";
@@ -16,7 +16,7 @@ import { fechaLocalizada } from "@/content/textos";
 export function TarjetaProyecto({ proyecto, lang }: { proyecto: Proyecto; lang: Idioma }) {
   return (
     <Card
-      href={ruta.proyecto(idiomaConProyectos(lang), proyecto.slug)}
+      href={ruta.proyecto(idiomaDeFicha(lang, proyecto.slug), proyecto.slug)}
       fillWidth
       padding="l"
       gap="12"

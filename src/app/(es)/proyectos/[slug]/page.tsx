@@ -1,12 +1,12 @@
 import { notFound } from "next/navigation";
 
 import { PaginaProyecto } from "@/components/paginas";
-import { alternativasProyecto, getProyecto, getProyectos } from "@/lib/contenido";
+import { alternativasProyecto, getProyecto, getProyectosPropios } from "@/lib/contenido";
 import { construirMeta } from "@/lib/meta";
 import { ruta } from "@/lib/rutas";
 
 export function generateStaticParams() {
-  return getProyectos("es").map((p) => ({ slug: p.slug }));
+  return getProyectosPropios("es").map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {

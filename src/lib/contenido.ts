@@ -77,12 +77,32 @@ export function getArticulo(lang: Idioma, slug: string): Articulo | undefined {
   return getArticulos(lang).find((a) => a.slug === slug);
 }
 
+/**
+ * Fichas para el INDICE de un idioma.
+ *
+ * El catalogo completo lo define el espanol; para cada ficha se usa la version
+ * del idioma pedido si existe, y si no la espanola. El indice sale siempre
+ * completo aunque la traduccion vaya a medias, y `lang` refleja el idioma
+ * REAL del texto, no el de la URL: una pagina que declara ingles y sirve
+ * espanol es peor que no tenerla.
+ */
 export function getProyectos(lang: Idioma): Proyecto[] {
-  const propios = leerDirectorio("proyectos", lang);
-  // Las fichas solo existen en espanol por ahora. Mientras no se traduzcan, los
-  // demas idiomas caen al espanol en vez de quedarse sin seccion de proyectos.
-  const fuente = propios.length > 0 ? propios : leerDirectorio("proyectos", "es");
-  return fuente.map(
+  const traducidos = new Map(leerDirectorio("proyectos", lang).map((p) => [p.slug, p]));
+  return leerDirectorio("proyectos", "es").map(({ slug, data, cuerpo }) => {
+    const elegido = traducidos.get(slug);
+    return {
+      stack: [],
+      ...((elegido?.data ?? data) as object),
+      slug,
+      lang: elegido ? lang : "es",
+      cuerpo: elegido?.cuerpo ?? cuerpo,
+    } as unknown as Proyecto;
+  });
+}
+
+/** Solo las fichas realmente escritas en este idioma. Es lo que se prerenderiza. */
+export function getProyectosPropios(lang: Idioma): Proyecto[] {
+  return leerDirectorio("proyectos", lang).map(
     ({ slug, data, cuerpo }) =>
       ({ stack: [], ...(data as object), slug, lang, cuerpo }) as unknown as Proyecto,
   );
@@ -95,14 +115,14 @@ export function getProyectos(lang: Idioma): Proyecto[] {
  * Un lector aleman va a la version inglesa, que le sirve; servirle espanol bajo
  * /de/ no le sirve y ademas mentiria al hreflang.
  */
-export function idiomaConProyectos(lang: Idioma): Idioma {
-  if (fs.existsSync(path.join(RAIZ, "proyectos", lang))) return lang;
-  if (fs.existsSync(path.join(RAIZ, "proyectos", "en"))) return "en";
+export function idiomaDeFicha(lang: Idioma, slug: string): Idioma {
+  if (fs.existsSync(path.join(RAIZ, "proyectos", lang, `${slug}.mdx`))) return lang;
+  if (lang === "de" && fs.existsSync(path.join(RAIZ, "proyectos", "en", `${slug}.mdx`))) return "en";
   return "es";
 }
 
 export function getProyecto(lang: Idioma, slug: string): Proyecto | undefined {
-  return getProyectos(lang).find((p) => p.slug === slug);
+  return getProyectosPropios(lang).find((p) => p.slug === slug);
 }
 
 /** Los seis deep tech, que son los unicos que van a la rejilla de portada. */
