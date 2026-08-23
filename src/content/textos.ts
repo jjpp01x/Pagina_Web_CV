@@ -1,220 +1,223 @@
 /**
  * Cadenas de interfaz en los tres idiomas.
  *
- * El hero es lo unico que se reescribio de verdad respecto al sitio antiguo:
- * "Analista Deep Tech en formacion" y "Abierto a roles Jr." abrian con la
- * limitacion, que es lo primero que lee quien decide. Lo que dicen ahora es lo
- * mismo sin autodescalificarse: la titulacion en curso sigue en la segunda
- * linea y la trayectoria completa esta a un clic. La disponibilidad baja a
- * contacto, donde se lee despues de las pruebas y no antes.
+ * GENERADO desde js/translations.js del sitio anterior con
+ * scripts/generar-textos.py. Es el texto que ya estaba publicado, palabra por
+ * palabra: en una web de CV no se redacta contenido nuevo sin que lo apruebe su
+ * dueño.
+ *
+ * Unico cambio sobre el original: se retiran las banderas emoji de las
+ * píldoras de idiomas. Eran el diagnóstico número 1 del encargo (emojis usados
+ * como iconos); el texto no se toca.
  */
 import type { Idioma } from "@/lib/rutas";
 
+export type GrupoHabilidades = { titulo: string; elementos: string[] };
+
 export type Textos = {
   nav: { inicio: string; proyectos: string; articulos: string; formacion: string; contacto: string };
-  hero: {
-    saludo: string;
-    titular: string;
-    entradilla: string;
-    verProyectos: string;
-    leerArticulos: string;
+  hero: { saludo: string; titulo: string; descripcion: string; btn1: string; btn2: string };
+  sobre: { titulo: string; parrafos: string[]; disponible: string };
+  skills: { titulo: string; grupos: GrupoHabilidades[] };
+  proyectos: { titulo: string; subtitulo: string; verRepo: string; verDemo: string };
+  articulos: { titulo: string; volver: string };
+  formacion: {
+    titulo: string; subtitulo: string; academica: string; laboral: string;
+    certificaciones: string; idiomas: string; verificar: string; credencial: string;
   };
-  portada: {
-    ahoraTitulo: string;
-    ahora: string;
-    verExperiencia: string;
-    contactar: string;
-    proyectosTitulo: string;
-    proyectosPie: string;
-    articulosTitulo: string;
-    articulosPie: string;
-    sobreMiTitulo: string;
-    sobreMi: string;
-  };
-  proyectos: { titulo: string; subtitulo: string; otrosTitulo: string; otrosSubtitulo: string; verRepo: string; verDemo: string };
-  articulos: { titulo: string; subtitulo: string; todos: string; volver: string };
-  formacion: { titulo: string; subtitulo: string; academica: string; laboral: string; certificaciones: string; idiomas: string; verificar: string; credencial: string };
-  contacto: { titulo: string; subtitulo: string; disponibilidad: string; correo: string };
-  pie: { atribucion: string; codigo: string };
+  contacto: { titulo: string; subtitulo: string };
+  pie: { copy: string; atribucion: string };
 };
 
 const ES: Textos = {
-  nav: { inicio: "Inicio", proyectos: "Proyectos", articulos: "Artículos", formacion: "Formación", contacto: "Contacto" },
+  nav: {
+    inicio: "Inicio",
+    proyectos: "Proyectos",
+    articulos: "Artículos",
+    formacion: "Formación",
+    contacto: "Contacto",
+  },
   hero: {
     saludo: "Hola, soy",
-    titular:
-      "Distingo qué tecnología está lista para producción y cuál conlleva riesgo real, antes de que una empresa apueste por ella.",
-    entradilla:
-      "Seis herramientas públicas de evaluación de IA y 17 artículos sobre riesgo, coste y cumplimiento. Con el código a la vista.",
-    verProyectos: "Ver proyectos",
-    leerArticulos: "Leer artículos",
+    titulo: "Analista Deep Tech en formación — evalúo si una tecnología funciona y qué riesgo conlleva",
+    descripcion: "Estudiante de BSc (Hons) Applied Computing (UWTSD). Combino una base sólida en gestión empresarial con la capacidad de evaluar y construir tecnología: ingeniería informática, IA y analítica de datos. Actualmente basado en Zurich, Suiza.",
+    btn1: "Contactar",
+    btn2: "Ver experiencia",
   },
-  portada: {
-    ahoraTitulo: "Ahora mismo",
-    ahora: "Estudio BSc (Hons) Applied Computing en la UWTSD y dirijo Epokan, formación en IA y cumplimiento del Reglamento Europeo de IA. Antes trabajé en Davos atendiendo a clientes internacionales en inglés y alemán.",
-    verExperiencia: "Ver mi experiencia",
-    contactar: "Contactar",
-    proyectosTitulo: "Trabajo que puedes verificar",
-    proyectosPie: "Ver los proyectos",
-    articulosTitulo: "Escrito recientemente",
-    articulosPie: "Ver los artículos",
-    sobreMiTitulo: "Sobre mí",
-    sobreMi:
-      "Estudio BSc (Hons) Applied Computing y vengo de gestión empresarial, así que evalúo tecnología sabiendo lo que cuesta ponerla en producción y lo que pasa cuando falla. Construyo herramientas de evaluación —due diligence técnica, auditoría de model cards, detección de temas emergentes— y escribo sobre lo que aprendo al hacerlo.",
+  sobre: {
+    titulo: "Sobre mí",
+    parrafos: [
+      "Graduado en BA (Hons) Business Management por University of Wales Trinity Saint David (2021–2025) y actualmente cursando BSc (Hons) Applied Computing — una combinación que me permite unir pensamiento estratégico con ejecución técnica.",
+      "Me especializo en la intersección de IA, Data Analytics y estrategia de negocio: entender una tecnología lo bastante bien como para evaluar si funciona y qué riesgo conlleva, no solo para usarla. Especial interés en la digitalización de la cadena de suministro y la automatización de procesos.",
+      "Experiencia profesional internacional en Suiza, España y entornos multilingües (español nativo, inglés profesional, alemán A1.1 — A1.2 en curso).",
+      "Me interesa especialmente el lado de la evaluación: entender qué tecnología está lista para usarse en producción y cuál conlleva riesgo real, antes de que una empresa apueste por ella.",
+    ],
+    disponible: "Abierto a roles Jr. en Análisis Tecnológico, Investigación en IA & Tech",
+  },
+  skills: {
+    titulo: "Habilidades",
+    grupos: [
+      { titulo: "Tecnología & IA", elementos: ["Python", "SQL", "AWS Cloud", "Prompt Engineering", "Data Analytics", "Salesforce"] },
+      { titulo: "Negocio & Gestión", elementos: ["Supply Chain", "Business Strategy", "Project Management", "Logística", "ERP Systems"] },
+      { titulo: "Idiomas", elementos: ["Español — Nativo", "Inglés — Profesional", "Alemán — A1.1"] },
+      { titulo: "Certificaciones", elementos: ["Salesforce Trailhead", "Claude Code in Action"] },
+    ],
   },
   proyectos: {
     titulo: "Proyectos",
-    subtitulo: "Herramientas de evaluación de IA, con el código público.",
-    otrosTitulo: "Otros proyectos",
-    otrosSubtitulo: "Trabajo académico y de sistemas del Level 4.",
+    subtitulo: "Herramientas de evaluación técnica y trabajo de ingeniería",
     verRepo: "Ver el repositorio",
     verDemo: "Ver la demo",
   },
   articulos: {
     titulo: "Artículos",
-    subtitulo: "Sobre evaluación de IA, riesgo, coste y cumplimiento.",
-    todos: "Todos los artículos",
     volver: "Volver a artículos",
   },
   formacion: {
-    titulo: "Formación y experiencia",
-    subtitulo: "Trayectoria académica y profesional.",
-    academica: "Formación académica",
-    laboral: "Experiencia laboral",
-    certificaciones: "Licencias y certificaciones",
+    titulo: "Formación y Experiencia",
+    subtitulo: "Mi trayectoria académica y profesional",
+    academica: "Formación Académica",
+    laboral: "Experiencia Laboral",
+    certificaciones: "Certificaciones",
     idiomas: "Idiomas",
-    verificar: "Verificar credencial",
+    verificar: "Ver credencial",
     credencial: "ID de credencial",
   },
   contacto: {
     titulo: "Contacto",
-    subtitulo: "Abierto a posiciones de analista en evaluación tecnológica.",
-    disponibilidad: "Abierto a posiciones de analista en evaluación tecnológica.",
-    correo: "Escríbeme",
+    subtitulo: "¿Tienes una propuesta o quieres conectar? Escríbeme",
   },
   pie: {
+    copy: "© 2026 Jose Palacios Beortegui",
     atribucion: "Construido sobre Magic Portfolio de Once UI, con modificaciones.",
-    codigo: "Código de este sitio",
   },
 };
 
 const EN: Textos = {
-  nav: { inicio: "Home", proyectos: "Projects", articulos: "Articles", formacion: "Education", contacto: "Contact" },
-  hero: {
-    saludo: "Hi, I am",
-    titular:
-      "I tell which technology is ready for production and which carries real risk, before a company bets on it.",
-    entradilla:
-      "Six public AI evaluation tools and 17 articles on risk, cost and compliance. With the code in plain sight.",
-    verProyectos: "See projects",
-    leerArticulos: "Read articles",
+  nav: {
+    inicio: "Home",
+    proyectos: "Projects",
+    articulos: "Articles",
+    formacion: "Education",
+    contacto: "Contact",
   },
-  portada: {
-    ahoraTitulo: "Right now",
-    ahora: "I am studying BSc (Hons) Applied Computing at UWTSD and I run Epokan, training on AI and compliance with the European AI Act. Before that I worked in Davos serving international clients in English and German.",
-    verExperiencia: "See my experience",
-    contactar: "Get in touch",
-    proyectosTitulo: "Work you can verify",
-    proyectosPie: "See the projects",
-    articulosTitulo: "Recently written",
-    articulosPie: "See the articles",
-    sobreMiTitulo: "About me",
-    sobreMi:
-      "I am studying BSc (Hons) Applied Computing and come from business management, so I evaluate technology knowing what it costs to put into production and what happens when it fails. I build evaluation tools — technical due diligence, model card auditing, emerging topic detection — and write about what I learn doing it.",
+  hero: {
+    saludo: "Hi, I'm",
+    titulo: "Deep Tech Analyst in training — I evaluate whether a technology works and what risk it carries",
+    descripcion: "BSc (Hons) Applied Computing student (UWTSD). I combine a solid background in business management with the ability to evaluate and build technology: computer engineering, AI and data analytics. Currently based in Zurich, Switzerland.",
+    btn1: "Contact me",
+    btn2: "See experience",
+  },
+  sobre: {
+    titulo: "About me",
+    parrafos: [
+      "BA (Hons) Business Management graduate at University of Wales Trinity Saint David (2021–2025), currently studying BSc (Hons) Applied Computing — a combination that lets me bridge strategic thinking with technical execution.",
+      "I specialise in the intersection of AI, Data Analytics and Business Strategy: understanding a technology well enough to evaluate whether it works and what risk it carries, not just to use it. Strong interest in supply chain digitalisation and process automation.",
+      "International professional experience in Switzerland and Spain, working in multilingual environments (native Spanish, professional English, German A1.1 — A1.2 in progress).",
+      "I'm particularly interested in the evaluation side: understanding which technology is ready for real use and which carries real risk, before a business bets on it.",
+    ],
+    disponible: "Open to Jr. roles in Technology Analysis, AI Research & Tech",
+  },
+  skills: {
+    titulo: "Skills",
+    grupos: [
+      { titulo: "Technology & AI", elementos: ["Python", "SQL", "AWS Cloud", "Prompt Engineering", "Data Analytics", "Salesforce"] },
+      { titulo: "Business & Management", elementos: ["Supply Chain", "Business Strategy", "Project Management", "Logística", "ERP Systems"] },
+      { titulo: "Languages", elementos: ["Español — Nativo", "Inglés — Profesional", "Alemán — A1.1"] },
+      { titulo: "Certifications", elementos: ["Salesforce Trailhead", "Claude Code in Action"] },
+    ],
   },
   proyectos: {
     titulo: "Projects",
-    subtitulo: "AI evaluation tools, with the code public.",
-    otrosTitulo: "Other projects",
-    otrosSubtitulo: "Academic and systems work from Level 4.",
+    subtitulo: "Technical evaluation tooling and engineering work",
     verRepo: "View repository",
     verDemo: "View demo",
   },
   articulos: {
     titulo: "Articles",
-    subtitulo: "On AI evaluation, risk, cost and compliance.",
-    todos: "All articles",
     volver: "Back to articles",
   },
   formacion: {
-    titulo: "Education and experience",
-    subtitulo: "Academic and professional background.",
-    academica: "Education",
-    laboral: "Work experience",
-    certificaciones: "Licenses and certifications",
+    titulo: "Education & Experience",
+    subtitulo: "My academic and professional background",
+    academica: "Academic Education",
+    laboral: "Work Experience",
+    certificaciones: "Certifications",
     idiomas: "Languages",
-    verificar: "Verify credential",
+    verificar: "View credential",
     credencial: "Credential ID",
   },
   contacto: {
     titulo: "Contact",
-    subtitulo: "Open to analyst roles in technology evaluation.",
-    disponibilidad: "Open to analyst roles in technology evaluation.",
-    correo: "Write to me",
+    subtitulo: "Have a proposal or want to connect? Write to me",
   },
   pie: {
+    copy: "© 2026 Jose Palacios Beortegui",
     atribucion: "Built on Magic Portfolio by Once UI, with modifications.",
-    codigo: "Source of this site",
   },
 };
 
 const DE: Textos = {
-  nav: { inicio: "Start", proyectos: "Projekte", articulos: "Artikel", formacion: "Ausbildung", contacto: "Kontakt" },
+  nav: {
+    inicio: "Start",
+    proyectos: "Projekte",
+    articulos: "Artikel",
+    formacion: "Ausbildung",
+    contacto: "Kontakt",
+  },
   hero: {
     saludo: "Hallo, ich bin",
-    titular:
-      "Ich unterscheide, welche Technologie produktionsreif ist und welche ein echtes Risiko birgt — bevor ein Unternehmen darauf setzt.",
-    entradilla:
-      "Sechs öffentliche Werkzeuge zur KI-Bewertung und 17 Artikel über Risiko, Kosten und Compliance. Mit offenem Quellcode.",
-    verProyectos: "Projekte ansehen",
-    leerArticulos: "Artikel lesen",
+    titulo: "Deep-Tech-Analyst in Ausbildung — ich bewerte, ob eine Technologie funktioniert und welches Risiko sie birgt",
+    descripcion: "Student des BSc (Hons) Applied Computing (UWTSD). Ich verbinde eine solide Grundlage im Betriebswirtschaftsmanagement mit der Fähigkeit, Technologie zu bewerten und zu entwickeln: Informatik, KI und Datenanalyse. Derzeit in Zurich, Schweiz ansässig.",
+    btn1: "Kontakt",
+    btn2: "Erfahrung ansehen",
   },
-  portada: {
-    ahoraTitulo: "Im Moment",
-    ahora: "Ich studiere BSc (Hons) Applied Computing an der UWTSD und leite Epokan, Schulungen zu KI und zur Einhaltung der EU-KI-Verordnung. Zuvor arbeitete ich in Davos und betreute internationale Kunden auf Englisch und Deutsch.",
-    verExperiencia: "Meine Erfahrung ansehen",
-    contactar: "Kontakt aufnehmen",
-    proyectosTitulo: "Nachprüfbare Arbeit",
-    proyectosPie: "Zu den Projekten",
-    articulosTitulo: "Zuletzt geschrieben",
-    articulosPie: "Zu den Artikeln",
-    sobreMiTitulo: "Über mich",
-    sobreMi:
-      "Ich studiere BSc (Hons) Applied Computing und komme aus der Betriebswirtschaft. Deshalb bewerte ich Technologie mit dem Wissen, was ihr Produktiveinsatz kostet und was passiert, wenn sie ausfällt. Ich baue Bewertungswerkzeuge — technische Due Diligence, Model-Card-Audits, Erkennung aufkommender Themen — und schreibe über das, was ich dabei lerne.",
+  sobre: {
+    titulo: "Über mich",
+    parrafos: [
+      "Absolvent in BA (Hons) Business Management an der University of Wales Trinity Saint David (2021–2025), derzeit im Studium des BSc (Hons) Applied Computing — eine Kombination, die strategisches Denken mit technischer Umsetzung verbindet.",
+      "Ich spezialisiere mich auf die Schnittstelle von KI, Datenanalyse und Unternehmensstrategie: eine Technologie so gut zu verstehen, dass ich bewerten kann, ob sie funktioniert und welches Risiko sie birgt — nicht nur, sie zu nutzen. Besonderes Interesse an der Digitalisierung von Lieferketten.",
+      "Internationale Berufserfahrung in der Schweiz und Spanien in mehrsprachigen Umgebungen (Spanisch Muttersprache, Englisch professionell, Deutsch A1.1 — A1.2 laufend).",
+      "Mich interessiert besonders die Bewertungsseite: zu verstehen, welche Technologie produktionsreif ist und welche echtes Risiko birgt, bevor ein Unternehmen darauf setzt.",
+    ],
+    disponible: "Offen für Einsteigerstellen in Technologieanalyse, KI-Research & Tech",
+  },
+  skills: {
+    titulo: "Fähigkeiten",
+    grupos: [
+      { titulo: "Technologie & KI", elementos: ["Python", "SQL", "AWS Cloud", "Prompt Engineering", "Data Analytics", "Salesforce"] },
+      { titulo: "Wirtschaft & Management", elementos: ["Supply Chain", "Business Strategy", "Project Management", "Logística", "ERP Systems"] },
+      { titulo: "Sprachen", elementos: ["Español — Nativo", "Inglés — Profesional", "Alemán — A1.1"] },
+      { titulo: "Zertifizierungen", elementos: ["Salesforce Trailhead", "Claude Code in Action"] },
+    ],
   },
   proyectos: {
     titulo: "Projekte",
-    subtitulo: "Werkzeuge zur KI-Bewertung, mit öffentlichem Quellcode.",
-    otrosTitulo: "Weitere Projekte",
-    otrosSubtitulo: "Akademische und Systemarbeiten aus Level 4.",
+    subtitulo: "Werkzeuge zur technischen Bewertung und Ingenieurarbeit",
     verRepo: "Repository ansehen",
     verDemo: "Demo ansehen",
   },
   articulos: {
     titulo: "Artikel",
-    subtitulo: "Über KI-Bewertung, Risiko, Kosten und Compliance.",
-    todos: "Alle Artikel",
     volver: "Zurück zu den Artikeln",
   },
   formacion: {
-    titulo: "Ausbildung und Erfahrung",
-    subtitulo: "Akademischer und beruflicher Werdegang.",
-    academica: "Ausbildung",
+    titulo: "Ausbildung & Erfahrung",
+    subtitulo: "Mein akademischer und beruflicher Werdegang",
+    academica: "Akademische Ausbildung",
     laboral: "Berufserfahrung",
-    certificaciones: "Lizenzen und Zertifikate",
+    certificaciones: "Zertifizierungen",
     idiomas: "Sprachen",
-    verificar: "Zertifikat prüfen",
+    verificar: "Zertifikat ansehen",
     credencial: "Zertifikats-ID",
   },
   contacto: {
     titulo: "Kontakt",
-    subtitulo: "Offen für Analystenrollen in der Technologiebewertung.",
-    disponibilidad: "Offen für Analystenrollen in der Technologiebewertung.",
-    correo: "Schreiben Sie mir",
+    subtitulo: "Haben Sie ein Angebot oder möchten Sie sich vernetzen?",
   },
   pie: {
+    copy: "© 2026 Jose Palacios Beortegui",
     atribucion: "Aufgebaut auf Magic Portfolio von Once UI, mit Änderungen.",
-    codigo: "Quellcode dieser Seite",
   },
 };
 
@@ -228,9 +231,6 @@ export function textos(lang: Idioma): Textos {
 export function fechaLocalizada(iso: string, lang: Idioma): string {
   const locale = { es: "es-ES", en: "en-GB", de: "de-DE" }[lang];
   return new Date(`${iso}T00:00:00Z`).toLocaleDateString(locale, {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    timeZone: "UTC",
+    day: "numeric", month: "long", year: "numeric", timeZone: "UTC",
   });
 }

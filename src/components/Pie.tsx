@@ -13,7 +13,6 @@ import type { Idioma } from "@/lib/rutas";
 
 export function Pie({ lang }: { lang: Idioma }) {
   const t = textos(lang);
-  const anio = 2026;
 
   return (
     <Column
@@ -32,7 +31,7 @@ export function Pie({ lang }: { lang: Idioma }) {
           <SmartLink href={persona.linkedin}>LinkedIn</SmartLink>
         </Row>
         <Text variant="body-default-xs" onBackground="neutral-weak">
-          © {anio} {persona.nombre}
+          {t.pie.copy}
         </Text>
         <Text variant="body-default-xs" onBackground="neutral-weak">
           {t.pie.atribucion}{" "}
