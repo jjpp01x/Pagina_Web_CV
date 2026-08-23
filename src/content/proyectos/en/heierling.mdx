@@ -1,0 +1,64 @@
+---
+title: "SkiCraft Custom Boots — Inventory DB"
+subtitle: "Inventory management system in PostgreSQL · Information Engineering (CEAC4010)"
+description: "SkiCraft Custom Boots — Inventory management system in PostgreSQL with PL/pgSQL, triggers and role-based access control. Academic project by Jose Palacios Beortegui."
+estado: "Completed"
+modulo: "Information Engineering — CEAC4010"
+institucion: "University of Wales Trinity Saint David / CESTE"
+repo: "https://github.com/jjpp01x/heierling"
+image: "https://josepalacios.site/img/og-image.png"
+lang: "en"
+translationKey: "heierling"
+stack: ["PostgreSQL", "PL/pgSQL", "Docker", "Debian Linux", "SQL"]
+deepTech: false
+---
+
+## The problem
+
+SkiCraft Custom Boots is a shop specialising in made-to-measure ski boots, based in Davos. The business managed its inventory with Excel spreadsheets, which produced stock errors, duplicated data and no efficient way to query order history.
+
+The goal of the project was to design and implement a complete relational database to replace the manual system, with referential integrity, role-based access and automation of business operations through functions and triggers.
+
+## Development process
+
+<Paso n="01" titulo="Requirements analysis and E/R modelling">
+
+Identifying entities (Product, Customer, Order, Supplier, Employee), attributes and relationships. Designing the Entity-Relationship diagram with cardinalities and integrity constraints.
+
+</Paso>
+
+<Paso n="02" titulo="SQL schema implementation">
+
+Translating the E/R model into `CREATE TABLE` statements in PostgreSQL with primary keys, foreign keys, `CHECK` constraints, default values and appropriate data types for each entity.
+
+</Paso>
+
+<Paso n="03" titulo="PL/pgSQL functions">
+
+Developing stored functions for all business operations: order registration, stock updates, total calculation, product search by category and inventory report generation.
+
+</Paso>
+
+<Paso n="04" titulo="Triggers and automation">
+
+Implementing `AFTER INSERT` and `AFTER UPDATE` triggers to update stock automatically when orders are processed and to raise alerts when inventory falls below the minimum threshold.
+
+</Paso>
+
+<Paso n="05" titulo="Role-based access control">
+
+Creating database roles (`admin`, `staff`, `readonly`) with granular permissions via `GRANT` and `REVOKE`. Each role reaches only the tables and operations that correspond to it.
+
+</Paso>
+
+<Paso n="06" titulo="Docker environment">
+
+Deploying PostgreSQL in a Docker container on Debian Linux for environment reproducibility. The repository includes instructions to bring the database up on any machine with a single command.
+
+</Paso>
+
+## What I learned
+
+This project was my first complete implementation of a production relational database. The difference between writing basic SQL and designing a system with real referential integrity, triggers and roles is substantial — I learned that most of the work sits in the modelling beforehand, not in the SQL code itself.
+
+It was also my first experience with Docker as a tool for environment reproducibility, a pattern I now use in all my projects.

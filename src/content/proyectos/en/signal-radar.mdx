@@ -1,0 +1,68 @@
+---
+title: "Signal Radar"
+subtitle: "Detects emerging topics in robotics, AI and space — and says which ones cannot be told apart from noise"
+description: "Signal Radar: an emerging-topic scanner for robotics, AI and space over arXiv. Embeddings, UMAP + HDBSCAN and a permutation test that rules whether a topic's growth is distinguishable from noise."
+tipo: "Frontier signal scanner · personal project"
+pregunta: "Is this topic really growing, or did the corpus just grow?"
+estado: "Public repository"
+repo: "https://github.com/jjpp01x/signal-radar"
+image: "https://josepalacios.site/img/og-image.png"
+lang: "en"
+translationKey: "signal-radar"
+stack: ["Python", "arXiv API", "DuckDB", "Embeddings", "UMAP + HDBSCAN", "Statistics"]
+deepTech: true
+---
+
+## The problem
+
+Any tool can aggregate papers and show a curve going up. The question a deep-tech analyst needs answered is a different one: does that growth mean anything, or is it what chance produces when you look in 63 places at once? A topic can grow simply because the whole corpus grew.
+
+Signal Radar's differentiator is not detecting topics — it is being able to say "this topic cannot be told apart from noise" and prove it with a reproducible test.
+
+## How it works
+
+<Paso n="01" titulo="Ingestion from arXiv">
+
+Downloads metadata from the cs.RO, cs.AI, astro-ph.IM and eess.SY categories, validates it against a data contract and persists it in DuckDB. A backfill command builds the history the statistical test needs.
+
+</Paso>
+
+<Paso n="02" titulo="Cached embeddings">
+
+Each abstract is encoded with a local embedding model and cached on disk, indexed by identifier and version, recording which model wrote it — a cache from another model is discarded with a warning instead of being mixed in.
+
+</Paso>
+
+<Paso n="03" titulo="Clustering into topics">
+
+Dimensionality reduction with UMAP (cosine metric, fixed seed) and clustering with HDBSCAN. Over a real corpus of 4,113 papers from 2023–2026 it yields 63 topics, with 22 % of papers unassigned.
+
+</Paso>
+
+<Paso n="04" titulo="Permutation test">
+
+For each topic, publication dates are shuffled across all papers, growth is recomputed thousands of times and the observed value is compared against that null distribution. The verdict is decided on the Benjamini-Hochberg q-value, which corrects for testing 63 hypotheses at once.
+
+</Paso>
+
+<Paso n="05" titulo="Reproducible report">
+
+The JSON report writes every figure together with the full list of arXiv identifiers that produced it, plus seed, permutations, window and alpha: everything needed to reconstruct it. On the real corpus, of 63 topics only one comes out *emerging* — and that sparseness is the product, not a defect.
+
+</Paso>
+
+## The decision that matters most
+
+With 63 topics and an uncorrected 0.05 threshold, the probability of at least one false "emerging" is 96 %. On the real corpus there are five topics with a raw p-value below 0.05 — including one that multiplied its volume by 6.5 — and only one survives the multiplicity correction. A table showing only growth ratios would have presented five trends where the evidence supports one.
+
+The project also includes a real decision brief on the single emerging topic, [robotic manipulation with vision-language-action models](https://github.com/jjpp01x/signal-radar/blob/main/briefs/2026-08-01-embodied-vla-manipulation.md), which translates the statistical output into a reasoned recommendation.
+
+## What it does *not* do
+
+It only looks at arXiv: no patents, funding or institutional concentration, and a field that publishes little and patents heavily is invisible here. A topic that is "indistinguishable from noise" is not a false topic — it is a topic whose growth cannot be separated from chance with this sample. And labelling is manual: the system groups; naming the topic is human. The repository README keeps the full list of limitations, verified by running them.
+
+## What I learned
+
+The first real run used a twelve-day corpus and every topic came out with p = 1.000, looking like a legitimate verdict. It was not: with no papers in the previous window the growth ratio is undefined, and the code returned a number that looked like a measurement. Worse still: two green tests only passed thanks to that same fault, because they shared the wrong assumption. The fix was to declare the case — a topic with no prior history comes out as "insufficient history", with no number attached — rather than paper over it.
+
+The second lesson cost the whole product for one version: a PCA reduction, chosen on a false belief about UMAP's non-determinism, produced 3 topics that were exactly arXiv's input categories. A topic detector that returns the labels the input already carried detects nothing. Checking the belief — UMAP with a fixed seed is bit-for-bit reproducible — unlocked the 63 real topics.

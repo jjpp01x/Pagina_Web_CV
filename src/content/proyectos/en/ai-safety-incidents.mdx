@@ -1,0 +1,66 @@
+---
+title: "AI Safety Incident Tracker"
+subtitle: "23 real AI failures in production, classified and traceable"
+description: "AI Safety Incident Tracker: a dashboard classifying 23 public incidents of AI systems in production (2015-2025) by failure mode and severity."
+tipo: "Analysis dashboard · personal project"
+pregunta: "How do AI systems actually fail?"
+estado: "In production"
+repo: "https://github.com/jjpp01x/ai-safety-incidents"
+image: "https://josepalacios.site/img/og-image.png"
+lang: "en"
+translationKey: "ai-safety-incidents"
+stack: ["Python", "Streamlit", "pandas", "pytest"]
+deepTech: true
+---
+
+## The problem
+
+There is a great deal of talk about hypothetical AI risks and very little, with data, about how already-deployed systems fail. The information exists, but it is scattered across headlines, regulatory reports and press releases, with no common taxonomy and no way to compare it.
+
+A headline is not a data point. To be useful for a decision it needs an explicit classification, a severity scale defined before it is applied, and traceability back to the original source.
+
+## How it works
+
+<Paso n="01" titulo="Dataset with a contract">
+
+23 incidents documented between 2015 and 2025, across 18 public and private organisations, with 13 columns and a data contract validated on every load.
+
+</Paso>
+
+<Paso n="02" titulo="Failure taxonomy">
+
+Each incident is classified by failure mode — bias, security, hallucination, containment — and by severity on a 1 to 5 scale with a written rubric.
+
+</Paso>
+
+<Paso n="03" titulo="Dashboard">
+
+Four views (overview, deep-dive case, dataset and methodology) with filters by failure type, period, severity and application domain.
+
+</Paso>
+
+<Paso n="04" titulo="Deep-dive case">
+
+Root cause analysis of the model supply chain between OpenAI and Hugging Face (2023-2024): four incidents with a common cause and seven controls that would have prevented them.
+
+</Paso>
+
+<Paso n="05" titulo="Methodology in the open">
+
+The rubric, the criteria and the dataset's limitations are published inside the dashboard itself, before anyone quotes a figure.
+
+</Paso>
+
+## The decision that matters most
+
+Publishing the limitations inside the product, not in an appendix. The methodology tab explains what the dataset measures and what it does not, and it sits at the same level as the charts.
+
+The reason is practical: as soon as a dashboard shows percentages, people quote them. If the caveats do not travel with the figure, they are lost on the first forward.
+
+## What it does *not* do
+
+23 incidents are not a statistically representative sample of AI failure, and the dataset says so explicitly. It is useful for recognising patterns and failure modes, not for estimating base rates or comparing rates across sectors.
+
+## What I learned
+
+That the difference between a headline aggregator and an analysis tool lies almost entirely in the boring work: defining the taxonomy before classifying, writing the rubric before scoring, and declaring the limits before someone else discovers them.

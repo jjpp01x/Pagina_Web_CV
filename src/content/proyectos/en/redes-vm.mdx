@@ -1,0 +1,58 @@
+---
+title: "FTP Network Lab"
+subtitle: "Virtual network with VirtualBox, Windows Server 2019, IIS and FileZilla · Networking"
+description: "FTP Network Lab — Virtual network with VirtualBox, Windows Server 2019, IIS and FileZilla. User and permission configuration. Academic project by Jose Palacios Beortegui."
+estado: "Completed"
+modulo: "Networking & Infrastructure"
+institucion: "University of Wales Trinity Saint David / CESTE"
+repo: "https://github.com/jjpp01x/Level4-Computing-engeniering"
+image: "https://josepalacios.site/img/og-image.png"
+lang: "en"
+translationKey: "redes-vm"
+stack: ["VirtualBox", "Windows Server 2019", "IIS", "FileZilla Server", "FTP/FTPS", "Active Directory"]
+deepTech: false
+---
+
+## The problem
+
+The goal was to design and implement a virtualised local network with a working FTP server, simulating a real corporate environment. The system had to allow secure file transfer between virtual machines with per-user access control and per-directory permissions.
+
+The main constraint was to implement it exclusively with Windows Server tools, with no additional third-party software beyond FileZilla as the FTP client for testing.
+
+## Development process
+
+<Paso n="01" titulo="Network topology design">
+
+Configuring VirtualBox with two VMs: server (Windows Server 2019) and client (Windows 10). Internal network with a host-only adapter to isolate the environment, and static IP assignment.
+
+</Paso>
+
+<Paso n="02" titulo="Windows Server 2019 installation and configuration">
+
+Installing the server operating system, configuring the network and enabling the required roles through Server Manager: Web Server (IIS) and FTP Server.
+
+</Paso>
+
+<Paso n="03" titulo="FTP service configuration in IIS">
+
+Creating the FTP site in IIS Manager, binding it to port 21, configuring the root directory, enabling SSL/TLS for FTPS and configuring the Windows firewall to allow FTP traffic.
+
+</Paso>
+
+<Paso n="04" titulo="User and permission management">
+
+Creating local users in Windows Server and assigning read/write permissions per directory through IIS Authorization Rules. Configuring per-user virtual directories with session isolation.
+
+</Paso>
+
+<Paso n="05" titulo="Testing with FileZilla">
+
+Verifying FTP and FTPS connections from the client VM using FileZilla. Testing upload, download, directory creation and confirming that per-user permissions work correctly.
+
+</Paso>
+
+## What I learned
+
+Configuring an FTP server from scratch on Windows Server gave me a real understanding of how file transfer protocols work at the infrastructure level — something cloud services abstract away completely. Understanding the difference between FTP, FTPS and SFTP, and why unencrypted FTP is unacceptable in production, was a key security lesson.
+
+It was also my first serious experience with network virtualisation, an essential foundation for any IT or DevOps role.

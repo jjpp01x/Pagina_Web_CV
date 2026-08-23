@@ -1,0 +1,66 @@
+---
+title: "AI Readiness Matrix"
+subtitle: "Buy, rent or build — and how far that conclusion holds"
+description: "AI Readiness Matrix: a reproducible technology evaluation engine with criteria in versioned YAML and sensitivity analysis over 10,000 scenarios."
+tipo: "Evaluation engine · personal project"
+pregunta: "Buy, rent or build?"
+estado: "Engine complete"
+repo: "https://github.com/jjpp01x/ai-readiness-matrix"
+image: "https://josepalacios.site/img/og-image.png"
+lang: "en"
+translationKey: "ai-readiness-matrix"
+stack: ["Python", "YAML", "Streamlit", "pytest", "Monte Carlo"]
+deepTech: true
+---
+
+## The problem
+
+Anyone can build a weighted matrix that confirms the option they already had in mind. Moving a single weight is enough. That is why a decision matrix without sensitivity analysis is not analysis: it is an opinion with decimal places.
+
+The working case is real and specific: a ski equipment retailer renews its catalogue every season, and whatever does not sell is cleared at a discount the following season. Over-forecasting and under-forecasting do not cost the same — so optimising symmetric metrics like MAPE or RMSE, which is what most forecasting tools sell by default, is the wrong metric for that business.
+
+## How it works
+
+<Paso n="01" titulo="Versioned criteria">
+
+The decision criteria live in a YAML file with a written rubric for each level from 1 to 5. Changing a weight and regenerating is the normal operation, not an exception.
+
+</Paso>
+
+<Paso n="02" titulo="Scoring with evidence">
+
+Every score is justified against specific documentation. Figures that are estimates are marked as such in the output, rather than presented as measurements.
+
+</Paso>
+
+<Paso n="03" titulo="Switching point per criterion">
+
+For each criterion the tool computes the exact weight at which the winner would change. If that margin is narrow, the recommendation is fragile and the report says so.
+
+</Paso>
+
+<Paso n="04" titulo="Global robustness">
+
+All weights are perturbed at once by sampling a Dirichlet distribution over 10,000 scenarios with a fixed seed, and the tool reports what fraction each option wins. The figures reproduce exactly.
+
+</Paso>
+
+<Paso n="05" titulo="Generated report">
+
+The Markdown report is generated from the data. No figure is written by hand.
+
+</Paso>
+
+## The decision that matters most
+
+Choosing the loss function *is* the analysis; everything after that is arithmetic. The criterion that weighs most in this evaluation is the ability to optimise an asymmetric loss (pinball loss, quantile forecasting), because that is exactly what separates this problem from generic forecasting.
+
+On the specific case, the result is that building wins 82 % of the simulated scenarios, renting 18 % and buying 0 %. That split says far more than a ranking: it quantifies how much confidence the recommendation deserves.
+
+## What it does *not* do
+
+The engine does not benchmark the tools. Scores come from published documentation, with its stated limitations. It evaluates the available evidence, not measured performance on your own data.
+
+## What I learned
+
+That the defensible part of a recommendation is not the final number, but the range over which that number survives. Presenting a winner without saying how far it sits from the runner-up hides exactly the information the decision-maker needs.
