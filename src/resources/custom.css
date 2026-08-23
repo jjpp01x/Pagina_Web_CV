@@ -132,8 +132,14 @@
   --cat-seguridad:  #c4b5fd;
 }
 
-/* Acento de marca: verde petroleo. Para probar indigo, cambiar estos dos
-   valores por #4338ca (claro) y #a5b4fc (oscuro). Ambos medidos y AA. */
+/* Acento de marca: VERDE PETROLEO. Elegido por Jose el 2026-08-23 frente al
+   indigo.
+   El razonamiento, por si algun dia se reabre: el azul y sus vecinos son el
+   color por defecto de todo el sector tecnologico, y el propio encargo se
+   quejaba del "navy + azul brillante" de la version anterior. El petroleo
+   distingue sin gritar y deja el ambar libre como color de senal, que es el
+   tema del sitio (riesgo, incidentes, que esta listo y que no).
+   Contraste medido: 4.97:1 en claro, 12.01:1 en oscuro. */
 [data-theme="light"] {
   --brand-on-background-weak:   #0f766e;
   --brand-on-background-medium: #0f766e;
