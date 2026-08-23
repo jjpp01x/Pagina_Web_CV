@@ -22,6 +22,7 @@ export type MapaAlternativas = Record<string, Partial<Record<Idioma, string>>>;
 /** Paginas fijas: existen en los tres idiomas por definicion. */
 const FIJAS: ((lang: Idioma) => string)[] = [
   ruta.inicio,
+  ruta.sobreMi,
   ruta.articulos,
   ruta.proyectos,
   ruta.formacion,

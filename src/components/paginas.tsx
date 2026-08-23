@@ -10,6 +10,7 @@
 import { Button, Column, Grid, Heading, Line, Row, Tag, Text } from "@once-ui-system/core";
 
 import { componentesMDX } from "@/components/bloques";
+import { DescargaCV } from "@/components/DescargaCV";
 import { CustomMDX } from "@/components/mdx";
 import { FilaDato, TarjetaArticulo, TarjetaProyecto } from "@/components/tarjetas";
 import {
@@ -71,13 +72,6 @@ function Cabecera({ titulo, subtitulo }: { titulo: string; subtitulo?: string })
     </Column>
   );
 }
-
-/** Los tres PDF, en el orden del sitio anterior. Sin banderas emoji. */
-const CV = [
-  { lang: "ES", href: "/docs/CV_Jose_Palacios_ES.pdf" },
-  { lang: "EN", href: "/docs/CV_Jose_Palacios_EN.pdf" },
-  { lang: "DE", href: "/docs/CV_Jose_Palacios_DE.pdf" },
-];
 
 export function Portada({ lang }: { lang: Idioma }) {
   const t = textos(lang);
@@ -141,63 +135,13 @@ export function Portada({ lang }: { lang: Idioma }) {
               {t.hero.btn2}
             </Button>
           </Row>
-          <Row gap="8" paddingTop="4" wrap vertical="center">
-            <Text variant="label-default-s" onBackground="neutral-weak">
-              {t.descargarCV}:
-            </Text>
-            {CV.map((cv) => (
-              <Button
-                key={cv.lang}
-                href={cv.href}
-                download
-                variant="tertiary"
-                size="s"
-                data-border="rounded"
-              >
-                {cv.lang}
-              </Button>
-            ))}
+          <Row paddingTop="4">
+            <DescargaCV etiqueta={t.descargarCV} />
           </Row>
         </Column>
       </Row>
 
       <Column fillWidth {...ANCHO}>
-        <Line background="neutral-alpha-weak" />
-
-        <Seccion titulo={t.sobre.titulo}>
-          {t.sobre.parrafos.map((p) => (
-            <Text key={p.slice(0, 32)} variant="body-default-m" onBackground="neutral-medium">
-              {p}
-            </Text>
-          ))}
-          <Row paddingTop="4">
-            <Tag size="m" variant="brand">
-              {t.sobre.disponible}
-            </Tag>
-          </Row>
-        </Seccion>
-
-        <Line background="neutral-alpha-weak" />
-
-        <Seccion titulo={t.skills.titulo}>
-          <Grid columns="2" s={{ columns: 1 }} gap="24" fillWidth>
-            {t.skills.grupos.map((grupo) => (
-              <Column key={grupo.titulo} gap="8">
-                <Heading as="h3" variant="heading-strong-xs">
-                  {grupo.titulo}
-                </Heading>
-                <Row gap="4" wrap>
-                  {grupo.elementos.map((e) => (
-                    <Tag key={e} size="s" variant="neutral">
-                      {e}
-                    </Tag>
-                  ))}
-                </Row>
-              </Column>
-            ))}
-          </Grid>
-        </Seccion>
-
         <Line background="neutral-alpha-weak" />
 
         {/*
@@ -422,6 +366,95 @@ export function Contacto({ lang }: { lang: Idioma }) {
           <FilaDato etiqueta="GitHub" valor="jjpp01x" enlace={persona.github} />
           <FilaDato etiqueta="LinkedIn" valor="jose-palacios-beortegui" enlace={persona.linkedin} />
         </Column>
+      </Column>
+    </Column>
+  );
+}
+
+export function SobreMi({ lang }: { lang: Idioma }) {
+  const t = textos(lang);
+  // Cifras contadas del contenido real: si publicas otro articulo, suben solas.
+  const cifras = [
+    { n: getArticulos("es").length, etiqueta: t.cifras.articulos },
+    { n: getProyectos("es").filter((p) => p.repo).length, etiqueta: t.cifras.proyectos },
+    { n: idiomas.length, etiqueta: t.cifras.idiomas },
+    { n: formacionAcademica.length, etiqueta: t.cifras.titulaciones },
+    { n: certificaciones.length, etiqueta: t.cifras.certificaciones },
+  ];
+
+  return (
+    <Column fillWidth horizontal="center" paddingX="l">
+      <Column fillWidth gap="12" {...ANCHO}>
+        <Cabecera titulo={t.sobre.titulo} />
+
+        <Row gap="24" vertical="start" wrap paddingBottom="16">
+          <img
+            src={persona.foto}
+            alt={persona.fotoAlt}
+            width={132}
+            height={132}
+            loading="eager"
+            style={{
+              width: "132px",
+              height: "132px",
+              minWidth: "132px",
+              objectFit: "cover",
+              objectPosition: "center 20%",
+              borderRadius: "var(--radius-m)",
+              border: "1px solid var(--neutral-alpha-medium)",
+            }}
+          />
+          <Column gap="12" flex={1} style={{ minWidth: "17rem" }}>
+            {t.sobre.parrafos.map((p) => (
+              <Text key={p.slice(0, 32)} variant="body-default-s" onBackground="neutral-medium">
+                {p}
+              </Text>
+            ))}
+            <Row paddingTop="4">
+              <Tag size="s" variant="brand">
+                {t.sobre.disponible}
+              </Tag>
+            </Row>
+          </Column>
+        </Row>
+
+        <Line background="neutral-alpha-weak" />
+
+        <Seccion titulo={t.cifras.titulo}>
+          <Grid columns="3" s={{ columns: 2 }} gap="16" fillWidth>
+            {cifras.map((c) => (
+              <Column key={c.etiqueta} gap="2">
+                <Heading as="p" variant="heading-strong-l">
+                  {c.n}
+                </Heading>
+                <Text variant="body-default-xs" onBackground="neutral-weak">
+                  {c.etiqueta}
+                </Text>
+              </Column>
+            ))}
+          </Grid>
+        </Seccion>
+
+        <Line background="neutral-alpha-weak" />
+
+        <Seccion titulo={t.skills.titulo}>
+          <Grid columns="2" s={{ columns: 1 }} gap="24" fillWidth>
+            {t.skills.grupos.map((grupo) => (
+              <Column key={grupo.titulo} gap="8">
+                <Heading as="h3" variant="heading-strong-xs">
+                  {grupo.titulo}
+                </Heading>
+                <Row gap="4" wrap>
+                  {grupo.elementos.map((e) => (
+                    <Tag key={e} size="s" variant="neutral">
+                      {e}
+                    </Tag>
+                  ))}
+                </Row>
+              </Column>
+            ))}
+          </Grid>
+        </Seccion>
       </Column>
     </Column>
   );

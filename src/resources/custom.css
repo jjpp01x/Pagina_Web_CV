@@ -67,3 +67,27 @@
   --scheme-neutral-600-50: rgba(137,152,159,0.5);
   /*
 }*/
+/* --------------------------------------------------------------------------
+   Fondos mas tranquilos.
+
+   Los tokens de Once UI llevan el claro a blanco puro y el oscuro a negro casi
+   puro. En pantalla eso cansa: el blanco deslumbra y el negro hace que el texto
+   "vibre". Se bajan ambos extremos manteniendo el contraste del texto por
+   encima de 4.5:1.
+   -------------------------------------------------------------------------- */
+
+[data-theme="light"] {
+  --page-background: #f4f4f2;   /* antes blanco puro */
+  --neutral-background-weak: #ececea;
+  --neutral-background-medium: #e4e4e1;
+  --neutral-background-strong: #dcdcd8;
+  --surface-background: #fafaf9;
+}
+
+[data-theme="dark"] {
+  --page-background: #17181a;   /* antes casi negro */
+  --neutral-background-weak: #1e1f22;
+  --neutral-background-medium: #26272b;
+  --neutral-background-strong: #2e3034;
+  --surface-background: #1b1c1f;
+}

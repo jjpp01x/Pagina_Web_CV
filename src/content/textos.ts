@@ -18,7 +18,12 @@ export type Textos = {
   /** Etiqueta del boton de descarga. No estaba en translations.js: en el sitio
    * anterior era texto fijo en el HTML, solo en espanol. */
   descargarCV: string;
-  nav: { inicio: string; proyectos: string; articulos: string; formacion: string; contacto: string };
+  nav: {
+    inicio: string; proyectos: string; articulos: string;
+    formacion: string; contacto: string; sobreMi: string;
+  };
+  /** Bloque de cifras de la pagina "Sobre mi". Se cuentan del contenido real. */
+  cifras: { titulo: string; articulos: string; proyectos: string; idiomas: string; titulaciones: string; certificaciones: string };
   hero: { saludo: string; titulo: string; descripcion: string; btn1: string; btn2: string };
   sobre: { titulo: string; parrafos: string[]; disponible: string };
   skills: { titulo: string; grupos: GrupoHabilidades[] };
@@ -33,6 +38,14 @@ export type Textos = {
 };
 
 const ES: Textos = {
+  cifras: {
+    titulo: "En cifras",
+    articulos: "artículos publicados",
+    proyectos: "proyectos con repositorio público",
+    idiomas: "idiomas",
+    titulaciones: "titulaciones",
+    certificaciones: "certificaciones",
+  },
   descargarCV: "Descargar CV",
   nav: {
     inicio: "Inicio",
@@ -40,7 +53,8 @@ const ES: Textos = {
     articulos: "Artículos",
     formacion: "Formación",
     contacto: "Contacto",
-  },
+  
+    sobreMi: "Sobre mí",},
   hero: {
     saludo: "Hola, soy",
     titulo: "Analista Deep Tech en formación — evalúo si una tecnología funciona y qué riesgo conlleva",
@@ -98,6 +112,14 @@ const ES: Textos = {
 };
 
 const EN: Textos = {
+  cifras: {
+    titulo: "In numbers",
+    articulos: "published articles",
+    proyectos: "projects with a public repository",
+    idiomas: "languages",
+    titulaciones: "degrees",
+    certificaciones: "certifications",
+  },
   descargarCV: "Download CV",
   nav: {
     inicio: "Home",
@@ -105,7 +127,8 @@ const EN: Textos = {
     articulos: "Articles",
     formacion: "Education",
     contacto: "Contact",
-  },
+  
+    sobreMi: "About me",},
   hero: {
     saludo: "Hi, I'm",
     titulo: "Deep Tech Analyst in training — I evaluate whether a technology works and what risk it carries",
@@ -163,6 +186,14 @@ const EN: Textos = {
 };
 
 const DE: Textos = {
+  cifras: {
+    titulo: "In Zahlen",
+    articulos: "veröffentlichte Artikel",
+    proyectos: "Projekte mit öffentlichem Repository",
+    idiomas: "Sprachen",
+    titulaciones: "Abschlüsse",
+    certificaciones: "Zertifikate",
+  },
   descargarCV: "Lebenslauf herunterladen",
   nav: {
     inicio: "Start",
@@ -170,7 +201,8 @@ const DE: Textos = {
     articulos: "Artikel",
     formacion: "Ausbildung",
     contacto: "Kontakt",
-  },
+  
+    sobreMi: "Über mich",},
   hero: {
     saludo: "Hallo, ich bin",
     titulo: "Deep-Tech-Analyst in Ausbildung — ich bewerte, ob eine Technologie funktioniert und welches Risiko sie birgt",

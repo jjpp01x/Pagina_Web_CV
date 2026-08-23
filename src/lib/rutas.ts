@@ -60,10 +60,13 @@ const SEGMENTO: Record<Idioma, Record<Seccion, string>> = {
  * `contact.html` en ingles. Son URLs indexadas y la coherencia estetica no
  * vale una 404.
  */
-const PAGINA: Record<Idioma, Record<"proyectos" | "formacion" | "contacto", string>> = {
-  es: { proyectos: "projects", formacion: "education", contacto: "contact" },
-  en: { proyectos: "projects", formacion: "education", contacto: "contact" },
-  de: { proyectos: "projekte", formacion: "ausbildung", contacto: "kontakt" },
+const PAGINA: Record<
+  Idioma,
+  Record<"proyectos" | "formacion" | "contacto" | "sobreMi", string>
+> = {
+  es: { proyectos: "projects", formacion: "education", contacto: "contact", sobreMi: "sobre-mi" },
+  en: { proyectos: "projects", formacion: "education", contacto: "contact", sobreMi: "about" },
+  de: { proyectos: "projekte", formacion: "ausbildung", contacto: "kontakt", sobreMi: "ueber-mich" },
 };
 
 const limpia = (s: string) => (s.startsWith("/") ? s : `/${s}`);
@@ -77,6 +80,8 @@ export const ruta = {
   proyecto: (lang: Idioma, slug: string) => `${PREFIJO[lang]}/${SEGMENTO[lang].proyectos}/${slug}`,
   formacion: (lang: Idioma) => `${PREFIJO[lang]}/${PAGINA[lang].formacion}`,
   contacto: (lang: Idioma) => `${PREFIJO[lang]}/${PAGINA[lang].contacto}`,
+  /** Pagina nueva: no existia en el sitio anterior, no hay URL que conservar. */
+  sobreMi: (lang: Idioma) => `${PREFIJO[lang]}/${PAGINA[lang].sobreMi}`,
 };
 
 /**

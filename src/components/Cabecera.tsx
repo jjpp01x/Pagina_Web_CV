@@ -59,6 +59,7 @@ export function Cabecera({ lang }: { lang: Idioma }) {
   const mapa = construirMapaAlternativas();
 
   const secciones = [
+    { href: ruta.sobreMi(lang), etiqueta: t.nav.sobreMi },
     { href: ruta.proyectos(lang), etiqueta: t.nav.proyectos },
     { href: ruta.articulos(lang), etiqueta: t.nav.articulos },
     { href: ruta.formacion(lang), etiqueta: t.nav.formacion },
