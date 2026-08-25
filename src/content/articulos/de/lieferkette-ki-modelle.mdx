@@ -1,0 +1,26 @@
+---
+title: "Was ich aus der Analyse von vier scheinbar unabhängigen Sicherheitsvorfällen gelernt habe"
+subtitle: "Vier unabhängige Vorfälle sind vier Pflaster. Vier Vorfälle mit gemeinsamer Ursache sind eine fehlende Kontrolle."
+description: "Vier Vorfälle bei OpenAI und Hugging Face teilten eine strukturelle Wurzel: die Lieferkette der Modelle. Sieben Kontrollen hätten sie verhindert."
+category: "Governance und Risiko"
+date: "2026-10-05"
+image: "https://josepalacios.site/img/og/cadena-suministro-modelos-ia.png"
+lang: "de"
+translationKey: "cadena-suministro-modelos-ia"
+---
+
+Wenn Sie Vorfälle einzeln klassifizieren, wirkt jeder wie ein isoliertes Problem mit eigener Erklärung. Erst beim Gruppieren zeigt sich das Interessante.
+
+Bei der Durchsicht der Vorfälle meines Datensatzes zwischen 2023 und 2024 stellte sich heraus, dass vier von ihnen — verteilt auf OpenAI und Hugging Face — dieselbe strukturelle Wurzel teilen: die Lieferkette der Modelle. Nicht das Modell selbst, nicht der Prompt, nicht das Fine-Tuning. Die Infrastruktur, über die ein Modell oder seine Abhängigkeiten in die Produktion gelangen.
+
+Es ist eine Risikoklasse, die die öffentliche KI-Debatte kaum berührt, weil sie nicht glamourös ist. Es geht nicht um Alignment oder emergente Fähigkeiten. Es geht um Artefakte, die heruntergeladen werden, Abhängigkeiten, die aufgelöst werden, Tokens, die durchsickern, und Serialisierungsformate, die beim Deserialisieren Code ausführen.
+
+Warum das für alle relevant ist, die Technologie bewerten: Wenn ein Fonds oder ein Team ein Startup prüft, das "KI einsetzt", dreht sich die Sorgfaltsprüfung meist um das Modell — seine Leistung, seine Daten, seine Differenzierung. Aber ein erheblicher Teil des tatsächlichen operativen Risikos steckt nicht im Modell. Er steckt darin, wie das Modell auf die Maschine gelangt, auf der es läuft, und welche Kontrollen es über diesen Weg gibt.
+
+In der Analyse habe ich sieben Kontrollen identifiziert, die die vier Vorfälle verhindert oder abgemildert hätten. Keine davon ist exotisch. Es sind Praktiken, die in konventionellen Software-Lieferketten als selbstverständlich gelten und im Modell-Ökosystem noch nicht.
+
+<Nota>
+
+Die Lehre, die ich daraus ziehe: Vorfälle nach Ursache statt nach Symptom zu gruppieren, verändert vollständig, welche Fragen Sie danach stellen. Vier unabhängige Vorfälle sind vier Pflaster. Vier Vorfälle mit gemeinsamer Ursache sind eine fehlende Kontrolle.
+
+</Nota>

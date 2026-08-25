@@ -1,0 +1,70 @@
+---
+title: "Expert Probe"
+subtitle: "Del brief de due diligence al experto humano: guion falsable, notas anonimizadas y confianza calculada, no preguntada"
+description: "Expert Probe: convierte las afirmaciones que un brief de due diligence deja abiertas en un guion de entrevista falsable, y las notas del experto en un nivel de confianza recalculado por fórmula. Anonimización y modelo local por diseño."
+tipo: "Herramienta de entrevistas a expertos · proyecto propio"
+pregunta: "¿Qué debe preguntarle un analista a un experto, y qué cambia con sus respuestas?"
+estado: "Repositorio público"
+repo: "https://github.com/jjpp01x/expert-probe"
+image: "https://josepalacios.site/img/og-image.png"
+lang: "es"
+translationKey: "expert-probe"
+stack: ["Python", "Pydantic", "Ollama (local)", "Claude", "SQLite cifrado", "CLI"]
+deepTech: true
+---
+
+## El problema
+
+Un brief de due diligence como el que produce [DD-Copilot](dd-copilot.html) deja huecos por diseño: las afirmaciones que marca como «plausibles» o «sin soporte» son, por definición, las que la fuente no cierra. Cerrarlas exige un experto humano — y las llamadas a expertos suelen ser conversaciones sin estructura cuyas conclusiones acaban en notas sueltas que nadie reconecta con el brief original.
+
+Expert Probe cierra ese circuito: convierte las afirmaciones abiertas en un guion de entrevista falsable, y las notas de esa entrevista en cambios de estado y un nivel de confianza recalculado.
+
+## Cómo funciona
+
+<Paso n="01" titulo="Entrada: el brief de DD-Copilot">
+
+Consume la salida JSON de `ddcopilot analyze --json` y aísla las afirmaciones que necesitan verificación humana.
+
+</Paso>
+
+<Paso n="02" titulo="Guion de entrevista falsable">
+
+Genera preguntas diseñadas para que la respuesta del experto pueda confirmar o refutar cada afirmación, no solo comentarla. Este paso puede usar Claude porque su prompt solo contiene el brief de la empresa analizada — nunca datos del experto.
+
+</Paso>
+
+<Paso n="03" titulo="Notas anonimizadas, modelo local">
+
+Las notas de la entrevista se anonimizan antes de construir ningún prompt y solo se procesan con un modelo local vía Ollama. Un proveedor remoto no está desaconsejado ahí: está rechazado por código, antes incluso de abrir la base.
+
+</Paso>
+
+<Paso n="04" titulo="Mapeo a cambios de estado">
+
+El modelo local propone qué afirmaciones quedan confirmadas o refutadas por cada nota, y la herramienta actualiza el estado del brief con rastro de auditoría.
+
+</Paso>
+
+<Paso n="05" titulo="Confianza recalculada por fórmula">
+
+El nivel de confianza no se le pregunta a un modelo: se calcula con pesos declarados por estado de cada afirmación. Un número que cambia al reejecutarlo con los mismos datos no es evidencia; con una fórmula, quien lee el informe puede discutir los pesos.
+
+</Paso>
+
+## La decisión de diseño central
+
+Anonimizar unas notas que ya no salen de la máquina parece redundante, y no lo es: el prompt no es el único lector (la base, el rastro de auditoría y cualquier volcado de depuración también ven esos datos), y un dato que viaja anonimizado por dentro hace que las funciones que se añadan dentro de seis meses nazcan seguras sin que su autor tenga que saberlo. El guard protege el destino; la anonimización protege el contenido — fallan de formas distintas, así que no fallan a la vez.
+
+Hay una frontera más fuerte que ambos: la función de mapeo no acepta una nota, acepta un tipo `AnonymizedNote` que solo el anonimizador puede construir. El guard evita la llamada equivocada; el tipo hace que la llamada equivocada no se pueda escribir.
+
+Y una decisión que parece un descuido y no lo es: una afirmación refutada pesa igual que una confirmada en el índice de confianza, porque ese índice mide la calidad de la evidencia, no la salud de la empresa. Refutar cierra una incógnita igual que confirmar; el deterioro de la tesis se reporta aparte, como recuento de refutadas. Son dos ejes, y fundirlos en un solo número sería el error más caro posible aquí.
+
+## Qué *no* hace
+
+La anonimización protege a la persona entrevistada, no a terceros que esa persona nombre, y nada protege contra ser reconocible por el contenido de lo que uno dice. La frontera de tipos frena el descuido, no la intención. El repositorio prefiere declarar estos huecos a insinuar que no existen: cada limitación está verificada ejecutándola y documentada junto a la política de datos.
+
+## Lo que aprendí
+
+La privacidad operativa se decide en detalles pequeños: la passphrase de cifrado se pide por consola con la entrada oculta, y la opción de pasarla como argumento se retiró porque dejaba la llave maestra en el historial del shell y visible para cualquier usuario de la máquina. El almacenamiento es SQLite local, cifrado por campo, con una clave de datos por persona y un comando de borrado completo — y la garantía real no la sostiene el borrado, sino que la clave maestra nunca se almacena.
+
+La otra lección es de arquitectura: convertir una regla de privacidad en un tipo del lenguaje la hace sobrevivir al futuro del proyecto. Una comprobación es algo que alguien debe acordarse de invocar; una imposibilidad estructural no depende de la memoria de nadie.

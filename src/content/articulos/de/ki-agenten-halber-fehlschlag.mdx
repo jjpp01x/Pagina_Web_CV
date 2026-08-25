@@ -1,0 +1,34 @@
+---
+title: "KI-Agenten in Produktion: die Frage, die fast niemand stellt"
+subtitle: "Ein Agent, der ganz scheitert, fällt auf. Einer, der auf halbem Weg scheitert, hinterlässt einen Zustand, den niemand entworfen hat."
+description: "Ein Agent, der ganz scheitert, fällt auf. Einer, der auf halbem Weg scheitert, hinterlässt einen Zustand, den niemand entworfen hat. Was Sie vorher fragen sollten."
+category: "KI-Engineering"
+date: "2026-09-18"
+image: "https://josepalacios.site/img/og/agentes-ia-fallo-a-medias.png"
+lang: "de"
+translationKey: "agentes-ia-fallo-a-medias"
+---
+
+Wenn jemand einen KI-Agenten für den Produktivbetrieb bewertet, fragt er fast immer dasselbe: Trifft er das Richtige? Das ist die unvollständige Frage. Die entscheidende lautet anders: Was tut der Agent, wenn er mitten in einer Aktion scheitert, die bereits Nebenwirkungen hatte?
+
+Der Unterschied ist nicht subtil. Ein Chatbot, der sich irrt, produziert einen falschen Satz, den die Nutzerin ignorieren kann. Ein Agent, der sich irrt, führt aus: Er schreibt in eine Datenbank, storniert eine Bestellung, deployt Code, versendet eine E-Mail, verschiebt eine Zeile im ERP. Geht das auf halbem Weg schief, ist der Schaden bereits entstanden, bevor irgendjemand — Mensch oder System — eingreifen konnte.
+
+Im Juli 2025 hörte das auf, eine Design-Hypothese zu sein, und wurde zu einem dokumentierten Fall. Jason Lemkin, Gründer der SaaStr-Community, testete den Coding-Agenten von Replit unter dem, was er selbst als ausdrücklichen "Code Freeze" beschrieb: die klare Anweisung, die Produktionsdatenbank nicht anzufassen. Der Agent löschte sie trotzdem — mehr als 1'200 Datensätze von Führungskräften aus mehr als 1'190 Unternehmen. Als Lemkin fragte, ob sich das wiederherstellen liesse, antwortete der Agent mit Nein. Das war falsch: Lemkin stellte die Daten manuell aus einem Backup wieder her. Replits CEO Amjad Masad nannte den Vorfall "inakzeptabel" und kündigte eine verbindliche Trennung von Entwicklungs- und Produktionsdatenbanken sowie Verbesserungen am Rollback-System an.
+
+Das Detail, das ich am lehrreichsten finde, ist nicht die Löschung. Es ist, dass der Agent einen selbstsicheren, aber unzuverlässigen Bericht darüber ablieferte, was er soeben getan hatte. Ihn zu fragen "Lässt sich das rückgängig machen?" lieferte keine überprüfte Antwort. Es lieferte eine plausible.
+
+In einer anderen Domäne ist das genau das Problem, das mich dazu brachte, eine nicht verhandelbare Regel in DD-Copilot zu schreiben, das Werkzeug, das ich für technische Due-Diligence-Berichte über Deep-Tech-Startups gebaut habe: Jede Aussage muss mit einem Zitat kommen, das automatisch gegen den Quelltext geprüft wird, und wenn sie nicht verifizierbar ist, sagt der Bericht ausdrücklich "in der Quelle nicht erwähnt" — er füllt die Lücke nie mit etwas Plausiblem. Die Frage, die ich mir beim Entwurf stellte, war nicht "Wie gut antwortet das Modell?", sondern "Was tut es, wenn es die Antwort nicht kennt?". Für einen Agenten, der Aktionen mit realen Folgen ausführt, lautet die entsprechende Frage: "Was tut er, wenn er mitten in einer Aktion scheitert, die bereits Nebenwirkungen hatte?" — und die Antwort darf ebenso wenig lauten: "Vertrauen Sie seinem eigenen Bericht darüber, was passiert ist."
+
+Für alle, die entscheiden müssen, ob sie einen KI-Agenten für Aufgaben mit realen Folgen einsetzen — keine Demo, sondern eine Aufgabe, die Produktivsysteme berührt — gibt es vier Designfragen, die mehr wert sind als jede Genauigkeitszahl eines Modells.
+
+**Idempotenz.** Wenn dieselbe Aktion erneut ausgeführt wird — weil sie auf halbem Weg scheiterte, weil ein Timeout auftrat, weil der Agent selbst beschliesst, es "noch einmal zu versuchen" — ist das Ergebnis dasselbe, oder verdoppelt sich die Wirkung? Ein Agent, der zweimal abbucht, weil er eine Zahlung wiederholte, ohne zu prüfen, ob die erste bereits ausgeführt wurde, ist kein hypothetischer Fall: Es ist die Art von Fehler, die ein naives Design standardmässig produziert.
+
+**Kompensation und Rollback.** Gibt es einen expliziten, dokumentierten und getesteten Weg, jede destruktive Aktion rückgängig zu machen, oder bedeutet "zurücksetzen" in der Praxis "hoffen, dass das Backup funktioniert"? Der Fall Replit zeigt den Unterschied: Das Rollback existierte, aber nicht als Teil des Agentendesigns — es existierte trotz ihm, in einer Backup-Infrastruktur, die ein Mensch manuell auslösen musste.
+
+**Standardberechtigungen.** Arbeitet der Agent mit denselben Zugangsdaten zum Lesen und zum Schreiben, oder gibt es eine echte Grenze zwischen "eine Aktion vorschlagen" und "sie ausführen"? Ein Agent, der eine Tabelle ebenso leicht löschen wie abfragen kann, hat kein Intelligenzproblem, sondern ein Problem der Berechtigungsarchitektur.
+
+**Unabhängige Nachvollziehbarkeit.** Gibt es ein Audit-Log, das nicht davon abhängt, dass der Agent korrekt berichtet, was er getan hat? Denn wie dieser Fall zeigte, kann der Agent selbst sich irren — oder es schlicht nicht wissen — über den tatsächlichen Zustand des Systems, das er gerade verändert hat.
+
+Keine dieser vier Fragen taucht in einer Demo auf. Eine Demo zeigt den Happy Path: die Aktion, die gelingt, von Anfang bis Ende ohne Unterbrechung ausgeführt. Genau dieses Szenario sagt am wenigsten darüber aus, ob ein System produktionstauglich ist, denn das Szenario, auf das es ankommt — jenes, das über die Einführung eines Werkzeugs entscheiden sollte — ist das, was passiert, wenn auf halbem Weg etwas bricht, nicht davor und nicht danach.
+
+Die Schlussfolgerung lautet nicht "Setzen Sie keine KI-Agenten in Produktion ein". Sie lautet, dass die technische Due Diligence eines Agenten nicht dabei stehen bleiben darf zu messen, wie gut er Aufgaben löst. Sie muss ausdrücklich fragen, was dieser Agent im denkbar schlechtesten Moment tut: wenn er bereits gehandelt hat, wenn bereits Nebenwirkungen eingetreten sind, und wenn etwas schiefging, bevor er fertig war. Diese Frage beantwortet kein Genauigkeits-Benchmark. Sie beantwortet das Design — und Design lässt sich, anders als Produktmarketing, vor der Vertragsunterschrift prüfen.

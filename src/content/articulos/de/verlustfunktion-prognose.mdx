@@ -1,0 +1,32 @@
+---
+title: "Warum die Optimierung auf MAPE Sie Geld kosten kann, ohne dass Sie es merken"
+subtitle: "Die Wahl der Verlustfunktion ist die Analyse, kein Implementierungsdetail."
+description: "MAPE bestraft Über- und Unterschätzung gleich stark, doch fast kein Unternehmen verliert in beide Richtungen gleich viel. Die Wahl der Kennzahl ist die Analyse."
+category: "Evaluation und Methode"
+date: "2026-09-04"
+image: "https://josepalacios.site/img/og/funcion-de-perdida-forecasting.png"
+lang: "de"
+translationKey: "funcion-de-perdida-forecasting"
+---
+
+Nahezu jedes Prognosewerkzeug, das Sie evaluieren werden, verkauft Ihnen standardmässig dasselbe: Wir verbessern Ihren MAPE oder Ihren RMSE. Das sind symmetrische Kennzahlen — sie bestrafen eine Überschätzung genauso stark wie eine Unterschätzung.
+
+Das Problem ist, dass fast kein Unternehmen in beide Richtungen gleich viel verliert.
+
+Nehmen wir den Fall, an dem ich gearbeitet habe: ein auf Skischuhe spezialisierter Händler, der sein Sortiment jede Saison erneuert. Was nicht verkauft wird, fällt aus dem Sortiment und wird in der Folgesaison mit Rabatt abverkauft. Dieser Margenverlust ist dauerhaft. Eine Unterschätzung kostet dagegen einen entgangenen Verkauf — ärgerlich, aber wiedergutzumachen, und manchmal nicht einmal das, weil die Kundin oder der Kunde ein anderes Modell kauft.
+
+Überprognose und Unterprognose kosten nicht dasselbe. Und trotzdem: Wenn Sie Werkzeuge nach ihrem MAPE bewerten, belohnen Sie dasjenige, das eine Kennzahl am besten optimiert, die beide Fehler als gleichwertig behandelt.
+
+## Was ich stattdessen getan habe
+
+Das am höchsten gewichtete Kriterium der Bewertung (0,30 — das grösste Gewicht der gesamten Matrix) ist die Fähigkeit des Werkzeugs, einen asymmetrischen Verlust zu optimieren — konkret die Pinball Loss, jene Funktion, die in der Quantilprognose verwendet wird und es erlaubt, Überprognosen stärker zu bestrafen als Unterprognosen.
+
+Das ist keine Spitzfindigkeit. Es ist das, was dieses Problem von einer generischen Prognose unterscheidet, und deshalb muss es auch die Bewertung unterscheiden. Ein Kriterium, das nicht zwischen den Optionen differenziert, trägt keine Information bei; es macht die Tabelle nur länger.
+
+<Nota>
+
+Die Lehre, die ich daraus ziehe: Die Wahl der Verlustfunktion ist die Analyse. Alles, was danach kommt — das Modell, das Werkzeug, das Tuning der Hyperparameter — ist Arithmetik auf einer Entscheidung, die Sie bereits getroffen haben, oft ohne zu bemerken, dass Sie sie trafen.
+
+</Nota>
+
+Wenn Sie ein prädiktives System bewerten, lautet die erste Frage nicht "Wie genau ist es?". Sie lautet: "Genauigkeit — gemessen wie, und bildet dieses Wie ab, was ein Fehler Sie tatsächlich kostet?"

@@ -1,0 +1,30 @@
+---
+title: "El caso común no debería pagar una inferencia"
+subtitle: "Regex primero, modelo después: el coste como decisión de arquitectura."
+description: "Si el problema implica leer texto, el reflejo es llamar a un LLM. Una cascada de dos niveles resuelve gratis el caso común y reserva la inferencia."
+category: "Ingeniería de IA"
+date: "2026-10-14"
+image: "https://josepalacios.site/img/og/regex-primero-modelo-despues.png"
+lang: "es"
+translationKey: "regex-primero-modelo-despues"
+---
+
+Hay un reflejo muy extendido al construir herramientas con IA: si el problema implica leer texto, llamamos a un modelo de lenguaje. Y funciona. El problema es que funciona a un coste que nadie mira hasta que el volumen crece.
+
+En Model Card Auditor, la tarea es extraer seis campos concretos de un documento Markdown. Podría resolverse llamando a un LLM seis veces por modelo, y sobre un puñado de modelos ni lo notarías. Sobre un catálogo entero, en cada build de CI, es otra historia.
+
+## El diseño que usé — cascada de dos niveles
+
+1. **Primero, expresiones regulares sobre las secciones con encabezado.** Las model cards bien estructuradas siguen convenciones razonablemente estables: `## Limitations`, `## Bias, Risks and Limitations`, `## Training Data`. Una regex las resuelve en microsegundos y con coste cero.
+
+2. **Solo cuando la regex falla, entra el modelo.** Es decir: la llamada a inferencia queda reservada a los casos ambiguos, a las cards mal estructuradas o redactadas de forma poco convencional — que son exactamente los casos donde un modelo aporta algo que una regex no puede.
+
+El resultado es que la mayoría de auditorías no cuestan absolutamente nada, y las que cuestan es porque el problema lo justificaba.
+
+**Lo que me parece importante de esto** no es la optimización en sí, sino cuándo se toma. Esto no es algo que "ya optimizaremos": es una decisión que se toma antes de escribir la primera línea, dividiendo el problema en "parte barata y determinista" y "parte que de verdad necesita un modelo". Hacerlo después implica reescribir el flujo entero.
+
+<Nota>
+
+**La lección que me llevo:** en cualquier sistema con IA, la pregunta de diseño no es "¿qué modelo uso?" sino "¿qué parte de este problema no necesita un modelo en absoluto?". Casi siempre es más de la que parece.
+
+</Nota>

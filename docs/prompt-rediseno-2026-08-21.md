@@ -275,6 +275,9 @@ foto, animaciones.
 *Puerta 4:*
 - Lighthouse ≥ 90 en las cuatro categorías **contra la URL desplegada**, no en local.
 - Todo el apartado 9 marcado, con su evidencia.
+- **Los tres CV en PDF regenerados** con los datos corregidos del apartado 10, y su
+  generador versionado dentro del repo. Comprueba con `pdftotext` que no queda ningún
+  "A2–B1" ni ningún "Davos" como residencia actual.
 - **Y solo entonces me pides permiso para apuntar el dominio.** Nunca antes.
 
 ---
@@ -316,17 +319,37 @@ Al migrar el contenido, **arrastra el valor correcto**. Si en algún borrador, c
 traducción reaparece un "A2" o un "B1" referido al alemán, es un error de migración:
 corrígelo, no lo copies.
 
-### Pendiente — te toca
+### Pendiente, y aplazado a propósito — los tres CV en PDF
 
-**Los tres CV en PDF de `docs/` siguen diciendo "A2–B1"**: `CV_Jose_Palacios_ES.pdf`,
-`_EN.pdf` y `_DE.pdf`. Son descargables desde la web, así que el dato falso sigue
-publicado ahí.
+`docs/CV_Jose_Palacios_ES.pdf`, `_EN.pdf` y `_DE.pdf` **están desactualizados y lo sabemos**.
+Decisión mía del 2026-08-21: **se quedan como están durante las Fases 1 a 3 y se rehacen al
+final.** No los toques antes; no es despiste, es una decisión.
 
-No se pudieron corregir con el resto porque **no hay fuente editable en el repo** — solo
-están los PDF ya compilados, y reescribir el texto dentro de un PDF corrompe la
-maquetación. **Pregúntame de dónde salen** (Word, Canva, LaTeX, lo que sea), y con la
-fuente delante los regeneramos los tres. Trátalo como bloqueante de la Fase 2: no quiero
-publicar el sitio nuevo enlazando un CV con un nivel inflado.
+Lo que contienen y hay que corregir al regenerarlos:
+
+**Datos confirmados por José el 2026-08-21. Son definitivos: no vuelvas a preguntar por
+ellos, úsalos.**
+
+| Dice el PDF | Debe decir |
+|---|---|
+| "Alemán (A2–B1, uso profesional diario)" | **Alemán A1.1, cursando A1.2.** Nada más: sin "uso profesional diario" |
+| "Residente en Davos" | **Fuera Davos.** Experiencia internacional entre **España y Suiza**, en general |
+| "Certificado AWS (AI Practitioner y Cloud Practitioner)" | **AWS en curso**, no certificado |
+| "cursando Ingeniería Informática" | Correcto: Ingeniería Informática y Applied Computing son la misma titulación |
+| "Inglés (C1)" | Correcto, se queda |
+
+Contexto que necesitas para rehacerlos:
+
+- Se generaron con **ReportLab** (Python) el 17 de julio de 2026. **El script generador no
+  está en el repo**: los datos vivían en un `cv_data.py` dentro del archivo de una sesión
+  suelta de Claude Desktop, y ese fichero está obsoleto — **no lo uses como fuente**.
+- **Cuando los regeneres, el generador tiene que quedarse en el repo**, versionado y con los
+  datos en un único sitio. Que se perdiera el rastro es exactamente por qué hoy hay tres
+  PDF que nadie puede editar.
+- El CV que se envió a MNTY sí tenía el alemán correcto; está en
+  `~/Projects/linkedin-director-ia/05-busqueda-empleo/`. Sirve de referencia.
+
+**Añade esto a la Puerta 4**, y no des el sitio por publicable sin ello.
 
 ### Repaso general
 

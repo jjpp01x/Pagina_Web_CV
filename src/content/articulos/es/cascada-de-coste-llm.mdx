@@ -1,0 +1,30 @@
+---
+title: "Cómo reduje el coste de analizar una startup con IA sin perder calidad"
+subtitle: "El coste de un sistema de IA es una decisión de arquitectura, no una optimización que se hace después."
+description: "Siete llamadas de clasificación con un modelo barato y una síntesis con uno caro. El coste es una decisión de arquitectura, no un ajuste posterior."
+category: "Ingeniería de IA"
+date: "2026-08-31"
+image: "https://josepalacios.site/img/og/cascada-de-coste-llm.png"
+lang: "es"
+translationKey: "cascada-de-coste-llm"
+---
+
+Uno de los errores más comunes que veo en prototipos de IA es tratar al modelo de lenguaje como una caja negra que se llama una vez por tarea, con el modelo más potente disponible, sin pensar en qué parte del trabajo realmente necesita esa potencia.
+
+En DD-Copilot, el proceso de generar un informe implica varias llamadas: extraer el problema que resuelve la tecnología, su diferenciación, sus afirmaciones de rendimiento, y comprobar cuatro riesgos técnicos del checklist — siete llamadas de clasificación en total, más una síntesis final. Si las siete usan el modelo más caro, el coste se dispara sin que la calidad mejore proporcionalmente: clasificar "¿se menciona el nivel de madurez tecnológica?" es una tarea sencilla, no necesita el razonamiento más sofisticado disponible.
+
+## El diseño que usé — una cascada de coste
+
+- **Claude Haiku** hace las siete llamadas de clasificación/extracción por campo. Es una tarea acotada (leer un fragmento de texto, decidir sí/no y extraer una cita), donde un modelo rápido y barato rinde prácticamente igual que uno caro.
+
+- **Claude Sonnet** entra solo una vez, al final, para la síntesis: recibe los datos ya estructurados (no el texto en bruto) y da el nivel de confianza del análisis con su justificación — el único paso donde el razonamiento de más calidad realmente cambia el resultado.
+
+- Antes de que cualquier LLM entre en juego, un paso de recuperación por embeddings (gratis, corre en local) filtra qué fragmentos del texto son relevantes para cada pregunta — así ningún modelo, ni el barato ni el caro, procesa nunca el documento entero.
+
+**El resultado:** el coste de analizar una startup completa queda dominado por una sola llamada al modelo más caro, no por siete. Y cuando, durante el desarrollo, me quedé sin saldo de API a mitad de proyecto, esta misma arquitectura (LLM intercambiable detrás de una interfaz común) me permitió añadir un segundo proveedor —un modelo local gratuito vía Ollama— sin tocar ni una línea del resto del sistema.
+
+<Nota>
+
+**La lección que me llevo:** diseñar pensando en el coste no es una optimización posterior — es una decisión de arquitectura que se toma antes de escribir la primera línea, decidiendo qué partes del problema son "clasificación barata" y cuál es el único paso que de verdad necesita el modelo más inteligente.
+
+</Nota>

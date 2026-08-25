@@ -1,0 +1,36 @@
+---
+title: "My 60 tests were green and the system could not return a positive result"
+subtitle: "A green suite verifies that the code does what you think, not that what you think is what is needed."
+description: "With 63 topics and 1,000 permutations, the smallest possible q-value was 0.063 — above the 0.05 threshold. No topic could ever be flagged."
+category: "Evaluation and method"
+date: "2026-10-28"
+image: "https://josepalacios.site/img/og/fallo-que-ningun-test-detecto.png"
+lang: "en"
+translationKey: "fallo-que-ningun-test-detecto"
+---
+
+This is the most instructive failure I have run into, and I want to tell it in full because it only just worked out.
+
+My system evaluates several topics at once, so it corrects for multiple comparisons with Benjamini-Hochberg — the standard adjustment that stops you accepting a finding that appears only because you looked in many places.
+
+While improving the clustering, I went from detecting 3 topics to detecting 63. Better granularity, better project. The whole suite stayed green.
+
+What I did not see: with k contrasts and n permutations, the smallest q-value Benjamini-Hochberg can produce is k/(n+1).
+
+- With 3 topics and 1,000 permutations: 0.003. No problem.
+
+- With 63 topics and 1,000 permutations: 0.063.
+
+The significance threshold is 0.05. 0.063 > 0.05.
+
+In other words: no topic could ever be flagged as emerging. None. However much evidence it had, however extreme its growth. The entire table would have said "indistinguishable from noise" — and it would have looked exactly like a measured result. A conclusion fixed by arithmetic, presented as an empirical finding.
+
+The 60 tests passed. All of them. Because each one checked that its piece did what I believed it should do, and none checked that the combination of two correct decisions — cluster more finely, correct for multiplicity — left the system unable to assert anything at all.
+
+The fix was to add the computation of that floor and to warn when it makes significance unreachable, stating how many permutations would be needed. The output now says, literally, that "the verdict is fixed by arithmetic, not by the data".
+
+## Two lessons I take from it
+
+The first: a green suite verifies that the code does what you think, not that what you think is what is needed. For analysis software, the review that reads the code reasoning about the method finds things no test run will find.
+
+The second, and more uncomfortable: this failure only produces false negatives. Systems that over-claim get caught early, because someone checks a striking claim and it does not add up. A system that stays silent can be used for years while looking prudent.

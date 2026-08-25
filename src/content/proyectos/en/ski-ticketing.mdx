@@ -1,0 +1,52 @@
+---
+title: "Ski Resort Ticketing System"
+subtitle: "Ski pass sales system in C and Python with SQLite · Software Development"
+description: "Ski Resort Ticketing System — Ski pass sales system in C and Python with SQLite. Dual-language architecture. Academic project by Jose Palacios Beortegui."
+estado: "Completed"
+modulo: "Software Development"
+institucion: "University of Wales Trinity Saint David / CESTE"
+repo: "https://github.com/jjpp01x/Ski-resort-ticketing-system"
+image: "https://josepalacios.site/img/og-image.png"
+lang: "en"
+translationKey: "ski-ticketing"
+stack: ["C", "Python", "SQLite", "CLI", "File I/O"]
+deepTech: false
+---
+
+## The problem
+
+A ski resort needed a ticketing system to handle ski pass sales by type (daily, weekly, season), access control to the facilities and transaction logging with persistence between sessions.
+
+The key requirement was to implement the system in two different languages — C for the low-level module and Python for the user interface — demonstrating the ability to work across different paradigms and levels of abstraction.
+
+## Development process
+
+<Paso n="01" titulo="C module — low-level logic">
+
+Implementing the data structures (`struct`) for tickets, customers and transactions. Memory management with `malloc/free`, reading and writing binary files for persistence.
+
+</Paso>
+
+<Paso n="02" titulo="SQLite database">
+
+Designing the database schema to store tickets, customers and transactions. Integrating SQLite3 into C through the native API for CRUD operations with no external dependencies.
+
+</Paso>
+
+<Paso n="03" titulo="Python interface">
+
+An interactive CLI in Python that consumes the compiled C module. Menu options for ticket sales, availability queries, transaction history and customer management.
+
+</Paso>
+
+<Paso n="04" titulo="Integration and testing">
+
+Validating the full flow: ticket creation in Python → processing in C → persistence in SQLite → retrieval in the next session. Manual tests of edge cases (stock exhausted, invalid dates, duplicate IDs).
+
+</Paso>
+
+## What I learned
+
+This project forced me to think about the same business logic from two completely different perspectives: manual memory management in C and Python's high-level abstraction. Understanding why Python exists becomes far more tangible once you have implemented the same thing in C first.
+
+It was also my first real integration between two languages in a single system, a common pattern in embedded systems and high-performance applications.

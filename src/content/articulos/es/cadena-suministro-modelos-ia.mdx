@@ -1,0 +1,26 @@
+---
+title: "Lo que aprendí analizando cuatro fallos de seguridad que parecían independientes"
+subtitle: "Cuatro incidentes independientes son cuatro parches. Cuatro incidentes con una causa común son un control que faltaba."
+description: "Cuatro incidentes de OpenAI y Hugging Face comparten una misma raíz: la cadena de suministro de modelos. Siete controles que los habrían evitado."
+category: "Gobernanza y riesgo"
+date: "2026-10-05"
+image: "https://josepalacios.site/img/og/cadena-suministro-modelos-ia.png"
+lang: "es"
+translationKey: "cadena-suministro-modelos-ia"
+---
+
+Cuando clasificas incidentes uno a uno, cada uno parece un problema aislado con su propia explicación. Es al agruparlos cuando aparece lo interesante.
+
+Analizando los incidentes de mi dataset entre 2023 y 2024, cuatro de ellos —repartidos entre OpenAI y Hugging Face— resultaron compartir una misma raíz estructural: **la cadena de suministro de modelos**. No el modelo en sí, ni el prompt, ni el fine-tuning. La infraestructura por la que un modelo o sus dependencias llegan hasta producción.
+
+Es un tipo de riesgo que la conversación pública sobre IA apenas toca, porque no es glamuroso. No va de alineamiento ni de capacidades emergentes. Va de artefactos que se descargan, dependencias que se resuelven, tokens que se filtran y formatos de serialización que ejecutan código al deserializar.
+
+**Por qué me parece relevante para quien evalúa tecnología:** cuando un fondo o un equipo evalúa una startup que "usa IA", la diligencia suele centrarse en el modelo — su rendimiento, sus datos, su diferenciación. Pero una parte considerable del riesgo operativo real no está en el modelo. Está en cómo llega el modelo a la máquina donde se ejecuta, y en qué controles existen sobre ese camino.
+
+En el análisis identifiqué siete controles que habrían evitado o mitigado los cuatro incidentes. Ninguno es exótico. Son el tipo de práctica que en la cadena de suministro de software convencional se dan por sentadas y que en el ecosistema de modelos todavía no.
+
+<Nota>
+
+**La lección que me llevo:** agrupar incidentes por causa raíz en vez de por síntoma cambia por completo qué preguntas haces después. Cuatro incidentes independientes son cuatro parches. Cuatro incidentes con una causa común son un control que faltaba.
+
+</Nota>

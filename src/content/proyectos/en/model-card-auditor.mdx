@@ -1,0 +1,66 @@
+---
+title: "Model Card Auditor"
+subtitle: "Model documentation risk, measured and enforced in CI"
+description: "Model Card Auditor: audits Hugging Face model documentation against six mandatory fields, scores it from 0 to 100 and can fail a CI build."
+tipo: "Audit tool · personal project"
+pregunta: "Is it documented well enough to depend on?"
+estado: "Public repository"
+repo: "https://github.com/jjpp01x/model-card-auditor"
+image: "https://josepalacios.site/img/og-image.png"
+lang: "en"
+translationKey: "model-card-auditor"
+stack: ["Python", "Hugging Face Hub", "pytest", "CI gate"]
+deepTech: true
+---
+
+## The problem
+
+When a team puts a third-party model into production, it inherits everything that model does not say about itself: what data it was trained on, which biases are known, under what conditions it stops being reliable, under which licence it can be used.
+
+That information lives in the model card, a document nobody is required to complete and which, in practice, is filled in very unevenly. The risk is not theoretical: it is the difference between being able to answer an audit and not.
+
+## How it works
+
+<Paso n="01" titulo="Fetch">
+
+Downloads the model card and licence metadata from the Hugging Face Hub.
+
+</Paso>
+
+<Paso n="02" titulo="Extraction">
+
+Looks for six mandatory fields — limitations, bias, training data, licence, context length and benchmarks — first with regular expressions over the headed sections, and only falls back to a model call when the regex fails.
+
+</Paso>
+
+<Paso n="03" titulo="Scoring">
+
+Computes a score from 0 to 100 based on the fields found, weightable per field because not every consumer values each gap the same way.
+
+</Paso>
+
+<Paso n="04" titulo="Report">
+
+Generates a documentation risk report in Markdown, field by field.
+
+</Paso>
+
+<Paso n="05" titulo="CI gate">
+
+Runs in batch across several models and fails the build when the score drops below the configured threshold.
+
+</Paso>
+
+## The decision that matters most
+
+The regex → model order is a deliberate cost decision: the common case should not pay for an inference. Most well-structured model cards resolve without calling any model, and the call is reserved for ambiguous cases.
+
+The second decision is turning it into a CI gate rather than a report someone reads occasionally. A quality metric that blocks nothing ends up ignored.
+
+## What it does *not* do
+
+It measures whether a model is *documented*, not whether it is *good*. A well-written model card for a mediocre model scores high, and that is the intended behaviour: this is a documentation risk tool, not a performance benchmark.
+
+## What I learned
+
+That a good share of real technical risk sits not in the model, but in what was never documented about it. And that a check only changes a team's behaviour when it has automatic consequences.

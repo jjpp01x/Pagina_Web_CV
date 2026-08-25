@@ -1,0 +1,42 @@
+---
+title: "Energy and compute: the real bottleneck for AI startups"
+subtitle: "The bottleneck is not the electricity bill of training. It is access to capacity."
+description: "Data centres consumed 485 TWh in 2025, up 17% in a year. Five questions about unit inference cost before you invest in an AI startup."
+category: "Business and strategy"
+date: "2026-10-09"
+image: "https://josepalacios.site/img/og/energia-y-computo-startups-ia.png"
+lang: "en"
+translationKey: "energia-y-computo-startups-ia"
+---
+
+When someone asks me what to look at before trusting an AI startup, I almost never start with the model. I start with its inference cost structure — and, increasingly, with its access to electricity. It sounds less interesting than talking about architecture. It is, however, where it gets decided which startups scale with margin and which run out of it, even when the product works perfectly.
+
+The scale of the problem first. According to the International Energy Agency (IEA), data centres consumed 415 terawatt-hours (TWh) in 2024 — 1.5% of global electricity. In 2025 that rose to 485 TWh, up 17% in a single year, against global electricity growth of 3%. Data centres dedicated specifically to AI grew 50% in 2025 alone. The IEA itself projects that by 2030 data centre consumption will be around 945-950 TWh — roughly Japan's entire electricity consumption today.
+
+Goldman Sachs Research frames the same phenomenon in installed capacity: global data centre demand going from 55 gigawatts in 2025 (14% attributable to AI) to 122 GW in 2030 — a 165% increase over 2023, with AI accounting for close to 40% of that demand. The associated grid cost: around $720 billion of investment through 2030.
+
+Here comes the part that usually surprises people in diligence: if you look at the cost breakdown of training a frontier model, energy is only 2-6% of total spend, according to Epoch AI — hardware (47-67%) and R&D staff (29-49%) weigh far more. The bottleneck is not the electricity bill of training itself. It is access to capacity: the queue to connect a data centre to the grid, the megawatt that is not available even when you have the capital to pay for it.
+
+That is why the four large hyperscalers (Microsoft, Amazon, Google, Meta) have jointly signed more than 9.8 GW of nuclear agreements since 2024 — Microsoft with Constellation Energy to restart Three Mile Island (a 20-year contract, 835 MW, first power expected in 2027), Amazon with Talen Energy for 1,920 MW from the Susquehanna plant through 2042. This is not green diversification. It is locking in firm megawatts in a market where the grid, not the chip, is the scarce asset.
+
+Efficiency is not uniform either. PUE (how much extra energy cooling and infrastructure consume for every unit that reaches compute) has been stuck for six years at a global average of 1.54, according to Uptime Institute's annual survey. Google reports a PUE of 1.09 across its hyperscale centres — a real efficiency gap between operating at hyperscaler scale and the rest of the market, which also translates into unit cost of inference.
+
+And then there is the side that genuinely falls: inference cost per token, for a fixed model capability, has dropped between 9x and 900x per year depending on the benchmark, according to Epoch AI's analysis of inference pricing; a16z documented a 1,000x fall over three years (~10x/year) for a capability level equivalent to GPT-3. These are real figures — but there is a trap in how they get read in diligence.
+
+The trap is the rebound effect, or Jevons paradox: cost per token falls, but total token volume grows faster than that fall, so the aggregate bill goes up. Google reported at its I/O 2026 keynote that its monthly processed token volume went from 9.7 trillion in May 2024 to more than 3,200 trillion (3.2 quadrillion) in May 2026 — roughly a 330-fold increase in two years. That figure is self-reported by Google and not externally audited, so it should be treated as the company's own account of its trajectory, not as an industry data point verified by third parties. But the direction matches what independent analysts report: the cost of completing a full agentic task (multiple turns, more context, more tool calls) is rising even as the price per individual token keeps falling.
+
+Add to that the scarcity of dedicated compute, not just power: SemiAnalysis, which audits GPU rental prices with data from more than 100 providers, reports that the price of annual H100 contracts rose close to 40% between October 2025 and March 2026, after falling 58% between 2023 and 2025. On-demand capacity is, by their index, essentially exhausted across most surveyed providers since February 2026. The AI compute market is not a price curve that only goes down — it is a curve that compresses and then tightens again with demand.
+
+With all that in mind, here is what I would ask in technical diligence on an AI startup, beyond the obvious:
+
+1. What is the real unit cost per complete use case — not per token, but per task solved end to end — and how does that cost evolve as the product becomes more agentic?
+
+2. What share of its compute sits in committed fixed-price contracts versus on-demand capacity exposed to a market that just rose 40% in six months?
+
+3. Does it depend on a single cloud or chip provider, and what happens to its margins if that provider raises prices or restricts capacity?
+
+4. If its roadmap includes training or fine-tuning its own models at scale, has it already secured electricity access for that phase, or does it depend on a grid interconnection queue that can take years?
+
+5. Does the gross margin it presents already incorporate the expected cost trajectory of compute, or does it assume price per token keeps falling at the historical rate indefinitely?
+
+None of these questions appears in the pitch deck. All of them determine whether the business scales with expanding margin or scales by handing that margin to the compute bill.

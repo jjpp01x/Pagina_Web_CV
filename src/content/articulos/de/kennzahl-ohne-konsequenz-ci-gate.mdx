@@ -1,0 +1,30 @@
+---
+title: "Warum ich einen Qualitätsbericht in ein CI-Gate verwandelt habe"
+subtitle: "Eine Kennzahl ohne automatische Konsequenzen konkurriert mit Dingen, die welche haben — und verliert jedes Mal."
+description: "Ein Bericht wird im ersten Monat gelesen und ab dem vierten ignoriert. Warum eine Dokumentationsnote auf dem kritischen Pfad der Pipeline liegen muss."
+category: "KI-Engineering"
+date: "2026-10-19"
+image: "https://josepalacios.site/img/og/metrica-que-no-bloquea-gate-ci.png"
+lang: "de"
+translationKey: "metrica-que-no-bloquea-gate-ci"
+---
+
+Ich habe dasselbe Muster mehrfach gesehen: Ein Team erzeugt einen Qualitätsbericht, prüft ihn im ersten Monat sorgfältig, im zweiten weniger sorgfältig, und ab dem vierten öffnet ihn niemand mehr. Der Bericht wird weiterhin erzeugt, tadellos, und verändert keine Entscheidung.
+
+Das ist kein Disziplinproblem. Es ist ein Designproblem. Eine Kennzahl ohne automatische Konsequenzen konkurriert um die Aufmerksamkeit eines Menschen mit Dingen, die Konsequenzen haben — und verliert jedes Mal.
+
+Deshalb endet Model Card Auditor nicht in einem Bericht. Er endet in einem Gate: Er läuft im Batch über die Modelle, die ein Projekt verwendet, und lässt den Build scheitern, wenn die Dokumentationsnote unter den konfigurierten Schwellenwert fällt.
+
+Die Verhaltensänderung, die das auslöst, ist qualitativ, nicht quantitativ:
+
+- Ohne Gate lautet die Frage: "Hat sich jemand den Bericht angesehen?"
+
+- Mit Gate lautet die Frage: "Warum baut es nicht?" — und die wird immer beantwortet
+
+Es gibt einen berechtigten Einwand: Builds wegen Dokumentation zu blockieren, kann übertrieben wirken. Deshalb ist der Schwellenwert konfigurierbar und die Bewertung je Feld gewichtbar. Ein Team, dessen einziges Risiko die Lizenz-Compliance ist, kann `license` mit 1 gewichten und alles andere mit 0. Das Werkzeug schreibt keine Richtlinie vor; es macht die von Ihnen gewählte ausführbar.
+
+<Nota>
+
+Die Lehre, die ich daraus ziehe: Wenn eine Qualitätskennzahl das Verhalten eines Teams verändern soll, muss sie auf dem kritischen Pfad von etwas liegen, das dem Team ohnehin wichtig ist. In der Softwareentwicklung ist dieser Pfad die Pipeline. Alles andere ist ein Bericht, den man am Anfang liest.
+
+</Nota>

@@ -1,0 +1,32 @@
+---
+title: "Por qué diseñé mi herramienta de IA para que se niegue a inventar datos"
+subtitle: "El anti-alucinación no es una feature del producto. Es el producto."
+description: "Cada afirmación de un informe generado con IA lleva una cita verificada contra el texto original. Si no se puede probar, no entra en el informe."
+category: "Ingeniería de IA"
+date: "2026-08-19"
+image: "https://josepalacios.site/img/og/anti-alucinacion-ia.png"
+lang: "es"
+translationKey: "anti-alucinacion-ia"
+---
+
+Cuando construyes una herramienta que genera informes para decisiones de inversión, el error más caro no es que falte un dato. Es que la herramienta invente uno con total confianza.
+
+Se lo he visto hacer a modelos de lenguaje muchas veces: si le preguntas "¿cuál es el nivel de madurez tecnológica de esta startup?" y el texto fuente no lo dice, un LLM sin restricciones tiende a rellenar el hueco con algo plausible en vez de decir "no lo sé". Para un informe de due diligence, eso es peor que no tener el dato — es tener un dato falso con apariencia de verificado.
+
+Así que en DD-Copilot puse una regla no negociable, a nivel de código, no solo de prompt: cada afirmación tiene que venir acompañada de una cita textual, y esa cita se verifica automáticamente contra el texto fuente original antes de aceptarla en el informe.
+
+## Cómo funciona técnicamente
+
+1. El modelo extrae una afirmación y la cita que dice haber usado como fuente.
+
+2. Un validador independiente (`citation_check.py`, con `rapidfuzz`) comprueba si esa cita aparece literalmente — con cierta tolerancia a variaciones menores de mayúsculas o espacios — en el texto original.
+
+3. Si la cita no aparece, el dato se descarta por completo. El informe no dice "esto podría ser cierto" — dice explícitamente "Not mentioned in the source".
+
+Esto convierte algo que suena a "detalle de implementación" en la garantía central del producto: la sección "Qué no dice la startup" del informe es tan valiosa como la de "Qué dice" — porque un analista de riesgo necesita saber exactamente qué preguntas hacer en la siguiente llamada con el fundador, no una lista inflada de datos que suenan bien pero no se pueden verificar.
+
+<Nota>
+
+**La lección que me llevo:** cuando estás evaluando una herramienta de IA para un caso de uso donde el error es caro, la pregunta correcta no es "¿qué tan bien contesta?" — es "¿qué hace cuando no sabe la respuesta?". La mayoría de demos de IA nunca se prueban en ese escenario, porque no es el que impresiona en una demo. Es el que importa en producción.
+
+</Nota>

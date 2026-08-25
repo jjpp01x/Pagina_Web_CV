@@ -1,0 +1,44 @@
+---
+title: "Energía y cómputo como cuello de botella real de las startups de IA"
+subtitle: "El límite de muchas startups de IA no es el modelo. Es el acceso a cómputo y lo que cuesta alimentarlo."
+description: "El límite de muchas startups de IA no es el modelo: es el acceso a cómputo y su coste energético. Cómo evaluar esa dependencia antes de invertir."
+category: "Negocio y estrategia"
+date: "2026-10-09"
+image: "https://josepalacios.site/img/og/energia-y-computo-startups-ia.png"
+lang: "es"
+translationKey: "energia-y-computo-startups-ia"
+---
+
+TÍTULO: Energía y cómputo: el cuello de botella real de las startups de IA (y qué preguntar antes de invertir)
+
+Cuando alguien me pregunta qué mirar antes de confiar en una startup de IA, casi nunca empiezo por el modelo. Empiezo por su estructura de coste de inferencia — y, cada vez más, por su acceso a electricidad. Suena menos interesante que hablar de arquitectura. Es, sin embargo, donde se decide qué startups escalan con margen y cuáles se quedan sin él, aunque el producto funcione perfectamente.
+
+La magnitud del problema, primero. Según la Agencia Internacional de la Energía (IEA), los centros de datos consumieron 415 teravatios-hora (TWh) en 2024 — el 1,5% de la electricidad mundial. En 2025 ese consumo subió a 485 TWh, un 17% más en un solo año, frente a un crecimiento eléctrico global del 3%. Los centros de datos dedicados específicamente a IA crecieron un 50% solo en 2025. La propia IEA proyecta que en 2030 el consumo de centros de datos rondará los 945-950 TWh — aproximadamente el consumo eléctrico total de Japón hoy.
+
+Goldman Sachs Research enmarca el mismo fenómeno en potencia instalada: la demanda global de centros de datos pasaría de 55 gigavatios en 2025 (14% atribuible a IA) a 122 GW en 2030 — un aumento del 165% frente a 2023, con la IA representando cerca del 40% de esa demanda. El coste de red asociado: unos 720.000 millones de dólares en inversión hasta 2030.
+
+Aquí viene la parte que suele sorprender en diligencia: si miras el desglose del coste de entrenar un modelo frontera, la energía es solo el 2-6% del gasto total, según Epoch AI — el hardware (47-67%) y el personal de I+D (29-49%) pesan mucho más. El cuello de botella no es la factura eléctrica del entrenamiento en sí. Es el acceso a la capacidad: la cola para conectar un centro de datos a la red, el megavatio que no está disponible aunque tengas el capital para pagarlo.
+
+Por eso los cuatro grandes hiperescala (Microsoft, Amazon, Google, Meta) han firmado en conjunto más de 9,8 GW en acuerdos nucleares desde 2024 — Microsoft con Constellation Energy para reactivar Three Mile Island (contrato a 20 años, 835 MW, primera energía prevista para 2027), Amazon con Talen Energy por 1.920 MW de la planta de Susquehanna hasta 2042. No es diversificación verde. Es asegurar megavatios firmes en un mercado donde la red, no el chip, es el activo escaso.
+
+La eficiencia tampoco es uniforme. El PUE (cuánta energía extra consume la refrigeración y la infraestructura por cada unidad que llega al cómputo) lleva seis años estancado en una media mundial de 1,54, según la encuesta anual de Uptime Institute. Google reporta un PUE de 1,09 en sus centros hiperescala — una brecha de eficiencia real entre quien opera a escala de hiperescalador y el resto del mercado, que también se traduce en coste unitario de inferencia.
+
+Y luego está el lado que sí baja: el coste de inferencia por token, para una capacidad de modelo fija, ha caído entre 9x y 900x al año según el benchmark, de acuerdo con el análisis de Epoch AI sobre precios de inferencia; a16z documentó una caída de 1.000x en tres años (~10x/año) para un nivel de capacidad equivalente a GPT-3. Son cifras reales — pero hay una trampa en cómo se leen en diligencia.
+
+La trampa es el efecto rebote, o paradoja de Jevons: el coste por token cae, pero el volumen total de tokens procesados crece más rápido que esa caída, así que la factura agregada sube. Google reportó en su keynote de I/O 2026 que su volumen de tokens procesados mensualmente pasó de 9,7 billones en mayo de 2024 a más de 3.200 billones (3,2 cuatrillones) en mayo de 2026 — una multiplicación de aproximadamente 330 veces en dos años. Es una cifra autorreportada por Google, sin auditar externamente, así que hay que tratarla como el relato de la propia empresa sobre su trayectoria, no como un dato de industria verificado por terceros. Pero la dirección coincide con lo que reportan analistas independientes: el coste de completar una tarea agéntica completa (varios turnos, más contexto, más llamadas a herramientas) está subiendo incluso mientras el precio por token individual sigue cayendo.
+
+Súmale la escasez de cómputo dedicado, no solo eléctrico: SemiAnalysis, que audita precios de alquiler de GPU con datos de más de 100 proveedores, reporta que el precio de contratos anuales de H100 subió cerca de un 40% entre octubre de 2025 y marzo de 2026, tras haber caído un 58% entre 2023 y 2025. La capacidad bajo demanda está, según su índice, prácticamente agotada en la mayoría de proveedores consultados desde febrero de 2026. El mercado de cómputo de IA no es una curva de precio que solo baja — es una curva que se comprime y luego se vuelve a tensar según la demanda.
+
+Con todo esto, esto es lo que preguntaría en diligencia técnica sobre una startup de IA, además de lo obvio:
+
+1. ¿Cuál es el coste unitario real por caso de uso completo — no por token, sino por tarea resuelta de principio a fin — y cómo evoluciona ese coste a medida que el producto se vuelve más agéntico?
+
+2. ¿Qué parte de su cómputo está en contratos comprometidos a precio fijo frente a capacidad bajo demanda expuesta a un mercado que acaba de subir un 40% en seis meses?
+
+3. ¿Depende de un único proveedor de nube o de chip, y qué pasa con sus márgenes si ese proveedor sube precios o restringe capacidad?
+
+4. Si su hoja de ruta incluye entrenar o hacer fine-tuning de modelos propios a escala, ¿tiene ya asegurado el acceso a electricidad para esa fase, o depende de una cola de interconexión a la red que puede tardar años?
+
+5. ¿El margen bruto que presenta ya incorpora la trayectoria de coste esperada del cómputo, o asume que el precio por token seguirá cayendo al ritmo histórico indefinidamente?
+
+Ninguna de estas preguntas aparece en el pitch deck. Todas determinan si el negocio escala con margen creciente o si escala regalando ese margen a la factura de cómputo.

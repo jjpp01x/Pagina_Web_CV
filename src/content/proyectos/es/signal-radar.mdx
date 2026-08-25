@@ -1,0 +1,68 @@
+---
+title: "Signal Radar"
+subtitle: "Detecta temas emergentes en robótica, IA y espacio — y dice cuáles no se distinguen del ruido"
+description: "Signal Radar: escáner de temas emergentes en robótica, IA y espacio sobre arXiv. Embeddings, UMAP + HDBSCAN y una prueba de permutación que dictamina si el crecimiento de un tema se distingue del ruido."
+tipo: "Escáner de señales de frontera · proyecto propio"
+pregunta: "¿Este tema crece de verdad, o solo creció el corpus?"
+estado: "Repositorio público"
+repo: "https://github.com/jjpp01x/signal-radar"
+image: "https://josepalacios.site/img/og-image.png"
+lang: "es"
+translationKey: "signal-radar"
+stack: ["Python", "arXiv API", "DuckDB", "Embeddings", "UMAP + HDBSCAN", "Estadística"]
+deepTech: true
+---
+
+## El problema
+
+Cualquier herramienta puede agregar papers y enseñar una curva que sube. La pregunta que un analista deep-tech necesita responder es otra: ¿ese crecimiento significa algo, o es lo que produce el azar cuando miras en 63 sitios a la vez? Un tema puede crecer simplemente porque creció el corpus entero.
+
+El diferenciador de Signal Radar no es detectar temas — es ser capaz de decir «este tema no se distingue del ruido» y demostrarlo con una prueba reproducible.
+
+## Cómo funciona
+
+<Paso n="01" titulo="Ingesta desde arXiv">
+
+Descarga metadatos de las categorías cs.RO, cs.AI, astro-ph.IM y eess.SY, los valida contra un contrato de datos y los persiste en DuckDB. Un comando de backfill construye la historia que la prueba estadística necesita.
+
+</Paso>
+
+<Paso n="02" titulo="Embeddings cacheados">
+
+Cada abstract se codifica con un modelo local de embeddings y se cachea en disco indexado por identificador y versión, guardando con qué modelo se escribió — una caché de otro modelo se descarta con aviso en lugar de mezclarse.
+
+</Paso>
+
+<Paso n="03" titulo="Agrupación en temas">
+
+Reducción de dimensionalidad con UMAP (métrica coseno, semilla fija) y clustering con HDBSCAN. Sobre un corpus real de 4.113 papers de 2023–2026 salen 63 temas, con un 22 % de papers sin asignar.
+
+</Paso>
+
+<Paso n="04" titulo="Prueba de permutación">
+
+Para cada tema se barajan las fechas de publicación entre todos los papers, se recalcula el crecimiento miles de veces y se compara lo observado contra esa distribución nula. El veredicto se decide sobre el q-valor de Benjamini-Hochberg, que corrige por probar 63 hipótesis a la vez.
+
+</Paso>
+
+<Paso n="05" titulo="Informe reproducible">
+
+El informe JSON escribe cada cifra con la lista completa de identificadores arXiv que la produce, más semilla, permutaciones, ventana y alpha: todo lo necesario para reconstruirla. En el corpus real, de 63 temas solo uno sale *emerging* — y esa parquedad es el producto, no un defecto.
+
+</Paso>
+
+## La decisión que más importa
+
+Con 63 temas y un umbral de 0,05 sin corregir, la probabilidad de al menos un falso «emergente» es del 96 %. En el corpus real hay cinco temas con p-valor crudo por debajo de 0,05 — incluido uno que multiplicó por 6,5 su volumen — y solo uno sobrevive a la corrección por multiplicidad. Una tabla que mostrara solo los ratios de crecimiento habría presentado cinco tendencias donde la evidencia sostiene una.
+
+El proyecto incluye además un brief de decisión real sobre el único tema emergente, [manipulación robótica con modelos visión-lenguaje-acción](https://github.com/jjpp01x/signal-radar/blob/main/briefs/2026-08-01-embodied-vla-manipulation.md), que traduce la salida estadística a una recomendación argumentada.
+
+## Qué *no* hace
+
+Solo mira arXiv: no hay patentes, financiación ni concentración institucional, y un campo que publica poco y patenta mucho es invisible aquí. Un tema «indistinguible del ruido» no es un tema falso — es un tema cuyo crecimiento no se separa del azar con esta muestra. Y el etiquetado es manual: el sistema agrupa; nombrar el tema es humano. El README del repositorio mantiene la lista completa de limitaciones, verificadas ejecutándolas.
+
+## Lo que aprendí
+
+La primera ejecución real usó un corpus de doce días y todos los temas salieron con p = 1.000, con aspecto de veredicto legítimo. No lo era: sin papers en la ventana anterior el ratio de crecimiento no está definido, y el código devolvía un número que parecía una medición. Peor aún: dos tests en verde solo pasaban gracias a ese mismo fallo, porque compartían el supuesto equivocado. La corrección fue declarar el caso — un tema sin historia previa sale como «historia insuficiente», sin número asociado — en lugar de disimularlo.
+
+El segundo aprendizaje costó el producto entero durante una versión: una reducción con PCA, elegida por una creencia falsa sobre el no-determinismo de UMAP, producía 3 temas que eran exactamente las categorías de entrada de arXiv. Un detector de temas que devuelve las etiquetas que ya traía la entrada no detecta nada. Comprobar la creencia — UMAP con semilla fija es reproducible bit a bit — desbloqueó los 63 temas reales.

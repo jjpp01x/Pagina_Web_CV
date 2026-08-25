@@ -1,0 +1,32 @@
+---
+title: "How to tell whether your decision matrix holds up or falls over at the first push"
+subtitle: "The honesty of an analysis is not in the number. It is in the interval."
+description: "A weighted matrix can confirm almost any conclusion, because you choose the weights. How to measure the real margin of a recommendation."
+category: "Evaluation and method"
+date: "2026-09-14"
+image: "https://josepalacios.site/img/og/punto-de-cambio-matriz-decision.png"
+lang: "en"
+translationKey: "punto-de-cambio-matriz-decision"
+---
+
+A weighted matrix has a structural problem that rarely gets mentioned: you choose the weights. And the moment you choose them, the matrix can confirm almost any conclusion you already held.
+
+It does not take bad faith. It is enough to assign 0.25 to a criterion where your favourite shines, instead of 0.15. Nobody will notice, and the result will carry the same air of objectivity: a table, some scores, a winner with decimals.
+
+That is why the output I care about is not the winner. It is the margin.
+
+## Two measures I added to the engine
+
+1. The switching point per criterion. For each criterion, the engine computes the exact weight at which the winner would stop winning. If that point sits very close to the weight you assigned, the conclusion depends on a choice of yours that could easily have gone the other way — and that has to be reported, not hidden.
+
+2. Global robustness. Perturbing one weight at a time is not enough, because in practice every weight is arguable at once. So the engine samples a Dirichlet distribution centred on the declared weights and solves the full matrix 10,000 times, counting what fraction of scenarios each option wins.
+
+In the case I analysed, the result was 82% / 18% / 0%. That is actionable in a way a ranking is not: the winning option is solid but not unanimous, the runner-up is a defensible alternative under different priorities, and the third never wins under any reasonable scenario.
+
+One detail I consider non-negotiable: the sampling seed is fixed and documented. Anyone can regenerate the report and get exactly the same figures. An irreproducible sensitivity analysis is no more credible than the matrix it was meant to validate.
+
+<Nota>
+
+The lesson I take from it: presenting a winner without saying how far ahead it is of the runner-up hides precisely the information the decision-maker needs. The honesty of an analysis is not in the number. It is in the interval.
+
+</Nota>

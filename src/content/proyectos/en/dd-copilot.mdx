@@ -1,0 +1,68 @@
+---
+title: "DD-Copilot"
+subtitle: "Technical due diligence on deep-tech startups, with every quote verified"
+description: "DD-Copilot turns a deep-tech startup's public material into a technical due diligence brief with every quote verified against the source. RAG with LlamaIndex and Claude."
+tipo: "Analysis tool · personal project"
+pregunta: "Is what this startup claims credible?"
+estado: "Public repository"
+repo: "https://github.com/jjpp01x/dd-copilot"
+image: "https://josepalacios.site/img/og-image.png"
+lang: "en"
+translationKey: "dd-copilot"
+stack: ["Python", "LlamaIndex", "Claude", "RAG", "Typer CLI", "Streamlit"]
+deepTech: true
+---
+
+## The problem
+
+When a fund evaluates a deep-tech startup, the available material is almost always marketing material: a website, a whitepaper, a press release. The analyst's job is not to summarise it — it is to separate what the startup demonstrates from what it merely implies.
+
+The specific risk in automating this with a language model is well known: ask it for a fact the source does not contain and an unconstrained LLM tends to fill the gap with something plausible. In an investment brief, an invented figure that looks verified is worse than no figure at all.
+
+## How it works
+
+<Paso n="01" titulo="Ingestion">
+
+Accepts a URL, a PDF or pasted text and normalises it into a document with its source identified.
+
+</Paso>
+
+<Paso n="02" titulo="Chunking and indexing">
+
+Splits the text into semantic chunks with LlamaIndex and builds an in-memory vector index using local embeddings — free, and without leaving the machine.
+
+</Paso>
+
+<Paso n="03" titulo="Field-by-field extraction">
+
+Seven narrowly scoped classification calls: what problem it solves, its technical differentiation, its performance claims, and four risks from a fixed checklist (technology maturity, hardware dependency, reproducibility, regulatory risk).
+
+</Paso>
+
+<Paso n="04" titulo="Quote verification">
+
+An independent validator uses fuzzy matching to check that every quote genuinely appears in the original text. If it does not, the fact is discarded — the brief states explicitly "not mentioned in the source".
+
+</Paso>
+
+<Paso n="05" titulo="Synthesis">
+
+A single final call, over the already structured data, produces the five-section brief and justifies its confidence level.
+
+</Paso>
+
+## The decision that matters most
+
+Quote verification is not a helper function: it is the product. It is implemented in code rather than entrusted to the prompt, precisely because an instruction in natural language is not a guarantee — it is a suggestion.
+
+The second important decision is about cost. The seven classification calls are simple tasks (read a chunk, decide yes or no, extract a quote) and a fast, cheap model handles them. The more capable model runs exactly once, at the end, for the synthesis — the only step where higher-quality reasoning changes the outcome. Designing for cost is an architectural decision, not a later optimisation.
+
+## What it does *not* do
+
+It does not evaluate market, team or commercial traction, and it cannot see anything the startup has not published. It is an input to the diligence process, not the process.
+
+## What I learned
+
+The most useful lesson came from a failure. With the entire test suite green, the first run on real data produced a brief that had nothing to do with the company being analysed. The cause was simple: ingestion did not recognise a path to a plain text file, so it treated the path itself as the content to analyse, and the model hallucinated a whole brief out of forty characters.
+
+The tests checked each piece separately, with well-formed data. Nobody had run the full flow with a real input. The fix was one line; the lesson is that a green suite verifies that the code does what you think it does, not that this is what is needed.

@@ -1,0 +1,68 @@
+---
+title: "DD-Copilot"
+subtitle: "Due diligence técnica de startups deep-tech, con cada cita verificada"
+description: "DD-Copilot: convierte el material público de una startup deep-tech en un informe de due diligence técnica con citas verificadas contra la fuente. RAG con LlamaIndex y Claude."
+tipo: "Herramienta de análisis · proyecto propio"
+pregunta: "¿Es creíble lo que afirma esta startup?"
+estado: "Repositorio público"
+repo: "https://github.com/jjpp01x/dd-copilot"
+image: "https://josepalacios.site/img/og-image.png"
+lang: "es"
+translationKey: "dd-copilot"
+stack: ["Python", "LlamaIndex", "Claude", "RAG", "Typer CLI", "Streamlit"]
+deepTech: true
+---
+
+## El problema
+
+Cuando un fondo evalúa una startup deep-tech, el material disponible es casi siempre material de marketing: una web, un whitepaper, una nota de prensa. El trabajo del analista no es resumirlo — es separar lo que la startup demuestra de lo que insinúa.
+
+El riesgo concreto al automatizar esto con un modelo de lenguaje es conocido: si le preguntas por un dato que la fuente no contiene, un LLM sin restricciones tiende a rellenar el hueco con algo plausible. Para un informe de inversión, un dato inventado con apariencia de verificado es peor que no tener el dato.
+
+## Cómo funciona
+
+<Paso n="01" titulo="Ingesta">
+
+Acepta una URL, un PDF o texto pegado y lo normaliza a un documento con su fuente identificada.
+
+</Paso>
+
+<Paso n="02" titulo="Troceado e indexado">
+
+Divide el texto en fragmentos semánticos con LlamaIndex y construye un índice vectorial en memoria con embeddings locales — gratis y sin salir de la máquina.
+
+</Paso>
+
+<Paso n="03" titulo="Extracción por campo">
+
+Siete llamadas de clasificación acotadas: qué problema resuelve, su diferenciación técnica, sus afirmaciones de rendimiento, y cuatro riesgos del checklist fijo (madurez tecnológica, dependencia de hardware, reproducibilidad, riesgo regulatorio).
+
+</Paso>
+
+<Paso n="04" titulo="Verificación de citas">
+
+Un validador independiente comprueba por coincidencia difusa que cada cita aparece de verdad en el texto original. Si no aparece, el dato se descarta — el informe dice explícitamente «no mencionado en la fuente».
+
+</Paso>
+
+<Paso n="05" titulo="Síntesis">
+
+Una única llamada final, sobre los datos ya estructurados, produce el informe de cinco secciones y justifica su nivel de confianza.
+
+</Paso>
+
+## La decisión que más importa
+
+La verificación de citas no es una función auxiliar: es el producto. Está implementada en código, no confiada al prompt, precisamente porque una instrucción en lenguaje natural no es una garantía — es una sugerencia.
+
+La segunda decisión importante es de coste. Las siete llamadas de clasificación son tareas sencillas (leer un fragmento, decidir sí o no, extraer una cita) y las hace un modelo rápido y barato. El modelo más capaz entra una sola vez, al final, para la síntesis — el único paso donde el razonamiento de más calidad cambia el resultado. Diseñar para el coste es una decisión de arquitectura, no una optimización posterior.
+
+## Qué *no* hace
+
+No evalúa mercado, equipo ni tracción comercial, y no puede ver nada que la startup no haya publicado. Es una entrada al proceso de diligencia, no el proceso.
+
+## Lo que aprendí
+
+El aprendizaje más útil llegó de un fallo. Con la suite de tests entera en verde, la primera ejecución con datos reales produjo un informe que no tenía nada que ver con la empresa analizada. La causa era simple: la ingesta no reconocía una ruta a un fichero de texto plano, así que trataba la propia ruta como el contenido a analizar, y el modelo alucinó un informe entero a partir de cuarenta caracteres.
+
+Los tests probaban cada pieza por separado con datos ya bien formados. Nadie había ejecutado el flujo completo con una entrada real. La corrección fue de una línea; la lección es que una suite en verde verifica que el código hace lo que crees que hace, no que eso sea lo que hace falta.

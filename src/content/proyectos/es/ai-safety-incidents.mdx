@@ -1,0 +1,66 @@
+---
+title: "AI Safety Incident Tracker"
+subtitle: "23 fallos reales de IA en producción, clasificados y trazables"
+description: "AI Safety Incident Tracker: dashboard que clasifica 23 incidentes públicos de sistemas de IA en producción (2015-2025) por modo de fallo y severidad."
+tipo: "Dashboard de análisis · proyecto propio"
+pregunta: "¿Cómo fallan de verdad los sistemas de IA?"
+estado: "En producción"
+repo: "https://github.com/jjpp01x/ai-safety-incidents"
+image: "https://josepalacios.site/img/og-image.png"
+lang: "es"
+translationKey: "ai-safety-incidents"
+stack: ["Python", "Streamlit", "pandas", "pytest"]
+deepTech: true
+---
+
+## El problema
+
+Se habla mucho de riesgos hipotéticos de la IA y muy poco, con datos, de cómo fallan los sistemas que ya están desplegados. La información existe, pero está dispersa en titulares, informes regulatorios y notas de prensa, sin taxonomía común ni forma de compararla.
+
+Un titular no es un dato. Para que sirva a una decisión hace falta una clasificación explícita, una escala de severidad definida antes de aplicarla, y trazabilidad a la fuente original.
+
+## Cómo funciona
+
+<Paso n="01" titulo="Dataset con contrato">
+
+23 incidentes documentados entre 2015 y 2025, en 18 organizaciones públicas y privadas, con 13 columnas y un contrato de datos que se valida en cada carga.
+
+</Paso>
+
+<Paso n="02" titulo="Taxonomía de fallo">
+
+Cada incidente se clasifica por modo de fallo — sesgo, seguridad, alucinación, contención — y por severidad en una escala de 1 a 5 con rúbrica escrita.
+
+</Paso>
+
+<Paso n="03" titulo="Dashboard">
+
+Cuatro vistas (panorama, caso en profundidad, dataset y metodología) con filtros por tipo de fallo, periodo, severidad y dominio de aplicación.
+
+</Paso>
+
+<Paso n="04" titulo="Caso en profundidad">
+
+Análisis de causa raíz de la cadena de suministro de modelos entre OpenAI y Hugging Face (2023-2024): cuatro incidentes con una causa común y siete controles que los habrían evitado.
+
+</Paso>
+
+<Paso n="05" titulo="Metodología expuesta">
+
+La rúbrica, los criterios y las limitaciones del dataset están publicados en el propio dashboard, antes de que nadie cite una cifra.
+
+</Paso>
+
+## La decisión que más importa
+
+Publicar las limitaciones dentro del producto, no en un anexo. La pestaña de metodología explica qué mide el dataset y qué no, y está al mismo nivel que los gráficos.
+
+La razón es práctica: en cuanto un panel muestra porcentajes, la gente los cita. Si las salvedades no viajan con la cifra, se pierden en el primer reenvío.
+
+## Qué *no* hace
+
+23 incidentes no son una muestra estadísticamente representativa del fallo en IA, y el dataset lo dice de forma explícita. Sirve para reconocer patrones y modos de fallo, no para estimar frecuencias base ni comparar tasas entre sectores.
+
+## Lo que aprendí
+
+Que la diferencia entre un agregador de titulares y una herramienta de análisis está casi entera en el trabajo aburrido: definir la taxonomía antes de clasificar, escribir la rúbrica antes de puntuar, y declarar los límites antes de que alguien los descubra.

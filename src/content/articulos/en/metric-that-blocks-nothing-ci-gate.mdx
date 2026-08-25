@@ -1,0 +1,30 @@
+---
+title: "Why I turned a quality report into a CI gate"
+subtitle: "A metric with no automatic consequences competes for attention against things that have them — and loses every time."
+description: "A report gets read in month one and ignored by month four. Why a documentation score has to sit on the critical path of the pipeline."
+category: "AI engineering"
+date: "2026-10-19"
+image: "https://josepalacios.site/img/og/metrica-que-no-bloquea-gate-ci.png"
+lang: "en"
+translationKey: "metrica-que-no-bloquea-gate-ci"
+---
+
+I have seen the same pattern several times: a team generates a quality report, reviews it carefully in the first month, less carefully in the second, and by the fourth nobody opens it. The report keeps being generated, immaculate, and it changes no decisions.
+
+This is not a discipline problem. It is a design problem. A metric with no automatic consequences competes for someone's attention against things that do have consequences — and it loses every time.
+
+That is why Model Card Auditor does not end in a report. It ends in a gate: it runs in batch over the models a project uses and fails the build if the documentation score drops below the configured threshold.
+
+The behaviour change it produces is qualitative, not quantitative:
+
+- Without a gate, the question is "has anyone looked at the report?"
+
+- With a gate, the question is "why isn't it building?" — and that one always gets answered
+
+There is a legitimate objection: blocking builds over documentation can look excessive. That is why the threshold is configurable and the score can be weighted per field. A team whose only exposure is licence compliance can give weight 1 to `license` and 0 to everything else. The tool does not impose a policy; it makes the one you choose executable.
+
+<Nota>
+
+The lesson I take from it: if you want a quality metric to change a team's behaviour, it has to sit on the critical path of something they already care about. In software development, that path is the pipeline. Everything else is a report that gets read at the beginning.
+
+</Nota>

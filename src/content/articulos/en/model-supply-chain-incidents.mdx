@@ -1,0 +1,26 @@
+---
+title: "What I learned analysing four security failures that looked unrelated"
+subtitle: "Four independent incidents are four patches. Four incidents with a common cause are one missing control."
+description: "Four incidents across OpenAI and Hugging Face shared one structural root: the model supply chain. Seven controls would have prevented them."
+category: "Governance and risk"
+date: "2026-10-05"
+image: "https://josepalacios.site/img/og/cadena-suministro-modelos-ia.png"
+lang: "en"
+translationKey: "cadena-suministro-modelos-ia"
+---
+
+When you classify incidents one by one, each looks like an isolated problem with its own explanation. It is when you group them that the interesting part appears.
+
+Working through the incidents in my dataset between 2023 and 2024, four of them — split between OpenAI and Hugging Face — turned out to share the same structural root: the model supply chain. Not the model itself, not the prompt, not the fine-tuning. The infrastructure through which a model or its dependencies reach production.
+
+It is a class of risk the public conversation about AI barely touches, because it is not glamorous. It is not about alignment or emergent capabilities. It is about artefacts that get downloaded, dependencies that get resolved, tokens that leak, and serialisation formats that execute code on deserialisation.
+
+Why this matters to anyone evaluating technology: when a fund or a team assesses a startup that "uses AI", the diligence usually centres on the model — its performance, its data, its differentiation. But a considerable share of the real operational risk is not in the model. It is in how the model gets to the machine where it runs, and what controls exist over that path.
+
+In the analysis I identified seven controls that would have prevented or mitigated the four incidents. None of them is exotic. They are the kind of practice that conventional software supply chains take for granted and that the model ecosystem still does not.
+
+<Nota>
+
+The lesson I take from it: grouping incidents by root cause instead of by symptom completely changes which questions you ask next. Four independent incidents are four patches. Four incidents with a common cause are one missing control.
+
+</Nota>

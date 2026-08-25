@@ -1,0 +1,52 @@
+---
+title: "Ski Resort Ticketing System"
+subtitle: "Sistema de venta de forfaits en C y Python con SQLite · Software Development"
+description: "Ski Resort Ticketing System — Sistema de venta de forfaits en C y Python con SQLite. Arquitectura dual-lenguaje. Proyecto académico de Jose Palacios Beortegui."
+estado: "Completado"
+modulo: "Software Development"
+institucion: "University of Wales Trinity Saint David / CESTE"
+repo: "https://github.com/jjpp01x/Ski-resort-ticketing-system"
+image: "https://josepalacios.site/img/og-image.png"
+lang: "es"
+translationKey: "ski-ticketing"
+stack: ["C", "Python", "SQLite", "CLI", "File I/O"]
+deepTech: false
+---
+
+## El problema
+
+Una estación de esquí necesitaba un sistema de ticketing que gestionara la venta de forfaits por tipo (diario, semanal, de temporada), el control de acceso a las instalaciones y el registro de transacciones con persistencia entre sesiones.
+
+El requisito clave era implementar el sistema en dos lenguajes distintos — C para el módulo de bajo nivel y Python para la interfaz de usuario — demostrando la capacidad de trabajar con diferentes paradigmas y niveles de abstracción.
+
+## Proceso de desarrollo
+
+<Paso n="01" titulo="Módulo C — lógica de bajo nivel">
+
+Implementación de las estructuras de datos (`struct`) para tickets, clientes y transacciones. Gestión de memoria con `malloc/free`, lectura y escritura de archivos binarios para persistencia.
+
+</Paso>
+
+<Paso n="02" titulo="Base de datos SQLite">
+
+Diseño del esquema de base de datos para almacenar tickets, clientes y transacciones. Integración de SQLite3 en C mediante la API nativa para operaciones CRUD sin dependencias externas.
+
+</Paso>
+
+<Paso n="03" titulo="Interfaz Python">
+
+CLI interactiva en Python que consume el módulo C compilado. Menú de opciones para venta de tickets, consulta de disponibilidad, historial de transacciones y gestión de clientes.
+
+</Paso>
+
+<Paso n="04" titulo="Integración y pruebas">
+
+Validación del flujo completo: creación de ticket en Python → procesamiento en C → persistencia en SQLite → recuperación en siguiente sesión. Tests manuales de casos límite (stock agotado, fechas inválidas, IDs duplicados).
+
+</Paso>
+
+## Lo que aprendí
+
+Este proyecto me obligó a pensar en la misma lógica de negocio desde dos perspectivas completamente distintas: la gestión manual de memoria en C y la abstracción de alto nivel de Python. Entender por qué Python existe se hace mucho más tangible cuando has implementado lo mismo en C primero.
+
+También fue mi primera integración real entre dos lenguajes en un mismo sistema, un patrón común en sistemas embebidos y aplicaciones de alto rendimiento.

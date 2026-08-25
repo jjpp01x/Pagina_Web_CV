@@ -1,0 +1,66 @@
+---
+title: "Model Card Auditor"
+subtitle: "Riesgo de documentación de modelos, medido y aplicado en CI"
+description: "Model Card Auditor: audita la documentación de modelos de Hugging Face contra seis campos obligatorios, la puntúa de 0 a 100 y puede tumbar un build de CI."
+tipo: "Herramienta de auditoría · proyecto propio"
+pregunta: "¿Está documentado lo bastante como para depender de él?"
+estado: "Repositorio público"
+repo: "https://github.com/jjpp01x/model-card-auditor"
+image: "https://josepalacios.site/img/og-image.png"
+lang: "es"
+translationKey: "model-card-auditor"
+stack: ["Python", "Hugging Face Hub", "pytest", "CI gate"]
+deepTech: true
+---
+
+## El problema
+
+Cuando un equipo integra un modelo de terceros en producción, hereda todo lo que ese modelo no cuenta sobre sí mismo: en qué datos se entrenó, qué sesgos se le conocen, en qué condiciones deja de ser fiable, bajo qué licencia se puede usar.
+
+Esa información vive en la model card, un documento que nadie obliga a completar y que, en la práctica, se rellena de forma muy desigual. El riesgo no es teórico: es la diferencia entre poder responder a una auditoría y no poder.
+
+## Cómo funciona
+
+<Paso n="01" titulo="Fetch">
+
+Descarga la model card y los metadatos de licencia desde el Hub de Hugging Face.
+
+</Paso>
+
+<Paso n="02" titulo="Extracción">
+
+Busca seis campos obligatorios — limitaciones, sesgo, datos de entrenamiento, licencia, longitud de contexto y benchmarks — primero por expresiones regulares sobre las secciones con encabezado, y solo recurre a una llamada al modelo cuando la regex falla.
+
+</Paso>
+
+<Paso n="03" titulo="Puntuación">
+
+Calcula una nota de 0 a 100 según los campos encontrados, ponderable por campo porque no todo consumidor valora igual cada hueco.
+
+</Paso>
+
+<Paso n="04" titulo="Informe">
+
+Genera un informe de riesgo documental en Markdown, campo a campo.
+
+</Paso>
+
+<Paso n="05" titulo="Gate de CI">
+
+Se ejecuta en lote sobre varios modelos y falla el build cuando la nota baja del umbral configurado.
+
+</Paso>
+
+## La decisión que más importa
+
+El orden regex → modelo es una decisión de coste deliberada: el caso común no debería pagar una inferencia. La mayoría de model cards bien estructuradas se resuelven sin llamar a ningún modelo, y la llamada queda reservada a los casos ambiguos.
+
+La segunda decisión es convertirlo en un gate de CI y no en un informe que alguien lee de vez en cuando. Una métrica de calidad que no bloquea nada acaba ignorada.
+
+## Qué *no* hace
+
+Mide si un modelo está *documentado*, no si es *bueno*. Una model card bien escrita de un modelo mediocre puntúa alto, y ese es el comportamiento buscado: es una herramienta de riesgo documental, no un benchmark de rendimiento.
+
+## Lo que aprendí
+
+Que buena parte del riesgo técnico real no está en el modelo, sino en lo que no se documentó sobre él. Y que una comprobación solo cambia el comportamiento de un equipo cuando tiene consecuencias automáticas.

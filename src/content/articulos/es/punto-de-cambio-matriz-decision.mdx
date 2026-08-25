@@ -1,0 +1,32 @@
+---
+title: "Cómo saber si tu matriz de decisión aguanta o se cae al primer empujón"
+subtitle: "La honestidad de un análisis no está en el número. Está en el intervalo."
+description: "Una matriz ponderada puede confirmar casi cualquier conclusión, porque los pesos los eliges tú. Cómo medir el margen real de una recomendación."
+category: "Evaluación y método"
+date: "2026-09-14"
+image: "https://josepalacios.site/img/og/punto-de-cambio-matriz-decision.png"
+lang: "es"
+translationKey: "punto-de-cambio-matriz-decision"
+---
+
+Una matriz ponderada tiene un problema estructural que rara vez se menciona: los pesos los eliges tú. Y en cuanto los eliges tú, la matriz puede confirmar prácticamente cualquier conclusión que ya tuvieras.
+
+No hace falta mala fe. Basta con que asignes 0,25 a un criterio donde tu favorita destaca en vez de 0,15. Nadie lo va a notar, y el resultado tendrá el mismo aspecto de objetividad: una tabla, unas puntuaciones, un ganador con decimales.
+
+Por eso el resultado que a mí me importa no es el ganador, sino **el margen**.
+
+## Dos medidas que añadí al motor
+
+**1. El punto de cambio por criterio.** Para cada criterio, se calcula el peso exacto al que el ganador dejaría de serlo. Si ese punto está muy cerca del peso que asignaste, la conclusión depende de una decisión tuya que podría haber sido otra — y eso hay que reportarlo, no esconderlo.
+
+**2. La robustez global.** Perturbar un peso cada vez no basta, porque en la práctica todos los pesos son discutibles a la vez. Así que se muestrea una distribución de Dirichlet centrada en los pesos declarados y se resuelve la matriz completa 10.000 veces, contando qué fracción de escenarios gana cada opción.
+
+En el caso que analicé, el resultado fue 82 % / 18 % / 0 %. Eso es información accionable de una forma que un ranking no lo es: la opción ganadora es sólida pero no unánime, la segunda es una alternativa defendible bajo otras prioridades, y la tercera no gana en ningún escenario razonable.
+
+Un detalle que me parece innegociable: la semilla del muestreo está fijada y documentada. Cualquiera puede regenerar el informe y obtener exactamente las mismas cifras. Un análisis de sensibilidad irreproducible no es más creíble que la matriz que pretendía validar.
+
+<Nota>
+
+**La lección que me llevo:** presentar un ganador sin decir a qué distancia está del segundo es ocultar justo la información que necesita quien decide. La honestidad de un análisis no está en el número, está en el intervalo.
+
+</Nota>

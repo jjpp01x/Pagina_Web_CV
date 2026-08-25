@@ -1,0 +1,50 @@
+---
+title: "Estimar un proyecto de IA cuando la mitad del alcance es una pregunta"
+subtitle: "En un proyecto de IA, parte del trabajo es averiguar si la solución funciona. Eso no se estima: se acota."
+description: "En un proyecto de IA, parte del trabajo es averiguar si la solución funciona. Cómo separar lo que se estima de lo que hay que acotar por tiempo."
+category: "Negocio y estrategia"
+date: "2026-09-30"
+image: "https://josepalacios.site/img/og/estimar-proyecto-de-ia.png"
+lang: "es"
+translationKey: "estimar-proyecto-de-ia"
+---
+
+## Título (campo de título del editor de LinkedIn)
+
+Por qué la mitad de un proyecto de IA es una pregunta, no una tarea
+
+## Cuerpo (campo de texto del artículo)
+
+Cuando alguien te pide una fecha para "meter IA" en un proceso, te está pidiendo dos cosas distintas sin saberlo. Una es cuánto cuesta construir algo. La otra es cuánto cuesta averiguar si ese algo es siquiera posible con la fiabilidad que el proceso necesita. La primera es una estimación de ingeniería normal. La segunda no lo es — y tratarla como si lo fuera es, con diferencia, la causa más frecuente de que una fecha de IA se incumpla.
+
+La confusión tiene sentido. En un proyecto de software convencional, casi todo el alcance es conocido de antemano: sabes qué pantallas hay que construir, qué tablas hay que crear, qué integraciones hay que resolver. La incertidumbre está en el cuánto tiempo, no en el si funciona. Con un componente de IA — sobre todo si depende de un modelo de lenguaje — una parte del alcance no es "constrúyelo", es "averigua si esto llega al nivel de fiabilidad que necesitas con tus datos reales". Eso no es una tarea con horas estimables. Es un experimento cuyo resultado todavía no conoces.
+
+Presupuestar los dos como si fueran lo mismo es lo que produce la fecha que luego se rompe: el equipo se compromete a construir sin saber si lo que va a construir es viable, y cuando la parte "averigua" resulta más dura de lo previsto, la fecha no se mueve — se sigue forzando contra un plazo que nunca fue real.
+
+## Presupuestar por fases, con puertas de decisión
+
+La alternativa no es "no dar fecha". Es dar fechas distintas para preguntas distintas.
+
+Fase 0 — el spike acotado. Un spike es una investigación con tiempo fijo, alcance fijo y una sola pregunta técnica, cuyo entregable no es software funcionando: es evidencia y una recomendación. Por ejemplo: "¿la recuperación de información sobre nuestros documentos reales llega a un nivel de precisión de citas que un revisor humano aceptaría?" No se responde leyendo la documentación de un proveedor. Se responde construyendo la pieza más pequeña posible que dé una respuesta honesta, y midiéndola contra datos reales, no contra los de la demo.
+
+Puerta de decisión. Al final del spike hay una decisión explícita, tomada con lo que el spike mostró: seguir con el enfoque, redefinir el alcance porque solo sirve para una parte del problema, o parar porque la fiabilidad necesaria no es alcanzable con lo disponible hoy. Las tres son resultados válidos de un spike bien planteado — incluso "parar" es un éxito si evita meses de trabajo sobre una base que no iba a sostener el caso de uso.
+
+Un detalle que decide si esto funciona o se queda en teoría: el tamaño del spike lo marca el coste de estar equivocado, no la curiosidad técnica. Si un fallo del sistema solo cuesta una tarea repetida, un spike de un día con datos reales basta para decidir. Si el sistema va a decidir sobre dinero o sobre personas, el spike tiene que ser más exigente antes de dar luz verde — pero sigue siendo un spike: acotado en tiempo, con una pregunta y no con un producto como entregable.
+
+Fase 1 — construir sobre lo validado. Solo aquí tiene sentido dar una estimación de ingeniería en firme, porque ya no está mezclada con la pregunta de si es posible. Es una estimación real, no una intuición disfrazada de fecha.
+
+Fase 2 — endurecer para producción. Gestión de errores, trazabilidad, y — si el sistema toma decisiones sobre personas o dinero — controles de gobernanza antes de que nadie dependa de él en serio.
+
+## Qué se puede prometer, y qué no
+
+Se puede prometer el coste y la duración del spike: están acotados por diseño, y son baratos comparados con comprometerse a una fecha de sistema completo sin saber si el enfoque funciona. Se puede prometer también el criterio exacto que decidirá la puerta — escrito antes de tener el resultado, no después, cuando ya convendría que dijera lo que conviene que diga.
+
+Lo que no se puede prometer, con honestidad, es la fecha de entrega del sistema completo antes de que el spike responda la pregunta abierta. Prometerlo de todas formas — porque el calendario ya está fijado, porque nadie quiere ser quien diga "todavía no lo sabemos" en la reunión — es exactamente lo que quema el presupuesto, la fecha y, después, la credibilidad de quien lideró el proyecto.
+
+Esto no es teoría de gestión que leí en un libro. Antes de fijar la arquitectura de cascada de coste de DD-Copilot — qué pasos de análisis usan un modelo barato y cuál necesita uno más capaz — tuve que comprobar, con datos reales y no con la promesa de un proveedor, qué pasos realmente necesitaban razonamiento y cuáles eran clasificación simple. Esa comprobación fue el spike; la arquitectura vino después, y solo pudo ser una estimación real porque ya no cargaba con la pregunta sin responder. En un proyecto tan distinto como el sistema de inventario que construí para SkiCraft Custom Boots (Heierling), la fase que más tiempo real consumió no fue escribir el SQL: fue el modelado de entidades y relaciones antes de crear una sola tabla — la parte "averigua", no la parte "construye", disfrazada de trabajo de base de datos.
+
+## Lo que cambia si eres tú quien pide la fecha
+
+Si diriges un departamento que está evaluando meter IA en un proceso, la pregunta útil no es "¿para cuándo lo tienes?". Es: "¿cuál es el experimento más barato que nos diría si esto es posible, y qué me vas a enseñar cuando termine?" Esa pregunta obliga a separar lo que ya se sabe hacer de lo que todavía es una incógnita — y es exactamente esa separación la que decide si el proyecto llega a producción o se queda, con buen aspecto, en una demo.
+
+¿Cómo presupuestáis vosotros la parte de un proyecto que todavía es una pregunta abierta?

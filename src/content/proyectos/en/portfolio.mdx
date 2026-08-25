@@ -1,0 +1,64 @@
+---
+title: "Portfolio Website — Interactive CV"
+subtitle: "HTML5 · CSS3 · JavaScript · Internet Technology and Security (CEAC4011)"
+description: "Portfolio Website Interactive CV — Responsive personal site in HTML5/CSS3/JS with a custom i18n system, hamburger menu and a CV downloadable in 3 languages. Project by Jose Palacios Beortegui."
+estado: "In production"
+modulo: "Internet Technology and Security — CEAC4011"
+repo: "https://github.com/jjpp01x/Pagina_Web_CV"
+demo: "https://josepalacios.site"
+image: "https://josepalacios.site/img/og-image.png"
+lang: "en"
+translationKey: "portfolio"
+stack: ["HTML5", "CSS3", "JavaScript", "GitHub Pages", "Custom Domain"]
+deepTech: false
+---
+
+## The problem
+
+I needed an online CV that was more than a static PDF — something that reflected my technical skills directly, worked on any device, was available in the three languages relevant to the Swiss job market (Spanish, English, German) and let a recruiter download the CV in their preferred language.
+
+The project also had an explicit academic requirement: build it without frameworks, demonstrating command of the fundamental web technologies.
+
+## Key technical decisions
+
+<Paso n="01" titulo="Static multi-page architecture">
+
+4 independent HTML pages instead of a SPA. Each page has its own `<title>` and `<meta description>` for SEO. Deployed straight to GitHub Pages with no build step and no toolchain.
+
+</Paso>
+
+<Paso n="02" titulo="Custom 33-line i18n system">
+
+A bespoke internationalisation engine using `data-i18n` attributes and `localStorage` to persist the language across pages. No external libraries. Covers ES/EN/DE with around 60 translation keys per language.
+
+</Paso>
+
+<Paso n="03" titulo="CSS with design tokens">
+
+A system of CSS variables in `:root` acting as a design token system. A single 910-line stylesheet for the 4 pages, organised into commented sections. No preprocessors.
+
+</Paso>
+
+<Paso n="04" titulo="Mobile-first responsiveness">
+
+Hamburger menu with `IntersectionObserver` for scroll reveal, Flexbox and CSS Grid for layout, two breakpoints (768px and 480px). Tested on iPhone SE, iPad and desktop.
+
+</Paso>
+
+<Paso n="05" titulo="CV downloadable in 3 languages">
+
+A dropdown selector serving three different PDFs (ES/EN/DE) from `/docs/`. Each PDF is optimised for its market, with the same content adapted culturally.
+
+</Paso>
+
+<Paso n="06" titulo="Deployment on GitHub Pages with a custom domain">
+
+Automatic CI/CD via git push to `main`. The domain `josepalacios.site` is registered with Porkbun, with 4 A records pointing to GitHub Pages' CDN and automatic HTTPS via Let's Encrypt.
+
+</Paso>
+
+## What I learned
+
+This project is where I learned most about the difference between code that works and code that is well made. The i18n system could simply have been three versions of the HTML — but designing it as a translation engine taught me to think about separating data from logic even in small projects.
+
+I also learned that 80 % of the time in a real web project does not go into writing code, but into design decisions, testing on real devices, fixing regressions and documentation.

@@ -1,0 +1,70 @@
+---
+title: "Expert Probe"
+subtitle: "From due diligence brief to human expert: a falsifiable script, anonymised notes, and confidence calculated rather than asked for"
+description: "Expert Probe turns the claims a due diligence brief leaves open into a falsifiable interview script, and the expert's notes into a confidence level recalculated by formula. Anonymisation and a local model by design."
+tipo: "Expert interview tool · personal project"
+pregunta: "What should an analyst ask an expert, and what changes with their answers?"
+estado: "Public repository"
+repo: "https://github.com/jjpp01x/expert-probe"
+image: "https://josepalacios.site/img/og-image.png"
+lang: "en"
+translationKey: "expert-probe"
+stack: ["Python", "Pydantic", "Ollama (local)", "Claude", "Encrypted SQLite", "CLI"]
+deepTech: true
+---
+
+## The problem
+
+A due diligence brief like the one [DD-Copilot](dd-copilot.html) produces leaves gaps by design: the claims it marks as "plausible" or "unsupported" are, by definition, the ones the source does not settle. Settling them requires a human expert — and expert calls tend to be unstructured conversations whose conclusions end up in loose notes that nobody reconnects to the original brief.
+
+Expert Probe closes that loop: it turns open claims into a falsifiable interview script, and the notes from that interview into state changes and a recalculated confidence level.
+
+## How it works
+
+<Paso n="01" titulo="Input: the DD-Copilot brief">
+
+Consumes the JSON output of `ddcopilot analyze --json` and isolates the claims that need human verification.
+
+</Paso>
+
+<Paso n="02" titulo="Falsifiable interview script">
+
+Generates questions designed so that the expert's answer can confirm or refute each claim, not merely comment on it. This step can use Claude because its prompt contains only the brief on the company under analysis — never any data about the expert.
+
+</Paso>
+
+<Paso n="03" titulo="Anonymised notes, local model">
+
+Interview notes are anonymised before any prompt is built, and are only processed by a local model via Ollama. A remote provider is not discouraged there: it is rejected in code, before the database is even opened.
+
+</Paso>
+
+<Paso n="04" titulo="Mapping to state changes">
+
+The local model proposes which claims each note confirms or refutes, and the tool updates the brief's state with an audit trail.
+
+</Paso>
+
+<Paso n="05" titulo="Confidence recalculated by formula">
+
+The confidence level is not asked of a model: it is computed from declared weights per claim state. A number that changes when you re-run it on the same data is not evidence; with a formula, whoever reads the brief can argue with the weights.
+
+</Paso>
+
+## The central design decision
+
+Anonymising notes that never leave the machine looks redundant, and is not: the prompt is not the only reader (the database, the audit trail and any debug dump see that data too), and data that travels anonymised internally means features added six months from now are born safe without their author having to know it. The guard protects the destination; anonymisation protects the content — they fail in different ways, so they do not fail together.
+
+There is a stronger boundary than either: the mapping function does not accept a note, it accepts an `AnonymizedNote` type that only the anonymiser can construct. The guard prevents the wrong call; the type makes the wrong call impossible to write.
+
+And one decision that looks like an oversight and is not: a refuted claim weighs the same as a confirmed one in the confidence index, because that index measures the quality of the evidence, not the health of the company. Refuting closes an unknown just as confirming does; deterioration of the thesis is reported separately, as a count of refutations. They are two axes, and merging them into a single number would be the most expensive mistake possible here.
+
+## What it does *not* do
+
+Anonymisation protects the person interviewed, not third parties they name, and nothing protects against being recognisable from the content of what one says. The type boundary stops carelessness, not intent. The repository prefers to declare these gaps rather than imply they do not exist: every limitation is verified by running it and documented alongside the data policy.
+
+## What I learned
+
+Operational privacy is decided in small details: the encryption passphrase is requested at the console with hidden input, and the option to pass it as an argument was removed because it left the master key in the shell history and visible to any user of the machine. Storage is local SQLite, encrypted per field, with one data key per person and a full deletion command — and the real guarantee is not the deletion, it is that the master key is never stored.
+
+The other lesson is architectural: turning a privacy rule into a type in the language makes it survive the project's future. A check is something someone must remember to invoke; a structural impossibility does not depend on anyone's memory.

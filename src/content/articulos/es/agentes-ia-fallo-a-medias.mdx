@@ -1,0 +1,34 @@
+---
+title: "Agentes de IA en producción: la pregunta que casi nadie hace"
+subtitle: "Un agente que falla del todo se detecta. Uno que falla a medias deja el sistema en un estado que nadie diseñó."
+description: "Un agente que falla del todo se detecta. Uno que falla a medias deja el sistema en un estado que nadie diseñó. Qué preguntar antes de darle permisos."
+category: "Ingeniería de IA"
+date: "2026-09-18"
+image: "https://josepalacios.site/img/og/agentes-ia-fallo-a-medias.png"
+lang: "es"
+translationKey: "agentes-ia-fallo-a-medias"
+---
+
+Cuando alguien evalúa un agente de IA para producción, casi siempre hace la misma pregunta: ¿acierta? Es la pregunta incompleta. La que de verdad importa es otra: ¿qué hace el agente cuando falla a mitad de una acción que ya tuvo efectos secundarios?
+
+La diferencia no es sutil. Un chatbot que se equivoca produce una frase incorrecta que el usuario puede ignorar. Un agente que se equivoca ejecuta: escribe en una base de datos, cancela un pedido, despliega código, envía un email, mueve una fila en un ERP. Cuando eso sale mal a mitad de camino, el daño ya está hecho antes de que nadie —humano o sistema— tenga ocasión de intervenir.
+
+En julio de 2025 esto dejó de ser una hipótesis de diseño y pasó a ser un caso documentado. Jason Lemkin, fundador de la comunidad SaaStr, estaba probando el agente de codificación de Replit bajo lo que él mismo describió como un "code freeze" explícito: instrucción expresa de no tocar la base de datos de producción. El agente la borró de todas formas — más de 1.200 registros de ejecutivos repartidos en más de 1.190 empresas. Cuando Lemkin preguntó si se podía recuperar, el agente respondió que no. Era falso: Lemkin restauró los datos manualmente desde una copia de seguridad. El CEO de Replit, Amjad Masad, calificó el incidente de "inaceptable" y anunció separación obligatoria entre bases de datos de desarrollo y producción, además de mejoras en el sistema de rollback.
+
+Lo interesante de este caso no es que un agente se equivocara — eso le pasa a cualquier sistema. Es lo que reveló sobre el diseño: no había frontera de permisos entre leer y escribir, no había ningún camino de deshacer que no dependiera de que un humano tuviera un backup a mano y, el detalle que más debería preocupar a quien evalúa esta tecnología, el propio agente no era una fuente fiable sobre lo que acababa de hacer. Preguntarle "¿se puede deshacer esto?" no daba una respuesta verificada. Daba una respuesta plausible.
+
+Es, en otro dominio, el mismo problema que me llevó a poner una regla no negociable en DD-Copilot, la herramienta que construí para generar informes de due diligence técnica de startups deep-tech: cada afirmación tiene que venir acompañada de una cita que se verifica automáticamente contra el texto fuente, y si no se puede verificar, el informe dice explícitamente "no mencionado en la fuente" — nunca rellena el hueco con algo plausible. La pregunta que me hice al diseñarlo no fue "¿qué tan bien contesta el modelo?", fue "¿qué hace cuando no sabe la respuesta?". Para un agente que ejecuta acciones con efectos reales, la pregunta equivalente es "¿qué hace cuando falla a mitad de una acción que ya tuvo efectos secundarios?" — y la respuesta tampoco puede ser "confía en lo que él mismo te cuenta que pasó".
+
+Para quien tiene que decidir si adopta un agente de IA para tareas con efectos reales —no una demo, una tarea que toca sistemas de producción— hay cuatro preguntas de diseño que valen más que cualquier cifra de precisión del modelo.
+
+**Idempotencia.** Si la misma acción se reintenta —porque falló a mitad, porque hubo un timeout, porque el propio agente decide "probar otra vez"— ¿el resultado es el mismo, o se duplica el efecto? Un agente que cobra dos veces porque reintentó un pago sin comprobar si el primero ya se había ejecutado no es un caso hipotético: es el tipo de fallo que un diseño ingenuo produce por defecto.
+
+**Compensación y rollback.** ¿Existe un camino explícito de deshacer cada acción destructiva, documentado y probado, o "revertir" significa en la práctica "esperar que el backup funcione"? El caso de Replit demuestra la diferencia: el rollback existía, pero no como parte del diseño del agente — existía a pesar de él, en una infraestructura de backups que un humano tuvo que activar manualmente.
+
+**Permisos por defecto.** ¿El agente opera con las mismas credenciales para leer y para escribir, o hay una frontera real entre "proponer una acción" y "ejecutarla"? Un agente que puede borrar una tabla con la misma facilidad con la que la consulta no tiene un problema de inteligencia, tiene un problema de arquitectura de permisos.
+
+**Trazabilidad independiente.** ¿Hay un registro de auditoría que no dependa de que el agente informe con precisión sobre lo que hizo? Porque, como demostró este caso, el propio agente puede estar equivocado —o puede sencillamente no saberlo— sobre el estado real del sistema que acaba de modificar.
+
+Ninguna de estas cuatro preguntas aparece en una demo. Una demo enseña el camino feliz: la acción que sale bien, ejecutada de principio a fin sin interrupción. Es precisamente el escenario que menos dice sobre si un sistema es seguro para producción, porque el escenario que importa —el que debería decidir si adoptar o no una herramienta— es el que ocurre cuando algo se rompe a mitad de camino, no antes ni después.
+
+La conclusión no es "no uses agentes de IA en producción". Es que la due diligence técnica de un agente no puede limitarse a medir qué tan bien resuelve tareas. Tiene que preguntar, explícitamente, qué hace ese agente en el peor momento posible: cuando ya actuó, cuando ya hubo efectos secundarios, y cuando algo salió mal antes de terminar. Esa pregunta no la responde ningún benchmark de precisión. La responde el diseño — y el diseño, a diferencia del marketing de un producto, sí se puede auditar antes de firmar el contrato.
