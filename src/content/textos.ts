@@ -128,7 +128,7 @@ const ES: Textos = {
     error: "No se pudo enviar. Escríbeme directamente a",
     labelUbicacion: "Ubicación",
     labelLinkedin: "LinkedIn",
-    ubicacion: "España–Suiza",
+    ubicacion: "Zúrich, Suiza",
   },
   pie: {
     copy: "© 2026 Jose Palacios Beortegui",
@@ -218,7 +218,7 @@ const EN: Textos = {
     error: "Could not send. Write to me directly at",
     labelUbicacion: "Location",
     labelLinkedin: "LinkedIn",
-    ubicacion: "Spain–Switzerland",
+    ubicacion: "Zurich, Switzerland",
   },
   pie: {
     copy: "© 2026 Jose Palacios Beortegui",
@@ -308,7 +308,7 @@ const DE: Textos = {
     error: "Konnte nicht gesendet werden. Schreiben Sie mir direkt an",
     labelUbicacion: "Standort",
     labelLinkedin: "LinkedIn",
-    ubicacion: "Spanien–Schweiz",
+    ubicacion: "Zürich, Schweiz",
   },
   pie: {
     copy: "© 2026 Jose Palacios Beortegui",

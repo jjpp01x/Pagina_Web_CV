@@ -38,8 +38,13 @@ export const persona = {
   foto: "/img/jpalacios.webp",
   fotoAlt: "José Palacios Beortegui, con gafas y traje oscuro, sobre fondo azul",
   rol: "Analista deep tech",
-  /** Fijado por Jose el 2026-08-21. NO "Zurich": Heierling (Davos) acabo en abril de 2026. */
-  ubicacion: "España–Suiza",
+  /**
+   * Zurich, la misma que se declaro en la candidatura de MNTY. Jose lo fijo el
+   * 2026-08-22 y eso revoca el "Espana-Suiza" que el mismo habia puesto el dia
+   * antes. La regla es que web, CV y outreach digan lo mismo. Lo que NO es
+   * declarable es "Davos": Heierling acabo en abril de 2026.
+   */
+  ubicacion: "Zúrich, Suiza",
   /** El del mercado laboral. jpalacios.contact@ es el de Epokan y no se mezcla. */
   email: "palaciosbeortegui@gmail.com",
   github: "https://github.com/jjpp01x",
