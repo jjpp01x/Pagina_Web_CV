@@ -1,0 +1,58 @@
+/**
+ * Tarjetas de proyecto y articulo, y pildoras de stack.
+ *
+ * El movimiento va bajo `prefers-reduced-motion`, igual que en el hero.
+ */
+
+.tarjeta {
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.tarjeta:hover {
+  transform: translateY(-2px);
+  /* El borde pasa a color de marca: senala "esto se puede abrir" sin recurrir
+     a un cambio de fondo, que en oscuro apaga el texto. */
+  border-color: var(--brand-alpha-strong);
+  box-shadow: 0 16px 32px -20px rgb(0 0 0 / 65%);
+}
+
+/* El foco de teclado NO se delega al hover: quien navega con tabulador tiene
+   que ver donde esta. Once UI ya pinta el anillo; aqui solo se asegura de que
+   la tarjeta no lo recorte. */
+.tarjeta:focus-visible {
+  outline-offset: 2px;
+}
+
+/* --- Pildoras de stack ---------------------------------------------------- */
+
+.pildora {
+  font-family: var(--font-code), ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: -0.01em;
+}
+
+/* --- Enlace externo ------------------------------------------------------- */
+
+.repo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  transition: color 160ms ease;
+}
+
+.tarjeta:hover .repo {
+  color: var(--brand-on-background-weak);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tarjeta,
+  .tarjeta:hover,
+  .repo,
+  .tarjeta:hover .repo {
+    transition: none;
+    transform: none;
+  }
+}

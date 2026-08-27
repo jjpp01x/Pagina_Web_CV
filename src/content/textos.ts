@@ -27,7 +27,7 @@ export type Textos = {
   };
   /** Bloque de cifras de la pagina "Sobre mi". Se cuentan del contenido real. */
   cifras: { titulo: string; articulos: string; proyectos: string; idiomas: string; titulaciones: string; certificaciones: string };
-  hero: { saludo: string; titulo: string; descripcion: string; btn1: string; btn2: string };
+  hero: { saludo: string; subtitulo: string; titulo: string; descripcion: string; btn1: string; btn2: string };
   sobre: { titulo: string; parrafos: string[]; disponible: string };
   skills: { titulo: string; grupos: GrupoHabilidades[] };
   proyectos: { titulo: string; subtitulo: string; verRepo: string; verDemo: string };
@@ -66,10 +66,11 @@ const ES: Textos = {
     sobreMi: "Sobre mí",},
   hero: {
     saludo: "Hola, soy",
+    subtitulo: "Analista Deep Tech & Software Builder",
     titulo: "Analista Deep Tech en formación — evalúo si una tecnología funciona y qué riesgo conlleva",
-    descripcion: "Estudiante de BSc (Hons) Applied Computing (UWTSD). Combino una base sólida en gestión empresarial con la capacidad de evaluar y construir tecnología: ingeniería informática, IA y analítica de datos. Actualmente entre España y Suiza.",
+    descripcion: "Estudiante de BSc (Hons) Applied Computing (UWTSD). Combino una base sólida en gestión empresarial con la capacidad de evaluar y construir tecnología: ingeniería informática, IA y analítica de datos. Con base en Zúrich.",
     btn1: "Contactar",
-    btn2: "Ver experiencia",
+    btn2: "Ver proyectos",
   },
   sobre: {
     titulo: "Sobre mí",
@@ -156,10 +157,11 @@ const EN: Textos = {
     sobreMi: "About me",},
   hero: {
     saludo: "Hi, I'm",
+    subtitulo: "Deep Tech Analyst & Software Builder",
     titulo: "Deep Tech Analyst in training — I evaluate whether a technology works and what risk it carries",
-    descripcion: "BSc (Hons) Applied Computing student (UWTSD). I combine a solid background in business management with the ability to evaluate and build technology: computer engineering, AI and data analytics. Currently between Spain and Switzerland.",
+    descripcion: "BSc (Hons) Applied Computing student (UWTSD). I combine a solid background in business management with the ability to evaluate and build technology: computer engineering, AI and data analytics. Zurich-based.",
     btn1: "Contact me",
-    btn2: "See experience",
+    btn2: "See projects",
   },
   sobre: {
     titulo: "About me",
@@ -246,10 +248,11 @@ const DE: Textos = {
     sobreMi: "Über mich",},
   hero: {
     saludo: "Hallo, ich bin",
+    subtitulo: "Deep-Tech-Analyst & Software Builder",
     titulo: "Deep-Tech-Analyst in Ausbildung — ich bewerte, ob eine Technologie funktioniert und welches Risiko sie birgt",
-    descripcion: "Student des BSc (Hons) Applied Computing (UWTSD). Ich verbinde eine solide Grundlage im Betriebswirtschaftsmanagement mit der Fähigkeit, Technologie zu bewerten und zu entwickeln: Informatik, KI und Datenanalyse. Derzeit zwischen Spanien und der Schweiz.",
+    descripcion: "Student des BSc (Hons) Applied Computing (UWTSD). Ich verbinde eine solide Grundlage im Betriebswirtschaftsmanagement mit der Fähigkeit, Technologie zu bewerten und zu entwickeln: Informatik, KI und Datenanalyse. Mit Sitz in Zürich.",
     btn1: "Kontakt",
-    btn2: "Erfahrung ansehen",
+    btn2: "Projekte ansehen",
   },
   sobre: {
     titulo: "Über mich",

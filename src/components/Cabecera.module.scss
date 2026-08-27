@@ -1,0 +1,23 @@
+/**
+ * Cristal esmerilado de la cabecera.
+ *
+ * Vive en un modulo SCSS y no en un `style` en linea porque necesita
+ * `@supports`: Firefox tuvo `backdrop-filter` detras de una bandera durante
+ * anos y todavia hay navegadores sin el. Sin la reserva, esos usuarios ven la
+ * cabecera translucida SIN desenfoque, es decir, el texto de la pagina
+ * cruzandose con el del menu. La reserva es fondo solido.
+ */
+.cristal {
+  background: var(--page-background);
+  transition: background 160ms ease;
+}
+
+@supports ((backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px))) {
+  .cristal {
+    /* 72% de opacidad: por debajo, el texto del menu pierde contraste sobre
+       las zonas claras de la pagina que pasan por detras. */
+    background: color-mix(in srgb, var(--page-background) 72%, transparent);
+    -webkit-backdrop-filter: blur(10px) saturate(140%);
+    backdrop-filter: blur(10px) saturate(140%);
+  }
+}

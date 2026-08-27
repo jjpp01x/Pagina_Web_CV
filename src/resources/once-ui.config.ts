@@ -35,28 +35,31 @@ const display: DisplayConfig = {
 const protectedRoutes: ProtectedRoutesConfig = {};
 
 // Import and set font for each variant
-import { Archivo, Space_Grotesk } from "next/font/google";
-import { Geist_Mono } from "next/font/google";
+// Inter para todo el texto y JetBrains Mono SOLO para datos tecnicos (pildoras
+// de stack, cifras de metricas). La mono es un indicador de "esto es un dato",
+// y deja de serlo en cuanto se usa para texto corrido.
+import { Inter } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google";
 
-const heading = Archivo({
+const heading = Inter({
   variable: "--font-heading",
   subsets: ["latin"],
   display: "swap",
 });
 
-const body = Space_Grotesk({
+const body = Inter({
   variable: "--font-body",
   subsets: ["latin"],
   display: "swap",
 });
 
-const label = Archivo({
+const label = Inter({
   variable: "--font-label",
   subsets: ["latin"],
   display: "swap",
 });
 
-const code = Geist_Mono({
+const code = JetBrains_Mono({
   variable: "--font-code",
   subsets: ["latin"],
   display: "swap",
@@ -71,10 +74,16 @@ const fonts: FontsConfig = {
 
 // default customization applied to the HTML in the main layout.tsx
 const style: StyleConfig = {
-  theme: "light", // dark | light | system
+  // Oscuro por defecto: lo pide el encargo del 2026-08-27. El conmutador
+  // claro/oscuro sigue estando, asi que nadie se queda sin su preferencia.
+  theme: "dark", // dark | light | system
   neutral: "slate", // sand | gray | slate | mint | rose | dusk | custom
-  brand: "emerald", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
-  accent: "orange", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
+  // Cian en vez de "emerald". El verde petroleo era el acento de marca desde
+  // el 2026-08-21; el cian es su vecino inmediato, asi que la marca se
+  // desplaza en vez de dar un salto. Queda anotado por ser cambio de marca.
+  brand: "cyan", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
+  // Era "orange", que no pintaba nada junto a un acento verde ni junto a uno cian.
+  accent: "cyan", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
   solid: "contrast", // color | contrast
   solidStyle: "flat", // flat | plastic
   border: "conservative", // rounded | playful | conservative | sharp

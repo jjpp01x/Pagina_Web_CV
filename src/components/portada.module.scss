@@ -1,0 +1,103 @@
+/**
+ * Hero y banda de cifras.
+ *
+ * Todo el movimiento va envuelto en `prefers-reduced-motion`. Sin esa guarda,
+ * las transiciones de escala y elevacion son un problema de accesibilidad real
+ * para quien tiene trastornos vestibulares, no un detalle de pulido. La
+ * accesibilidad del sitio esta en 100 y es condicion de parada.
+ */
+
+/* --- Foto del hero -------------------------------------------------------- */
+
+.marcoFoto {
+  border-radius: var(--radius-l);
+  /* "ring" de 1px + sombra suave: el marco se lee como tarjeta sin competir
+     con la foto, que es lo que tiene que mirar el visitante. */
+  box-shadow:
+    0 0 0 1px var(--neutral-alpha-medium),
+    0 18px 40px -22px rgb(0 0 0 / 55%);
+  overflow: hidden;
+  line-height: 0;
+}
+
+.foto {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+/* --- Botones de llamada a la accion --------------------------------------- */
+
+.cta {
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    background 160ms ease;
+}
+
+.cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px -10px rgb(0 0 0 / 55%);
+}
+
+.cta:active {
+  transform: translateY(0);
+}
+
+/* --- Banda de cifras ------------------------------------------------------ */
+
+.cifra {
+  /* Mono solo para el numero: marca "esto es un dato medido". El texto de
+     apoyo se queda en Inter. */
+  font-family: var(--font-code), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta,
+  .cta:hover,
+  .cta:active {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* En movil la foto se ve antes que el texto, pero el H1 sigue siendo el
+   primer elemento del DOM: lo invierte el CSS, no el marcado. */
+@media (max-width: 47.9375rem) {
+  .hero {
+    flex-direction: column-reverse;
+  }
+}
+
+/* Pildoras de habilidad: mono, igual que las de stack. Son datos tecnicos. */
+.pildoraSkill {
+  font-family: var(--font-code), ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: -0.01em;
+}
+
+/* --- Insignias de certificacion ------------------------------------------- */
+
+.insignia {
+  transition:
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+
+.insignia:hover {
+  border-color: var(--brand-alpha-strong);
+  transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .insignia,
+  .insignia:hover {
+    transition: none;
+    transform: none;
+  }
+}

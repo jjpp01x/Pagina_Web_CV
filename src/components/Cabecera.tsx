@@ -9,6 +9,8 @@
  * contacto— para que quien ya conocia la web no tenga que reaprenderla.
  */
 import { Row, ToggleButton } from "@once-ui-system/core";
+
+import estilos from "@/components/Cabecera.module.scss";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
 
 import { ConmutadorIdioma } from "@/components/ConmutadorIdioma";
@@ -76,8 +78,8 @@ export function Cabecera({ lang }: { lang: Idioma }) {
       zIndex={1}
       position="sticky"
       top="0"
-      background="page"
       borderBottom="neutral-alpha-weak"
+      className={estilos.cristal}
     >
       <Row fillWidth maxWidth={64} horizontal="between" vertical="center" gap="12" wrap>
         <Row as="nav" gap="4" vertical="center" wrap aria-label={t.nav.inicio}>
