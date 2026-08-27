@@ -10,6 +10,7 @@
 import { Button, Column, Grid, Heading, Line, Row, Tag, Text } from "@once-ui-system/core";
 
 import { componentesMDX } from "@/components/bloques";
+import estilos from "@/components/portada.module.scss";
 import { DescargaCV } from "@/components/DescargaCV";
 import { FormularioContacto } from "@/components/FormularioContacto";
 import { CustomMDX } from "@/components/mdx";
@@ -29,6 +30,7 @@ import {
   getProyectos,
   type Proyecto,
 } from "@/lib/contenido";
+import { cifrasDe } from "@/lib/cifras";
 import { type Idioma, ruta } from "@/lib/rutas";
 
 /** Carril de lectura. Once UI mide maxWidth en rem, no en cadena CSS. */
@@ -83,65 +85,92 @@ export function Portada({ lang }: { lang: Idioma }) {
   return (
     <Column fillWidth gap="8" horizontal="center" paddingX="l">
       {/*
-        Hero: foto, saludo, titular y descripcion, como en el sitio anterior.
-        La fila se alinea arriba (vertical="start") para que el borde superior
-        de la foto cuadre con la linea del saludo; centrada, la foto quedaba
-        descolgada respecto al texto.
+        Hero a dos columnas: texto a la izquierda, foto a la derecha.
+
+        El H1 va primero en el DOM aunque en movil la foto se vea antes: el
+        orden visual lo invierte el CSS (column-reverse), no el marcado. Un
+        lector de pantalla y Google siguen encontrando el encabezado al
+        principio, que es donde debe estar.
       */}
-      <Row fillWidth gap="24" paddingY="40" vertical="start" wrap {...ANCHO}>
-        {/*
-          <img> nativo en vez del <Media> de Once UI: con output: export e
-          images.unoptimized, Media emitia width="0" height="0" y la foto se
-          veia como un hueco. La imagen ya viene optimizada (webp de 74 KB).
-        */}
-        <img
-          src={persona.foto}
-          alt={persona.fotoAlt}
-          width={132}
-          height={132}
-          loading="eager"
-          style={{
-            width: "132px",
-            height: "132px",
-            minWidth: "132px",
-            objectFit: "cover",
-            objectPosition: "center 20%",
-            borderRadius: "var(--radius-m)",
-            border: "1px solid var(--neutral-alpha-medium)",
-          }}
-        />
-        <Column gap="8" flex={1} style={{ minWidth: "17rem" }}>
+      <Row
+        fillWidth
+        gap="40"
+        paddingY="56"
+        vertical="center"
+        wrap
+        className={estilos.hero}
+        {...ANCHO}
+      >
+        <Column gap="12" flex={1} style={{ minWidth: "18rem" }}>
           <Text variant="body-default-s" onBackground="neutral-weak">
-            {t.hero.saludo}{" "}
-            <Text as="span" variant="body-strong-s" onBackground="neutral-strong">
-              {persona.nombreCompleto}
-            </Text>
+            {t.hero.saludo}
           </Text>
-          {/*
-            Un escalon por debajo del display: el titular es largo y a tamano
-            display se comia la pantalla. Con heading-strong-l la jerarquia
-            entre titular, cuerpo y etiquetas queda proporcionada y se lee mas
-            formal, que es lo que pidio Jose.
-          */}
-          <Heading as="h1" variant="heading-strong-l" wrap="balance">
-            {t.hero.titulo}
+          <Heading as="h1" variant="display-strong-m" wrap="balance">
+            {persona.nombreCompleto}
           </Heading>
-          <Text variant="body-default-s" onBackground="neutral-medium">
+          {/*
+            El subtitulo es la linea de posicionamiento; el titular largo pasa a
+            propuesta de valor debajo. Antes el H1 era el titular entero y el
+            nombre quedaba en letra pequena encima, que es justo al reves de lo
+            que busca quien llega desde LinkedIn.
+          */}
+          <Heading as="p" variant="heading-strong-m" onBackground="brand-medium" wrap="balance">
+            {t.hero.subtitulo}
+          </Heading>
+          <Text variant="body-default-m" onBackground="neutral-medium" wrap="balance">
+            {t.hero.titulo}
+          </Text>
+          <Text variant="body-default-s" onBackground="neutral-weak">
             {t.hero.descripcion}
           </Text>
-          <Row gap="8" paddingTop="8" wrap vertical="center">
-            <Button href={ruta.contacto(lang)} variant="primary" size="s">
+          <Row gap="8" paddingTop="12" wrap vertical="center">
+            <Button href={ruta.contacto(lang)} variant="primary" size="m" className={estilos.cta}>
               {t.hero.btn1}
             </Button>
-            <Button href={ruta.formacion(lang)} variant="secondary" size="s">
+            <Button href={ruta.proyectos(lang)} variant="secondary" size="m" className={estilos.cta}>
               {t.hero.btn2}
             </Button>
-          </Row>
-          <Row paddingTop="4">
             <DescargaCV etiqueta={t.descargarCV} />
           </Row>
         </Column>
+
+        {/*
+          <img> nativo en vez del <Media> de Once UI: con output: export e
+          images.unoptimized, Media emitia width="0" height="0" y la foto se
+          veia como un hueco. La imagen ya viene optimizada (webp de 13,8 KB).
+        */}
+        <div className={estilos.marcoFoto} style={{ width: "clamp(11rem, 26vw, 16rem)" }}>
+          <img
+            src={persona.foto}
+            alt={persona.fotoAlt}
+            width={400}
+            height={400}
+            loading="eager"
+            className={estilos.foto}
+          />
+        </div>
       </Row>
+
+      {/*
+        Banda de cifras. Todas contadas del contenido real por cifrasDe(): si
+        se publica otro articulo, sube sola. Ninguna esta tecleada.
+      */}
+      <Column fillWidth {...ANCHO}>
+        <Line background="neutral-alpha-weak" />
+        <Grid columns="4" m={{ columns: 4 }} s={{ columns: 2 }} gap="16" fillWidth paddingY="24">
+          {cifrasDe(t).slice(0, 4).map((c) => (
+            <Column key={c.etiqueta} gap="4">
+              <Heading as="p" variant="display-strong-xs" className={estilos.cifra}>
+                {c.n}
+              </Heading>
+              <Text variant="label-default-s" onBackground="neutral-weak">
+                {c.etiqueta}
+              </Text>
+            </Column>
+          ))}
+        </Grid>
+      </Column>
+
 
       <Column fillWidth {...ANCHO}>
         <Line background="neutral-alpha-weak" />
