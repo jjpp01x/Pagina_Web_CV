@@ -9,6 +9,8 @@
  */
 import { Button, Column, Grid, Heading, Line, Row, Tag, Text } from "@once-ui-system/core";
 
+import { FiCheckCircle } from "react-icons/fi";
+
 import { componentesMDX } from "@/components/bloques";
 import estilos from "@/components/portada.module.scss";
 import { DescargaCV } from "@/components/DescargaCV";
@@ -365,15 +367,58 @@ export function Formacion({ lang }: { lang: Idioma }) {
           ))}
         </Seccion>
 
+        {/*
+          Certificaciones como insignias.
+
+          La marca de verificado se pinta SOLO si hay `verificar`, es decir, un
+          enlace publico donde comprobarla. Ponerla en todas convertiria el
+          icono en decoracion: el tipo Certificacion ya avisa de que una
+          certificacion sin enlace es una afirmacion, no una credencial.
+        */}
         <Seccion titulo={t.formacion.certificaciones}>
-          {certificaciones.map((c) => (
-            <FilaDato
-              key={c.titulo}
-              etiqueta={c.fecha}
-              valor={`${c.titulo} · ${c.emisor}${c.credencial ? ` · ${t.formacion.credencial}: ${c.credencial}` : ""}`}
-              enlace={c.verificar}
-            />
-          ))}
+          <Grid columns="2" s={{ columns: 1 }} gap="12" fillWidth>
+            {certificaciones.map((c) => (
+              <Column
+                key={c.titulo}
+                gap="8"
+                padding="16"
+                radius="l"
+                border="neutral-alpha-weak"
+                background="neutral-alpha-weak"
+                className={estilos.insignia}
+              >
+                <Row gap="8" vertical="center" horizontal="between" wrap>
+                  <Heading as="h3" variant="heading-strong-xs" wrap="balance">
+                    {c.titulo}
+                  </Heading>
+                  <Text variant="label-default-s" onBackground="neutral-weak">
+                    {c.fecha}
+                  </Text>
+                </Row>
+                <Text variant="body-default-s" onBackground="neutral-medium">
+                  {c.emisor}
+                </Text>
+                {c.credencial && (
+                  <Text variant="label-default-s" onBackground="neutral-weak">
+                    {t.formacion.credencial}: {c.credencial}
+                  </Text>
+                )}
+                {c.verificar && (
+                  <a
+                    href={c.verificar}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ display: "inline-flex", alignItems: "center", gap: "0.375rem" }}
+                  >
+                    <FiCheckCircle size={13} aria-hidden="true" />
+                    <Text as="span" variant="label-default-s">
+                      {t.formacion.verificar}
+                    </Text>
+                  </a>
+                )}
+              </Column>
+            ))}
+          </Grid>
         </Seccion>
 
         <Seccion titulo={t.formacion.idiomas}>
@@ -442,22 +487,18 @@ export function SobreMi({ lang }: { lang: Idioma }) {
         <Cabecera titulo={t.sobre.titulo} />
 
         <Row gap="24" vertical="start" wrap paddingBottom="16">
-          <img
-            src={persona.foto}
-            alt={persona.fotoAlt}
-            width={132}
-            height={132}
-            loading="eager"
-            style={{
-              width: "132px",
-              height: "132px",
-              minWidth: "132px",
-              objectFit: "cover",
-              objectPosition: "center 20%",
-              borderRadius: "var(--radius-m)",
-              border: "1px solid var(--neutral-alpha-medium)",
-            }}
-          />
+          {/* Mismo marco que el hero: con dos tratamientos distintos de la
+              misma foto, el sitio se lee como dos sitios. */}
+          <div className={estilos.marcoFoto} style={{ width: "8.25rem", minWidth: "8.25rem" }}>
+            <img
+              src={persona.foto}
+              alt={persona.fotoAlt}
+              width={400}
+              height={400}
+              loading="eager"
+              className={estilos.foto}
+            />
+          </div>
           <Column gap="12" flex={1} style={{ minWidth: "17rem" }}>
             {t.sobre.parrafos.map((p) => (
               <Text key={p.slice(0, 32)} variant="body-default-s" onBackground="neutral-medium">
@@ -524,16 +565,28 @@ export function SobreMi({ lang }: { lang: Idioma }) {
 
         <Line background="neutral-alpha-weak" />
 
+        {/*
+          Habilidades en tarjetas por categoria en vez de listas sueltas. Los
+          grupos y sus elementos son los de textos.ts, ya traducidos: aqui solo
+          cambia como se ven.
+        */}
         <Seccion titulo={t.skills.titulo}>
-          <Grid columns="2" s={{ columns: 1 }} gap="24" fillWidth>
+          <Grid columns="2" s={{ columns: 1 }} gap="16" fillWidth>
             {t.skills.grupos.map((grupo) => (
-              <Column key={grupo.titulo} gap="8">
+              <Column
+                key={grupo.titulo}
+                gap="12"
+                padding="l"
+                radius="l"
+                border="neutral-alpha-weak"
+                background="neutral-alpha-weak"
+              >
                 <Heading as="h3" variant="heading-strong-xs">
                   {grupo.titulo}
                 </Heading>
                 <Row gap="4" wrap>
                   {grupo.elementos.map((e) => (
-                    <Tag key={e} size="s" variant="neutral">
+                    <Tag key={e} size="s" variant="neutral" className={estilos.pildoraSkill}>
                       {e}
                     </Tag>
                   ))}

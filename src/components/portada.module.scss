@@ -73,3 +73,31 @@
     flex-direction: column-reverse;
   }
 }
+
+/* Pildoras de habilidad: mono, igual que las de stack. Son datos tecnicos. */
+.pildoraSkill {
+  font-family: var(--font-code), ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: -0.01em;
+}
+
+/* --- Insignias de certificacion ------------------------------------------- */
+
+.insignia {
+  transition:
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+
+.insignia:hover {
+  border-color: var(--brand-alpha-strong);
+  transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .insignia,
+  .insignia:hover {
+    transition: none;
+    transform: none;
+  }
+}
