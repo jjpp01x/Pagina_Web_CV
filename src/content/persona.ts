@@ -1,9 +1,12 @@
 /**
  * Fuente unica de los datos verificables de Jose.
  *
- * Generado desde el education.html del sitio antiguo con
- * scripts/generar-persona.py, no tecleado a mano, mas las correcciones que Jose
- * confirmo el 2026-08-21. Si un dato cambia, cambia AQUI y en ningun otro sitio:
+ * Generado desde el education.html del sitio antiguo, no tecleado a mano, mas
+ * las correcciones que Jose confirmo el 2026-08-21. El generador
+ * (scripts/generar-persona.py) se retiro al borrar el sitio antiguo, que era su
+ * entrada; sigue en el tag sitio-estatico-2026-08-21 y ya no se puede rehacer.
+ *
+ * Si un dato cambia, cambia AQUI y en ningun otro sitio:
  * el nivel de aleman vivia en cinco ficheros y por eso la portada decia A2/B1
  * mientras la pagina de formacion decia A1.1.
  *

@@ -1,10 +1,13 @@
 /**
  * Cadenas de interfaz en los tres idiomas.
  *
- * GENERADO desde js/translations.js del sitio anterior con
- * scripts/generar-textos.py. Es el texto que ya estaba publicado, palabra por
- * palabra: en una web de CV no se redacta contenido nuevo sin que lo apruebe su
- * dueño.
+ * GENERADO desde js/translations.js del sitio anterior. Es el texto que ya
+ * estaba publicado, palabra por palabra: en una web de CV no se redacta
+ * contenido nuevo sin que lo apruebe su dueño.
+ *
+ * El generador (scripts/generar-textos.py) se retiro al borrar el sitio
+ * antiguo, que era su entrada. Sigue en el tag sitio-estatico-2026-08-21.
+ * A partir de aqui este fichero se edita a mano.
  *
  * Unico cambio sobre el original: se retiran las banderas emoji de las
  * píldoras de idiomas. Eran el diagnóstico número 1 del encargo (emojis usados
