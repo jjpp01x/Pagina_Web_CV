@@ -12,6 +12,7 @@ import { FiArrowUpRight } from "react-icons/fi";
 
 import estilos from "@/components/tarjetas.module.scss";
 
+import type { Empresa } from "@/content/persona";
 import { type Articulo, idiomaDeFicha, type Proyecto } from "@/lib/contenido";
 import type { Idioma } from "@/lib/rutas";
 import { ruta } from "@/lib/rutas";
@@ -64,6 +65,65 @@ export function TarjetaProyecto({ proyecto, lang }: { proyecto: Proyecto; lang: 
           <FiArrowUpRight size={13} aria-hidden="true" />
         </Row>
       )}
+    </Card>
+  );
+}
+
+/**
+ * Tarjeta de empresa propia.
+ *
+ * Se diferencia de la de proyecto en que aqui la prueba no es un repositorio
+ * sino el dominio: se muestra entero para que se vea que la empresa existe y
+ * responde. El enlace es externo, y de eso se encarga Once UI solo: su
+ * ElementType detecta el `https://` y emite <a target="_blank" rel="noreferrer">.
+ */
+export function TarjetaEmpresa({
+  empresa,
+  ficha,
+  rol,
+}: {
+  empresa: Empresa;
+  ficha: { descripcion: string; etiquetas: string[] };
+  rol: string;
+}) {
+  return (
+    <Card
+      href={empresa.url}
+      fillWidth
+      fillHeight
+      padding="l"
+      gap="12"
+      direction="column"
+      radius="l"
+      border="brand-alpha-weak"
+      className={estilos.tarjeta}
+    >
+      <Row gap="8" vertical="center" wrap>
+        <Heading as="h3" variant="heading-strong-s">
+          {empresa.nombre}
+        </Heading>
+        {/* El rol va en pildora de marca: es lo que convierte la tarjeta de
+            "una web que me gusta" en "esto lo he montado yo". */}
+        <Tag size="s" variant="brand">
+          {rol}
+        </Tag>
+      </Row>
+      <Text variant="body-default-s" onBackground="neutral-medium">
+        {ficha.descripcion}
+      </Text>
+      <Row gap="4" wrap>
+        {ficha.etiquetas.map((e) => (
+          <Tag key={e} size="s" variant="neutral" className={estilos.pildora}>
+            {e}
+          </Tag>
+        ))}
+      </Row>
+      <Row gap="8" vertical="center" paddingTop="4" className={estilos.repo}>
+        <Text variant="label-default-s" onBackground="neutral-weak">
+          {empresa.url.replace("https://", "")}
+        </Text>
+        <FiArrowUpRight size={13} aria-hidden="true" />
+      </Row>
     </Card>
   );
 }

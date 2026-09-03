@@ -6,8 +6,8 @@
     </linearGradient>
   </defs>
   <rect width="512" height="512" rx="112" fill="url(#tile)"/>
-  <rect x="6" y="6" width="500" height="500" rx="106" fill="none" stroke="#82f1fc" stroke-opacity="0.16" stroke-width="12"/>
+  <rect x="6" y="6" width="500" height="500" rx="106" fill="none" stroke="#5eead4" stroke-opacity="0.16" stroke-width="12"/>
   <text x="256" y="365" text-anchor="middle"
         font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-        font-size="300" font-weight="700" letter-spacing="-8" fill="#82f1fc">JP</text>
+        font-size="300" font-weight="700" letter-spacing="-8" fill="#5eead4">JP</text>
 </svg>

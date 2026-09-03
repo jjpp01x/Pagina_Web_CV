@@ -3,9 +3,10 @@
  *
  * Existen una sola vez y las rutas se limitan a invocarlas con su idioma.
  *
- * El contenido es el del sitio anterior, palabra por palabra: la portada
- * mantiene su estructura original (hero, sobre mi, habilidades) y no se anaden
- * secciones nuevas. Lo que cambia es la plantilla, no lo que dice.
+ * El contenido es el del sitio anterior, palabra por palabra: la plantilla
+ * cambio, lo que dice el sitio no. La unica seccion que no venia de alli es
+ * "Empresas", que Jose pidio el 2026-09-03; su texto sale de lo que las dos
+ * webs ya publican de si mismas, no de redaccion nueva sin contrastar.
  */
 import { Button, Column, Grid, Heading, Line, Row, Tag, Text } from "@once-ui-system/core";
 
@@ -16,9 +17,10 @@ import estilos from "@/components/portada.module.scss";
 import { DescargaCV } from "@/components/DescargaCV";
 import { FormularioContacto } from "@/components/FormularioContacto";
 import { CustomMDX } from "@/components/mdx";
-import { FilaDato, TarjetaArticulo, TarjetaProyecto } from "@/components/tarjetas";
+import { FilaDato, TarjetaArticulo, TarjetaEmpresa, TarjetaProyecto } from "@/components/tarjetas";
 import {
   certificaciones,
+  empresas,
   experiencia,
   formacionAcademica,
   idiomas,
@@ -152,6 +154,40 @@ export function Portada({ lang }: { lang: Idioma }) {
           />
         </div>
       </Row>
+
+      {/*
+        Empresas propias, lo primero que se lee tras el hero.
+
+        Va aqui y no dentro de la columna del hero porque ahi comparte ancho
+        con la foto y las dos tarjetas saldrian estranguladas. A ancho completo
+        del carril siguen quedando justo debajo de los botones, que es donde
+        Jose las pidio, y ademas por delante de las cifras: para un perfil que
+        se vende como constructor, "he montado dos negocios" pesa mas que el
+        recuento de articulos.
+      */}
+      <Column fillWidth {...ANCHO}>
+        <Line background="neutral-alpha-weak" />
+        <Column fillWidth gap="16" paddingY="32">
+          <Column gap="4">
+            <Heading as="h2" variant="heading-strong-m">
+              {t.empresas.titulo}
+            </Heading>
+            <Text variant="body-default-s" onBackground="neutral-weak">
+              {t.empresas.subtitulo}
+            </Text>
+          </Column>
+          <Grid columns="2" s={{ columns: 1 }} gap="12" fillWidth>
+            {empresas.map((e) => (
+              <TarjetaEmpresa
+                key={e.id}
+                empresa={e}
+                ficha={t.empresas.fichas[e.id]}
+                rol={t.empresas.rol}
+              />
+            ))}
+          </Grid>
+        </Column>
+      </Column>
 
       {/*
         Banda de cifras. Todas contadas del contenido real por cifrasDe(): si

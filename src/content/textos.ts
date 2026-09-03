@@ -28,6 +28,17 @@ export type Textos = {
   /** Bloque de cifras de la pagina "Sobre mi". Se cuentan del contenido real. */
   cifras: { titulo: string; articulos: string; proyectos: string; idiomas: string; titulaciones: string; certificaciones: string };
   hero: { saludo: string; subtitulo: string; titulo: string; descripcion: string; btn1: string; btn2: string };
+  /**
+   * Empresas propias. `fichas` va indexado por el `id` de persona.ts para no
+   * repetir el nombre ni la URL en los tres idiomas: si cambia el dominio,
+   * cambia en un sitio.
+   */
+  empresas: {
+    titulo: string;
+    subtitulo: string;
+    rol: string;
+    fichas: Record<string, { descripcion: string; etiquetas: string[] }>;
+  };
   sobre: { titulo: string; parrafos: string[]; disponible: string };
   skills: { titulo: string; grupos: GrupoHabilidades[] };
   proyectos: { titulo: string; subtitulo: string; verRepo: string; verDemo: string };
@@ -71,6 +82,23 @@ const ES: Textos = {
     descripcion: "Estudiante de BSc (Hons) Applied Computing (UWTSD). Combino una base sólida en gestión empresarial con la capacidad de evaluar y construir tecnología: ingeniería informática, IA y analítica de datos. Con base en Zúrich.",
     btn1: "Contactar",
     btn2: "Ver proyectos",
+  },
+  empresas: {
+    titulo: "Empresas",
+    subtitulo: "Dos marcas propias, fundadas y dirigidas por mí. Las dos están publicadas.",
+    rol: "Fundador",
+    fichas: {
+      epokan: {
+        descripcion:
+          "Alfabetización en IA para despachos, asesorías y gestorías: diagnóstico, itinerarios por rol y expediente de cumplimiento del artículo 4 del Reglamento (UE) 2024/1689.",
+        etiquetas: ["Formación en IA", "AI Act", "Sector legal"],
+      },
+      corpusproof: {
+        descripcion:
+          "Mide si unos documentos están listos para que una IA los use: cobertura de extracción, datos personales y troceado. Se ejecuta en local, sin que ningún documento salga del equipo del cliente.",
+        etiquetas: ["Gobernanza de datos", "Privacidad", "Análisis en local"],
+      },
+    },
   },
   sobre: {
     titulo: "Sobre mí",
@@ -163,6 +191,23 @@ const EN: Textos = {
     btn1: "Contact me",
     btn2: "See projects",
   },
+  empresas: {
+    titulo: "Ventures",
+    subtitulo: "Two brands of my own, founded and run by me. Both are live.",
+    rol: "Founder",
+    fichas: {
+      epokan: {
+        descripcion:
+          "AI literacy for law firms and accountancy practices: assessment, role-based learning paths and a compliance file for Article 4 of Regulation (EU) 2024/1689.",
+        etiquetas: ["AI training", "AI Act", "Legal sector"],
+      },
+      corpusproof: {
+        descripcion:
+          "Measures whether a document set is ready for an AI to use: extraction coverage, personal data and chunking. It runs locally, so no document leaves the client's machine.",
+        etiquetas: ["Data governance", "Privacy", "Runs locally"],
+      },
+    },
+  },
   sobre: {
     titulo: "About me",
     parrafos: [
@@ -253,6 +298,23 @@ const DE: Textos = {
     descripcion: "Student des BSc (Hons) Applied Computing (UWTSD). Ich verbinde eine solide Grundlage im Betriebswirtschaftsmanagement mit der Fähigkeit, Technologie zu bewerten und zu entwickeln: Informatik, KI und Datenanalyse. Mit Sitz in Zürich.",
     btn1: "Kontakt",
     btn2: "Projekte ansehen",
+  },
+  empresas: {
+    titulo: "Unternehmen",
+    subtitulo: "Zwei eigene Marken, von mir gegründet und geführt. Beide sind online.",
+    rol: "Gründer",
+    fichas: {
+      epokan: {
+        descripcion:
+          "KI-Kompetenz für Kanzleien und Steuerberatungen: Bestandsaufnahme, rollenbasierte Lernpfade und eine Nachweisakte zu Artikel 4 der Verordnung (EU) 2024/1689.",
+        etiquetas: ["KI-Schulung", "AI Act", "Rechtsbranche"],
+      },
+      corpusproof: {
+        descripcion:
+          "Misst, ob ein Dokumentenbestand für den Einsatz von KI bereit ist: Extraktionsabdeckung, personenbezogene Daten und Chunking. Läuft lokal, kein Dokument verlässt den Rechner des Kunden.",
+        etiquetas: ["Daten-Governance", "Datenschutz", "Läuft lokal"],
+      },
+    },
   },
   sobre: {
     titulo: "Über mich",

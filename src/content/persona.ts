@@ -51,6 +51,30 @@ export const persona = {
   linkedin: "https://linkedin.com/in/jose-palacios-beortegui",
 };
 
+export type Empresa = {
+  /** Clave con la que textos.ts guarda la ficha traducida de esta empresa. */
+  id: string;
+  nombre: string;
+  url: string;
+};
+
+/**
+ * Marcas propias de Jose: las funda y las opera el, no son encargos de
+ * cliente. Las dos estan publicadas y respondiendo en su dominio.
+ *
+ * Aqui solo van el nombre y la URL, que no cambian con el idioma. Lo que dice
+ * cada ficha vive en textos.ts, indexado por `id`.
+ *
+ * Precision sobre la forma juridica: la marca Epokan esta a nombre personal de
+ * Jose y licenciada a Gabinete Juridico Hispanidad SL, que es quien factura de
+ * momento. Por eso el rol que se declara es "Fundador" y no "mi sociedad": lo
+ * primero es cierto hoy, lo segundo no.
+ */
+export const empresas: Empresa[] = [
+  { id: "epokan", nombre: "Epokan", url: "https://epokan.com" },
+  { id: "corpusproof", nombre: "CorpusProof", url: "https://corpusproof.com" },
+];
+
 /**
  * Idiomas. El aleman es A1.1 certificado y A1.2 en curso: NO es A2 ni B1, y no
  * se declara "uso profesional diario".

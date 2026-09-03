@@ -5,11 +5,17 @@ Existe por la misma razon que generar-cv.py: el .ico es un binario y sin
 fuente no se puede reeditar. Aqui viven los dos SVG maestros, y el .ico se
 reconstruye a partir de ellos con `python3 scripts/generar-favicon.py`.
 
-Colores tomados de los tokens que el sitio publica de verdad (data-theme=dark,
-data-neutral=slate, data-brand=cyan):
+Colores tomados de lo que el sitio pinta de verdad, no de once-ui.config.ts:
 
     tile   #0f152b -> #040816   (scheme-slate-200 -> scheme-slate-100)
-    glifo  #82f1fc             (scheme-cyan-900 = brand-on-background-medium)
+    glifo  #5eead4             (--brand-on-background-medium en oscuro)
+
+OJO con el glifo: el config dice `brand: "cyan"`, pero custom.css sobrescribe
+--brand-on-background-* a verde petroleo, que es lo que se ve en pantalla. Jose
+lo eligio el 2026-08-23 precisamente para huir del azul, asi que un favicon
+cian contradice la decision aunque el config parezca darle la razon. Si hace
+falta comprobarlo, se mide sobre un pixel del subtitulo del hero, no leyendo
+la configuracion.
 
 Hay dos SVG a proposito. El grande lleva degradado y filete; a 16 px ese
 filete mide 0,4 px y solo ensucia el borde, asi que los tamanos pequenos usan
@@ -39,10 +45,10 @@ SVG_GRANDE = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" wi
     </linearGradient>
   </defs>
   <rect width="512" height="512" rx="112" fill="url(#tile)"/>
-  <rect x="6" y="6" width="500" height="500" rx="106" fill="none" stroke="#82f1fc" stroke-opacity="0.16" stroke-width="12"/>
+  <rect x="6" y="6" width="500" height="500" rx="106" fill="none" stroke="#5eead4" stroke-opacity="0.16" stroke-width="12"/>
   <text x="256" y="365" text-anchor="middle"
         font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-        font-size="300" font-weight="700" letter-spacing="-8" fill="#82f1fc">JP</text>
+        font-size="300" font-weight="700" letter-spacing="-8" fill="#5eead4">JP</text>
 </svg>
 """
 
@@ -50,7 +56,7 @@ SVG_PEQUENO = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" w
   <rect width="512" height="512" rx="96" fill="#0b1020"/>
   <text x="256" y="374" text-anchor="middle"
         font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-        font-size="340" font-weight="700" letter-spacing="-14" fill="#82f1fc">JP</text>
+        font-size="340" font-weight="700" letter-spacing="-14" fill="#5eead4">JP</text>
 </svg>
 """
 
