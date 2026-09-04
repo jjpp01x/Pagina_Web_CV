@@ -61,7 +61,7 @@ export type Textos = {
    * La primera version llevaba el numero escrito a mano ("Twelve articles") y
    * se quedo obsoleta el mismo dia, al publicar tres articulos mas.
    *
-   * TEXTO NUEVO, PENDIENTE DE APROBACION. Las categorias que se citan son las
+   * Texto aprobado por Jose el 2026-09-04. Las categorias que se citan son las
    * que existen de verdad en los .mdx.
    */
   articulos: { titulo: string; volver: string; descripcion: string };
