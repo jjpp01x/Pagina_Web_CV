@@ -161,5 +161,58 @@ writeFileSync(
 );
 console.log(`postbuild: sitemap.xml con ${paginas.length} URLs`);
 
+// --- llms.txt ------------------------------------------------------------
+//
+// Indice del sitio para los motores de respuesta (llmstxt.org). Se genera, no
+// se escribe a mano: un indice escrito a mano se queda obsoleto en cuanto se
+// publica un articulo, que es exactamente lo que le paso a SEO-ARTICULOS.md.
+//
+// Los titulos y descripciones se leen del HTML servido, no del .mdx, para que
+// lo que anuncia el fichero sea literalmente lo que hay en la pagina.
+//
+// Google dice que no hace falta para sus resumenes de IA, y es cierto. Esto es
+// para ChatGPT, Claude y Perplexity, que si leen el fichero cuando existe.
+
+function meta(rutaRelativa) {
+  const html = readFileSync(join(OUT, rutaRelativa || "index.html"), "utf-8");
+  const t = /<title>([^<]*)<\/title>/.exec(html);
+  const d = /<meta name="description" content="([^"]*)"/.exec(html);
+  const limpia = (x) =>
+    x ? x.replace(/&amp;/g, "&").replace(/&#x27;|&#39;/g, "'").replace(/&quot;/g, '"').trim() : "";
+  return { titulo: limpia(t?.[1]), descripcion: limpia(d?.[1]) };
+}
+
+const SECCIONES = [
+  { titulo: "Español", prefijo: (r) => !r.startsWith("en/") && !r.startsWith("de/") },
+  { titulo: "English", prefijo: (r) => r.startsWith("en/") },
+  { titulo: "Deutsch", prefijo: (r) => r.startsWith("de/") },
+];
+
+const raiz = meta("");
+const bloques = SECCIONES.map(({ titulo, prefijo }) => {
+  const items = paginas
+    .filter((r) => prefijo(r))
+    .map((r) => {
+      const { titulo: t, descripcion } = meta(r);
+      const url = `${BASE}/${r}`;
+      return `- [${t}](${url})${descripcion ? `: ${descripcion}` : ""}`;
+    });
+  return `## ${titulo}\n\n${items.join("\n")}`;
+});
+
+writeFileSync(
+  join(OUT, "llms.txt"),
+  `# José Palacios Beortegui\n\n` +
+    `> ${raiz.descripcion}\n\n` +
+    `Sitio personal de José Palacios Beortegui, analista deep tech afincado en Zúrich. ` +
+    `Publica en castellano, inglés y alemán sobre gobernanza de inteligencia artificial, ` +
+    `evaluación de sistemas de IA y preparación de datos. Fundador de Epokan ` +
+    `(https://epokan.com) y de CorpusProof (https://corpusproof.com).\n\n` +
+    `Cada página declara datos estructurados schema.org con el identificador ` +
+    `canónico ${BASE}/#person.\n\n` +
+    bloques.join("\n\n") + "\n",
+);
+console.log(`postbuild: llms.txt con ${paginas.length} entradas`);
+
 if (process.exitCode) console.error("postbuild: terminado CON ERRORES");
 else console.log("postbuild: ok");
