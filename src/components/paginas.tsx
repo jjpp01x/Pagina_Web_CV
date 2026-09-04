@@ -35,7 +35,7 @@ import {
   type Proyecto,
 } from "@/lib/contenido";
 import { cifrasDe } from "@/lib/cifras";
-import { grafoArticulo } from "@/lib/entidad";
+import { grafoArticulo, grafoPerfil } from "@/lib/entidad";
 import { BASE_URL, href, type Idioma, ruta } from "@/lib/rutas";
 
 /** Carril de lectura. Once UI mide maxWidth en rem, no en cadena CSS. */
@@ -519,6 +519,7 @@ export function Contacto({ lang }: { lang: Idioma }) {
 
 export function SobreMi({ lang }: { lang: Idioma }) {
   const t = textos(lang);
+  const perfil = grafoPerfil(lang, ruta.sobreMi(lang));
   // Cifras contadas del contenido real: si publicas otro articulo, suben solas.
   const cifras = [
     { n: getArticulos("es").length, etiqueta: t.cifras.articulos },
@@ -530,6 +531,10 @@ export function SobreMi({ lang }: { lang: Idioma }) {
 
   return (
     <Column fillWidth horizontal="center" paddingX="l">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(perfil) }}
+      />
       <Column fillWidth gap="12" {...ANCHO}>
         <Cabecera titulo={t.sobre.titulo} />
 

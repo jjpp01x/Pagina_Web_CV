@@ -156,6 +156,31 @@ export function grafoArticulo(a: {
 }
 
 /**
+ * El grafo de la pagina "sobre mi".
+ *
+ * `ProfilePage` es el tipo con el que schema.org dice "esta pagina VA SOBRE esta
+ * persona", que es distinto de "esta pagina la escribio esta persona". Las 79
+ * paginas del sitio declaran el nodo Person; solo estas tres declaran que la
+ * persona es el asunto de la pagina.
+ *
+ * Para una consulta de nombre es la senal que decide cual de las 79 merece
+ * salir, y es el ancla que un motor de respuesta usa cuando le preguntan "quien
+ * es Jose Palacios".
+ */
+export function grafoPerfil(lang: Idioma, rutaNext: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "@id": `${BASE_URL}${href(rutaNext)}#perfil`,
+    url: `${BASE_URL}${href(rutaNext)}`,
+    inLanguage: lang,
+    mainEntity: { "@id": ID_PERSONA },
+    about: { "@id": ID_PERSONA },
+    isPartOf: { "@id": ID_SITIO },
+  };
+}
+
+/**
  * El grafo que va en el <head> de las tres versiones de idioma.
  *
  * `inLanguage` es lo unico que cambia entre idiomas: el nodo de persona es el
