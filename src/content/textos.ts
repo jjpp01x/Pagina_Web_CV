@@ -50,7 +50,18 @@ export type Textos = {
   sobre: { titulo: string; parrafos: string[]; disponible: string };
   skills: { titulo: string; grupos: GrupoHabilidades[] };
   proyectos: { titulo: string; subtitulo: string; verRepo: string; verDemo: string };
-  articulos: { titulo: string; volver: string };
+  /**
+   * `descripcion` es la meta description del indice de articulos.
+   *
+   * Existe porque las tres portadas y sus tres indices compartian la misma
+   * description -- la del hero -- y una description repetida no le dice al
+   * buscador en que se diferencian dos paginas.
+   *
+   * TEXTO NUEVO, PENDIENTE DE APROBACION. Se ha escrito sobre datos reales: el
+   * numero de articulos publicados en ese idioma y las categorias que existen
+   * de verdad en los .mdx. Ningun dato redondeado hacia arriba.
+   */
+  articulos: { titulo: string; volver: string; descripcion: string };
   formacion: {
     titulo: string; subtitulo: string; academica: string; laboral: string;
     certificaciones: string; idiomas: string; verificar: string; credencial: string;
@@ -137,6 +148,7 @@ const ES: Textos = {
   articulos: {
     titulo: "Artículos",
     volver: "Volver a artículos",
+    descripcion: "Diecisiete artículos de José Palacios Beortegui sobre ingeniería de IA, gobernanza y riesgo, evaluación y método, y negocio y estrategia.",
   },
   formacion: {
     titulo: "Formación y Experiencia",
@@ -246,6 +258,7 @@ const EN: Textos = {
   articulos: {
     titulo: "Articles",
     volver: "Back to articles",
+    descripcion: "Twelve articles by José Palacios Beortegui on AI engineering, governance and risk, evaluation and method, and business and strategy.",
   },
   formacion: {
     titulo: "Education & Experience",
@@ -355,6 +368,7 @@ const DE: Textos = {
   articulos: {
     titulo: "Artikel",
     volver: "Zurück zu den Artikeln",
+    descripcion: "Zwölf Artikel von José Palacios Beortegui über KI-Engineering, Governance und Risiko, Evaluation und Methode sowie Business und Strategie.",
   },
   formacion: {
     titulo: "Ausbildung & Erfahrung",
