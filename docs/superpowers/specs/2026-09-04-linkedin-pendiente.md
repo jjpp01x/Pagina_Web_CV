@@ -1,5 +1,7 @@
 # LinkedIn — hecho, pendiente y textos listos
 
+> **Cerrado el 2026-09-04 por la tarde**, salvo Destacados. Ver el estado por bloque abajo.
+
 **Fecha:** 2026-09-04. Acompaña a `2026-09-04-seo-entidad-multipropiedad-design.md`.
 
 Estrategia y contexto en la memoria `project_posicionamiento_linkedin`.
@@ -31,26 +33,31 @@ Se resuelve pegando un texto cuyas líneas de separación lleven un espacio.
 
 ## Pendiente
 
-### 1. Idiomas — el alemán está sobredeclarado
+### 1. Idiomas — HECHO
 
 El perfil dice **«Alemán · Competencia básica profesional»**. `persona.ts` es explícito:
 A1.1 certificado (Lingoda, abr-2026), A1.2 en curso, y *«NO es A2 ni B1, y no se declara
 uso profesional diario»*. Es el mismo tipo de sobredeclaración que el AWS.
 
-**Cambiar a «Competencia básica».**
+**Cambiado a «Competencia básica»** y verificado tras recargar. Coincide ya con la
+certificación de Lingoda, que en la seccion de certificaciones estaba bien declarada
+como «Alemán A1.1»: el perfil se contradecía a sí mismo.
 
-### 2. Certificaciones — sin comprobar
+### 2. Certificaciones — COMPROBADO, sin AWS
 
-No se llegó a mirar si las de AWS también están declaradas en la sección de licencias y
-certificaciones. Si están, hay que retirarlas.
+Las seis declaradas son correctas: Responsible Prompting (Santander), Introduction to
+Claude cowork, Claude code 101, Claude Code in Action (Anthropic), Alemán A1.1 (Lingoda)
+y el curso de ISSEP. **Ninguna de AWS**: la afirmación falsa vivía solo en el texto del
+«Acerca de», ya retirada.
 
-### 3. «Acerca de» en español y alemán
+**Pendiente de decisión de José:** el curso de ISSEP sigue aquí, pero `persona.ts` dice
+que lo retiró del CV el 2026-08-21 por decisión propia. Si esa decisión sigue en pie,
+hay que quitarlo también de LinkedIn.
 
-El diálogo tiene tres pestañas y solo se reescribió la inglesa. Las otras dos siguen con
-el texto viejo: Heierling en presente y, previsiblemente, el AWS falso.
+### 3. «Acerca de» en español y alemán — HECHO
 
-Textos listos en el directorio de trabajo de la sesión (`acerca-es.txt`, `acerca-de.txt`),
-con las líneas de separación ya preparadas para que el editor no las descarte.
+Las tres versiones reescritas y verificadas tras recargar. La española tenía el mismo
+problema que la inglesa: Heierling en presente, siete meses después de terminar.
 
 **Marco de cada idioma — no son traducciones la una de la otra:**
 
@@ -60,7 +67,15 @@ con las líneas de separación ya preparadas para que el editor no las descarte.
 | Alemán | Reclutadores suizos germanófonos | **Mismo marco que el inglés**, no el español |
 | Español | Despachos y asesorías, clientes de Epokan | Fundador por delante. Cierra con contacto comercial, no con «open to roles» |
 
-### 4. Sección Destacados — no existe
+### 4. Sección Destacados — CREADA PERO VACÍA
+
+**LinkedIn no genera la vista previa de ningún enlace.** Diagnosticado antes de
+abandonar: las etiquetas OG están completas en `/en/`, `/en.html` y `/`; `LinkedInBot`
+recibe 200; la imagen OG responde 200 como `image/png` de 43 KB; y **falla igual con
+`epokan.com`**, otro dominio en otro proveedor. Es su generador de vistas previas, no
+los sitios. Se cerró sin guardar para no dejar una entrada rota.
+
+Reintentar mas tarde con estos cuatro:
 
 Cuatro enlaces, en este orden:
 
