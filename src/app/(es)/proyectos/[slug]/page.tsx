@@ -18,6 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     descripcion: proyecto.description,
     lang: "es",
     rutaNext: ruta.proyecto("es", slug),
+    tipoPagina: "proyecto",
     alternativas: alternativasProyecto(proyecto.translationKey),
     imagen: proyecto.image,
   });

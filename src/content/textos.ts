@@ -29,6 +29,14 @@ export type Textos = {
   cifras: { titulo: string; articulos: string; proyectos: string; idiomas: string; titulaciones: string; certificaciones: string };
   hero: { saludo: string; subtitulo: string; titulo: string; descripcion: string; btn1: string; btn2: string };
   /**
+   * El rol profesional, para el <title> de la portada de cada idioma.
+   *
+   * Las tres portadas cableaban `persona.rol`, que solo existe en castellano:
+   * /en/ y /de/ se servian con el titulo en espanol. No es texto nuevo -- es la
+   * primera mitad de `hero.subtitulo`, que ya estaba aprobada y publicada.
+   */
+  rolProfesional: string;
+  /**
    * Empresas propias. `fichas` va indexado por el `id` de persona.ts para no
    * repetir el nombre ni la URL en los tres idiomas: si cambia el dominio,
    * cambia en un sitio.
@@ -83,6 +91,7 @@ const ES: Textos = {
     btn1: "Contactar",
     btn2: "Ver proyectos",
   },
+  rolProfesional: "Analista Deep Tech",
   empresas: {
     titulo: "Empresas",
     subtitulo: "Dos marcas propias, fundadas y dirigidas por mí. Las dos están publicadas.",
@@ -191,6 +200,7 @@ const EN: Textos = {
     btn1: "Contact me",
     btn2: "See projects",
   },
+  rolProfesional: "Deep Tech Analyst",
   empresas: {
     titulo: "Ventures",
     subtitulo: "Two brands of my own, founded and run by me. Both are live.",
@@ -299,6 +309,7 @@ const DE: Textos = {
     btn1: "Kontakt",
     btn2: "Projekte ansehen",
   },
+  rolProfesional: "Deep-Tech-Analyst",
   empresas: {
     titulo: "Unternehmen",
     subtitulo: "Zwei eigene Marken, von mir gegründet und geführt. Beide sind online.",
