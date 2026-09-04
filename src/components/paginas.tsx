@@ -345,6 +345,11 @@ export function PaginaProyecto({ proyecto, lang }: { proyecto: Proyecto; lang: I
               {t.proyectos.verDemo}
             </Button>
           )}
+          {proyecto.memoria && (
+            <Button href={proyecto.memoria} variant="secondary" size="s">
+              {t.proyectos.verMemoria}
+            </Button>
+          )}
         </Row>
         <Line background="neutral-alpha-weak" marginY="16" />
         <Column as="article" fillWidth gap="16">

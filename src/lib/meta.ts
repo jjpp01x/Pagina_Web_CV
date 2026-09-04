@@ -36,7 +36,7 @@ type Alternativa = { lang: Idioma; rutaNext: string };
  * El presupuesto existe porque un nombre cortado no lo lee nadie. Se pone en 65
  * y no en los 60 de la regla de bolsillo: Google corta por anchura en pixeles
  * (~600px), y 65 caracteres de castellano, ingles o aleman corrientes caben.
- * Con 60, "SkiCraft Custom Boots -- Inventory DB" se quedaba sin descriptor y
+ * Con 60, el titulo de proyecto mas largo se quedaba sin descriptor y
  * el titulo salia identico en castellano y en ingles; un duplicado entre
  * idiomas es peor problema que cuatro caracteres justos.
  *
