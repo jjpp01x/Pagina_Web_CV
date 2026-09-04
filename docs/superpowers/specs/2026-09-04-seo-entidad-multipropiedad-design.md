@@ -2,7 +2,18 @@
 
 **Fecha:** 2026-09-04
 **Alcance:** josepalacios.site · epokan.com · corpusproof.com · LinkedIn · GitHub
-**Estado:** diseño, pendiente de revisión
+**Estado:** Capa 0 desplegada y verificada en producción el 2026-09-04. Capas 1-4 pendientes.
+
+> **Capa 0 — cerrada.** El nodo `Person` se sirve idéntico desde los tres dominios:
+> SHA-256 `426674f40bf0` leído de josepalacios.site, epokan.com y corpusproof.com en
+> producción. Dos correcciones al diseño original, hechas durante la ejecución:
+>
+> - Se descarta añadir `josepalacios.site` al `sameAs` de la `Organization` de Epokan.
+>   Era semánticamente falso: afirmaría que la empresa es el sitio personal. La
+>   reciprocidad la da `Organization.founder → #person`, que es lo implementado.
+> - `ProfilePage` en las páginas «sobre mí» pasa a la Capa 1, con el resto del
+>   marcado de nivel de página. La Capa 0 queda solo con `Person` + `WebSite`
+>   a nivel de sitio, que es lo que bloqueaba a las demás.
 
 Esta spec es la maestra del programa. Vive en `Pagina_Web_CV` porque la raíz de la
 entidad es josepalacios.site; los otros dos repos la referencian.
