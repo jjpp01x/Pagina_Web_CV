@@ -35,7 +35,8 @@ import {
   type Proyecto,
 } from "@/lib/contenido";
 import { cifrasDe } from "@/lib/cifras";
-import { type Idioma, ruta } from "@/lib/rutas";
+import { grafoArticulo } from "@/lib/entidad";
+import { BASE_URL, href, type Idioma, ruta } from "@/lib/rutas";
 
 /** Carril de lectura. Once UI mide maxWidth en rem, no en cadena CSS. */
 const ANCHO = { maxWidth: 48 } as const;
@@ -256,8 +257,18 @@ export function IndiceArticulos({ lang }: { lang: Idioma }) {
 
 export function PaginaArticulo({ articulo, lang }: { articulo: Articulo; lang: Idioma }) {
   const t = textos(lang);
+  // Las migas siguen la navegacion real del sitio: portada -> indice -> articulo.
+  const migas = [
+    { nombre: t.nav.inicio, url: `${BASE_URL}${href(ruta.inicio(lang))}` },
+    { nombre: t.nav.articulos, url: `${BASE_URL}${href(ruta.articulos(lang))}` },
+    { nombre: articulo.title, url: `${BASE_URL}${href(ruta.articulo(lang, articulo.slug))}` },
+  ];
   return (
     <Column fillWidth horizontal="center" paddingX="l">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(grafoArticulo(articulo, lang, migas)) }}
+      />
       <Column fillWidth gap="12" {...ANCHO} paddingY="32">
         <Row gap="8" vertical="center">
           <Text variant="label-strong-s" style={{ color: colorCategoria(articulo.category) }}>

@@ -28,7 +28,7 @@
  */
 
 import { persona } from "@/content/persona";
-import { BASE_URL } from "./rutas";
+import { BASE_URL, href, type Idioma, ruta } from "./rutas";
 
 /** El identificador canonico de Jose. Compartido por los tres dominios. */
 export const ID_PERSONA = `${BASE_URL}/#person`;
@@ -104,6 +104,56 @@ const nodoPersona = {
     { "@type": "Organization", "@id": ID_CORPUSPROOF, name: "CorpusProof", url: "https://corpusproof.com/" },
   ],
 };
+
+/**
+ * El grafo de un articulo.
+ *
+ * `author` y `publisher` no repiten los datos de Jose: apuntan al `@id`
+ * canonico. Es la mitad que faltaba del trabajo de entidad -- cada uno de los
+ * 41 articulos pasa a ser una obra atribuida a la misma persona, en lugar de 41
+ * paginas sueltas que Google no sabe de quien son.
+ *
+ * No se declara `dateModified`. El .mdx no guarda esa fecha y la del build seria
+ * inventada; una fecha de modificacion falsa es peor que ninguna.
+ */
+export function grafoArticulo(a: {
+  title: string;
+  description: string;
+  date: string;
+  image: string;
+  category?: string;
+  slug: string;
+}, lang: Idioma, migas: { nombre: string; url: string }[]) {
+  const url = `${BASE_URL}${href(ruta.articulo(lang, a.slug))}`;
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "@id": `${url}#articulo`,
+        headline: a.title,
+        description: a.description,
+        image: a.image,
+        datePublished: a.date,
+        inLanguage: lang,
+        ...(a.category ? { articleSection: a.category } : {}),
+        author: { "@id": ID_PERSONA },
+        publisher: { "@id": ID_PERSONA },
+        isPartOf: { "@id": ID_SITIO },
+        mainEntityOfPage: { "@type": "WebPage", "@id": url },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: migas.map((m, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: m.nombre,
+          ...(i < migas.length - 1 ? { item: m.url } : {}),
+        })),
+      },
+    ],
+  };
+}
 
 /**
  * El grafo que va en el <head> de las tres versiones de idioma.
