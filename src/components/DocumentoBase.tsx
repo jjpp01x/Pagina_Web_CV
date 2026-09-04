@@ -17,6 +17,7 @@ import { Providers } from "@/components";
 import { Cabecera } from "@/components/Cabecera";
 import { Pie } from "@/components/Pie";
 import { effects, fonts, style, dataStyle } from "@/resources";
+import { grafoEntidad } from "@/lib/entidad";
 import type { Idioma } from "@/lib/rutas";
 
 /**
@@ -102,6 +103,12 @@ export function DocumentoBase({
                 }
               })();
             `,
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(grafoEntidad(lang)),
           }}
         />
       </head>
