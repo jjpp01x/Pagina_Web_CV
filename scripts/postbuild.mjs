@@ -17,6 +17,7 @@
  *
  * Uso:  node scripts/postbuild.mjs
  */
+import { execSync } from "node:child_process";
 import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { join, relative } from "node:path";
 
@@ -71,8 +72,84 @@ const paginas = htmlDe(OUT)
   .map((r) => (r === "index.html" ? "" : r))
   .sort();
 
+// --- lastmod ---------------------------------------------------------------
+//
+// Sin <lastmod> el sitemap no dice que algo haya cambiado, y pedir reindexacion
+// con el es pedirle a Google que se fie. Con la fecha del build tampoco vale:
+// si en cada despliegue las 79 URLs dicen "modificada hoy", Google deja de
+// mirar el campo. Asi que la fecha sale de git, que es la unica que no miente.
+//
+// La fecha de una pagina es la mas reciente entre la de su propio .mdx y la del
+// ultimo cambio en los ficheros compartidos, porque un cambio ahi -- la
+// cabecera, el pie, el grafo de entidad -- reescribe de verdad el HTML de todas.
+//
+// Consecuencia, y conviene no confundirla con un fallo: el dia que se toca un
+// fichero compartido, las 79 URLs comparten fecha. Es lo que ha pasado hoy con
+// el grafo de entidad, y es cierto: todas cambiaron. Las fechas se separan
+// solas despues, segun se vayan editando articulos sueltos.
+//
+// Aviso: esto lee el historial, no el arbol de trabajo. Si se despliega con
+// cambios sin commitear, la fecha se queda corta.
+
+const COMPARTIDOS = [
+  "src/components/DocumentoBase.tsx",
+  "src/components/Cabecera.tsx",
+  "src/components/Pie.tsx",
+  "src/lib/entidad.ts",
+  "src/lib/meta.ts",
+  "src/content/persona.ts",
+];
+
+/** Fecha del ultimo commit de cada fichero, en una sola pasada por el historial. */
+function fechasDeGit() {
+  const salida = execSync("git log --pretty=format:%cI --name-only --no-merges", {
+    encoding: "utf-8",
+    maxBuffer: 64 * 1024 * 1024,
+  });
+  const fechas = new Map();
+  let actual = null;
+  for (const linea of salida.split("\n")) {
+    if (!linea.trim()) continue;
+    if (/^\d{4}-\d{2}-\d{2}T/.test(linea)) actual = linea.slice(0, 10);
+    else if (actual && !fechas.has(linea)) fechas.set(linea, actual); // el log viene de nuevo a viejo
+  }
+  return fechas;
+}
+
+const fechas = fechasDeGit();
+const mayor = (a, b) => (!a ? b : !b ? a : a > b ? a : b);
+const fechaCompartida = COMPARTIDOS.map((f) => fechas.get(f)).reduce(mayor, null);
+
+/** El .mdx del que sale esta pagina, si es un articulo o un proyecto. */
+function fuenteDe(ruta) {
+  const m =
+    /^articulos\/(.+)\.html$/.exec(ruta) ??
+    /^en\/articles\/(.+)\.html$/.exec(ruta) ??
+    /^de\/artikel\/(.+)\.html$/.exec(ruta) ??
+    /^proyectos\/(.+)\.html$/.exec(ruta) ??
+    /^en\/projects\/(.+)\.html$/.exec(ruta);
+  if (!m) return null;
+  const lang = ruta.startsWith("en/") ? "en" : ruta.startsWith("de/") ? "de" : "es";
+  const tipo = /articulos|articles|artikel/.test(ruta) ? "articulos" : "proyectos";
+  return `src/content/${tipo}/${lang}/${m[1]}.mdx`;
+}
+
+function lastmodDe(ruta) {
+  const fuente = fuenteDe(ruta);
+  return mayor(fuente ? fechas.get(fuente) : null, fechaCompartida);
+}
+
+if (!fechaCompartida) fallar("no se pudo leer ninguna fecha de git para el sitemap");
+
 const cuerpo = paginas
-  .map((r) => `  <url>\n    <loc>${BASE}/${r}</loc>\n  </url>`)
+  .map((r) => {
+    const lastmod = lastmodDe(r);
+    return (
+      `  <url>\n    <loc>${BASE}/${r}</loc>` +
+      (lastmod ? `\n    <lastmod>${lastmod}</lastmod>` : "") +
+      `\n  </url>`
+    );
+  })
   .join("\n");
 
 writeFileSync(
