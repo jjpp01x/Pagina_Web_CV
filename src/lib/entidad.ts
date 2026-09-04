@@ -60,6 +60,18 @@ const nodoPersona = {
   url: `${BASE_URL}/`,
   image: `${BASE_URL}${persona.foto}`,
   jobTitle: persona.rol,
+  /**
+   * El parrafo que un motor de respuesta cita cuando le preguntan quien es.
+   * Definicion primero, sin adjetivos: quien, donde, en que trabaja y que ha
+   * fundado. Recoge lo que antes vivia suelto en el AboutPage de Epokan.
+   */
+  description:
+    "Analista deep tech afincado en Zúrich. Trabaja en gobernanza de " +
+    "inteligencia artificial, evaluación de sistemas de IA y preparación de " +
+    "datos para que una IA pueda usarlos. Fundador de Epokan, formación en IA " +
+    "y cumplimiento del artículo 4 del Reglamento (UE) 2024/1689 para " +
+    "despachos y asesorías, y de CorpusProof, análisis y estructuración de " +
+    "corpus documentales.",
   email: `mailto:${persona.email}`,
   homeLocation: {
     "@type": "Place",
