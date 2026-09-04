@@ -13,6 +13,7 @@
  *   negocio      5.68:1 / 10.64:1
  *   gobernanza   7.28:1 /  9.40:1
  *   seguridad    6.45:1 /  9.62:1
+ *   academico    6.47:1 / 12.65:1
  *
  * Si se anade una categoria nueva hay que medirla antes de publicarla, y el
  * color NO puede ser el unico indicador: la etiqueta lleva siempre su texto.
@@ -23,7 +24,8 @@ export type ClaveCategoria =
   | "ia"
   | "negocio"
   | "gobernanza"
-  | "seguridad";
+  | "seguridad"
+  | "academico";
 
 export const COLOR_CATEGORIA: Record<ClaveCategoria, { claro: string; oscuro: string }> = {
   evaluacion: { claro: "#0f766e", oscuro: "#5eead4" },
@@ -31,6 +33,10 @@ export const COLOR_CATEGORIA: Record<ClaveCategoria, { claro: string; oscuro: st
   negocio: { claro: "#9a4a06", oscuro: "#fbbf24" },
   gobernanza: { claro: "#9f1239", oscuro: "#fda4af" },
   seguridad: { claro: "#6d28d9", oscuro: "#c4b5fd" },
+  // Verde: el unico tono que quedaba libre entre el teal de evaluacion, el
+  // indigo de IA, el ambar de negocio, el rosa de gobernanza y el violeta de
+  // seguridad. Medido antes de publicarlo, como pide la regla de arriba.
+  academico: { claro: "#166534", oscuro: "#86efac" },
 };
 
 /**
@@ -45,18 +51,21 @@ const POR_ETIQUETA: Record<string, ClaveCategoria> = {
   "Negocio y estrategia": "negocio",
   "Gobernanza y riesgo": "gobernanza",
   "Seguridad web": "seguridad",
+  "Trabajo académico": "academico",
   // en
   "Evaluation and method": "evaluacion",
   "AI engineering": "ia",
   "Business and strategy": "negocio",
   "Governance and risk": "gobernanza",
   "Web security": "seguridad",
+  "Coursework": "academico",
   // de
   "Evaluation und Methode": "evaluacion",
   "KI-Engineering": "ia",
   "Business und Strategie": "negocio",
   "Governance und Risiko": "gobernanza",
   "Web-Sicherheit": "seguridad",
+  "Studienarbeit": "academico",
 };
 
 /** Variable CSS lista para usar. Cae a neutro si la categoria no esta mapeada. */

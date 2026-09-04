@@ -1,0 +1,50 @@
+---
+title: "The feature that was not in the rubric"
+subtitle: "I added an audit log to a coursework project nobody was going to audit"
+description: "A coursework ticketing system in C and Python, built to a specification that asked for sessions, passes and persistence. The part worth writing about is the append-only audit log nobody requested and nobody was going to grade."
+category: "Coursework"
+date: "2026-09-04"
+image: "https://josepalacios.site/img/og-image.png"
+lang: "en"
+translationKey: "the-feature-that-was-not-in-the-rubric"
+---
+
+For my Software Development coursework I built the same ski-pass ticketing system twice: once in C, once in Python, both persisting to SQLite.
+
+I have already written about the language comparison, so I will not repeat it here. This is about the part nobody asked for.
+
+The specification wanted sessions, passes, sales and persistence. That is a well-defined system and I shipped it. Then I added something that was not in the brief: an append-only audit log, plus exports of the sales table as CSV and JSON and a separate export of the audit trail.
+
+Nobody was grading the audit log. It carried no marks.
+
+I added it because of a question I could not answer without it.
+
+**The question**
+
+If a pass gets sold at the wrong price, or a session is opened outside operating hours, who finds out — and how long does that take?
+
+Work through it with the system as specified. The database holds the current state: which passes exist, which sessions are open, what the totals are. Query it and you get a perfectly accurate picture of right now.
+
+What you cannot get is how it came to look like that. The wrong price is already in the totals. The session that should never have opened has closed cleanly. Every number reconciles, because the system only ever stored the result.
+
+A system that can only report its current state cannot tell you how it reached it. At a ticket window that means an argument nobody can win. Anywhere regulated, it means you cannot demonstrate what happened, which is a different and considerably worse problem than not knowing.
+
+Not knowing is an incident. Not being able to show is a finding.
+
+**What it cost**
+
+Almost nothing, which is the part worth noticing.
+
+An append-only table, a write on every state transition, and an export path. The design constraint is that the log is never updated and never deleted from — an audit trail you can edit is not evidence, it is a second opinion. Both versions persist with write-ahead logging on, so a crash mid-transaction does not leave a half-sold pass behind and does not leave a half-written log line either.
+
+That is a couple of hours of work on day one. Retrofitting it means reconstructing history you did not keep, which is not expensive so much as impossible. You cannot go back and write down what you did not observe.
+
+**Why I keep bringing it up**
+
+I now work on AI governance, and the whole job is being able to reconstruct a decision after the fact — which model version, which prompt, which inputs, which human approved it and when.
+
+The instinct is identical, and so is the failure. A model that produces an output with no record of what went into it is not auditable, however good the output is. Teams discover this at the point where somebody external asks them to prove a claim about their own system, which is the worst possible moment to find out that the evidence was never collected.
+
+Ask it about anything you are building: if this produces a wrong result six months from now, what artefact do I open?
+
+If the answer is "the database", you are storing conclusions and throwing away the reasoning. That is fine for a ticket window. It stops being fine roughly the moment anything depends on it.

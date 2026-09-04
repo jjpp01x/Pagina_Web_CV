@@ -122,6 +122,7 @@
   --cat-negocio:    #9a4a06;
   --cat-gobernanza: #9f1239;
   --cat-seguridad:  #6d28d9;
+  --cat-academico:  #166534;
 }
 
 [data-theme="dark"] {
@@ -130,6 +131,7 @@
   --cat-negocio:    #fbbf24;
   --cat-gobernanza: #fda4af;
   --cat-seguridad:  #c4b5fd;
+  --cat-academico:  #86efac;
 }
 
 /* Acento de marca: VERDE PETROLEO. Elegido por Jose el 2026-08-23 frente al
