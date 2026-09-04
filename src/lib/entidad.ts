@@ -13,6 +13,12 @@
  * 2. Cada dominio emite el nodo COMPLETO, no una referencia. Una referencia
  *    cruzada obliga al rastreador a haber visto ya el otro dominio; el nodo
  *    repetido no. Es duplicacion a proposito.
+ *
+ *    Lo que tiene que ser identico entre dominios es el `@id` y el `sameAs`:
+ *    eso es lo que consolida. `description` y `jobTitle` van en el idioma de
+ *    la pagina, porque /en/ y /de/ los servian en castellano -- el nodo decia
+ *    inLanguage "en" y luego un parrafo en espanol, que es justo lo que un
+ *    motor de respuesta no puede citar.
  * 3. `sameAs` solo lleva perfiles de identidad (LinkedIn, GitHub). Las marcas
  *    van por `worksFor`, que es lo que significan: meter epokan.com en
  *    `sameAs` afirmaria que la empresa ES la persona.
@@ -28,6 +34,7 @@
  */
 
 import { persona } from "@/content/persona";
+import { textos } from "@/content/textos";
 import { BASE_URL, href, type Idioma, ruta } from "./rutas";
 
 /** El identificador canonico de Jose. Compartido por los tres dominios. */
@@ -46,7 +53,8 @@ const PERFILES = [
   persona.github,
 ];
 
-const nodoPersona = {
+function nodoPersona(lang: Idioma) {
+  return {
   "@type": "Person",
   "@id": ID_PERSONA,
   name: persona.nombreCompleto,
@@ -59,19 +67,13 @@ const nodoPersona = {
   familyName: "Palacios Beortegui",
   url: `${BASE_URL}/`,
   image: `${BASE_URL}${persona.foto}`,
-  jobTitle: persona.rol,
+  jobTitle: textos(lang).rolProfesional,
   /**
    * El parrafo que un motor de respuesta cita cuando le preguntan quien es.
    * Definicion primero, sin adjetivos: quien, donde, en que trabaja y que ha
    * fundado. Recoge lo que antes vivia suelto en el AboutPage de Epokan.
    */
-  description:
-    "Analista deep tech afincado en Zúrich. Trabaja en gobernanza de " +
-    "inteligencia artificial, evaluación de sistemas de IA y preparación de " +
-    "datos para que una IA pueda usarlos. Fundador de Epokan, formación en IA " +
-    "y cumplimiento del artículo 4 del Reglamento (UE) 2024/1689 para " +
-    "despachos y asesorías, y de CorpusProof, análisis y estructuración de " +
-    "corpus documentales.",
+  description: textos(lang).descripcionEntidad,
   email: `mailto:${persona.email}`,
   homeLocation: {
     "@type": "Place",
@@ -103,7 +105,8 @@ const nodoPersona = {
     { "@type": "Organization", "@id": ID_EPOKAN, name: "Epokan", url: "https://epokan.com/" },
     { "@type": "Organization", "@id": ID_CORPUSPROOF, name: "CorpusProof", url: "https://corpusproof.com/" },
   ],
-};
+  };
+}
 
 /**
  * El grafo de un articulo.
@@ -186,11 +189,11 @@ export function grafoPerfil(lang: Idioma, rutaNext: string) {
  * `inLanguage` es lo unico que cambia entre idiomas: el nodo de persona es el
  * mismo objeto en los tres, que es justamente el punto.
  */
-export function grafoEntidad(lang: string) {
+export function grafoEntidad(lang: Idioma) {
   return {
     "@context": "https://schema.org",
     "@graph": [
-      nodoPersona,
+      nodoPersona(lang),
       {
         "@type": "WebSite",
         "@id": ID_SITIO,

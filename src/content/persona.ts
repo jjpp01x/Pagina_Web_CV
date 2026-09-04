@@ -100,68 +100,37 @@ export const formacionAcademica: Entrada[] = [
     },
 ];
 
-/** Epokan va primero por ser lo actual; el resto sale del sitio antiguo. */
-export const experiencia: Entrada[] = [
-    {
-      fecha: "Ago 2026 — Actualidad",
-      titulo: "Fundador",
-      lugar: "Epokan · proyecto propio · remoto",
-      enlace: "https://epokan.com",
-      logros: [
-        "Formación en IA y cumplimiento del Reglamento Europeo de IA para despachos, asesorías y gestorías",
-        "Diseño del programa, del material formativo y de la captación",
-      ],
-    },
-    {
-      fecha: "Oct 2025 — Abr 2026",
-      titulo: "Agente de Ventas",
-      lugar: "Heierling GmbH · Davos, Suiza",
-      logros: [
-        "Atención personalizada a clientes internacionales de más de 15 nacionalidades (inglés y alemán)",
-        "Gestión de procesos de inventario y reposición mediante sistemas internos",
-        "Enfoque data-driven para optimizar recomendaciones de producto y la operativa diaria",
-      ],
-    },
-    {
-      fecha: "Dic 2021 — Feb 2022",
-      titulo: "Analista de Logística",
-      lugar: "Inditex (Zara) · Zaragoza, España",
-      logros: [
-        "Procesamiento de mercancía entrante y saliente: recepción, organización de stock y reposición",
-        "Operación de sistemas TPV y control de inventario en un entorno de alto volumen",
-        "Apoyo a la organización del almacén durante los lanzamientos de nuevas colecciones",
-      ],
-    },
-    {
-      fecha: "Jul 2021 — Sep 2021",
-      titulo: "Encargado de Compras y Logística",
-      lugar: "El Corte Inglés · Zaragoza, España",
-      logros: [
-        "Coordinación de aprovisionamiento y logística entrante, asegurando la disponibilidad de stock",
-        "Aplicación de principios Lean para optimizar los flujos de almacén",
-        "Uso de sistemas de inventario y ERP para seguimiento de stock y gestión de pedidos",
-      ],
-    },
-    {
-      fecha: "Feb 2020 — Ago 2020",
-      titulo: "Especialista en Ventas Minoristas",
-      lugar: "El Corte Inglés · Zaragoza, España",
-      logros: [
-        "Ventas y captación de clientes en múltiples categorías de producto",
-        "Asesoramiento de producto para ajustar las necesidades del cliente y contribuir a objetivos de venta",
-        "Mantenimiento de estándares de exposición y merchandising visual",
-      ],
-    },
-    {
-      fecha: "Dic 2019 — Ene 2020",
-      titulo: "Operaciones de Logística",
-      lugar: "El Corte Inglés · Zaragoza, España",
-      logros: [
-        "Recepción y procesamiento de entregas de proveedores en campaña de temporada alta",
-        "Gestión de flujos de distribución física y enrutado de producto a departamentos",
-        "Categorización sistemática de producto y seguimiento de inventario",
-      ],
-    },
+/**
+ * Experiencia laboral: solo los hechos que no cambian con el idioma.
+ *
+ * El puesto, el sitio y los logros viven en `textos.ts`, indexados por `id`, igual
+ * que las fichas de `empresas`. Hasta el 2026-09-04 estaban aqui en castellano y
+ * se servian tal cual en las tres versiones: /en/education.html mostraba
+ * "Fundador" y "Agente de Ventas" a un lector ingles.
+ *
+ * El orden es deliberado y no es cronologico puro: Gabinete Juridico va primero
+ * porque es el empleo actual con empleador real, y eso es lo que un reclutador
+ * lee como "empleado y estable". Las dos marcas propias van despues, como
+ * evidencia de lo construido, no como negocio en marcha.
+ */
+export type Puesto = {
+  /** Clave con la que textos.ts guarda este puesto traducido. */
+  id: string;
+  fecha: string;
+  enlace?: string;
+};
+
+export const experiencia: Puesto[] = [
+  // La fecha de inicio replica la de Epokan por coherencia con la relacion con
+  // la SL; NO esta verificada con Jose. Si empezo antes, se corrige aqui.
+  { id: "gabinete", fecha: "Ago 2026 — Actualidad" },
+  { id: "corpusproof", fecha: "Ago 2026 — Actualidad", enlace: "https://corpusproof.com" },
+  { id: "epokan", fecha: "Ago 2026 — Actualidad", enlace: "https://epokan.com" },
+  { id: "heierling", fecha: "Oct 2025 — Abr 2026" },
+  { id: "inditex", fecha: "Dic 2021 — Feb 2022" },
+  { id: "eci-compras", fecha: "Jul 2021 — Sep 2021" },
+  { id: "eci-ventas", fecha: "Feb 2020 — Ago 2020" },
+  { id: "eci-logistica", fecha: "Dic 2019 — Ene 2020" },
 ];
 
 /** Sin el curso de ISSEP, retirado por decision de Jose el 2026-08-21. */

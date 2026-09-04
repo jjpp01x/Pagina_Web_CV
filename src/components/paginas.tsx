@@ -384,26 +384,28 @@ export function Formacion({ lang }: { lang: Idioma }) {
         </Seccion>
 
         <Seccion titulo={t.formacion.laboral}>
-          {experiencia.map((e) => (
-            <Column key={`${e.titulo}-${e.fecha}`} gap="4" paddingBottom="16">
+          {experiencia.map((e) => {
+            const puesto = t.puestos[e.id];
+            return (
+            <Column key={e.id} gap="4" paddingBottom="16">
               <Text variant="label-default-s" onBackground="neutral-weak">
                 {e.fecha}
               </Text>
               <Heading as="h3" variant="heading-strong-s">
-                {e.titulo}
+                {puesto.titulo}
               </Heading>
               <Text variant="body-default-s" onBackground="neutral-medium">
                 {e.enlace ? (
                   <a href={e.enlace} rel="noopener noreferrer" target="_blank">
-                    {e.lugar}
+                    {puesto.lugar}
                   </a>
                 ) : (
-                  e.lugar
+                  puesto.lugar
                 )}
               </Text>
-              {e.logros && (
+              {puesto.logros.length > 0 && (
                 <Column as="ul" gap="4" paddingLeft="16" paddingTop="4">
-                  {e.logros.map((l) => (
+                  {puesto.logros.map((l) => (
                     <Text as="li" key={l} variant="body-default-s" onBackground="neutral-medium">
                       {l}
                     </Text>
@@ -411,7 +413,8 @@ export function Formacion({ lang }: { lang: Idioma }) {
                 </Column>
               )}
             </Column>
-          ))}
+            );
+          })}
         </Seccion>
 
         {/*

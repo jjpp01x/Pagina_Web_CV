@@ -37,6 +37,15 @@ export type Textos = {
    */
   rolProfesional: string;
   /**
+   * La `description` del nodo Person de los datos estructurados: el parrafo que
+   * un motor de respuesta cita cuando le preguntan quien es Jose.
+   *
+   * Va traducido porque /en/ y /de/ lo servian en castellano: el nodo decia
+   * inLanguage "en" y a continuacion un parrafo en espanol. Es traduccion del
+   * texto que Jose aprobo el 2026-09-04, no redaccion nueva.
+   */
+  descripcionEntidad: string;
+  /**
    * Empresas propias. `fichas` va indexado por el `id` de persona.ts para no
    * repetir el nombre ni la URL en los tres idiomas: si cambia el dominio,
    * cambia en un sitio.
@@ -65,6 +74,14 @@ export type Textos = {
    * que existen de verdad en los .mdx.
    */
   articulos: { titulo: string; volver: string; descripcion: string };
+  /**
+   * Puestos de la experiencia laboral, indexados por el `id` de persona.ts.
+   *
+   * Estaban en persona.ts en castellano y se servian igual en los tres idiomas:
+   * /en/education.html mostraba "Fundador" y "Agente de Ventas". Un CV que
+   * habla en otro idioma que el lector no es un CV.
+   */
+  puestos: Record<string, { titulo: string; lugar: string; logros: string[] }>;
   formacion: {
     titulo: string; subtitulo: string; academica: string; laboral: string;
     certificaciones: string; idiomas: string; verificar: string; credencial: string;
@@ -106,6 +123,82 @@ const ES: Textos = {
     btn2: "Ver proyectos",
   },
   rolProfesional: "Analista Deep Tech",
+  descripcionEntidad:
+    "Analista deep tech afincado en Zúrich. Trabaja en gobernanza de inteligencia artificial, evaluación de sistemas de IA y preparación de datos para que una IA pueda usarlos. Fundador de Epokan, formación en IA y cumplimiento del artículo 4 del Reglamento (UE) 2024/1689 para despachos y asesorías, y de CorpusProof, análisis y estructuración de corpus documentales.",
+  puestos: {
+    "gabinete": {
+      titulo: "Auxiliar de digitalización y análisis de datos",
+      lugar: "Gabinete Jurídico Hispanidad · Zaragoza, España",
+      logros: [
+        "Digitalización del archivo documental del despacho",
+        "Estructuración de ese corpus para que un sistema de IA pueda usarlo: cobertura de extracción, exposición de datos personales y troceado",
+        "Análisis de los datos resultantes y de los procesos del despacho",
+      ],
+    },
+    "corpusproof": {
+      titulo: "Fundador",
+      lugar: "CorpusProof · proyecto propio · remoto",
+      logros: [
+        "Herramienta que mide si un archivo documental está listo para que una IA lo use, con cinco métricas y ejecución en local",
+        "160 pruebas automáticas, incluida una que falla si el programa intenta abrir una conexión de red",
+        "Diseño del producto, de la metodología y del sitio",
+      ],
+    },
+    "epokan": {
+      titulo: "Fundador",
+      lugar: "Epokan · proyecto propio · remoto",
+      logros: [
+        "Programa de alfabetización en IA para despachos, asesorías y gestorías, construido sobre el artículo 4 del Reglamento (UE) 2024/1689",
+        "Itinerarios de formación por rol, evaluación proporcional al riesgo y expediente de cumplimiento",
+        "Investigación sobre las resoluciones judiciales españolas que sancionan el uso no supervisado de IA generativa",
+      ],
+    },
+    "heierling": {
+      titulo: "Agente de Ventas",
+      lugar: "Heierling GmbH · Davos, Suiza",
+      logros: [
+        "Atención personalizada a clientes internacionales de más de 15 nacionalidades (inglés y alemán)",
+        "Gestión de procesos de inventario y reposición mediante sistemas internos",
+        "Enfoque data-driven para optimizar recomendaciones de producto y la operativa diaria",
+      ],
+    },
+    "inditex": {
+      titulo: "Analista de Logística",
+      lugar: "Inditex (Zara) · Zaragoza, España",
+      logros: [
+        "Procesamiento de mercancía entrante y saliente: recepción, organización de stock y reposición",
+        "Operación de sistemas TPV y control de inventario en un entorno de alto volumen",
+        "Apoyo a la organización del almacén durante los lanzamientos de nuevas colecciones",
+      ],
+    },
+    "eci-compras": {
+      titulo: "Encargado de Compras y Logística",
+      lugar: "El Corte Inglés · Zaragoza, España",
+      logros: [
+        "Coordinación de aprovisionamiento y logística entrante, asegurando la disponibilidad de stock",
+        "Aplicación de principios Lean para optimizar los flujos de almacén",
+        "Uso de sistemas de inventario y ERP para seguimiento de stock y gestión de pedidos",
+      ],
+    },
+    "eci-ventas": {
+      titulo: "Especialista en Ventas Minoristas",
+      lugar: "El Corte Inglés · Zaragoza, España",
+      logros: [
+        "Ventas y captación de clientes en múltiples categorías de producto",
+        "Asesoramiento de producto para ajustar las necesidades del cliente y contribuir a objetivos de venta",
+        "Mantenimiento de estándares de exposición y merchandising visual",
+      ],
+    },
+    "eci-logistica": {
+      titulo: "Operaciones de Logística",
+      lugar: "El Corte Inglés · Zaragoza, España",
+      logros: [
+        "Recepción y procesamiento de entregas de proveedores en campaña de temporada alta",
+        "Gestión de flujos de distribución física y enrutado de producto a departamentos",
+        "Categorización sistemática de producto y seguimiento de inventario",
+      ],
+    },
+  },
   empresas: {
     titulo: "Empresas",
     subtitulo: "Dos marcas propias, fundadas y dirigidas por mí. Las dos están publicadas.",
@@ -216,6 +309,82 @@ const EN: Textos = {
     btn2: "See projects",
   },
   rolProfesional: "Deep Tech Analyst",
+  descripcionEntidad:
+    "Deep tech analyst based in Zurich. Works on artificial intelligence governance, evaluation of AI systems, and preparing data so that an AI can actually use it. Founder of Epokan, AI literacy and Article 4 compliance under Regulation (EU) 2024/1689 for law firms and accountancy practices, and of CorpusProof, analysis and structuring of document corpora.",
+  puestos: {
+    "gabinete": {
+      titulo: "Data & Digitalisation Assistant",
+      lugar: "Gabinete Jurídico Hispanidad · Zaragoza, Spain",
+      logros: [
+        "Digitalisation of the practice's document archive",
+        "Structuring that corpus so an AI system can use it: extraction coverage, personal-data exposure and chunking",
+        "Analysis of the resulting data and of the practice's processes",
+      ],
+    },
+    "corpusproof": {
+      titulo: "Founder",
+      lugar: "CorpusProof · own project · remote",
+      logros: [
+        "Built a tool that measures whether a document archive is ready for an AI to use it: five metrics, running entirely locally",
+        "160 automated tests, including one that fails if the program tries to open a network connection",
+        "Product design, methodology and site",
+      ],
+    },
+    "epokan": {
+      titulo: "Founder",
+      lugar: "Epokan · own project · remote",
+      logros: [
+        "Designed an AI literacy programme for law firms and accountancy practices, built around Article 4 of Regulation (EU) 2024/1689",
+        "Role-based learning paths, risk-proportional assessment and a compliance file",
+        "Research into the Spanish court rulings that sanction unsupervised use of generative AI",
+      ],
+    },
+    "heierling": {
+      titulo: "Sales Associate",
+      lugar: "Heierling GmbH · Davos, Switzerland",
+      logros: [
+        "Personal service to international customers from more than 15 nationalities, in English and German",
+        "Inventory and replenishment processes through internal systems",
+        "Data-driven approach to product recommendations and daily operations",
+      ],
+    },
+    "inditex": {
+      titulo: "Logistics Analyst",
+      lugar: "Inditex (Zara) · Zaragoza, Spain",
+      logros: [
+        "Inbound and outbound goods processing: receiving, stock organisation and replenishment",
+        "POS systems and inventory control in a high-volume environment",
+        "Warehouse organisation during new collection launches",
+      ],
+    },
+    "eci-compras": {
+      titulo: "Purchasing & Logistics Supervisor",
+      lugar: "El Corte Inglés · Zaragoza, Spain",
+      logros: [
+        "Coordination of procurement and inbound logistics, ensuring stock availability",
+        "Lean principles applied to warehouse flows",
+        "Inventory and ERP systems for stock tracking and order management",
+      ],
+    },
+    "eci-ventas": {
+      titulo: "Retail Sales Specialist",
+      lugar: "El Corte Inglés · Zaragoza, Spain",
+      logros: [
+        "Sales and customer acquisition across several product categories",
+        "Product advice matched to customer needs, contributing to sales targets",
+        "Display standards and visual merchandising",
+      ],
+    },
+    "eci-logistica": {
+      titulo: "Logistics Operations",
+      lugar: "El Corte Inglés · Zaragoza, Spain",
+      logros: [
+        "Receiving and processing supplier deliveries during peak season",
+        "Physical distribution flows and product routing to departments",
+        "Systematic product categorisation and inventory tracking",
+      ],
+    },
+  },
   empresas: {
     titulo: "Ventures",
     subtitulo: "Two brands of my own, founded and run by me. Both are live.",
@@ -326,6 +495,82 @@ const DE: Textos = {
     btn2: "Projekte ansehen",
   },
   rolProfesional: "Deep-Tech-Analyst",
+  descripcionEntidad:
+    "Deep-Tech-Analyst mit Sitz in Zürich. Arbeitet an der Governance künstlicher Intelligenz, der Bewertung von KI-Systemen und der Aufbereitung von Daten, damit eine KI sie nutzen kann. Gründer von Epokan, KI-Kompetenz und Nachweis nach Artikel 4 der Verordnung (EU) 2024/1689 für Kanzleien und Steuerberatungen, und von CorpusProof, Analyse und Strukturierung von Dokumentenkorpora.",
+  puestos: {
+    "gabinete": {
+      titulo: "Assistent für Digitalisierung und Datenanalyse",
+      lugar: "Gabinete Jurídico Hispanidad · Saragossa, Spanien",
+      logros: [
+        "Digitalisierung des Dokumentenarchivs der Kanzlei",
+        "Strukturierung dieses Korpus für die Nutzung durch KI-Systeme: Extraktionsabdeckung, Exposition personenbezogener Daten und Chunking",
+        "Analyse der resultierenden Daten und der Kanzleiprozesse",
+      ],
+    },
+    "corpusproof": {
+      titulo: "Gründer",
+      lugar: "CorpusProof · eigenes Projekt · remote",
+      logros: [
+        "Werkzeug, das misst, ob ein Dokumentenarchiv für eine KI nutzbar ist: fünf Kennzahlen, vollständig lokal ausgeführt",
+        "160 automatisierte Tests, darunter einer, der fehlschlägt, sobald das Programm eine Netzwerkverbindung öffnet",
+        "Produktdesign, Methodik und Website",
+      ],
+    },
+    "epokan": {
+      titulo: "Gründer",
+      lugar: "Epokan · eigenes Projekt · remote",
+      logros: [
+        "KI-Kompetenzprogramm für Kanzleien und Steuerberatungen, aufgebaut auf Artikel 4 der Verordnung (EU) 2024/1689",
+        "Rollenbasierte Lernpfade, risikoproportionale Bewertung und eine Nachweisakte",
+        "Recherche zu den spanischen Gerichtsentscheidungen, die den unbeaufsichtigten Einsatz generativer KI sanktionieren",
+      ],
+    },
+    "heierling": {
+      titulo: "Vertriebsmitarbeiter",
+      lugar: "Heierling GmbH · Davos, Schweiz",
+      logros: [
+        "Persönliche Betreuung internationaler Kunden aus über 15 Nationen, auf Englisch und Deutsch",
+        "Bestands- und Nachschubprozesse über interne Systeme",
+        "Datengetriebener Ansatz für Produktempfehlungen und den Tagesbetrieb",
+      ],
+    },
+    "inditex": {
+      titulo: "Logistikanalyst",
+      lugar: "Inditex (Zara) · Saragossa, Spanien",
+      logros: [
+        "Warenein- und -ausgang: Annahme, Bestandsorganisation und Nachschub",
+        "Kassensysteme und Bestandskontrolle in einem Umfeld mit hohem Volumen",
+        "Unterstützung der Lagerorganisation bei Kollektionsstarts",
+      ],
+    },
+    "eci-compras": {
+      titulo: "Leiter Einkauf und Logistik",
+      lugar: "El Corte Inglés · Saragossa, Spanien",
+      logros: [
+        "Koordination von Beschaffung und Eingangslogistik zur Sicherung der Warenverfügbarkeit",
+        "Lean-Prinzipien zur Optimierung der Lagerflüsse",
+        "Bestands- und ERP-Systeme für Bestandsverfolgung und Auftragsverwaltung",
+      ],
+    },
+    "eci-ventas": {
+      titulo: "Spezialist Einzelhandelsvertrieb",
+      lugar: "El Corte Inglés · Saragossa, Spanien",
+      logros: [
+        "Verkauf und Kundengewinnung über mehrere Produktkategorien",
+        "Produktberatung nach Kundenbedarf, mit Beitrag zu den Vertriebszielen",
+        "Präsentationsstandards und Visual Merchandising",
+      ],
+    },
+    "eci-logistica": {
+      titulo: "Logistikbetrieb",
+      lugar: "El Corte Inglés · Saragossa, Spanien",
+      logros: [
+        "Annahme und Bearbeitung von Lieferantenlieferungen in der Hochsaison",
+        "Physische Distributionsflüsse und Produktrouting zu den Abteilungen",
+        "Systematische Produktkategorisierung und Bestandsverfolgung",
+      ],
+    },
+  },
   empresas: {
     titulo: "Unternehmen",
     subtitulo: "Zwei eigene Marken, von mir gegründet und geführt. Beide sind online.",
