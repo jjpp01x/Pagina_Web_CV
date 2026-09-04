@@ -360,35 +360,23 @@ export function PaginaProyecto({ proyecto, lang }: { proyecto: Proyecto; lang: I
   );
 }
 
-export function Formacion({ lang }: { lang: Idioma }) {
+/**
+ * Experiencia laboral, en su propia pagina desde el 2026-09-04.
+ *
+ * Vivia dentro de /education.html, una pagina titulada "Formacion y
+ * Experiencia": una URL que dice "education" y contiene el historial laboral
+ * no compite por ninguna de las dos cosas. /education.html se queda con lo que
+ * su slug promete -- formacion, certificaciones e idiomas -- y conserva su
+ * historial de indexacion.
+ */
+export function Experiencia({ lang }: { lang: Idioma }) {
   const t = textos(lang);
   return (
     <Column fillWidth horizontal="center" paddingX="l">
       <Column fillWidth gap="12" {...ANCHO}>
-        <Cabecera titulo={t.formacion.titulo} subtitulo={t.formacion.subtitulo} />
+        <Cabecera titulo={t.experiencia.titulo} subtitulo={t.experiencia.subtitulo} />
 
-        <Seccion titulo={t.formacion.academica}>
-          {formacionAcademica.map((e) => (
-            <Column key={e.titulo} gap="4" paddingBottom="16">
-              <Text variant="label-default-s" onBackground="neutral-weak">
-                {e.fecha}
-              </Text>
-              <Heading as="h3" variant="heading-strong-s">
-                {e.titulo}
-              </Heading>
-              <Text variant="body-default-s" onBackground="neutral-medium">
-                {e.lugar}
-              </Text>
-              {e.descripcion && (
-                <Text variant="body-default-s" onBackground="neutral-medium">
-                  {e.descripcion}
-                </Text>
-              )}
-            </Column>
-          ))}
-        </Seccion>
-
-        <Seccion titulo={t.formacion.laboral}>
+        <Seccion titulo={t.experiencia.titulo}>
           {experiencia.map((e) => {
             const puesto = t.puestos[e.id];
             return (
@@ -421,6 +409,39 @@ export function Formacion({ lang }: { lang: Idioma }) {
             );
           })}
         </Seccion>
+      </Column>
+    </Column>
+  );
+}
+
+export function Formacion({ lang }: { lang: Idioma }) {
+  const t = textos(lang);
+  return (
+    <Column fillWidth horizontal="center" paddingX="l">
+      <Column fillWidth gap="12" {...ANCHO}>
+        <Cabecera titulo={t.formacion.titulo} subtitulo={t.formacion.subtitulo} />
+
+        <Seccion titulo={t.formacion.academica}>
+          {formacionAcademica.map((e) => (
+            <Column key={e.titulo} gap="4" paddingBottom="16">
+              <Text variant="label-default-s" onBackground="neutral-weak">
+                {e.fecha}
+              </Text>
+              <Heading as="h3" variant="heading-strong-s">
+                {e.titulo}
+              </Heading>
+              <Text variant="body-default-s" onBackground="neutral-medium">
+                {e.lugar}
+              </Text>
+              {e.descripcion && (
+                <Text variant="body-default-s" onBackground="neutral-medium">
+                  {e.descripcion}
+                </Text>
+              )}
+            </Column>
+          ))}
+        </Seccion>
+
 
         {/*
           Certificaciones como insignias.

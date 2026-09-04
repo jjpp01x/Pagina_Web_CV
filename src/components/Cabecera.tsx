@@ -64,6 +64,7 @@ export function Cabecera({ lang }: { lang: Idioma }) {
     { href: ruta.sobreMi(lang), etiqueta: t.nav.sobreMi },
     { href: ruta.proyectos(lang), etiqueta: t.nav.proyectos },
     { href: ruta.articulos(lang), etiqueta: t.nav.articulos },
+    { href: ruta.experiencia(lang), etiqueta: t.nav.experiencia },
     { href: ruta.formacion(lang), etiqueta: t.nav.formacion },
     { href: ruta.contacto(lang), etiqueta: t.nav.contacto },
   ];

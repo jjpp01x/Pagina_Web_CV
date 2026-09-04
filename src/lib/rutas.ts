@@ -62,11 +62,11 @@ const SEGMENTO: Record<Idioma, Record<Seccion, string>> = {
  */
 const PAGINA: Record<
   Idioma,
-  Record<"proyectos" | "formacion" | "contacto" | "sobreMi", string>
+  Record<"proyectos" | "formacion" | "experiencia" | "contacto" | "sobreMi", string>
 > = {
-  es: { proyectos: "projects", formacion: "education", contacto: "contact", sobreMi: "sobre-mi" },
-  en: { proyectos: "projects", formacion: "education", contacto: "contact", sobreMi: "about" },
-  de: { proyectos: "projekte", formacion: "ausbildung", contacto: "kontakt", sobreMi: "ueber-mich" },
+  es: { proyectos: "projects", formacion: "education", experiencia: "experiencia", contacto: "contact", sobreMi: "sobre-mi" },
+  en: { proyectos: "projects", formacion: "education", experiencia: "experience", contacto: "contact", sobreMi: "about" },
+  de: { proyectos: "projekte", formacion: "ausbildung", experiencia: "berufserfahrung", contacto: "kontakt", sobreMi: "ueber-mich" },
 };
 
 const limpia = (s: string) => (s.startsWith("/") ? s : `/${s}`);
@@ -79,6 +79,16 @@ export const ruta = {
   proyectos: (lang: Idioma) => `${PREFIJO[lang]}/${PAGINA[lang].proyectos}`,
   proyecto: (lang: Idioma, slug: string) => `${PREFIJO[lang]}/${SEGMENTO[lang].proyectos}/${slug}`,
   formacion: (lang: Idioma) => `${PREFIJO[lang]}/${PAGINA[lang].formacion}`,
+  /**
+   * Pagina nueva del 2026-09-04. La experiencia laboral vivia dentro de
+   * /education.html, que ademas se llamaba "Formacion y Experiencia": una URL
+   * que dice "education" y contiene el historial laboral no compite por
+   * ninguna de las dos cosas. Se separan.
+   *
+   * /education.html se queda con formacion, certificaciones e idiomas -- que
+   * es lo que su slug promete-- y conserva su historial de indexacion.
+   */
+  experiencia: (lang: Idioma) => `${PREFIJO[lang]}/${PAGINA[lang].experiencia}`,
   contacto: (lang: Idioma) => `${PREFIJO[lang]}/${PAGINA[lang].contacto}`,
   /** Pagina nueva: no existia en el sitio anterior, no hay URL que conservar. */
   sobreMi: (lang: Idioma) => `${PREFIJO[lang]}/${PAGINA[lang].sobreMi}`,

@@ -23,7 +23,7 @@ export type Textos = {
   descargarCV: string;
   nav: {
     inicio: string; proyectos: string; articulos: string;
-    formacion: string; contacto: string; sobreMi: string;
+    formacion: string; experiencia: string; contacto: string; sobreMi: string;
   };
   /** Bloque de cifras de la pagina "Sobre mi". Se cuentan del contenido real. */
   cifras: { titulo: string; articulos: string; proyectos: string; idiomas: string; titulaciones: string; certificaciones: string };
@@ -92,6 +92,8 @@ export type Textos = {
     titulo: string; subtitulo: string; academica: string; laboral: string;
     certificaciones: string; idiomas: string; verificar: string; credencial: string;
   };
+  /** Titulo y subtitulo de la pagina de experiencia, separada de formacion. */
+  experiencia: { titulo: string; subtitulo: string };
   contacto: {
     titulo: string; subtitulo: string; info: string; formTitulo: string;
     nombre: string; nombrePh: string; emailPh: string; asunto: string; asuntoPh: string;
@@ -117,6 +119,7 @@ const ES: Textos = {
     proyectos: "Proyectos",
     articulos: "Artículos",
     formacion: "Formación",
+    experiencia: "Experiencia",
     contacto: "Contacto",
   
     sobreMi: "Sobre mí",},
@@ -253,9 +256,13 @@ const ES: Textos = {
     volver: "Volver a artículos",
     descripcion: "{n} artículos de José Palacios Beortegui sobre ingeniería de IA, gobernanza y riesgo, evaluación y método, y negocio y estrategia.",
   },
+  experiencia: {
+    titulo: "Experiencia Laboral",
+    subtitulo: "Dónde he trabajado y qué he construido en cada sitio",
+  },
   formacion: {
-    titulo: "Formación y Experiencia",
-    subtitulo: "Mi trayectoria académica y profesional",
+    titulo: "Formación",
+    subtitulo: "Mi trayectoria académica, certificaciones e idiomas",
     academica: "Formación Académica",
     laboral: "Experiencia Laboral",
     certificaciones: "Certificaciones",
@@ -304,6 +311,7 @@ const EN: Textos = {
     proyectos: "Projects",
     articulos: "Articles",
     formacion: "Education",
+    experiencia: "Experience",
     contacto: "Contact",
   
     sobreMi: "About me",},
@@ -440,9 +448,13 @@ const EN: Textos = {
     volver: "Back to articles",
     descripcion: "{n} articles by José Palacios Beortegui on AI engineering, governance and risk, evaluation and method, and business and strategy.",
   },
+  experiencia: {
+    titulo: "Work Experience",
+    subtitulo: "Where I have worked and what I built at each place",
+  },
   formacion: {
-    titulo: "Education & Experience",
-    subtitulo: "My academic and professional background",
+    titulo: "Education",
+    subtitulo: "My academic background, certifications and languages",
     academica: "Academic Education",
     laboral: "Work Experience",
     certificaciones: "Certifications",
@@ -491,6 +503,7 @@ const DE: Textos = {
     proyectos: "Projekte",
     articulos: "Artikel",
     formacion: "Ausbildung",
+    experiencia: "Berufserfahrung",
     contacto: "Kontakt",
   
     sobreMi: "Über mich",},
@@ -627,9 +640,13 @@ const DE: Textos = {
     volver: "Zurück zu den Artikeln",
     descripcion: "{n} Artikel von José Palacios Beortegui über KI-Engineering, Governance und Risiko, Evaluation und Methode sowie Business und Strategie.",
   },
+  experiencia: {
+    titulo: "Berufserfahrung",
+    subtitulo: "Wo ich gearbeitet habe und was ich dort aufgebaut habe",
+  },
   formacion: {
-    titulo: "Ausbildung & Erfahrung",
-    subtitulo: "Mein akademischer und beruflicher Werdegang",
+    titulo: "Ausbildung",
+    subtitulo: "Mein akademischer Werdegang, Zertifikate und Sprachen",
     academica: "Akademische Ausbildung",
     laboral: "Berufserfahrung",
     certificaciones: "Zertifizierungen",
