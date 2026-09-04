@@ -1,11 +1,12 @@
 ---
-title: "SkiCraft Custom Boots — Inventory DB"
+title: "Heierling GmbH — Inventory DB"
 subtitle: "Sistema de gestión de inventario en PostgreSQL · Information Engineering (CEAC4010)"
-description: "SkiCraft Custom Boots — Sistema de gestión de inventario en PostgreSQL con PL/pgSQL, triggers y control de acceso por roles. Proyecto académico de Jose Palacios Beortegui."
+description: "Heierling GmbH — Sistema de gestión de inventario en PostgreSQL con PL/pgSQL, triggers y control de acceso por roles. Proyecto académico de Jose Palacios Beortegui."
 estado: "Completado"
 modulo: "Information Engineering — CEAC4010"
 institucion: "University of Wales Trinity Saint David / CESTE"
 repo: "https://github.com/jjpp01x/heierling"
+memoria: "/docs/memoria-heierling-information-engineering.pdf"
 image: "https://josepalacios.site/img/og-image.png"
 lang: "es"
 translationKey: "heierling"
@@ -15,9 +16,11 @@ deepTech: false
 
 ## El problema
 
-SkiCraft Custom Boots es una tienda especializada en botas de esquí a medida con sede en Davos. El negocio gestionaba su inventario mediante hojas de cálculo Excel, lo que generaba errores de stock, duplicados de datos y la imposibilidad de consultar el historial de pedidos de forma eficiente.
+Heierling GmbH fabrica y vende botas de esquí a medida en Davos. El módulo la usa como **caso de estudio académico**: el encargo era diseñar desde cero el sistema de inventario de un negocio con esas características, no auditar el que la empresa utiliza en realidad.
 
-El objetivo del proyecto era diseñar e implementar una base de datos relacional completa que sustituyera el sistema manual, con integridad referencial, acceso por roles y automatización de operaciones de negocio mediante funciones y disparadores.
+Lo que hace particular al caso son sus tres ubicaciones de stock — el almacén exterior, el ejemplar de cada modelo y talla que se queda en tienda para probar, y la zona de reservas apartadas para clientes. El sistema tiene que deducir dónde está cada par en lugar de limitarse a contar unidades, y avisar para reponer cuando solo queda el ejemplar de exposición.
+
+El objetivo era implementar una base de datos relacional completa con integridad referencial, acceso por roles y automatización de las operaciones de negocio mediante funciones y disparadores.
 
 ## Proceso de desarrollo
 

@@ -58,7 +58,13 @@ export type Textos = {
   };
   sobre: { titulo: string; parrafos: string[]; disponible: string };
   skills: { titulo: string; grupos: GrupoHabilidades[] };
-  proyectos: { titulo: string; subtitulo: string; verRepo: string; verDemo: string };
+  proyectos: {
+    titulo: string;
+    subtitulo: string;
+    verRepo: string;
+    verDemo: string;
+    verMemoria: string;
+  };
   /**
    * `descripcion` es la meta description del indice de articulos.
    *
@@ -240,6 +246,7 @@ const ES: Textos = {
     subtitulo: "Herramientas de evaluación técnica y trabajo de ingeniería",
     verRepo: "Ver el repositorio",
     verDemo: "Ver la demo",
+    verMemoria: "Ver la memoria (PDF)",
   },
   articulos: {
     titulo: "Artículos",
@@ -426,6 +433,7 @@ const EN: Textos = {
     subtitulo: "Technical evaluation tooling and engineering work",
     verRepo: "View repository",
     verDemo: "View demo",
+    verMemoria: "View the report (PDF)",
   },
   articulos: {
     titulo: "Articles",
@@ -612,6 +620,7 @@ const DE: Textos = {
     subtitulo: "Werkzeuge zur technischen Bewertung und Ingenieurarbeit",
     verRepo: "Repository ansehen",
     verDemo: "Demo ansehen",
+    verMemoria: "Bericht ansehen (PDF)",
   },
   articulos: {
     titulo: "Artikel",

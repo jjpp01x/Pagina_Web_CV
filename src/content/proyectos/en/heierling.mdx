@@ -1,11 +1,12 @@
 ---
-title: "SkiCraft Custom Boots — Inventory DB"
+title: "Heierling GmbH — Inventory DB"
 subtitle: "Inventory management system in PostgreSQL · Information Engineering (CEAC4010)"
-description: "SkiCraft Custom Boots — Inventory management system in PostgreSQL with PL/pgSQL, triggers and role-based access control. Academic project by Jose Palacios Beortegui."
+description: "Heierling GmbH — Inventory management system in PostgreSQL with PL/pgSQL, triggers and role-based access control. Academic project by Jose Palacios Beortegui."
 estado: "Completed"
 modulo: "Information Engineering — CEAC4010"
 institucion: "University of Wales Trinity Saint David / CESTE"
 repo: "https://github.com/jjpp01x/heierling"
+memoria: "/docs/memoria-heierling-information-engineering.pdf"
 image: "https://josepalacios.site/img/og-image.png"
 lang: "en"
 translationKey: "heierling"
@@ -15,9 +16,11 @@ deepTech: false
 
 ## The problem
 
-SkiCraft Custom Boots is a shop specialising in made-to-measure ski boots, based in Davos. The business managed its inventory with Excel spreadsheets, which produced stock errors, duplicated data and no efficient way to query order history.
+Heierling GmbH makes and sells made-to-measure ski boots in Davos. The module uses it as an **academic case study**: the brief was to design an inventory system for a business of that kind from scratch, not to audit the one the company actually runs.
 
-The goal of the project was to design and implement a complete relational database to replace the manual system, with referential integrity, role-based access and automation of business operations through functions and triggers.
+What makes the case distinctive is its three stock locations — the outside warehouse, the one pair of each model and size kept in the shop for customers to try on, and the area holding boots reserved for specific customers. The system has to work out where each pair is rather than simply counting units, and flag a restock when only the display pair is left.
+
+The goal was to implement a complete relational database with referential integrity, role-based access and automation of business operations through functions and triggers.
 
 ## Development process
 

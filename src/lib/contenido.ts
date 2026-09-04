@@ -42,6 +42,9 @@ export type Proyecto = {
   /** Enlace al repositorio publico. Es la prueba, no un adorno. */
   repo: string;
   demo?: string;
+  /** Memoria academica entregada, servida desde `public/docs`.
+   * Es la prueba documental del trabajo universitario, no un adorno. */
+  memoria?: string;
   estado: string;
   tipo?: string;
   pregunta?: string;
