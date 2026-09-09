@@ -1,0 +1,86 @@
+---
+title: "AI Act Compliance Auditor"
+subtitle: "Conditional evidence, not verdicts: what static analysis can and cannot say about the AI Act"
+description: "aiact-auditor: static analysis of repositories against the EU AI Act and the GDPR. Eleven deterministic detectors, a YAML rule catalogue cited against the consolidated text, and reports in Markdown, JSON or PDF."
+tipo: "Compliance tooling · personal project"
+pregunta: "What can a scanner actually claim about AI Act compliance?"
+estado: "v0.1.0 · 120 tests · CI on three operating systems"
+repo: "https://github.com/jjpp01x/aiact-auditor"
+image: "https://josepalacios.site/img/og-image.png"
+lang: "en"
+translationKey: "aiact-auditor"
+stack: ["Python", "AST", "YAML", "ReportLab", "pytest", "GitHub Actions"]
+deepTech: true
+---
+
+## The problem
+
+A static analyser **cannot** know whether the AI Act applies to a system. Applicability depends on the organisation's role (provider or deployer), on the system's risk class (Art. 6 and Annexes I and III), and on the context of use. None of those three things is written in the source code.
+
+So a tool that prints "this repository violates the AI Act" is inventing precisely the hard part. And there is a second, less visible problem: the original 2024 OJ text is no longer the law in force. Regulation (EU) 2026/1744 — the digital omnibus on AI, July 2026 — rewrote Art. 113, rewrote Art. 4, deleted Art. 10(5) and added Arts. 4a and 10(6). Citing the original shifts the high-risk deadlines by more than a year.
+
+The project was built around those two constraints rather than around ignoring them.
+
+## How it works
+
+<Paso n="01" titulo="Detectors produce facts, not opinions">
+
+Eleven deterministic detectors. In Python they walk the AST, which distinguishes *calling* a model from *mentioning* it, and constructing a client from sending it data. Outside Python they fall back to regular expressions, and every signal declares which precision produced it. There is no language model anywhere in the verdict path: a flag a reviewer cannot re-derive by reading the rule is an opinion, not a finding.
+
+</Paso>
+
+<Paso n="02" titulo="The law lives in YAML">
+
+Twelve obligations and thirteen rules in files a lawyer can read and argue with without opening Python. Each obligation cites the consolidated version `02024R1689-20260727`, its date of applicability, and the **preconditions the scanner cannot verify**.
+
+</Paso>
+
+<Paso n="03" titulo="The catalogue is validated on load">
+
+A rule pointing at a non-existent obligation aborts the load. So does a rule pointing at a signal no detector emits: it would never fire and the report would come out empty **without raising any error**. That is the most dangerous silent failure an audit tool can have.
+
+</Paso>
+
+<Paso n="04" titulo="Findings carry their conditions">
+
+Every finding carries its unverifiable preconditions, in all three output formats. It is not a trimmable footnote: a test asserts they travel inside the JSON.
+
+</Paso>
+
+<Paso n="05" titulo="A report for the file">
+
+Markdown, JSON, or a seven-page PDF. The limitations are printed **before** the findings, and anything that is good practice rather than law goes in its own section with a warning.
+
+</Paso>
+
+## The decision that matters most
+
+Making `not_determinable` a first-class verdict.
+
+When the scanner sees remote inference with variable data, what it knows is that there is an outbound call. It does not know whether the data is personal, nor in which country it is processed. Calling that an "unlawful international transfer" would be exactly the kind of claim this tool exists not to make. The report says so, names the two missing conditions, and leaves the conclusion to whoever can check them.
+
+Two separations follow from that. First, law is kept apart from technical preference. Moving model aliases (`claude-3-5-sonnet-latest`) hurt the reproducibility of the audit itself, but no article requires pinning them — so they appear in a separate section marked non-normative. Dressing a preference up as a legal obligation is the fastest way to lose credibility with the person who has to apply it.
+
+Second: **having logging is not recording inference**. Art. 12 does not ask for application traces. Treating that obligation as satisfied because the project imports `logging` would have been the costliest mistake in the whole tool, so they are two distinct signals.
+
+## The bug the demo itself found
+
+The two test repositories are the same program — a CV screening app — with and without controls. The one **without** them reported "control present" for human oversight, because its docstring read *"Decision about a person, with no human review step"* and that sentence literally contains "human review".
+
+That is not a sloppy regex; it is a conceptual error. **A control has to be implemented, not mentioned.** The detectors now read code with comments and docstrings stripped, while keeping assigned literals — `NOTICE = "AI-generated"` *is* the notice, not a note about it.
+
+The tool then audited itself and found three more false positives of its own: it flagged `f"...{n} files analysed..."` because a Spanish verb matched inside a longer word; it flagged its own provider table because the string `"mistral"` looked like a model identifier; and it counted model names cited in comments as models in use.
+
+What closes the loop is what came next. I wrote a script that deliberately breaks each fix and requires the suite to turn red. **One of the six mutations survived**: the first fix had no test behind it. It worked, and nobody would have noticed the day someone reverted it — precisely the lapse this tool holds against the code it audits. That check now runs on every push.
+
+## What it does *not* do
+
+It does not determine the organisation's role or the system's risk class. It does not know whether the data processed is personal. It does not know where inference is processed, only that the call leaves. It does not check that a detected control applies on every execution path, only that it exists. It does not audit third-party dependencies. And it sees nothing that happens outside the repository: contracts, records of processing activities, training delivered, impact assessments.
+
+The limitation that contains all the others: finding no indications is not the same as compliance.
+
+Nor is it legal advice, and `docs/FUENTES-LEGALES.md` states which data are verified against the consolidated text and which are not — including two automated re-verification attempts that failed against the EUR-Lex WAF and were marked partial rather than filled in from memory.
+
+## What I learned
+
+That in compliance the temptation is not to be wrong: it is to **claim more than the evidence supports**, because a firm verdict reads better than a conditional one. The useful discipline turned out to be editorial rather than technical — forcing every claim to carry the conditions that hold it up, and making the type system enforce it (an obligation with no preconditions raises an exception) instead of trusting whoever writes the next rule.

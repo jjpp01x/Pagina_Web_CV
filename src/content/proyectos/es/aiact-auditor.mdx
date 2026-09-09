@@ -1,0 +1,86 @@
+---
+title: "AI Act Compliance Auditor"
+subtitle: "Evidencia condicionada, no dictámenes: lo que un análisis estático puede y no puede decir sobre el AI Act"
+description: "aiact-auditor: análisis estático de repositorios frente al EU AI Act y al RGPD. Once detectores deterministas, catálogo normativo en YAML citado contra la versión consolidada, e informe en Markdown, JSON o PDF."
+tipo: "Herramienta de cumplimiento · proyecto propio"
+pregunta: "¿Qué puede afirmar de verdad un escáner sobre el cumplimiento del AI Act?"
+estado: "v0.1.0 · 120 tests · CI en tres sistemas operativos"
+repo: "https://github.com/jjpp01x/aiact-auditor"
+image: "https://josepalacios.site/img/og-image.png"
+lang: "es"
+translationKey: "aiact-auditor"
+stack: ["Python", "AST", "YAML", "ReportLab", "pytest", "GitHub Actions"]
+deepTech: true
+---
+
+## El problema
+
+Un analizador estático **no puede** saber si el AI Act se aplica a un sistema. La aplicabilidad depende del rol de la organización (proveedor o responsable del despliegue), de la clase de riesgo del sistema (art. 6 y anexos I y III) y del contexto de uso. Ninguna de las tres cosas está escrita en el código fuente.
+
+Así que una herramienta que imprima «este repositorio incumple el AI Act» está inventándose justo la parte difícil. Y hay un segundo problema, menos visible: el texto del DOUE original de 2024 ya no es derecho vigente. El Reglamento (UE) 2026/1744 —el Ómnibus digital sobre IA, de julio de 2026— reescribió el art. 113, reescribió el art. 4, suprimió el art. 10.5 y añadió los arts. 4 bis y 10.6. Citar el original desplaza los plazos del alto riesgo más de un año.
+
+El proyecto se construyó alrededor de esas dos restricciones en lugar de ignorarlas.
+
+## Cómo funciona
+
+<Paso n="01" titulo="Detectores, no opiniones">
+
+Once detectores deterministas. En Python analizan el AST, que distingue *llamar* a un modelo de *mencionarlo*, y construir un cliente de enviarle datos. Fuera de Python caen a expresiones regulares, y cada señal declara con qué precisión se obtuvo. No hay ningún modelo de lenguaje en la ruta del veredicto: una bandera que un revisor no puede rederivar leyendo la regla es una opinión, no un hallazgo.
+
+</Paso>
+
+<Paso n="02" titulo="La norma vive en YAML">
+
+Doce obligaciones y trece reglas en ficheros que un jurista puede leer y discutir sin abrir Python. Cada obligación cita la versión consolidada `02024R1689-20260727`, su fecha de aplicabilidad, y las **precondiciones que el escáner no puede verificar**.
+
+</Paso>
+
+<Paso n="03" titulo="El catálogo se valida al cargarlo">
+
+Una regla que apunte a una obligación inexistente aborta la carga. Y una regla que apunte a una señal que ningún detector emite, también: no dispararía jamás y el informe saldría vacío **sin dar ningún error**. Ese es el fallo silencioso más peligroso que puede tener una herramienta de auditoría.
+
+</Paso>
+
+<Paso n="04" titulo="Hallazgos condicionados">
+
+Cada hallazgo arrastra sus precondiciones no verificables, en los tres formatos de salida. No es un pie de página recortable: hay un test que comprueba que viajan dentro del JSON.
+
+</Paso>
+
+<Paso n="05" titulo="Informe para el expediente">
+
+Markdown, JSON o PDF de siete páginas. Las limitaciones se imprimen **antes** que los hallazgos, y lo que es buena práctica no normativa va en su propia sección con aviso.
+
+</Paso>
+
+## La decisión que más importa
+
+Que `no_determinable` no sea un veredicto de segunda.
+
+Cuando el escáner ve inferencia remota con datos variables, lo que sabe es que hay una llamada saliente. No sabe si los datos son personales ni en qué país se procesan. Llamar a eso «transferencia internacional ilícita» sería exactamente el tipo de afirmación que la herramienta existe para no hacer. El informe lo dice, nombra las dos condiciones que faltan, y deja la conclusión a quien pueda comprobarlas.
+
+De ahí salen dos separaciones que sostienen el resto. La primera: lo que es norma se separa de lo que es preferencia técnica. Los alias móviles de modelo (`claude-3-5-sonnet-latest`) empeoran la reproducibilidad de la propia auditoría, pero no los exige ningún artículo, así que aparecen en una sección aparte marcada como no normativa. Vestir una preferencia de obligación legal es la forma más rápida de perder credibilidad ante quien tiene que aplicarla.
+
+La segunda: **tener logging no es registrar la inferencia**. El art. 12 no pide trazas de aplicación. Dar esa obligación por cumplida porque el proyecto importa `logging` habría sido el error más caro de toda la herramienta, así que son dos señales distintas.
+
+## El fallo que encontró la propia demostración
+
+Los dos repositorios de prueba son el mismo programa —una criba de currículums— con y sin controles. El que **no** los tiene daba «control presente» en supervisión humana, porque su docstring decía *«Decisión sobre una persona, sin ningún punto de revisión humana»* y esa frase contiene literalmente «revisión humana».
+
+No es un descuido de expresión regular: es un error de concepto. **Un control tiene que estar implementado, no mencionado.** Los detectores leen ahora el código con comentarios y docstrings fuera, conservando los literales asignados — `AVISO = "generado por IA"` *es* el aviso, no una nota sobre el aviso.
+
+Después la herramienta se auditó a sí misma y encontró tres falsos positivos propios más: marcaba `f"...{n} ficheros analizados..."` porque «analiza» casaba dentro de «analizados»; denunciaba su propia tabla de proveedores porque la cadena `"mistral"` parecía un identificador de modelo; y contaba como modelos en uso los citados en comentarios.
+
+Lo que cierra el círculo es lo que vino después. Escribí un script que rompe a propósito cada arreglo y exige que la suite se ponga roja. **Una de las seis mutaciones sobrevivía**: el arreglo de «analiza» no tenía ningún test detrás. Funcionaba, y nadie se habría enterado el día que alguien lo revirtiera — justo el descuido que la herramienta le reprocha al código que audita. Esa verificación corre ahora en cada *push*.
+
+## Qué *no* hace
+
+No determina el rol de la organización ni la clase de riesgo del sistema. No sabe si los datos tratados son personales. No sabe dónde se procesa la inferencia, solo que la llamada sale. No comprueba que un control detectado se aplique en cada ruta de ejecución, solo que existe. No audita dependencias de terceros. Y no ve nada de lo que ocurre fuera del repositorio: contratos, registro de actividades de tratamiento, formación impartida, evaluaciones de impacto.
+
+La limitación que engloba a todas: no encontrar indicios no equivale a cumplir.
+
+Tampoco es asesoramiento jurídico, y `docs/FUENTES-LEGALES.md` declara qué datos están verificados contra la consolidada y cuáles no — incluidos dos intentos de re-verificación automática que fallaron contra el WAF de EUR-Lex y quedaron marcados como parciales en lugar de rellenarse de memoria.
+
+## Lo que aprendí
+
+Que en cumplimiento normativo la tentación no es equivocarse: es **afirmar más de lo que sostiene la evidencia**, porque un veredicto rotundo se lee mejor que uno condicionado. La disciplina útil no fue técnica sino de redacción: obligar a que cada afirmación cargue con las condiciones que la sostienen, y que el tipo de dato lo imponga —una obligación sin precondiciones lanza una excepción— en vez de confiarlo a la buena voluntad de quien escriba la siguiente regla.

@@ -54,6 +54,7 @@ CONTACTO = {
 REPO_WEB = "github.com/jjpp01x/Pagina_Web_CV"
 REPO_HEIERLING = "github.com/jjpp01x/heierling"
 REPO_TICKETING = "github.com/jjpp01x/Ski-resort-ticketing-system"
+REPO_AIACT = "github.com/jjpp01x/aiact-auditor"
 
 CIUDAD = {"ES": "Zúrich, Suiza", "EN": "Zurich, Switzerland", "DE": "Zürich, Schweiz"}
 
@@ -87,6 +88,12 @@ CV = {
                   "inventarios con un portfolio técnico creciente en bases de datos, "
                   "desarrollo de software y cloud. Busco oportunidades junior en AI, Data & Tech.",
         "proyectos": [
+            ("AI Act Compliance Auditor", "Python · AST · YAML · pytest · CI · 2026",
+             "Análisis estático de repositorios frente al Reglamento (UE) 2024/1689 (versión "
+             "consolidada) y al RGPD: 11 detectores deterministas sin LLM, catálogo normativo en "
+             "YAML con 12 obligaciones citadas e informe en Markdown/JSON/PDF. Cada hallazgo "
+             "declara las precondiciones que el análisis no puede verificar. 120 tests y "
+             f"verificación por mutación en CI sobre Linux, macOS y Windows. {REPO_AIACT}"),
             ("Sistema gestor de inventario — Heierling GmbH", "PostgreSQL 16 · Docker · Python · 2026",
              "Diseño completo de base de datos para un fabricante suizo de botas de esquí: modelo E/R, "
              "esquema relacional con funciones, trigger, vista e índices; permisos por rol y auditoría. "
@@ -140,6 +147,12 @@ CV = {
                   "inventory operations with a growing technical portfolio in databases, "
                   "software development and cloud. Seeking junior opportunities in AI, Data & Tech.",
         "proyectos": [
+            ("AI Act Compliance Auditor", "Python · AST · YAML · pytest · CI · 2026",
+             "Static analysis of repositories against Regulation (EU) 2024/1689 (consolidated text) "
+             "and the GDPR: 11 deterministic detectors with no LLM in the verdict path, a YAML rule "
+             "catalogue with 12 cited obligations, and Markdown/JSON/PDF reporting. Every finding "
+             "states the preconditions the analysis cannot verify. 120 tests plus mutation "
+             f"verification in CI across Linux, macOS and Windows. {REPO_AIACT}"),
             ("Inventory Management System — Heierling GmbH", "PostgreSQL 16 · Docker · Python · 2026",
              "Full database design for a Swiss ski-boot manufacturer: E/R model, relational schema with "
              "functions, trigger, view and indexes; role-based permissions and operation auditing. "
@@ -192,6 +205,12 @@ CV = {
                   "einem wachsenden technischen Portfolio in Datenbanken, Softwareentwicklung "
                   "und Cloud. Auf der Suche nach Junior-Stellen in AI, Data & Tech.",
         "proyectos": [
+            ("AI Act Compliance Auditor", "Python · AST · YAML · pytest · CI · 2026",
+             "Statische Analyse von Repositories im Hinblick auf die Verordnung (EU) 2024/1689 "
+             "(konsolidierte Fassung) und die DSGVO: 11 deterministische Detektoren ohne LLM, "
+             "Normkatalog in YAML mit 12 zitierten Pflichten sowie Berichte in Markdown/JSON/PDF. "
+             "Jeder Befund nennt die Voraussetzungen, die die Analyse nicht prüfen kann. 120 Tests "
+             f"und Mutationsprüfung in der CI unter Linux, macOS und Windows. {REPO_AIACT}"),
             ("Warenwirtschaftssystem — Heierling GmbH", "PostgreSQL 16 · Docker · Python · 2026",
              "Vollständiger Datenbankentwurf für einen Schweizer Skischuhhersteller: E/R-Modell, "
              "relationales Schema mit Funktionen, Trigger, View und Indizes; rollenbasierte "
