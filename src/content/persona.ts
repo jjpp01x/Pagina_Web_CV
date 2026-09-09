@@ -121,16 +121,20 @@ export type Puesto = {
 };
 
 export const experiencia: Puesto[] = [
-  // La fecha de inicio replica la de Epokan por coherencia con la relacion con
-  // la SL; NO esta verificada con Jose. Si empezo antes, se corrige aqui.
-  { id: "gabinete", fecha: "Ago 2026 — Actualidad" },
+  // Gabinete Juridico Hispanidad (despacho del padre) se retiro el 2026-09-09:
+  // Jose confirmo que ENTRA EN OCTUBRE DE 2026, no antes. Hasta que empiece no
+  // es experiencia y no puede figurar como "Actualidad". El texto sigue en
+  // textos.ts listo para reponer: descomentar esta linea con la fecha real.
+  // { id: "gabinete", fecha: "Oct 2026 — Actualidad" },
   { id: "corpusproof", fecha: "Ago 2026 — Actualidad", enlace: "https://corpusproof.com" },
   { id: "epokan", fecha: "Ago 2026 — Actualidad", enlace: "https://epokan.com" },
   { id: "heierling", fecha: "Oct 2025 — Abr 2026" },
-  { id: "inditex", fecha: "Dic 2021 — Feb 2022" },
-  { id: "eci-compras", fecha: "Jul 2021 — Sep 2021" },
-  { id: "eci-ventas", fecha: "Feb 2020 — Ago 2020" },
-  { id: "eci-logistica", fecha: "Dic 2019 — Ene 2020" },
+  // Agrupados el 2026-09-09 por decision de Jose: cuatro contratos parciales y
+  // sueltos (248 dias en total, verificados en la vida laboral de la TGSS)
+  // ocupaban mas espacio del que aportaban a un CV tecnico. Un solo bloque dice
+  // la verdad y no deja hueco entre 2019 y 2022.
+  { id: "temporadas", fecha: "Ago 2022 — Mar 2025" },
+  { id: "retail-logistica", fecha: "Dic 2019 — Feb 2022" },
 ];
 
 /** Sin el curso de ISSEP, retirado por decision de Jose el 2026-08-21. */

@@ -137,7 +137,7 @@ const ES: Textos = {
   puestos: {
     "gabinete": {
       titulo: "Auxiliar de digitalización y análisis de datos",
-      lugar: "Gabinete Jurídico Hispanidad · Zaragoza, España",
+      lugar: "Gabinete Jurídico Hispanidad · colaboración familiar · Zaragoza, España",
       logros: [
         "Digitalización del archivo documental del despacho",
         "Estructuración de ese corpus para que un sistema de IA pueda usarlo: cobertura de extracción, exposición de datos personales y troceado",
@@ -171,40 +171,21 @@ const ES: Textos = {
         "Enfoque data-driven para optimizar recomendaciones de producto y la operativa diaria",
       ],
     },
-    "inditex": {
-      titulo: "Analista de Logística",
-      lugar: "Inditex (Zara) · Zaragoza, España",
+    "temporadas": {
+      titulo: "Temporadas de nieve y hostelería",
+      lugar: "Freexday · Hoserval Astún · Hotel Villa Anayet · Pirineo aragonés, España",
       logros: [
-        "Procesamiento de mercancía entrante y saliente: recepción, organización de stock y reposición",
-        "Operación de sistemas TPV y control de inventario en un entorno de alto volumen",
-        "Apoyo a la organización del almacén durante los lanzamientos de nuevas colecciones",
+        "Instructor de esquí y apoyo administrativo en escuela de nieve (temporadas 23/24 y 24/25)",
+        "Atención al cliente en hotel y restaurante de montaña durante la temporada alta",
       ],
     },
-    "eci-compras": {
-      titulo: "Encargado de Compras y Logística",
-      lugar: "El Corte Inglés · Zaragoza, España",
+    "retail-logistica": {
+      titulo: "Retail y logística",
+      lugar: "El Corte Inglés · Zara (Inditex) · Zaragoza, España",
       logros: [
-        "Coordinación de aprovisionamiento y logística entrante, asegurando la disponibilidad de stock",
-        "Aplicación de principios Lean para optimizar los flujos de almacén",
-        "Uso de sistemas de inventario y ERP para seguimiento de stock y gestión de pedidos",
-      ],
-    },
-    "eci-ventas": {
-      titulo: "Especialista en Ventas Minoristas",
-      lugar: "El Corte Inglés · Zaragoza, España",
-      logros: [
-        "Ventas y captación de clientes en múltiples categorías de producto",
-        "Asesoramiento de producto para ajustar las necesidades del cliente y contribuir a objetivos de venta",
-        "Mantenimiento de estándares de exposición y merchandising visual",
-      ],
-    },
-    "eci-logistica": {
-      titulo: "Operaciones de Logística",
-      lugar: "El Corte Inglés · Zaragoza, España",
-      logros: [
-        "Recepción y procesamiento de entregas de proveedores en campaña de temporada alta",
-        "Gestión de flujos de distribución física y enrutado de producto a departamentos",
-        "Categorización sistemática de producto y seguimiento de inventario",
+        "Recepción y procesamiento de mercancía, control de stock y reposición en temporada alta",
+        "Operación de sistemas TPV e inventario en entornos de alto volumen",
+        "Atención al cliente y venta en múltiples categorías",
       ],
     },
   },
@@ -329,7 +310,7 @@ const EN: Textos = {
   puestos: {
     "gabinete": {
       titulo: "Data & Digitalisation Assistant",
-      lugar: "Gabinete Jurídico Hispanidad · Zaragoza, Spain",
+      lugar: "Gabinete Jurídico Hispanidad · family firm collaboration · Zaragoza, Spain",
       logros: [
         "Digitalisation of the practice's document archive",
         "Structuring that corpus so an AI system can use it: extraction coverage, personal-data exposure and chunking",
@@ -363,40 +344,21 @@ const EN: Textos = {
         "Data-driven approach to product recommendations and daily operations",
       ],
     },
-    "inditex": {
-      titulo: "Logistics Analyst",
-      lugar: "Inditex (Zara) · Zaragoza, Spain",
+    "temporadas": {
+      titulo: "Ski Seasons and Hospitality",
+      lugar: "Freexday · Hoserval Astún · Hotel Villa Anayet · Aragonese Pyrenees, Spain",
       logros: [
-        "Inbound and outbound goods processing: receiving, stock organisation and replenishment",
-        "POS systems and inventory control in a high-volume environment",
-        "Warehouse organisation during new collection launches",
+        "Ski instructor and administrative support at a snowsports school (23/24 and 24/25 seasons)",
+        "Customer service in a mountain hotel and restaurant during peak season",
       ],
     },
-    "eci-compras": {
-      titulo: "Purchasing & Logistics Supervisor",
-      lugar: "El Corte Inglés · Zaragoza, Spain",
+    "retail-logistica": {
+      titulo: "Retail and Logistics",
+      lugar: "El Corte Inglés · Zara (Inditex) · Zaragoza, Spain",
       logros: [
-        "Coordination of procurement and inbound logistics, ensuring stock availability",
-        "Lean principles applied to warehouse flows",
-        "Inventory and ERP systems for stock tracking and order management",
-      ],
-    },
-    "eci-ventas": {
-      titulo: "Retail Sales Specialist",
-      lugar: "El Corte Inglés · Zaragoza, Spain",
-      logros: [
-        "Sales and customer acquisition across several product categories",
-        "Product advice matched to customer needs, contributing to sales targets",
-        "Display standards and visual merchandising",
-      ],
-    },
-    "eci-logistica": {
-      titulo: "Logistics Operations",
-      lugar: "El Corte Inglés · Zaragoza, Spain",
-      logros: [
-        "Receiving and processing supplier deliveries during peak season",
-        "Physical distribution flows and product routing to departments",
-        "Systematic product categorisation and inventory tracking",
+        "Goods receiving and processing, stock control and replenishment during peak season",
+        "POS and inventory systems in high-volume environments",
+        "Customer service and sales across multiple categories",
       ],
     },
   },
@@ -521,7 +483,7 @@ const DE: Textos = {
   puestos: {
     "gabinete": {
       titulo: "Assistent für Digitalisierung und Datenanalyse",
-      lugar: "Gabinete Jurídico Hispanidad · Saragossa, Spanien",
+      lugar: "Gabinete Jurídico Hispanidad · Mitarbeit im Familienbetrieb · Saragossa, Spanien",
       logros: [
         "Digitalisierung des Dokumentenarchivs der Kanzlei",
         "Strukturierung dieses Korpus für die Nutzung durch KI-Systeme: Extraktionsabdeckung, Exposition personenbezogener Daten und Chunking",
@@ -555,40 +517,21 @@ const DE: Textos = {
         "Datengetriebener Ansatz für Produktempfehlungen und den Tagesbetrieb",
       ],
     },
-    "inditex": {
-      titulo: "Logistikanalyst",
-      lugar: "Inditex (Zara) · Saragossa, Spanien",
+    "temporadas": {
+      titulo: "Wintersaisons und Gastgewerbe",
+      lugar: "Freexday · Hoserval Astún · Hotel Villa Anayet · Aragonesische Pyrenäen, Spanien",
       logros: [
-        "Warenein- und -ausgang: Annahme, Bestandsorganisation und Nachschub",
-        "Kassensysteme und Bestandskontrolle in einem Umfeld mit hohem Volumen",
-        "Unterstützung der Lagerorganisation bei Kollektionsstarts",
+        "Skilehrer und administrative Unterstützung in einer Schneesportschule (Saisons 23/24 und 24/25)",
+        "Kundenbetreuung in Berghotel und -restaurant während der Hochsaison",
       ],
     },
-    "eci-compras": {
-      titulo: "Leiter Einkauf und Logistik",
-      lugar: "El Corte Inglés · Saragossa, Spanien",
+    "retail-logistica": {
+      titulo: "Einzelhandel und Logistik",
+      lugar: "El Corte Inglés · Zara (Inditex) · Saragossa, Spanien",
       logros: [
-        "Koordination von Beschaffung und Eingangslogistik zur Sicherung der Warenverfügbarkeit",
-        "Lean-Prinzipien zur Optimierung der Lagerflüsse",
-        "Bestands- und ERP-Systeme für Bestandsverfolgung und Auftragsverwaltung",
-      ],
-    },
-    "eci-ventas": {
-      titulo: "Spezialist Einzelhandelsvertrieb",
-      lugar: "El Corte Inglés · Saragossa, Spanien",
-      logros: [
-        "Verkauf und Kundengewinnung über mehrere Produktkategorien",
-        "Produktberatung nach Kundenbedarf, mit Beitrag zu den Vertriebszielen",
-        "Präsentationsstandards und Visual Merchandising",
-      ],
-    },
-    "eci-logistica": {
-      titulo: "Logistikbetrieb",
-      lugar: "El Corte Inglés · Saragossa, Spanien",
-      logros: [
-        "Annahme und Bearbeitung von Lieferantenlieferungen in der Hochsaison",
-        "Physische Distributionsflüsse und Produktrouting zu den Abteilungen",
-        "Systematische Produktkategorisierung und Bestandsverfolgung",
+        "Warenannahme und -bearbeitung, Bestandskontrolle und Nachschub in der Hochsaison",
+        "Bedienung von Kassen- und Inventarsystemen in Umgebungen mit hohem Volumen",
+        "Kundenbetreuung und Verkauf in mehreren Kategorien",
       ],
     },
   },
