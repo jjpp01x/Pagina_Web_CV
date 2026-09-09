@@ -92,7 +92,7 @@ CV = {
              "Análisis estático de repositorios frente al Reglamento (UE) 2024/1689 (versión "
              "consolidada) y al RGPD: 11 detectores deterministas sin LLM, catálogo normativo en "
              "YAML con 12 obligaciones citadas e informe en Markdown/JSON/PDF. Cada hallazgo "
-             "declara las precondiciones que el análisis no puede verificar. 120 tests y "
+             "declara las precondiciones que el análisis no puede verificar. 122 tests y "
              f"verificación por mutación en CI sobre Linux, macOS y Windows. {REPO_AIACT}"),
             ("Sistema gestor de inventario — Heierling GmbH", "PostgreSQL 16 · Docker · Python · 2026",
              "Diseño completo de base de datos para un fabricante suizo de botas de esquí: modelo E/R, "
@@ -151,7 +151,7 @@ CV = {
              "Static analysis of repositories against Regulation (EU) 2024/1689 (consolidated text) "
              "and the GDPR: 11 deterministic detectors with no LLM in the verdict path, a YAML rule "
              "catalogue with 12 cited obligations, and Markdown/JSON/PDF reporting. Every finding "
-             "states the preconditions the analysis cannot verify. 120 tests plus mutation "
+             "states the preconditions the analysis cannot verify. 122 tests plus mutation "
              f"verification in CI across Linux, macOS and Windows. {REPO_AIACT}"),
             ("Inventory Management System — Heierling GmbH", "PostgreSQL 16 · Docker · Python · 2026",
              "Full database design for a Swiss ski-boot manufacturer: E/R model, relational schema with "
@@ -209,7 +209,7 @@ CV = {
              "Statische Analyse von Repositories im Hinblick auf die Verordnung (EU) 2024/1689 "
              "(konsolidierte Fassung) und die DSGVO: 11 deterministische Detektoren ohne LLM, "
              "Normkatalog in YAML mit 12 zitierten Pflichten sowie Berichte in Markdown/JSON/PDF. "
-             "Jeder Befund nennt die Voraussetzungen, die die Analyse nicht prüfen kann. 120 Tests "
+             "Jeder Befund nennt die Voraussetzungen, die die Analyse nicht prüfen kann. 122 Tests "
              f"und Mutationsprüfung in der CI unter Linux, macOS und Windows. {REPO_AIACT}"),
             ("Warenwirtschaftssystem — Heierling GmbH", "PostgreSQL 16 · Docker · Python · 2026",
              "Vollständiger Datenbankentwurf für einen Schweizer Skischuhhersteller: E/R-Modell, "
