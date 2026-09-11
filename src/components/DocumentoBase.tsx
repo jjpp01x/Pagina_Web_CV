@@ -48,6 +48,20 @@ export function DocumentoBase({
       )}
     >
       <head>
+        {/* Google tag (gtag.js). Va lo mas arriba posible del head para no
+            perder las visitas que rebotan antes de que cargue el resto. */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-C77M8M0XML" />
+        <script
+          id="gtag-init"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-C77M8M0XML');
+            `,
+          }}
+        />
         <script
           id="theme-init"
           dangerouslySetInnerHTML={{
