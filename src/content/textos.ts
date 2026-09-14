@@ -135,15 +135,6 @@ const ES: Textos = {
   descripcionEntidad:
     "Analista deep tech afincado en Zúrich. Trabaja en gobernanza de inteligencia artificial, evaluación de sistemas de IA y preparación de datos para que una IA pueda usarlos. Fundador de Epokan, formación en IA y cumplimiento del artículo 4 del Reglamento (UE) 2024/1689 para despachos y asesorías, y de CorpusProof, análisis y estructuración de corpus documentales.",
   puestos: {
-    "gabinete": {
-      titulo: "Auxiliar de digitalización y análisis de datos",
-      lugar: "Gabinete Jurídico Hispanidad · colaboración familiar · Zaragoza, España",
-      logros: [
-        "Digitalización del archivo documental del despacho",
-        "Estructuración de ese corpus para que un sistema de IA pueda usarlo: cobertura de extracción, exposición de datos personales y troceado",
-        "Análisis de los datos resultantes y de los procesos del despacho",
-      ],
-    },
     "corpusproof": {
       titulo: "Fundador",
       lugar: "CorpusProof · proyecto propio · remoto",
@@ -179,13 +170,19 @@ const ES: Textos = {
         "Atención al cliente en hotel y restaurante de montaña durante la temporada alta",
       ],
     },
-    "retail-logistica": {
+    "corte-ingles": {
       titulo: "Retail y logística",
-      lugar: "El Corte Inglés · Zara (Inditex) · Zaragoza, España",
+      lugar: "El Corte Inglés · Zaragoza, España",
+      logros: [
+        "Atención al cliente y venta en múltiples categorías",
+        "Operación de sistemas TPV e inventario en entornos de alto volumen",
+      ],
+    },
+    "zara": {
+      titulo: "Reposición y atención al cliente",
+      lugar: "Zara (Inditex) · Zaragoza, España",
       logros: [
         "Recepción y procesamiento de mercancía, control de stock y reposición en temporada alta",
-        "Operación de sistemas TPV e inventario en entornos de alto volumen",
-        "Atención al cliente y venta en múltiples categorías",
       ],
     },
   },
@@ -308,15 +305,6 @@ const EN: Textos = {
   descripcionEntidad:
     "Deep tech analyst based in Zurich. Works on artificial intelligence governance, evaluation of AI systems, and preparing data so that an AI can actually use it. Founder of Epokan, AI literacy and Article 4 compliance under Regulation (EU) 2024/1689 for law firms and accountancy practices, and of CorpusProof, analysis and structuring of document corpora.",
   puestos: {
-    "gabinete": {
-      titulo: "Data & Digitalisation Assistant",
-      lugar: "Gabinete Jurídico Hispanidad · family firm collaboration · Zaragoza, Spain",
-      logros: [
-        "Digitalisation of the practice's document archive",
-        "Structuring that corpus so an AI system can use it: extraction coverage, personal-data exposure and chunking",
-        "Analysis of the resulting data and of the practice's processes",
-      ],
-    },
     "corpusproof": {
       titulo: "Founder",
       lugar: "CorpusProof · own project · remote",
@@ -352,13 +340,19 @@ const EN: Textos = {
         "Customer service in a mountain hotel and restaurant during peak season",
       ],
     },
-    "retail-logistica": {
+    "corte-ingles": {
       titulo: "Retail and Logistics",
-      lugar: "El Corte Inglés · Zara (Inditex) · Zaragoza, Spain",
+      lugar: "El Corte Inglés · Zaragoza, Spain",
+      logros: [
+        "Customer service and sales across multiple categories",
+        "POS and inventory systems in high-volume environments",
+      ],
+    },
+    "zara": {
+      titulo: "Replenishment and Customer Service",
+      lugar: "Zara (Inditex) · Zaragoza, Spain",
       logros: [
         "Goods receiving and processing, stock control and replenishment during peak season",
-        "POS and inventory systems in high-volume environments",
-        "Customer service and sales across multiple categories",
       ],
     },
   },
@@ -481,15 +475,6 @@ const DE: Textos = {
   descripcionEntidad:
     "Deep-Tech-Analyst mit Sitz in Zürich. Arbeitet an der Governance künstlicher Intelligenz, der Bewertung von KI-Systemen und der Aufbereitung von Daten, damit eine KI sie nutzen kann. Gründer von Epokan, KI-Kompetenz und Nachweis nach Artikel 4 der Verordnung (EU) 2024/1689 für Kanzleien und Steuerberatungen, und von CorpusProof, Analyse und Strukturierung von Dokumentenkorpora.",
   puestos: {
-    "gabinete": {
-      titulo: "Assistent für Digitalisierung und Datenanalyse",
-      lugar: "Gabinete Jurídico Hispanidad · Mitarbeit im Familienbetrieb · Saragossa, Spanien",
-      logros: [
-        "Digitalisierung des Dokumentenarchivs der Kanzlei",
-        "Strukturierung dieses Korpus für die Nutzung durch KI-Systeme: Extraktionsabdeckung, Exposition personenbezogener Daten und Chunking",
-        "Analyse der resultierenden Daten und der Kanzleiprozesse",
-      ],
-    },
     "corpusproof": {
       titulo: "Gründer",
       lugar: "CorpusProof · eigenes Projekt · remote",
@@ -525,13 +510,19 @@ const DE: Textos = {
         "Kundenbetreuung in Berghotel und -restaurant während der Hochsaison",
       ],
     },
-    "retail-logistica": {
+    "corte-ingles": {
       titulo: "Einzelhandel und Logistik",
-      lugar: "El Corte Inglés · Zara (Inditex) · Saragossa, Spanien",
+      lugar: "El Corte Inglés · Saragossa, Spanien",
+      logros: [
+        "Kundenbetreuung und Verkauf in mehreren Kategorien",
+        "Bedienung von Kassen- und Inventarsystemen in Umgebungen mit hohem Volumen",
+      ],
+    },
+    "zara": {
+      titulo: "Warenauffüllung und Kundenbetreuung",
+      lugar: "Zara (Inditex) · Saragossa, Spanien",
       logros: [
         "Warenannahme und -bearbeitung, Bestandskontrolle und Nachschub in der Hochsaison",
-        "Bedienung von Kassen- und Inventarsystemen in Umgebungen mit hohem Volumen",
-        "Kundenbetreuung und Verkauf in mehreren Kategorien",
       ],
     },
   },

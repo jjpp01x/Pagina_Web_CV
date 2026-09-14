@@ -121,20 +121,27 @@ export type Puesto = {
 };
 
 export const experiencia: Puesto[] = [
-  // Gabinete Juridico Hispanidad (despacho del padre) se retiro el 2026-09-09:
-  // Jose confirmo que ENTRA EN OCTUBRE DE 2026, no antes. Hasta que empiece no
-  // es experiencia y no puede figurar como "Actualidad". El texto sigue en
-  // textos.ts listo para reponer: descomentar esta linea con la fecha real.
-  // { id: "gabinete", fecha: "Oct 2026 — Actualidad" },
+  // Gabinete Juridico Hispanidad (despacho del padre) se retiro el 2026-09-09
+  // porque Jose entra en OCTUBRE DE 2026, no antes, y hasta que empiece no es
+  // experiencia. El 2026-09-14 Jose pidio borrarlo del todo: se elimino tambien
+  // su ficha de textos.ts en los tres idiomas, asi que ya no queda texto que
+  // descomentar. Si entra y quiere declararlo, hay que reescribirlo desde cero.
   { id: "corpusproof", fecha: "Ago 2026 — Actualidad", enlace: "https://corpusproof.com" },
   { id: "epokan", fecha: "Ago 2026 — Actualidad", enlace: "https://epokan.com" },
   { id: "heierling", fecha: "Oct 2025 — Abr 2026" },
-  // Agrupados el 2026-09-09 por decision de Jose: cuatro contratos parciales y
-  // sueltos (248 dias en total, verificados en la vida laboral de la TGSS)
-  // ocupaban mas espacio del que aportaban a un CV tecnico. Un solo bloque dice
-  // la verdad y no deja hueco entre 2019 y 2022.
+  // Agrupados el 2026-09-09 por decision de Jose: contratos parciales y sueltos
+  // (verificados en la vida laboral de la TGSS) ocupaban mas espacio del que
+  // aportaban a un CV tecnico. Los bloques dicen la verdad y no dejan hueco
+  // entre 2019 y 2022.
   { id: "temporadas", fecha: "Ago 2022 — Mar 2025" },
-  { id: "retail-logistica", fecha: "Dic 2019 — Feb 2022" },
+  // Separados de nuevo el 2026-09-14 por decision de Jose: son dos empleadores
+  // distintos y agrupados perdian el logo de empresa. Las fechas salen de la
+  // vida laboral, no del CV antiguo: El Corte Ingles son tres periodos
+  // (10/12/2019-05/01/2020, 01/02-31/07/2020, 07/07-26/09/2021, 221 dias) y
+  // Zara uno solo (09/12/2021-31/01/2022, 27 dias). El "Feb 2022" que figuraba
+  // antes eran los 5 dias de vacaciones no disfrutadas, no trabajo efectivo.
+  { id: "zara", fecha: "Dic 2021 — Ene 2022" },
+  { id: "corte-ingles", fecha: "Dic 2019 — Sep 2021" },
 ];
 
 /** Sin el curso de ISSEP, retirado por decision de Jose el 2026-08-21. */
