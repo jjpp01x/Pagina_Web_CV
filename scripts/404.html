@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Página no encontrada · José Palacios</title>
+<meta name="robots" content="noindex">
+<!-- Google tag (gtag.js). Va aqui a proposito: Next renderiza la 404 con su
+     propio layout minimo y no pasa por DocumentoBase, asi que sin esto los
+     enlaces rotos son invisibles en Analytics. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C77M8M0XML"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-C77M8M0XML');
+  // El referrer y la ruta pedida son lo unico que convierte un 404 en un aviso
+  // accionable: sin ellos sabes que alguien se estrello, pero no desde donde.
+  gtag('event', 'page_not_found', {
+    ruta_pedida: location.pathname + location.search,
+    origen: document.referrer || '(directo)'
+  });
+</script>
+<style>
+  :root {
+    color-scheme: light dark;
+    --fondo: #ffffff; --texto: #0d181d; --suave: #505d64;
+    --marca: #1f398e; --linea: rgba(80,93,100,.22);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --fondo: #0d181d; --texto: #e9eef1; --suave: #9aa7ae;
+            --marca: #8db3ff; --linea: rgba(233,238,241,.16); }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; display: flex; align-items: center;
+    justify-content: center; padding: 2rem;
+    background: var(--fondo); color: var(--texto);
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6; -webkit-font-smoothing: antialiased;
+  }
+  main { max-width: 34rem; width: 100%; }
+  .codigo {
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: .8rem; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--suave); margin: 0 0 1rem;
+  }
+  h1 { font-size: clamp(1.5rem, 4vw, 2rem); line-height: 1.25; margin: 0 0 .75rem; font-weight: 600; }
+  h1 + p { color: var(--suave); margin: 0 0 2rem; }
+  .idiomas { border-top: 1px solid var(--linea); padding-top: 1.5rem; }
+  .idiomas p { margin: 0 0 1rem; }
+  .idiomas p:last-child { margin-bottom: 0; }
+  .idiomas span { color: var(--suave); }
+  a { color: var(--marca); text-decoration: none; border-bottom: 1px solid currentColor; }
+  a:hover, a:focus-visible { opacity: .75; }
+</style>
+</head>
+<body>
+<main>
+  <p class="codigo">Error 404</p>
+  <h1>Esta página no existe</h1>
+  <p>Puede que el enlace esté roto o que la dirección haya cambiado.</p>
+  <div class="idiomas">
+    <p><span lang="es">Volver al</span> <a href="/" hreflang="es">inicio</a> <span>· español</span></p>
+    <p><span lang="en">This page does not exist.</span> <a href="/en" hreflang="en">Go to the homepage</a> <span>· English</span></p>
+    <p><span lang="de">Diese Seite existiert nicht.</span> <a href="/de" hreflang="de">Zur Startseite</a> <span>· Deutsch</span></p>
+  </div>
+</main>
+</body>
+</html>

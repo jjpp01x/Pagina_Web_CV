@@ -27,7 +27,16 @@ export type Textos = {
   };
   /** Bloque de cifras de la pagina "Sobre mi". Se cuentan del contenido real. */
   cifras: { titulo: string; articulos: string; proyectos: string; idiomas: string; titulaciones: string; certificaciones: string };
-  hero: { saludo: string; subtitulo: string; titulo: string; descripcion: string; btn1: string; btn2: string };
+  hero: {
+    saludo: string;
+    subtitulo: string;
+    titulo: string;
+    descripcion: string;
+    /** Solo para el <meta description>. El hero visible no se recorta por SEO. */
+    metaDescripcion: string;
+    btn1: string;
+    btn2: string;
+  };
   /**
    * El rol profesional, para el <title> de la portada de cada idioma.
    *
@@ -56,7 +65,13 @@ export type Textos = {
     rol: string;
     fichas: Record<string, { descripcion: string; etiquetas: string[] }>;
   };
-  sobre: { titulo: string; parrafos: string[]; disponible: string };
+  sobre: {
+    titulo: string;
+    /** Solo para el <meta description>; parrafos[0] es prosa de pagina. */
+    metaDescripcion: string;
+    parrafos: string[];
+    disponible: string;
+  };
   skills: { titulo: string; grupos: GrupoHabilidades[] };
   proyectos: {
     titulo: string;
@@ -128,6 +143,7 @@ const ES: Textos = {
     subtitulo: "Analista Deep Tech & Software Builder",
     titulo: "Analista Deep Tech en formación — evalúo si una tecnología funciona y qué riesgo conlleva",
     descripcion: "Estudiante de BSc (Hons) Applied Computing (UWTSD). Combino una base sólida en gestión empresarial con la capacidad de evaluar y construir tecnología: ingeniería informática, IA y analítica de datos. Con base en Zúrich.",
+    metaDescripcion: "Analista deep tech en Zúrich: gobernanza de IA, evaluación de sistemas y preparación de datos, sobre una base de gestión empresarial e ingeniería informática.",
     btn1: "Contactar",
     btn2: "Ver proyectos",
   },
@@ -205,6 +221,7 @@ const ES: Textos = {
   },
   sobre: {
     titulo: "Sobre mí",
+    metaDescripcion: "Graduado en BA (Hons) Business Management (UWTSD) y cursando BSc (Hons) Applied Computing. Trayectoria, formación, certificaciones e idiomas.",
     parrafos: [
       "Graduado en BA (Hons) Business Management por University of Wales Trinity Saint David (2021–2025) y actualmente cursando BSc (Hons) Applied Computing — una combinación que me permite unir pensamiento estratégico con ejecución técnica.",
       "Me especializo en la intersección de IA, Data Analytics y estrategia de negocio: entender una tecnología lo bastante bien como para evaluar si funciona y qué riesgo conlleva, no solo para usarla. Especial interés en la digitalización de la cadena de suministro y la automatización de procesos.",
@@ -298,6 +315,7 @@ const EN: Textos = {
     subtitulo: "Deep Tech Analyst & Software Builder",
     titulo: "Deep Tech Analyst in training — I evaluate whether a technology works and what risk it carries",
     descripcion: "BSc (Hons) Applied Computing student (UWTSD). I combine a solid background in business management with the ability to evaluate and build technology: computer engineering, AI and data analytics. Zurich-based.",
+    metaDescripcion: "Deep tech analyst based in Zurich: AI governance, systems evaluation and data readiness, built on a background in business management and computing.",
     btn1: "Contact me",
     btn2: "See projects",
   },
@@ -375,6 +393,7 @@ const EN: Textos = {
   },
   sobre: {
     titulo: "About me",
+    metaDescripcion: "BA (Hons) Business Management graduate (UWTSD), now studying BSc (Hons) Applied Computing. Background, education, certifications and languages.",
     parrafos: [
       "BA (Hons) Business Management graduate at University of Wales Trinity Saint David (2021–2025), currently studying BSc (Hons) Applied Computing — a combination that lets me bridge strategic thinking with technical execution.",
       "I specialise in the intersection of AI, Data Analytics and Business Strategy: understanding a technology well enough to evaluate whether it works and what risk it carries, not just to use it. Strong interest in supply chain digitalisation and process automation.",
@@ -468,6 +487,7 @@ const DE: Textos = {
     subtitulo: "Deep-Tech-Analyst & Software Builder",
     titulo: "Deep-Tech-Analyst in Ausbildung — ich bewerte, ob eine Technologie funktioniert und welches Risiko sie birgt",
     descripcion: "Student des BSc (Hons) Applied Computing (UWTSD). Ich verbinde eine solide Grundlage im Betriebswirtschaftsmanagement mit der Fähigkeit, Technologie zu bewerten und zu entwickeln: Informatik, KI und Datenanalyse. Mit Sitz in Zürich.",
+    metaDescripcion: "Deep-Tech-Analyst in Zürich: KI-Governance, Systembewertung und Datenaufbereitung, auf einer Basis aus Betriebswirtschaft und Informatik.",
     btn1: "Kontakt",
     btn2: "Projekte ansehen",
   },
@@ -545,6 +565,7 @@ const DE: Textos = {
   },
   sobre: {
     titulo: "Über mich",
+    metaDescripcion: "Absolvent BA (Hons) Business Management (UWTSD), derzeit BSc (Hons) Applied Computing. Werdegang, Ausbildung, Zertifizierungen und Sprachen.",
     parrafos: [
       "Absolvent in BA (Hons) Business Management an der University of Wales Trinity Saint David (2021–2025), derzeit im Studium des BSc (Hons) Applied Computing — eine Kombination, die strategisches Denken mit technischer Umsetzung verbindet.",
       "Ich spezialisiere mich auf die Schnittstelle von KI, Datenanalyse und Unternehmensstrategie: eine Technologie so gut zu verstehen, dass ich bewerten kann, ob sie funktioniert und welches Risiko sie birgt — nicht nur, sie zu nutzen. Besonderes Interesse an der Digitalisierung von Lieferketten.",

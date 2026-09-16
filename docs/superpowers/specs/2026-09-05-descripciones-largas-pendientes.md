@@ -1,7 +1,21 @@
 # 19 meta descriptions por encima de 160 caracteres — pendiente
 
 **Encontrado:** 2026-09-05, al intentar añadir un cerrojo de longitud al build.
-**Estado:** pendiente. El cerrojo se revirtió; estas 19 siguen como están.
+**Estado: RESUELTO el 2026-09-16.** Ver la nota al final.
+
+> **Cerrado.** Para cuando se retomó ya no eran 19 sino **21**: `aiact-auditor` entró el
+> 9-sep en ES y EN con descripción larga, porque sin cerrojo nada lo impedía. Esa es la
+> prueba de que el orden correcto no era "arreglar y confiar".
+>
+> Las 15 fichas de proyecto se reescribieron. Las 6 de portada y «Sobre mí» **no**: su texto
+> es prosa visible de la página (`hero.descripcion` y `sobre.parrafos[0]`), y acortarla
+> habría cambiado lo que lee la gente. Se añadió `metaDescripcion` en `textos.ts`, que solo
+> alimenta el `<meta description>`. El bloqueo que documentaba este fichero —"no se
+> reescriben sin que las vea él"— deja de aplicar: no se han reescrito.
+>
+> El cerrojo está de vuelta en `scripts/postbuild.mjs`, ahora con **dos** límites (160 para
+> la descripción, 65 para el título) y verificado por mutación: con una descripción de 205
+> y un título de 73, `npm run build` sale con `exit=1` nombrando las dos páginas.
 
 ## Qué pasó
 

@@ -72,6 +72,8 @@ export type TipoPagina = "articulo" | "proyecto" | "pagina";
 
 export type DatosMeta = {
   titulo: string;
+  /** Version corta del titulo solo para el <title>. El og:title usa `titulo`. */
+  tituloSeo?: string;
   descripcion: string;
   lang: Idioma;
   /** Ruta nativa de Next de ESTA pagina. */
@@ -87,6 +89,7 @@ export type DatosMeta = {
 
 export function construirMeta({
   titulo,
+  tituloSeo,
   descripcion,
   lang,
   rutaNext,
@@ -108,7 +111,7 @@ export function construirMeta({
   const imagenAbsoluta = imagen?.startsWith("http") ? imagen : `${BASE_URL}${imagen ?? "/img/og-image.png"}`;
 
   return {
-    title: tituloSerp(titulo, lang, tipoPagina),
+    title: tituloSerp(tituloSeo ?? titulo, lang, tipoPagina),
     description: descripcion,
     metadataBase: new URL(BASE_URL),
     alternates: {

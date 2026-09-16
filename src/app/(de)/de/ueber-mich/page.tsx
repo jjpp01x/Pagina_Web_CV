@@ -7,7 +7,7 @@ import { ruta } from "@/lib/rutas";
 export const generateMetadata = () =>
   construirMeta({
     titulo: textos("de").sobre.titulo,
-    descripcion: textos("de").sobre.parrafos[0],
+    descripcion: textos("de").sobre.metaDescripcion,
     lang: "de",
     rutaNext: ruta.sobreMi("de"),
     alternativas: alternativasPagina(ruta.sobreMi),

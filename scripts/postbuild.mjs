@@ -18,7 +18,7 @@
  * Uso:  node scripts/postbuild.mjs
  */
 import { execSync } from "node:child_process";
-import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { join, relative } from "node:path";
 
 const OUT = "out";
@@ -213,6 +213,48 @@ writeFileSync(
     bloques.join("\n\n") + "\n",
 );
 console.log(`postbuild: llms.txt con ${paginas.length} entradas`);
+
+// --- 4. La 404 propia ------------------------------------------------------
+//
+// Next renderiza la pagina de error con su layout interno, no con
+// DocumentoBase, asi que sale sin lang, sin tema y -- lo que importa -- sin el
+// gtag: los enlaces rotos eran invisibles en Analytics. Se sobrescribe con una
+// pagina autocontenida en los tres idiomas. Sobrescribir y no confiar en
+// public/ es deliberado: Next tambien escribe out/404.html y el orden entre
+// ambos no esta garantizado.
+const F404 = "scripts/404.html";
+copyFileSync(F404, join(OUT, "404.html"));
+{
+  const html = readFileSync(join(OUT, "404.html"), "utf-8");
+  if (!html.includes("G-C77M8M0XML")) fallar("out/404.html se copio sin el gtag");
+  else console.log("postbuild: 404.html propia, con gtag");
+}
+
+// --- 5. Cerrojos de longitud ----------------------------------------------
+//
+// Existen porque el 2026-09-05 se arreglaron 7 descripciones y, sin cerrojo,
+// para el 11-sep ya habia 21: cada proyecto nuevo entraba con la descripcion
+// larga y nadie se enteraba. Un limite sin cerrojo es una sugerencia.
+//
+// 160 es donde Google corta el fragmento. 65 es el presupuesto que documenta
+// meta.ts: Google mide el titulo en pixeles (~600px) y 65 caracteres caben.
+// Si un titular no cabe, la salida NO es recortarlo aqui, es darle `tituloSeo`
+// en su frontmatter: el titular de la pagina se queda entero.
+const LIMITE_DESC = 160;
+const LIMITE_TITULO = 65;
+const largas = [];
+const titulones = [];
+for (const ruta of paginas) {
+  const { titulo, descripcion } = meta(ruta);
+  if (descripcion.length > LIMITE_DESC) largas.push([descripcion.length, ruta]);
+  if (titulo.length > LIMITE_TITULO) titulones.push([titulo.length, ruta]);
+}
+for (const [n, ruta] of largas.sort((a, b) => b[0] - a[0]))
+  fallar(`descripcion de ${n} caracteres (limite ${LIMITE_DESC}): ${ruta || "index.html"}`);
+for (const [n, ruta] of titulones.sort((a, b) => b[0] - a[0]))
+  fallar(`titulo de ${n} caracteres (limite ${LIMITE_TITULO}, usa tituloSeo): ${ruta || "index.html"}`);
+if (!largas.length && !titulones.length)
+  console.log(`postbuild: ${paginas.length} paginas dentro de ${LIMITE_DESC}/${LIMITE_TITULO}`);
 
 if (process.exitCode) console.error("postbuild: terminado CON ERRORES");
 else console.log("postbuild: ok");

@@ -22,6 +22,15 @@ export type Articulo = {
   lang: Idioma;
   translationKey: string;
   title: string;
+  /**
+   * Titulo corto solo para el <title> del buscador.
+   *
+   * Existe porque `meta.ts` decide, a proposito, que un titular largo gana al
+   * nombre del autor: el articulo compite por su tema. Eso deja titulares de
+   * hasta 90 caracteres que Google corta. Con este campo el titular de la
+   * pagina se queda entero y solo se acorta lo que sale en el resultado.
+   */
+  tituloSeo?: string;
   subtitle: string;
   description: string;
   category: string;

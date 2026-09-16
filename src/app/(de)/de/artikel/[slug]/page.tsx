@@ -15,6 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!articulo) return {};
   return construirMeta({
     titulo: articulo.title,
+    tituloSeo: articulo.tituloSeo,
     descripcion: articulo.description,
     lang: "de",
     rutaNext: ruta.articulo("de", slug),
