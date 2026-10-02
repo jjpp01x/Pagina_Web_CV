@@ -66,9 +66,8 @@ export type Empresa = {
  * cada ficha vive en textos.ts, indexado por `id`.
  *
  * Precision sobre la forma juridica: la marca Epokan esta a nombre personal de
- * Jose y licenciada a Gabinete Juridico Hispanidad SL, que es quien factura de
- * momento. Por eso el rol que se declara es "Fundador" y no "mi sociedad": lo
- * primero es cierto hoy, lo segundo no.
+ * Jose y no hay sociedad propia. Por eso el rol que se declara es "Fundador" y
+ * no "mi sociedad": lo primero es cierto hoy, lo segundo no.
  */
 export const empresas: Empresa[] = [
   { id: "epokan", nombre: "Epokan", url: "https://epokan.com" },
@@ -108,10 +107,8 @@ export const formacionAcademica: Entrada[] = [
  * se servian tal cual en las tres versiones: /en/education.html mostraba
  * "Fundador" y "Agente de Ventas" a un lector ingles.
  *
- * El orden es deliberado y no es cronologico puro: Gabinete Juridico va primero
- * porque es el empleo actual con empleador real, y eso es lo que un reclutador
- * lee como "empleado y estable". Las dos marcas propias van despues, como
- * evidencia de lo construido, no como negocio en marcha.
+ * Las dos marcas propias se presentan como evidencia de lo construido, no como
+ * negocio en marcha.
  */
 export type Puesto = {
   /** Clave con la que textos.ts guarda este puesto traducido. */
@@ -121,11 +118,6 @@ export type Puesto = {
 };
 
 export const experiencia: Puesto[] = [
-  // Gabinete Juridico Hispanidad (despacho del padre) se retiro el 2026-09-09
-  // porque Jose entra en OCTUBRE DE 2026, no antes, y hasta que empiece no es
-  // experiencia. El 2026-09-14 Jose pidio borrarlo del todo: se elimino tambien
-  // su ficha de textos.ts en los tres idiomas, asi que ya no queda texto que
-  // descomentar. Si entra y quiere declararlo, hay que reescribirlo desde cero.
   { id: "corpusproof", fecha: "Ago 2026 — Actualidad", enlace: "https://corpusproof.com" },
   { id: "epokan", fecha: "Ago 2026 — Actualidad", enlace: "https://epokan.com" },
   { id: "heierling", fecha: "Oct 2025 — Abr 2026" },
