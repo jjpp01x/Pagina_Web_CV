@@ -27,7 +27,7 @@ import {
   persona,
 } from "@/content/persona";
 import { colorCategoria } from "@/content/categorias";
-import { fechaLocalizada, textos } from "@/content/textos";
+import { fechaLocalizada, mesLocalizado, rangoMeses, textos } from "@/content/textos";
 import {
   type Articulo,
   getArticulos,
@@ -382,7 +382,7 @@ export function Experiencia({ lang }: { lang: Idioma }) {
             return (
             <Column key={e.id} gap="4" paddingBottom="16">
               <Text variant="label-default-s" onBackground="neutral-weak">
-                {e.fecha}
+                {rangoMeses(e.desde, e.hasta, lang)}
               </Text>
               <Heading as="h3" variant="heading-strong-s">
                 {puesto.titulo}
@@ -423,7 +423,7 @@ export function Formacion({ lang }: { lang: Idioma }) {
 
         <Seccion titulo={t.formacion.academica}>
           {formacionAcademica.map((e) => (
-            <Column key={e.titulo} gap="4" paddingBottom="16">
+            <Column key={e.id} gap="4" paddingBottom="16">
               <Text variant="label-default-s" onBackground="neutral-weak">
                 {e.fecha}
               </Text>
@@ -431,13 +431,11 @@ export function Formacion({ lang }: { lang: Idioma }) {
                 {e.titulo}
               </Heading>
               <Text variant="body-default-s" onBackground="neutral-medium">
-                {e.lugar}
+                {t.titulaciones[e.id].lugar}
               </Text>
-              {e.descripcion && (
-                <Text variant="body-default-s" onBackground="neutral-medium">
-                  {e.descripcion}
-                </Text>
-              )}
+              <Text variant="body-default-s" onBackground="neutral-medium">
+                {t.titulaciones[e.id].descripcion}
+              </Text>
             </Column>
           ))}
         </Seccion>
@@ -465,10 +463,10 @@ export function Formacion({ lang }: { lang: Idioma }) {
               >
                 <Row gap="8" vertical="center" horizontal="between" wrap>
                   <Heading as="h3" variant="heading-strong-xs" wrap="balance">
-                    {c.titulo}
+                    {c.tituloPorIdioma?.[lang] ?? c.titulo}
                   </Heading>
                   <Text variant="label-default-s" onBackground="neutral-weak">
-                    {c.fecha}
+                    {mesLocalizado(c.fecha, lang)}
                   </Text>
                 </Row>
                 <Text variant="body-default-s" onBackground="neutral-medium">
@@ -498,8 +496,12 @@ export function Formacion({ lang }: { lang: Idioma }) {
         </Seccion>
 
         <Seccion titulo={t.formacion.idiomas}>
-          {idiomas.map((i) => (
-            <FilaDato key={i.idioma} etiqueta={i.idioma} valor={i.nivel} />
+          {idiomas.map((codigo) => (
+            <FilaDato
+              key={codigo}
+              etiqueta={t.idiomasNivel[codigo].idioma}
+              valor={t.idiomasNivel[codigo].nivel}
+            />
           ))}
         </Seccion>
       </Column>
@@ -630,9 +632,9 @@ export function SobreMi({ lang }: { lang: Idioma }) {
                   radius="m"
                   border="neutral-alpha-medium"
                 >
-                  <Text variant="label-strong-s">{c.titulo}</Text>
+                  <Text variant="label-strong-s">{c.tituloPorIdioma?.[lang] ?? c.titulo}</Text>
                   <Text variant="body-default-xs" onBackground="neutral-weak">
-                    {c.emisor} · {c.fecha}
+                    {c.emisor} · {mesLocalizado(c.fecha, lang)}
                   </Text>
                   <a href={c.verificar} rel="noopener noreferrer" target="_blank">
                     <Text variant="label-default-s" onBackground="brand-medium">

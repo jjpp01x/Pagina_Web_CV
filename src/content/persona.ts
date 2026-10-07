@@ -12,19 +12,25 @@
  *
  * Regla: no redondear ningun dato hacia arriba. Es una web de CV.
  */
+import type { Idioma } from "@/lib/rutas";
 
+/**
+ * Titulacion: solo lo que no cambia con el idioma. El lugar y la descripcion
+ * viven en textos.ts, indexados por `id`; aqui en castellano se servian igual
+ * en /en/ ("Gales, Reino Unido") y un reclutador lo lee como descuido.
+ */
 export type Entrada = {
+  id: string;
   fecha: string;
   titulo: string;
-  lugar: string;
-  enlace?: string;
-  descripcion?: string;
-  logros?: string[];
 };
 
 export type Certificacion = {
+  /** Nombre propio del curso: no se traduce. El unico que si, va en `tituloPorIdioma`. */
   titulo: string;
+  tituloPorIdioma?: Record<Idioma, string>;
   emisor: string;
+  /** Mes `AAAA-MM`. Se localiza al pintar con `mesLocalizado`. */
   fecha: string;
   /** Enlace publico de verificacion. Sin el, la certificacion es una afirmacion. */
   verificar?: string;
@@ -75,28 +81,15 @@ export const empresas: Empresa[] = [
 ];
 
 /**
- * Idiomas. El aleman es A1.1 certificado y A1.2 en curso: NO es A2 ni B1, y no
- * se declara "uso profesional diario".
+ * Idiomas: el nivel traducido vive en textos.ts (`idiomasNivel`). El aleman es
+ * A1.1 certificado y A1.2 en curso: NO es A2 ni B1, y no se declara "uso
+ * profesional diario". Aqui solo queda la lista, que es lo que se cuenta.
  */
-export const idiomas = [
-  { idioma: "Español", nivel: "Nativo" },
-  { idioma: "Inglés", nivel: "C1" },
-  { idioma: "Alemán", nivel: "A1.1 certificado (Lingoda, 2026) · A1.2 en curso" },
-];
+export const idiomas = ["es", "en", "de"] as const;
 
 export const formacionAcademica: Entrada[] = [
-    {
-      fecha: "2025 — 2028",
-      titulo: "BSc (Hons) Applied Computing",
-      lugar: "University of Wales Trinity Saint David · Carmarthen, Gales, Reino Unido",
-      descripcion: "Programación, desarrollo de software, redes informáticas, bases de datos, ciberseguridad y computación en la nube.",
-    },
-    {
-      fecha: "2021 — 2025",
-      titulo: "BA (Hons) Business Management",
-      lugar: "University of Wales Trinity Saint David · Carmarthen, Gales, Reino Unido",
-      descripcion: "Gestión empresarial, gestión de proyectos, finanzas, contabilidad, logística y gestión de la cadena de suministro.",
-    },
+  { id: "applied-computing", fecha: "2025 — 2028", titulo: "BSc (Hons) Applied Computing" },
+  { id: "business-management", fecha: "2021 — 2025", titulo: "BA (Hons) Business Management" },
 ];
 
 /**
@@ -113,27 +106,32 @@ export const formacionAcademica: Entrada[] = [
 export type Puesto = {
   /** Clave con la que textos.ts guarda este puesto traducido. */
   id: string;
-  fecha: string;
+  /**
+   * Meses `AAAA-MM`; sin `hasta`, el puesto sigue abierto. Eran cadenas en
+   * castellano ("Ago 2026 — Actualidad") y salian asi en /en/ y /de/.
+   */
+  desde: string;
+  hasta?: string;
   enlace?: string;
 };
 
 export const experiencia: Puesto[] = [
-  { id: "corpusproof", fecha: "Ago 2026 — Actualidad", enlace: "https://corpusproof.com" },
-  { id: "epokan", fecha: "Ago 2026 — Actualidad", enlace: "https://epokan.com" },
-  { id: "heierling", fecha: "Oct 2025 — Abr 2026" },
+  { id: "corpusproof", desde: "2026-08", enlace: "https://corpusproof.com" },
+  { id: "epokan", desde: "2026-08", enlace: "https://epokan.com" },
+  { id: "heierling", desde: "2025-10", hasta: "2026-04" },
   // Agrupados el 2026-09-09 por decision de Jose: contratos parciales y sueltos
   // (verificados en la vida laboral de la TGSS) ocupaban mas espacio del que
   // aportaban a un CV tecnico. Los bloques dicen la verdad y no dejan hueco
   // entre 2019 y 2022.
-  { id: "temporadas", fecha: "Ago 2022 — Mar 2025" },
+  { id: "temporadas", desde: "2022-08", hasta: "2025-03" },
   // Separados de nuevo el 2026-09-14 por decision de Jose: son dos empleadores
   // distintos y agrupados perdian el logo de empresa. Las fechas salen de la
   // vida laboral, no del CV antiguo: El Corte Ingles son tres periodos
   // (10/12/2019-05/01/2020, 01/02-31/07/2020, 07/07-26/09/2021, 221 dias) y
   // Zara uno solo (09/12/2021-31/01/2022, 27 dias). El "Feb 2022" que figuraba
   // antes eran los 5 dias de vacaciones no disfrutadas, no trabajo efectivo.
-  { id: "zara", fecha: "Dic 2021 — Ene 2022" },
-  { id: "corte-ingles", fecha: "Dic 2019 — Sep 2021" },
+  { id: "zara", desde: "2021-12", hasta: "2022-01" },
+  { id: "corte-ingles", desde: "2019-12", hasta: "2021-09" },
 ];
 
 /** Sin el curso de ISSEP, retirado por decision de Jose el 2026-08-21. */
@@ -141,36 +139,37 @@ export const certificaciones: Certificacion[] = [
     {
       titulo: "Claude Code in Action",
       emisor: "Anthropic",
-      fecha: "Abr 2026",
+      fecha: "2026-04",
       verificar: "https://verify.skilljar.com/c/8zt98va7poxj",
     },
     {
       titulo: "Claude Code 101",
       emisor: "Anthropic",
-      fecha: "Abr 2026",
+      fecha: "2026-04",
       verificar: "https://verify.skilljar.com/c/cvh2e86yoeci",
     },
     {
       titulo: "Claude 101",
       emisor: "Anthropic",
-      fecha: "Abr 2026",
+      fecha: "2026-04",
       verificar: "https://verify.skilljar.com/c/epntj246xgiv",
     },
     {
       titulo: "Introduction to Claude Cowork",
       emisor: "Anthropic",
-      fecha: "Abr 2026",
+      fecha: "2026-04",
       verificar: "https://verify.skilljar.com/c/ff3f5noxn89i",
     },
     {
       titulo: "Responsible Prompting: Maximize AI in Your Business",
       emisor: "Santander Open Academy",
-      fecha: "Jul 2026",
+      fecha: "2026-07",
       credencial: "OA-2026-0718002895391",
     },
     {
       titulo: "Alemán A1.1",
+      tituloPorIdioma: { es: "Alemán A1.1", en: "German A1.1", de: "Deutsch A1.1" },
       emisor: "Lingoda GmbH",
-      fecha: "Abr 2026",
+      fecha: "2026-04",
     },
 ];

@@ -103,6 +103,12 @@ export type Textos = {
    * habla en otro idioma que el lector no es un CV.
    */
   puestos: Record<string, { titulo: string; lugar: string; logros: string[] }>;
+  /** Lugar y descripcion de cada titulacion, por el `id` de persona.ts. */
+  titulaciones: Record<string, { lugar: string; descripcion: string }>;
+  /** Nombre del idioma y nivel, por el codigo de `idiomas` en persona.ts. */
+  idiomasNivel: Record<string, { idioma: string; nivel: string }>;
+  /** Fin de un puesto que sigue abierto: "Actualidad", "Present", "Heute". */
+  actualidad: string;
   formacion: {
     titulo: string; subtitulo: string; academica: string; laboral: string;
     certificaciones: string; idiomas: string; verificar: string; credencial: string;
@@ -173,7 +179,7 @@ const ES: Textos = {
       titulo: "Agente de Ventas",
       lugar: "Heierling GmbH · Davos, Suiza",
       logros: [
-        "Atención personalizada a clientes internacionales de más de 15 nacionalidades (inglés y alemán)",
+        "Atención personalizada a clientes internacionales de más de 15 nacionalidades (en inglés y con alemán básico)",
         "Gestión de procesos de inventario y reposición mediante sistemas internos",
         "Enfoque data-driven para optimizar recomendaciones de producto y la operativa diaria",
       ],
@@ -202,6 +208,22 @@ const ES: Textos = {
       ],
     },
   },
+  titulaciones: {
+    "applied-computing": {
+      lugar: "University of Wales Trinity Saint David · Carmarthen, Gales, Reino Unido",
+      descripcion: "Programación, desarrollo de software, redes informáticas, bases de datos, ciberseguridad y computación en la nube.",
+    },
+    "business-management": {
+      lugar: "University of Wales Trinity Saint David · Carmarthen, Gales, Reino Unido",
+      descripcion: "Gestión empresarial, gestión de proyectos, finanzas, contabilidad, logística y gestión de la cadena de suministro.",
+    },
+  },
+  idiomasNivel: {
+    es: { idioma: "Español", nivel: "Nativo" },
+    en: { idioma: "Inglés", nivel: "C1" },
+    de: { idioma: "Alemán", nivel: "A1.1 certificado (Lingoda, 2026) · A1.2 en curso" },
+  },
+  actualidad: "Actualidad",
   empresas: {
     titulo: "Empresas",
     subtitulo: "Dos marcas propias, fundadas y dirigidas por mí. Las dos están publicadas.",
@@ -233,7 +255,7 @@ const ES: Textos = {
   skills: {
     titulo: "Habilidades",
     grupos: [
-      { titulo: "Tecnología & IA", elementos: ["Python", "SQL", "AWS Cloud", "Prompt Engineering", "Data Analytics", "Salesforce"] },
+      { titulo: "Tecnología & IA", elementos: ["Python", "SQL", "Prompt Engineering", "Data Analytics", "Salesforce"] },
       { titulo: "Negocio & Gestión", elementos: ["Supply Chain", "Business Strategy", "Project Management", "Logística", "ERP Systems"] },
       { titulo: "Idiomas", elementos: ["Español — Nativo", "Inglés — Profesional", "Alemán — A1.1"] },
       { titulo: "Certificaciones", elementos: ["Salesforce Trailhead", "Claude Code in Action"] },
@@ -345,7 +367,7 @@ const EN: Textos = {
       titulo: "Sales Associate",
       lugar: "Heierling GmbH · Davos, Switzerland",
       logros: [
-        "Personal service to international customers from more than 15 nationalities, in English and German",
+        "Personal service to international customers from more than 15 nationalities, in English and basic German",
         "Inventory and replenishment processes through internal systems",
         "Data-driven approach to product recommendations and daily operations",
       ],
@@ -374,6 +396,22 @@ const EN: Textos = {
       ],
     },
   },
+  titulaciones: {
+    "applied-computing": {
+      lugar: "University of Wales Trinity Saint David · Carmarthen, Wales, United Kingdom",
+      descripcion: "Programming, software development, computer networks, databases, cybersecurity and cloud computing.",
+    },
+    "business-management": {
+      lugar: "University of Wales Trinity Saint David · Carmarthen, Wales, United Kingdom",
+      descripcion: "Business management, project management, finance, accounting, logistics and supply chain management.",
+    },
+  },
+  idiomasNivel: {
+    es: { idioma: "Spanish", nivel: "Native" },
+    en: { idioma: "English", nivel: "C1" },
+    de: { idioma: "German", nivel: "A1.1 certified (Lingoda, 2026) · A1.2 in progress" },
+  },
+  actualidad: "Present",
   empresas: {
     titulo: "Ventures",
     subtitulo: "Two brands of my own, founded and run by me. Both are live.",
@@ -405,9 +443,9 @@ const EN: Textos = {
   skills: {
     titulo: "Skills",
     grupos: [
-      { titulo: "Technology & AI", elementos: ["Python", "SQL", "AWS Cloud", "Prompt Engineering", "Data Analytics", "Salesforce"] },
-      { titulo: "Business & Management", elementos: ["Supply Chain", "Business Strategy", "Project Management", "Logística", "ERP Systems"] },
-      { titulo: "Languages", elementos: ["Español — Nativo", "Inglés — Profesional", "Alemán — A1.1"] },
+      { titulo: "Technology & AI", elementos: ["Python", "SQL", "Prompt Engineering", "Data Analytics", "Salesforce"] },
+      { titulo: "Business & Management", elementos: ["Supply Chain", "Business Strategy", "Project Management", "Logistics", "ERP Systems"] },
+      { titulo: "Languages", elementos: ["Spanish — Native", "English — Professional", "German — A1.1"] },
       { titulo: "Certifications", elementos: ["Salesforce Trailhead", "Claude Code in Action"] },
     ],
   },
@@ -517,7 +555,7 @@ const DE: Textos = {
       titulo: "Vertriebsmitarbeiter",
       lugar: "Heierling GmbH · Davos, Schweiz",
       logros: [
-        "Persönliche Betreuung internationaler Kunden aus über 15 Nationen, auf Englisch und Deutsch",
+        "Persönliche Betreuung internationaler Kunden aus über 15 Nationen, auf Englisch und mit Grundkenntnissen in Deutsch",
         "Bestands- und Nachschubprozesse über interne Systeme",
         "Datengetriebener Ansatz für Produktempfehlungen und den Tagesbetrieb",
       ],
@@ -546,6 +584,22 @@ const DE: Textos = {
       ],
     },
   },
+  titulaciones: {
+    "applied-computing": {
+      lugar: "University of Wales Trinity Saint David · Carmarthen, Wales, Vereinigtes Königreich",
+      descripcion: "Programmierung, Softwareentwicklung, Computernetzwerke, Datenbanken, Cybersicherheit und Cloud Computing.",
+    },
+    "business-management": {
+      lugar: "University of Wales Trinity Saint David · Carmarthen, Wales, Vereinigtes Königreich",
+      descripcion: "Unternehmensführung, Projektmanagement, Finanzen, Rechnungswesen, Logistik und Supply-Chain-Management.",
+    },
+  },
+  idiomasNivel: {
+    es: { idioma: "Spanisch", nivel: "Muttersprache" },
+    en: { idioma: "Englisch", nivel: "C1" },
+    de: { idioma: "Deutsch", nivel: "A1.1 zertifiziert (Lingoda, 2026) · A1.2 laufend" },
+  },
+  actualidad: "Heute",
   empresas: {
     titulo: "Unternehmen",
     subtitulo: "Zwei eigene Marken, von mir gegründet und geführt. Beide sind online.",
@@ -577,9 +631,9 @@ const DE: Textos = {
   skills: {
     titulo: "Fähigkeiten",
     grupos: [
-      { titulo: "Technologie & KI", elementos: ["Python", "SQL", "AWS Cloud", "Prompt Engineering", "Data Analytics", "Salesforce"] },
-      { titulo: "Wirtschaft & Management", elementos: ["Supply Chain", "Business Strategy", "Project Management", "Logística", "ERP Systems"] },
-      { titulo: "Sprachen", elementos: ["Español — Nativo", "Inglés — Profesional", "Alemán — A1.1"] },
+      { titulo: "Technologie & KI", elementos: ["Python", "SQL", "Prompt Engineering", "Data Analytics", "Salesforce"] },
+      { titulo: "Wirtschaft & Management", elementos: ["Supply Chain", "Business Strategy", "Projektmanagement", "Logistik", "ERP-Systeme"] },
+      { titulo: "Sprachen", elementos: ["Spanisch — Muttersprache", "Englisch — Verhandlungssicher", "Deutsch — A1.1"] },
       { titulo: "Zertifizierungen", elementos: ["Salesforce Trailhead", "Claude Code in Action"] },
     ],
   },
@@ -639,6 +693,29 @@ const TEXTOS: Record<Idioma, Textos> = { es: ES, en: EN, de: DE };
 
 export function textos(lang: Idioma): Textos {
   return TEXTOS[lang];
+}
+
+/**
+ * Abreviaturas de mes escritas a mano y no con `toLocaleDateString`: el ICU de
+ * Node da "Sept" en en-GB y "Okt." con punto en de-DE, y la salida cambiaria
+ * segun la version de Node que haga el build.
+ */
+const MESES: Record<Idioma, string[]> = {
+  es: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+  en: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+  de: ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"],
+};
+
+/** `AAAA-MM` -> "Abr 2026" / "Apr 2026". */
+export function mesLocalizado(aaaamm: string, lang: Idioma): string {
+  const [anio, mes] = aaaamm.split("-");
+  return `${MESES[lang][Number(mes) - 1]} ${anio}`;
+}
+
+/** Rango de un puesto; sin `hasta`, sigue abierto. */
+export function rangoMeses(desde: string, hasta: string | undefined, lang: Idioma): string {
+  const fin = hasta ? mesLocalizado(hasta, lang) : TEXTOS[lang].actualidad;
+  return `${mesLocalizado(desde, lang)} — ${fin}`;
 }
 
 /** Fecha localizada. Los MDX guardan ISO; el idioma se aplica al pintar. */

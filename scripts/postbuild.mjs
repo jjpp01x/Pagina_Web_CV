@@ -256,5 +256,36 @@ for (const [n, ruta] of titulones.sort((a, b) => b[0] - a[0]))
 if (!largas.length && !titulones.length)
   console.log(`postbuild: ${paginas.length} paginas dentro de ${LIMITE_DESC}/${LIMITE_TITULO}`);
 
+// --- 6. Restos de castellano en el CV ingles y aleman ----------------------
+//
+// El 2026-10-07 una revision de reclutador encontro "Ago 2026 — Actualidad",
+// "Gales, Reino Unido" o "Español — Nativo" en /en/: datos en castellano que
+// persona.ts servia igual a los tres idiomas. En Suiza eso se lee como
+// descuido. Solo se miran las paginas de CV; los articulos pueden citar
+// castellano con razon. "El Corte Inglés" es nombre propio y se deja.
+// De paso, AWS: se descarto el 2026-09-16.
+const PAGINAS_CV = {
+  en: ["en.html", "en/education.html", "en/experience.html", "en/about.html", "en/contact.html"],
+  de: ["de.html", "de/ausbildung.html", "de/berufserfahrung.html", "de/ueber-mich.html", "de/kontakt.html"],
+};
+const RESTOS = /Actualidad|Nativo|Gales|Reino Unido|Logística|(?<!Corte )Inglés|Alemán|\b(Ene|Abr|Ago|Dic) \d{4}\b|\bAWS\b/;
+let restos = 0;
+for (const ruta of Object.values(PAGINAS_CV).flat()) {
+  const fichero = join(OUT, ruta);
+  if (!existsSync(fichero)) {
+    fallar(`falta out/${ruta} para comprobar restos de castellano`);
+    continue;
+  }
+  const visible = readFileSync(fichero, "utf-8")
+    .replace(/<script[\s\S]*?<\/script>/g, " ")
+    .replace(/<[^>]+>/g, " ");
+  const m = RESTOS.exec(visible);
+  if (m) {
+    restos++;
+    fallar(`"${m[0]}" en out/${ruta}: ${visible.slice(Math.max(0, m.index - 40), m.index + 40).trim()}`);
+  }
+}
+if (!restos) console.log(`postbuild: sin restos de castellano en ${Object.values(PAGINAS_CV).flat().length} paginas de CV`);
+
 if (process.exitCode) console.error("postbuild: terminado CON ERRORES");
 else console.log("postbuild: ok");

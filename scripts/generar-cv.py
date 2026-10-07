@@ -37,6 +37,8 @@ from reportlab.platypus import (
 RAIZ = Path(__file__).resolve().parent.parent
 SALIDA = RAIZ / "public" / "docs"
 PERSONA_TS = RAIZ / "src" / "content" / "persona.ts"
+# El nivel de idioma traducido vive aqui desde el 2026-10-07, no en persona.ts.
+TEXTOS_TS = RAIZ / "src" / "content" / "textos.ts"
 
 # --- Datos comunes a los tres idiomas -------------------------------------
 
@@ -58,7 +60,7 @@ REPO_AIACT = "github.com/jjpp01x/aiact-auditor"
 
 CIUDAD = {"ES": "Zúrich, Suiza", "EN": "Zurich, Switzerland", "DE": "Zürich, Schweiz"}
 
-# Certificaciones que SI se poseen. AWS no esta: esta en curso y una
+# Certificaciones que SI se poseen. AWS no esta: se descarto el 2026-09-16 y una
 # credencial no obtenida se comprueba en el registro publico de AWS.
 CERTIFICACIONES = {
     "ES": "Claude Code in Action · Claude Code 101 · Claude 101 · Introduction to Claude "
@@ -117,7 +119,7 @@ CV = {
             ("Fundador — Epokan (proyecto propio)", "Desde ago. 2026 · epokan.com",
              ["Formación en IA para empresas: diseño de la oferta, la web y el material comercial"]),
             ("Agente de Ventas — Heierling GmbH", "Davos, Suiza · Oct. 2025 – Abr. 2026",
-             ["Atención personalizada a clientes internacionales de más de 15 nacionalidades (inglés y alemán)",
+             ["Atención personalizada a clientes internacionales de más de 15 nacionalidades (en inglés y con alemán básico)",
               "Gestión de procesos de inventario y reposición mediante sistemas internos",
               "Enfoque data-driven para optimizar recomendaciones de producto y la operativa diaria"]),
             ("Temporadas de nieve y hostelería — Freexday · Hoserval Astún · Hotel Villa Anayet", "Pirineo aragonés, España · Ago. 2022 – Mar. 2025",
@@ -130,7 +132,7 @@ CV = {
               "Operación de sistemas TPV e inventario en entornos de alto volumen"]),
         ],
         "competencias": [
-            ("Tecnología", "Python · SQL (PostgreSQL, SQLite) · C · HTML/CSS/JavaScript · Docker · Git/GitHub · AWS Cloud · Data Analytics"),
+            ("Tecnología", "Python · SQL (PostgreSQL, SQLite) · C · HTML/CSS/JavaScript · Docker · Git/GitHub · Data Analytics"),
             ("Negocio", "Cadena de suministro y logística · Gestión de proyectos · Sistemas ERP · Estrategia de negocio"),
             ("Idiomas", IDIOMAS["ES"]),
         ],
@@ -173,7 +175,7 @@ CV = {
             ("Founder — Epokan (own venture)", "Since Aug 2026 · epokan.com",
              ["AI training for companies: offering, website and commercial material"]),
             ("Sales Agent — Heierling GmbH", "Davos, Switzerland · Oct 2025 – Apr 2026",
-             ["Personalised consultations for international clients from 15+ nationalities (English & German)",
+             ["Personalised consultations for international clients from 15+ nationalities (English & basic German)",
               "Managed inventory and stock replenishment through internal systems",
               "Data-driven approach to optimise product recommendations and daily operations"]),
             ("Ski Seasons and Hospitality — Freexday · Hoserval Astún · Hotel Villa Anayet", "Aragonese Pyrenees, Spain · Aug 2022 – Mar 2025",
@@ -186,7 +188,7 @@ CV = {
               "POS and inventory systems in high-volume environments"]),
         ],
         "competencias": [
-            ("Tech", "Python · SQL (PostgreSQL, SQLite) · C · HTML/CSS/JavaScript · Docker · Git/GitHub · AWS Cloud · Data Analytics"),
+            ("Tech", "Python · SQL (PostgreSQL, SQLite) · C · HTML/CSS/JavaScript · Docker · Git/GitHub · Data Analytics"),
             ("Business", "Supply chain & logistics · Project management · ERP systems · Business strategy"),
             ("Languages", IDIOMAS["EN"]),
         ],
@@ -231,7 +233,7 @@ CV = {
             ("Gründer — Epokan (eigenes Projekt)", "Seit Aug. 2026 · epokan.com",
              ["KI-Schulungen für Unternehmen: Angebot, Website und Vertriebsmaterial"]),
             ("Verkaufsberater — Heierling GmbH", "Davos, Schweiz · Okt. 2025 – Apr. 2026",
-             ["Persönliche Beratung internationaler Kunden aus über 15 Nationalitäten (Englisch & Deutsch)",
+             ["Persönliche Beratung internationaler Kunden aus über 15 Nationalitäten (Englisch & Deutsch-Grundkenntnisse)",
               "Verwaltung von Inventarprozessen und Nachbestellung über interne Systeme",
               "Datengestützter Ansatz zur Optimierung von Produktempfehlungen und Tagesabläufen"]),
             ("Wintersaisons und Gastgewerbe — Freexday · Hoserval Astún · Hotel Villa Anayet", "Aragonesische Pyrenäen, Spanien · Aug. 2022 – März 2025",
@@ -244,7 +246,7 @@ CV = {
               "Bedienung von Kassen- und Inventarsystemen in Umgebungen mit hohem Volumen"]),
         ],
         "competencias": [
-            ("Technik", "Python · SQL (PostgreSQL, SQLite) · C · HTML/CSS/JavaScript · Docker · Git/GitHub · AWS Cloud · Data Analytics"),
+            ("Technik", "Python · SQL (PostgreSQL, SQLite) · C · HTML/CSS/JavaScript · Docker · Git/GitHub · Data Analytics"),
             ("Business", "Supply Chain & Logistik · Projektmanagement · ERP-Systeme · Geschäftsstrategie"),
             ("Sprachen", IDIOMAS["DE"]),
         ],
@@ -259,6 +261,10 @@ PROHIBIDO = [
     (r"AWS[- ]?(Certified|zertifiziert)", "declara una certificacion AWS que esta en curso"),
     (r"Certificado AWS", "declara una certificacion AWS que esta en curso"),
     (r"(Residente en|Based in|Wohnhaft in)\s+Davos", "declara Davos como residencia actual"),
+    # AWS se descarto el 2026-09-16: ni certificacion ni habilidad.
+    (r"\bAWS\b", "menciona AWS, descartado el 2026-09-16"),
+    # Con un A1.1 no se atiende "en ingles y aleman" a secas.
+    (r"(ingl[eé]s y alem[aá]n|English (&|and) German|Englisch (&|und) Deutsch)\)", "atencion en aleman sin el matiz de nivel basico"),
 ]
 
 
@@ -269,8 +275,8 @@ def comprobar_coherencia() -> None:
 
     if CONTACTO["email"] not in ts:
         fallos.append(f"el correo {CONTACTO['email']} no aparece en persona.ts")
-    if "A1.1 certificado" not in ts:
-        fallos.append("persona.ts ya no dice 'A1.1 certificado' para el aleman")
+    if "A1.1 certificado" not in TEXTOS_TS.read_text(encoding="utf-8"):
+        fallos.append("textos.ts ya no dice 'A1.1 certificado' para el aleman")
 
     for lang, datos in CV.items():
         texto = " ".join([
@@ -278,6 +284,7 @@ def comprobar_coherencia() -> None:
             CIUDAD[lang],
             " ".join(t + s + d for t, s, d in datos["proyectos"]),
             " ".join(t + s + " ".join(l) for t, s, l in datos["experiencia"]),
+            " ".join(t + " " + c for t, c in datos["competencias"]),
         ])
         for patron, motivo in PROHIBIDO:
             if re.search(patron, texto, re.IGNORECASE):
