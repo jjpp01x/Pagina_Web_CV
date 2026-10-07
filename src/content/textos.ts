@@ -71,6 +71,13 @@ export type Textos = {
     metaDescripcion: string;
     parrafos: string[];
     disponible: string;
+    /**
+     * Permiso y disponibilidad: lo primero que filtra un reclutador en Suiza.
+     * Jose NO tiene aun permiso de residencia (2026-10-07); como ciudadano UE
+     * se le concede con el contrato, sin que el empleador patrocine nada. Por
+     * eso se dice "libre circulacion" y no "permiso B".
+     */
+    disponibilidad: string;
   };
   skills: { titulo: string; grupos: GrupoHabilidades[] };
   proyectos: {
@@ -250,7 +257,8 @@ const ES: Textos = {
       "Experiencia profesional internacional en Suiza, España y entornos multilingües (español nativo, inglés profesional, alemán A1.1 — A1.2 en curso).",
       "Me interesa especialmente el lado de la evaluación: entender qué tecnología está lista para usarse en producción y cuál conlleva riesgo real, antes de que una empresa apueste por ella.",
     ],
-    disponible: "Abierto a roles Jr. en Análisis Tecnológico, Investigación en IA & Tech",
+    disponible: "Abierto a puestos junior: analista de negocio y datos, gobernanza y riesgo de IA, analista tecnológico y de investigación, programas graduate",
+    disponibilidad: "Ciudadano UE (libre circulación Suiza–UE) · En Zúrich · Jornada completa, incorporación inmediata",
   },
   skills: {
     titulo: "Habilidades",
@@ -438,7 +446,8 @@ const EN: Textos = {
       "International professional experience in Switzerland and Spain, working in multilingual environments (native Spanish, professional English, German A1.1 — A1.2 in progress).",
       "I'm particularly interested in the evaluation side: understanding which technology is ready for real use and which carries real risk, before a business bets on it.",
     ],
-    disponible: "Open to Jr. roles in Technology Analysis, AI Research & Tech",
+    disponible: "Open to junior roles: Business & Data Analyst, AI Governance & Risk, Technology & Research Analyst, graduate programmes",
+    disponibilidad: "EU citizen (Swiss–EU free movement) · Zurich-based · Available full-time, immediately",
   },
   skills: {
     titulo: "Skills",
@@ -626,7 +635,8 @@ const DE: Textos = {
       "Internationale Berufserfahrung in der Schweiz und Spanien in mehrsprachigen Umgebungen (Spanisch Muttersprache, Englisch professionell, Deutsch A1.1 — A1.2 laufend).",
       "Mich interessiert besonders die Bewertungsseite: zu verstehen, welche Technologie produktionsreif ist und welche echtes Risiko birgt, bevor ein Unternehmen darauf setzt.",
     ],
-    disponible: "Offen für Einsteigerstellen in Technologieanalyse, KI-Research & Tech",
+    disponible: "Offen für Einstiegsstellen: Business- und Datenanalyse, KI-Governance & Risiko, Technologie- und Research-Analyse, Traineeprogramme",
+    disponibilidad: "EU-Bürger (Personenfreizügigkeit Schweiz–EU) · Wohnhaft in Zürich · Vollzeit, ab sofort verfügbar",
   },
   skills: {
     titulo: "Fähigkeiten",

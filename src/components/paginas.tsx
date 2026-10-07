@@ -128,6 +128,10 @@ export function Portada({ lang }: { lang: Idioma }) {
           <Text variant="body-default-s" onBackground="neutral-weak">
             {t.hero.descripcion}
           </Text>
+          {/* Permiso y disponibilidad arriba del todo: es lo primero que se filtra. */}
+          <Text variant="label-strong-s" onBackground="brand-medium">
+            {t.sobre.disponibilidad}
+          </Text>
           <Row gap="8" paddingTop="12" wrap vertical="center">
             <Button href={ruta.contacto(lang)} variant="primary" size="m" className={estilos.cta}>
               {t.hero.btn1}
@@ -529,11 +533,12 @@ export function Contacto({ lang }: { lang: Idioma }) {
               <FilaDato etiqueta="GitHub" valor="jjpp01x" enlace={persona.github} />
               <FilaDato etiqueta={t.contacto.labelUbicacion} valor={t.contacto.ubicacion} />
             </Column>
-            <Row paddingTop="8">
-              <Tag size="s" variant="brand">
-                {t.sobre.disponible}
-              </Tag>
-            </Row>
+            <Text variant="label-strong-s" onBackground="brand-medium">
+              {t.sobre.disponibilidad}
+            </Text>
+            <Text variant="body-default-s" onBackground="neutral-medium" paddingTop="8">
+              {t.sobre.disponible}
+            </Text>
           </Column>
 
           <Column gap="16">
@@ -588,11 +593,12 @@ export function SobreMi({ lang }: { lang: Idioma }) {
                 {p}
               </Text>
             ))}
-            <Row paddingTop="4">
-              <Tag size="s" variant="brand">
-                {t.sobre.disponible}
-              </Tag>
-            </Row>
+            <Text variant="label-strong-s" onBackground="brand-medium">
+              {t.sobre.disponibilidad}
+            </Text>
+            <Text variant="body-default-s" onBackground="neutral-medium" paddingTop="4">
+              {t.sobre.disponible}
+            </Text>
           </Column>
         </Row>
 

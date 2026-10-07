@@ -60,6 +60,14 @@ REPO_AIACT = "github.com/jjpp01x/aiact-auditor"
 
 CIUDAD = {"ES": "Zúrich, Suiza", "EN": "Zurich, Switzerland", "DE": "Zürich, Schweiz"}
 
+# Igual que `sobre.disponibilidad` en textos.ts. Sin permiso de residencia aun
+# (2026-10-07): se declara la libre circulacion, no un permiso que no tiene.
+DISPONIBILIDAD = {
+    "ES": "Ciudadano UE (libre circulación Suiza–UE) · Jornada completa, incorporación inmediata",
+    "EN": "EU citizen (Swiss–EU free movement) · Available full-time, immediately",
+    "DE": "EU-Bürger (Personenfreizügigkeit Schweiz–EU) · Vollzeit, ab sofort verfügbar",
+}
+
 # Certificaciones que SI se poseen. AWS no esta: se descarto el 2026-09-16 y una
 # credencial no obtenida se comprueba en el registro publico de AWS.
 CERTIFICACIONES = {
@@ -331,6 +339,7 @@ def construir(lang):
         CONTACTO["email"], CONTACTO["telefono"], CIUDAD[lang],
         CONTACTO["web"], CONTACTO["linkedin"], CONTACTO["github"],
     ]), E["contacto"]))
+    f.append(Paragraph(DISPONIBILIDAD[lang], E["contacto"]))
 
     f += seccion(s[0])
     f.append(Paragraph(d["perfil"], E["cuerpo"]))
