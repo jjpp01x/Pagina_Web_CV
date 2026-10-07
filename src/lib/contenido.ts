@@ -79,9 +79,22 @@ function leerDirectorio(seccion: string, lang: Idioma) {
     });
 }
 
+/**
+ * Hoy en Zurich, `AAAA-MM-DD`. Un articulo con fecha posterior esta programado
+ * para LinkedIn y no se publica: el 2026-10-07 la portada ensenaba tres
+ * articulos fechados el 19, 23 y 28 de octubre, y a un reclutador eso le parece
+ * un error o algo inventado. El workflow de despliegue reconstruye a diario
+ * para que cada uno salga solo el dia que le toca.
+ */
+function hoy(): string {
+  return new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Zurich" }).format(new Date());
+}
+
 export function getArticulos(lang: Idioma): Articulo[] {
+  const limite = hoy();
   return leerDirectorio("articulos", lang)
     .map(({ slug, data, cuerpo }) => ({ slug, lang, cuerpo, ...(data as object) }) as Articulo)
+    .filter((a) => a.date <= limite)
     .sort((a, b) => b.date.localeCompare(a.date));
 }
 

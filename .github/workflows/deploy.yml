@@ -8,6 +8,11 @@ name: Desplegar en GitHub Pages
 on:
   push:
     branches: [main]
+  # Los articulos con fecha futura no entran en el build (src/lib/contenido.ts).
+  # Sin esta reconstruccion diaria, uno programado no saldria hasta el siguiente
+  # push. 03:00 UTC son las 04:00 o 05:00 en Zurich, antes de los posts de LinkedIn.
+  schedule:
+    - cron: "0 3 * * *"
   workflow_dispatch:
 
 permissions:
