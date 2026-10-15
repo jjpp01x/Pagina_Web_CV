@@ -162,21 +162,15 @@ const ES: Textos = {
   },
   rolProfesional: "Analista Deep Tech",
   descripcionEntidad:
-    "Analista deep tech afincado en Zúrich. Trabaja en gobernanza de inteligencia artificial, evaluación de sistemas de IA y preparación de datos para que una IA pueda usarlos. Fundador de Epokan, formación en IA y cumplimiento del artículo 4 del Reglamento (UE) 2024/1689 para despachos y asesorías, y de CorpusProof, análisis y estructuración de corpus documentales.",
+    "Analista deep tech afincado en Zúrich. Fundador de CorpusProof: preparación de documentos para IA y, con la línea Epokan, formación en IA y cumplimiento del artículo 4 del Reglamento (UE) 2024/1689 para despachos y asesorías.",
   puestos: {
     "corpusproof": {
       titulo: "Fundador",
-      lugar: "CorpusProof · proyecto propio · remoto",
+      lugar: "CorpusProof (incluye la formación Epokan) · proyecto propio · remoto",
       logros: [
         "Herramienta que mide si un archivo documental está listo para que una IA lo use, con cinco métricas y ejecución en local",
         "160 pruebas automáticas, incluida una que falla si el programa intenta abrir una conexión de red",
         "Diseño del producto, de la metodología y del sitio",
-      ],
-    },
-    "epokan": {
-      titulo: "Fundador",
-      lugar: "Epokan · proyecto propio · remoto",
-      logros: [
         "Programa de alfabetización en IA para despachos, asesorías y gestorías, construido sobre el artículo 4 del Reglamento (UE) 2024/1689",
         "Itinerarios de formación por rol, evaluación proporcional al riesgo y expediente de cumplimiento",
         "Investigación sobre las resoluciones judiciales españolas que sancionan el uso no supervisado de IA generativa",
@@ -351,21 +345,15 @@ const EN: Textos = {
   },
   rolProfesional: "Deep Tech Analyst",
   descripcionEntidad:
-    "Deep tech analyst based in Zurich. Works on artificial intelligence governance, evaluation of AI systems, and preparing data so that an AI can actually use it. Founder of Epokan, AI literacy and Article 4 compliance under Regulation (EU) 2024/1689 for law firms and accountancy practices, and of CorpusProof, analysis and structuring of document corpora.",
+    "Deep tech analyst based in Zurich. Founder of CorpusProof: preparing documents so an AI can use them and, through its Epokan line, AI literacy and Article 4 compliance under Regulation (EU) 2024/1689 for law firms and accountancy practices.",
   puestos: {
     "corpusproof": {
       titulo: "Founder",
-      lugar: "CorpusProof · own project · remote",
+      lugar: "CorpusProof (including Epokan training) · own project · remote",
       logros: [
         "Built a tool that measures whether a document archive is ready for an AI to use it: five metrics, running entirely locally",
         "160 automated tests, including one that fails if the program tries to open a network connection",
         "Product design, methodology and site",
-      ],
-    },
-    "epokan": {
-      titulo: "Founder",
-      lugar: "Epokan · own project · remote",
-      logros: [
         "Designed an AI literacy programme for law firms and accountancy practices, built around Article 4 of Regulation (EU) 2024/1689",
         "Role-based learning paths, risk-proportional assessment and a compliance file",
         "Research into the Spanish court rulings that sanction unsupervised use of generative AI",
@@ -540,21 +528,15 @@ const DE: Textos = {
   },
   rolProfesional: "Deep-Tech-Analyst",
   descripcionEntidad:
-    "Deep-Tech-Analyst mit Sitz in Zürich. Arbeitet an der Governance künstlicher Intelligenz, der Bewertung von KI-Systemen und der Aufbereitung von Daten, damit eine KI sie nutzen kann. Gründer von Epokan, KI-Kompetenz und Nachweis nach Artikel 4 der Verordnung (EU) 2024/1689 für Kanzleien und Steuerberatungen, und von CorpusProof, Analyse und Strukturierung von Dokumentenkorpora.",
+    "Deep-Tech-Analyst mit Sitz in Zürich. Gründer von CorpusProof: Aufbereitung von Dokumenten für KI und, mit der Linie Epokan, KI-Schulung und Umsetzung von Artikel 4 der Verordnung (EU) 2024/1689 für Kanzleien und Steuerberatungen.",
   puestos: {
     "corpusproof": {
       titulo: "Gründer",
-      lugar: "CorpusProof · eigenes Projekt · remote",
+      lugar: "CorpusProof (inklusive Epokan-Schulung) · eigenes Projekt · remote",
       logros: [
         "Werkzeug, das misst, ob ein Dokumentenarchiv für eine KI nutzbar ist: fünf Kennzahlen, vollständig lokal ausgeführt",
         "160 automatisierte Tests, darunter einer, der fehlschlägt, sobald das Programm eine Netzwerkverbindung öffnet",
         "Produktdesign, Methodik und Website",
-      ],
-    },
-    "epokan": {
-      titulo: "Gründer",
-      lugar: "Epokan · eigenes Projekt · remote",
-      logros: [
         "KI-Kompetenzprogramm für Kanzleien und Steuerberatungen, aufgebaut auf Artikel 4 der Verordnung (EU) 2024/1689",
         "Rollenbasierte Lernpfade, risikoproportionale Bewertung und eine Nachweisakte",
         "Recherche zu den spanischen Gerichtsentscheidungen, die den unbeaufsichtigten Einsatz generativer KI sanktionieren",

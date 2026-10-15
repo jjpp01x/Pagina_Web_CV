@@ -117,7 +117,6 @@ export type Puesto = {
 
 export const experiencia: Puesto[] = [
   { id: "corpusproof", desde: "2026-08", enlace: "https://corpusproof.com" },
-  { id: "epokan", desde: "2026-08", enlace: "https://epokan.com" },
   { id: "heierling", desde: "2025-10", hasta: "2026-04" },
   // Agrupados el 2026-09-09 por decision de Jose: contratos parciales y sueltos
   // (verificados en la vida laboral de la TGSS) ocupaban mas espacio del que
