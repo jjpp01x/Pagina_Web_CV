@@ -45,7 +45,7 @@ TEXTOS_TS = RAIZ / "src" / "content" / "textos.ts"
 CONTACTO = {
     "nombre": "José Palacios Beortegui",
     "email": "palaciosbeortegui@gmail.com",
-    "telefono": "+41 762 276 752",
+    "telefono": "+41 79 820 31 35",
     "web": "josepalacios.site",
     "linkedin": "linkedin.com/in/jose-palacios-beortegui",
     "github": "github.com/jjpp01x",
@@ -90,13 +90,13 @@ IDIOMAS = {
 
 CV = {
     "ES": {
-        "titular": "Estudiante de Ingeniería Informática — Jr. en AI, Data & Cloud",
+        "titular": "Estudiante de Applied Computing — Junior en AI Governance & Data",
         "secciones": ["PERFIL", "PROYECTOS TÉCNICOS", "FORMACIÓN Y CERTIFICACIONES",
                       "EXPERIENCIA PROFESIONAL", "COMPETENCIAS E IDIOMAS"],
-        "perfil": "Graduado en Business Management (2025), actualmente cursando Ingeniería "
-                  "Informática. Combino experiencia práctica en cadena de suministro e "
+        "perfil": "Graduado en Business Management (2025), actualmente cursando el BSc "
+                  "en Applied Computing. Combino experiencia práctica en cadena de suministro e "
                   "inventarios con un portfolio técnico creciente en bases de datos, "
-                  "desarrollo de software y cloud. Busco oportunidades junior en AI, Data & Tech.",
+                  "desarrollo de software y gobernanza de IA. Busco oportunidades junior en AI, Data & Tech.",
         "proyectos": [
             ("AI Act Compliance Auditor", "Python · AST · YAML · pytest · CI · 2026",
              "Análisis estático de repositorios frente al Reglamento (UE) 2024/1689 (versión "
@@ -105,7 +105,8 @@ CV = {
              "declara las precondiciones que el análisis no puede verificar. 122 tests y "
              f"verificación por mutación en CI sobre Linux, macOS y Windows. {REPO_AIACT}"),
             ("Sistema gestor de inventario — Heierling GmbH", "PostgreSQL 16 · Docker · Python · 2026",
-             "Diseño completo de base de datos para un fabricante suizo de botas de esquí: modelo E/R, "
+             "Trabajo del módulo universitario Information Engineering sobre el caso de una tienda suiza de "
+             "botas de esquí a medida (no fue un encargo de la empresa): modelo E/R, "
              "esquema relacional con funciones, trigger, vista e índices; permisos por rol y auditoría. "
              f"Desplegado con Docker Compose (PostgreSQL + Python 3.11/psycopg2). {REPO_HEIERLING}"),
             ("Sistema de ticketing de esquí — doble implementación", "C17 · Python · SQLite · 2025–2026",
@@ -118,7 +119,7 @@ CV = {
              f"josepalacios.site · {REPO_WEB}"),
         ],
         "formacion": [
-            ("BSc (Hons) Applied Computing (Ingeniería Informática)",
+            ("BSc (Hons) Applied Computing",
              "CESTE / University of Wales Trinity Saint David · 2025 – 2028 (previsto) · Level 4 completado"),
             ("BA (Hons) Business Management",
              "CESTE / University of Wales Trinity Saint David · 2021 – 2025"),
@@ -135,7 +136,7 @@ CV = {
               "Atención al cliente en hotel y restaurante de montaña durante la temporada alta"]),
             ("Reposición y atención al cliente — Zara (Inditex)", "Zaragoza, España · Dic. 2021 – Ene. 2022",
              ["Recepción y procesamiento de mercancía, control de stock y reposición en temporada alta"]),
-            ("Retail y logística — El Corte Inglés", "Zaragoza, España · Dic. 2019 – Sep. 2021",
+            ("Retail y logística — El Corte Inglés", "Zaragoza, España · Dic. 2019 – Sep. 2021 (contratos de temporada)",
              ["Atención al cliente y venta en múltiples categorías",
               "Operación de sistemas TPV e inventario en entornos de alto volumen"]),
         ],
@@ -147,13 +148,13 @@ CV = {
         "label_cert": "Certificaciones",
     },
     "EN": {
-        "titular": "Computer Engineering Student — Junior AI, Data & Cloud",
+        "titular": "Applied Computing Student — Junior AI Governance & Data",
         "secciones": ["PROFILE", "TECHNICAL PROJECTS", "EDUCATION & CERTIFICATIONS",
                       "PROFESSIONAL EXPERIENCE", "SKILLS & LANGUAGES"],
-        "perfil": "Business Management graduate (2025) currently completing a Computer "
-                  "Engineering degree, combining hands-on experience in supply chain and "
+        "perfil": "Business Management graduate (2025) currently completing a BSc in "
+                  "Applied Computing, combining hands-on experience in supply chain and "
                   "inventory operations with a growing technical portfolio in databases, "
-                  "software development and cloud. Seeking junior opportunities in AI, Data & Tech.",
+                  "software development and AI governance. Seeking junior opportunities in AI, Data & Tech.",
         "proyectos": [
             ("AI Act Compliance Auditor", "Python · AST · YAML · pytest · CI · 2026",
              "Static analysis of repositories against Regulation (EU) 2024/1689 (consolidated text) "
@@ -162,7 +163,8 @@ CV = {
              "states the preconditions the analysis cannot verify. 122 tests plus mutation "
              f"verification in CI across Linux, macOS and Windows. {REPO_AIACT}"),
             ("Inventory Management System — Heierling GmbH", "PostgreSQL 16 · Docker · Python · 2026",
-             "Full database design for a Swiss ski-boot manufacturer: E/R model, relational schema with "
+             "University coursework (Information Engineering module) based on a Swiss custom ski-boot shop, "
+             "not a commissioned project: E/R model, relational schema with "
              "functions, trigger, view and indexes; role-based permissions and operation auditing. "
              f"Deployed with Docker Compose (PostgreSQL + Python 3.11/psycopg2). {REPO_HEIERLING}"),
             ("Ski Ticketing System — dual implementation", "C17 · Python · SQLite · 2025–2026",
@@ -174,7 +176,7 @@ CV = {
              f"Lighthouse across performance, accessibility, best practices and SEO. josepalacios.site · {REPO_WEB}"),
         ],
         "formacion": [
-            ("BSc (Hons) Applied Computing (Computer Engineering)",
+            ("BSc (Hons) Applied Computing",
              "CESTE / University of Wales Trinity Saint David · 2025 – 2028 (expected) · Level 4 completed"),
             ("BA (Hons) Business Management",
              "CESTE / University of Wales Trinity Saint David · 2021 – 2025"),
@@ -191,7 +193,7 @@ CV = {
               "Customer service in a mountain hotel and restaurant during peak season"]),
             ("Replenishment and Customer Service — Zara (Inditex)", "Zaragoza, Spain · Dec 2021 – Jan 2022",
              ["Goods receiving and processing, stock control and replenishment during peak season"]),
-            ("Retail and Logistics — El Corte Inglés", "Zaragoza, Spain · Dec 2019 – Sep 2021",
+            ("Retail and Logistics — El Corte Inglés", "Zaragoza, Spain · Dec 2019 – Sep 2021 (seasonal contracts)",
              ["Customer service and sales across multiple categories",
               "POS and inventory systems in high-volume environments"]),
         ],
@@ -203,13 +205,13 @@ CV = {
         "label_cert": "Certifications",
     },
     "DE": {
-        "titular": "Informatikstudent — Junior-Positionen in AI, Data & Cloud",
+        "titular": "Student Applied Computing — Junior-Positionen in AI Governance & Data",
         "secciones": ["PROFIL", "TECHNISCHE PROJEKTE", "AUSBILDUNG & ZERTIFIZIERUNGEN",
                       "BERUFSERFAHRUNG", "KENNTNISSE & SPRACHEN"],
-        "perfil": "Absolvent in Business Management (2025), derzeit im Informatikstudium. "
+        "perfil": "Absolvent in Business Management (2025), derzeit im BSc Applied Computing. "
                   "Kombiniert praktische Erfahrung in Supply Chain und Lagerwirtschaft mit "
                   "einem wachsenden technischen Portfolio in Datenbanken, Softwareentwicklung "
-                  "und Cloud. Auf der Suche nach Junior-Stellen in AI, Data & Tech.",
+                  "und KI-Governance. Auf der Suche nach Junior-Stellen in AI, Data & Tech.",
         "proyectos": [
             ("AI Act Compliance Auditor", "Python · AST · YAML · pytest · CI · 2026",
              "Statische Analyse von Repositories im Hinblick auf die Verordnung (EU) 2024/1689 "
@@ -218,7 +220,8 @@ CV = {
              "Jeder Befund nennt die Voraussetzungen, die die Analyse nicht prüfen kann. 122 Tests "
              f"und Mutationsprüfung in der CI unter Linux, macOS und Windows. {REPO_AIACT}"),
             ("Warenwirtschaftssystem — Heierling GmbH", "PostgreSQL 16 · Docker · Python · 2026",
-             "Vollständiger Datenbankentwurf für einen Schweizer Skischuhhersteller: E/R-Modell, "
+             "Studienarbeit im Modul Information Engineering zum Fall eines Schweizer Geschäfts für "
+             "massgefertigte Skischuhe (kein Kundenauftrag): E/R-Modell, "
              "relationales Schema mit Funktionen, Trigger, View und Indizes; rollenbasierte "
              "Berechtigungen und Auditierung. Bereitstellung mit Docker Compose (PostgreSQL + "
              f"Python 3.11/psycopg2). {REPO_HEIERLING}"),
@@ -232,7 +235,7 @@ CV = {
              f"josepalacios.site · {REPO_WEB}"),
         ],
         "formacion": [
-            ("BSc (Hons) Applied Computing (Informatik)",
+            ("BSc (Hons) Applied Computing",
              "CESTE / University of Wales Trinity Saint David · 2025 – 2028 (erwartet) · Level 4 abgeschlossen"),
             ("BA (Hons) Business Management",
              "CESTE / University of Wales Trinity Saint David · 2021 – 2025"),
@@ -249,7 +252,7 @@ CV = {
               "Kundenbetreuung in Berghotel und -restaurant während der Hochsaison"]),
             ("Warenauffüllung und Kundenbetreuung — Zara (Inditex)", "Saragossa, Spanien · Dez. 2021 – Jan. 2022",
              ["Warenannahme und -bearbeitung, Bestandskontrolle und Nachschub in der Hochsaison"]),
-            ("Retail und Logistik — El Corte Inglés", "Saragossa, Spanien · Dez. 2019 – Sep. 2021",
+            ("Retail und Logistik — El Corte Inglés", "Saragossa, Spanien · Dez. 2019 – Sep. 2021 (Saisonverträge)",
              ["Kundenbetreuung und Verkauf in mehreren Kategorien",
               "Bedienung von Kassen- und Inventarsystemen in Umgebungen mit hohem Volumen"]),
         ],
@@ -273,6 +276,11 @@ PROHIBIDO = [
     (r"\bAWS\b", "menciona AWS, descartado el 2026-09-16"),
     # Con un A1.1 no se atiende "en ingles y aleman" a secas.
     (r"(ingl[eé]s y alem[aá]n|English (&|and) German|Englisch (&|und) Deutsch)\)", "atencion en aleman sin el matiz de nivel basico"),
+    # 2026-10-15: el grado es Applied Computing, no una ingenieria; Cloud no tiene respaldo sin AWS.
+    (r"Computer Engineering|Ingenier[ií]a Inform[aá]tica|Informatikstud", "presenta Applied Computing como una ingenieria"),
+    (r"\bCloud\b", "declara cloud como especialidad, sin respaldo desde que se descarto AWS"),
+    # El inventario de Heierling fue un trabajo de clase, no un encargo de la empresa.
+    (r"fabricante suizo|ski-boot manufacturer|Skischuhhersteller", "presenta como cliente un trabajo universitario"),
 ]
 
 
