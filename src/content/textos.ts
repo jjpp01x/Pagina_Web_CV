@@ -227,18 +227,13 @@ const ES: Textos = {
   actualidad: "Actualidad",
   empresas: {
     titulo: "Empresas",
-    subtitulo: "Dos marcas propias, fundadas y dirigidas por mí. Las dos están publicadas.",
+    subtitulo: "Una empresa propia, fundada y dirigida por mí: CorpusProof, con Epokan como su línea de formación en IA.",
     rol: "Fundador",
     fichas: {
-      epokan: {
-        descripcion:
-          "Alfabetización en IA para despachos, asesorías y gestorías: diagnóstico, itinerarios por rol y expediente de cumplimiento del artículo 4 del Reglamento (UE) 2024/1689.",
-        etiquetas: ["Formación en IA", "AI Act", "Sector legal"],
-      },
       corpusproof: {
         descripcion:
-          "Mide si unos documentos están listos para que una IA los use: cobertura de extracción, datos personales y troceado. Se ejecuta en local, sin que ningún documento salga del equipo del cliente.",
-        etiquetas: ["Gobernanza de datos", "Privacidad", "Análisis en local"],
+          "Mide si unos documentos están listos para que una IA los use: cobertura de extracción, datos personales y troceado. Se ejecuta en local, sin que ningún documento salga del equipo del cliente. Con la línea Epokan, formación en IA y cumplimiento del artículo 4 del Reglamento (UE) 2024/1689 para despachos y asesorías.",
+        etiquetas: ["Gobernanza de datos", "Privacidad", "Formación en IA (Epokan)"],
       },
     },
   },
@@ -410,18 +405,13 @@ const EN: Textos = {
   actualidad: "Present",
   empresas: {
     titulo: "Ventures",
-    subtitulo: "Two brands of my own, founded and run by me. Both are live.",
+    subtitulo: "A company of my own, founded and run by me: CorpusProof, with Epokan as its AI training line.",
     rol: "Founder",
     fichas: {
-      epokan: {
-        descripcion:
-          "AI literacy for law firms and accountancy practices: assessment, role-based learning paths and a compliance file for Article 4 of Regulation (EU) 2024/1689.",
-        etiquetas: ["AI training", "AI Act", "Legal sector"],
-      },
       corpusproof: {
         descripcion:
-          "Measures whether a document set is ready for an AI to use: extraction coverage, personal data and chunking. It runs locally, so no document leaves the client's machine.",
-        etiquetas: ["Data governance", "Privacy", "Runs locally"],
+          "Measures whether a document set is ready for an AI to use: extraction coverage, personal data and chunking. It runs locally, so no document leaves the client's machine. Through its Epokan line, AI literacy and Article 4 compliance under Regulation (EU) 2024/1689 for law firms and accountancy practices.",
+        etiquetas: ["Data governance", "Privacy", "AI training (Epokan)"],
       },
     },
   },
@@ -593,18 +583,13 @@ const DE: Textos = {
   actualidad: "Heute",
   empresas: {
     titulo: "Unternehmen",
-    subtitulo: "Zwei eigene Marken, von mir gegründet und geführt. Beide sind online.",
+    subtitulo: "Ein eigenes Unternehmen, von mir gegründet und geführt: CorpusProof, mit Epokan als KI-Schulungslinie.",
     rol: "Gründer",
     fichas: {
-      epokan: {
-        descripcion:
-          "KI-Kompetenz für Kanzleien und Steuerberatungen: Bestandsaufnahme, rollenbasierte Lernpfade und eine Nachweisakte zu Artikel 4 der Verordnung (EU) 2024/1689.",
-        etiquetas: ["KI-Schulung", "AI Act", "Rechtsbranche"],
-      },
       corpusproof: {
         descripcion:
-          "Misst, ob ein Dokumentenbestand für den Einsatz von KI bereit ist: Extraktionsabdeckung, personenbezogene Daten und Chunking. Läuft lokal, kein Dokument verlässt den Rechner des Kunden.",
-        etiquetas: ["Daten-Governance", "Datenschutz", "Läuft lokal"],
+          "Misst, ob ein Dokumentenbestand für den Einsatz von KI bereit ist: Extraktionsabdeckung, personenbezogene Daten und Chunking. Läuft lokal, kein Dokument verlässt den Rechner des Kunden. Mit der Linie Epokan: KI-Schulung und Umsetzung von Artikel 4 der Verordnung (EU) 2024/1689 für Kanzleien und Steuerberatungen.",
+        etiquetas: ["Daten-Governance", "Datenschutz", "KI-Schulung (Epokan)"],
       },
     },
   },

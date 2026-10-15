@@ -206,8 +206,9 @@ writeFileSync(
     `> ${raiz.descripcion}\n\n` +
     `Sitio personal de José Palacios Beortegui, analista deep tech afincado en Zúrich. ` +
     `Publica en castellano, inglés y alemán sobre gobernanza de inteligencia artificial, ` +
-    `evaluación de sistemas de IA y preparación de datos. Fundador de Epokan ` +
-    `(https://epokan.com) y de CorpusProof (https://corpusproof.com).\n\n` +
+    `evaluación de sistemas de IA y preparación de datos. Fundador de CorpusProof ` +
+    `(https://corpusproof.com), cuya línea de formación en IA es Epokan ` +
+    `(https://corpusproof.com/formacion.html).\n\n` +
     `Cada página declara datos estructurados schema.org con el identificador ` +
     `canónico ${BASE}/#person.\n\n` +
     bloques.join("\n\n") + "\n",

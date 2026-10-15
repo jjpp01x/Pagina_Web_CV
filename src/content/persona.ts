@@ -76,7 +76,6 @@ export type Empresa = {
  * no "mi sociedad": lo primero es cierto hoy, lo segundo no.
  */
 export const empresas: Empresa[] = [
-  { id: "epokan", nombre: "Epokan", url: "https://epokan.com" },
   { id: "corpusproof", nombre: "CorpusProof", url: "https://corpusproof.com" },
 ];
 
