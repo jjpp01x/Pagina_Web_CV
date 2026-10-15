@@ -125,7 +125,7 @@ CV = {
              "CESTE / University of Wales Trinity Saint David · 2021 – 2025"),
         ],
         "experiencia": [
-            ("Fundador — Epokan (proyecto propio)", "Desde ago. 2026 · epokan.com",
+            ("Fundador — CorpusProof (proyecto propio; incluye la formación Epokan)", "Desde ago. 2026 · corpusproof.com",
              ["Formación en IA para empresas: diseño de la oferta, la web y el material comercial"]),
             ("Agente de Ventas — Heierling GmbH", "Davos, Suiza · Oct. 2025 – Abr. 2026",
              ["Atención personalizada a clientes internacionales de más de 15 nacionalidades (en inglés y con alemán básico)",
@@ -182,7 +182,7 @@ CV = {
              "CESTE / University of Wales Trinity Saint David · 2021 – 2025"),
         ],
         "experiencia": [
-            ("Founder — Epokan (own venture)", "Since Aug 2026 · epokan.com",
+            ("Founder — CorpusProof (own venture; includes the Epokan AI-training line)", "Since Aug 2026 · corpusproof.com",
              ["AI training for companies: offering, website and commercial material"]),
             ("Sales Agent — Heierling GmbH", "Davos, Switzerland · Oct 2025 – Apr 2026",
              ["Personalised consultations for international clients from 15+ nationalities (English & basic German)",
@@ -241,7 +241,7 @@ CV = {
              "CESTE / University of Wales Trinity Saint David · 2021 – 2025"),
         ],
         "experiencia": [
-            ("Gründer — Epokan (eigenes Projekt)", "Seit Aug. 2026 · epokan.com",
+            ("Gründer — CorpusProof (eigenes Projekt; inklusive der KI-Schulungslinie Epokan)", "Seit Aug. 2026 · corpusproof.com",
              ["KI-Schulungen für Unternehmen: Angebot, Website und Vertriebsmaterial"]),
             ("Verkaufsberater — Heierling GmbH", "Davos, Schweiz · Okt. 2025 – Apr. 2026",
              ["Persönliche Beratung internationaler Kunden aus über 15 Nationalitäten (Englisch & Deutsch-Grundkenntnisse)",

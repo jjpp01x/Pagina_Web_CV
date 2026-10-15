@@ -41,7 +41,6 @@ import { BASE_URL, href, type Idioma, ruta } from "./rutas";
 export const ID_PERSONA = `${BASE_URL}/#person`;
 export const ID_SITIO = `${BASE_URL}/#website`;
 
-export const ID_EPOKAN = "https://epokan.com/#organizacion";
 export const ID_CORPUSPROOF = "https://corpusproof.com/#organizacion";
 
 /**
@@ -102,7 +101,6 @@ function nodoPersona(lang: Idioma) {
   ],
   sameAs: PERFILES,
   worksFor: [
-    { "@type": "Organization", "@id": ID_EPOKAN, name: "Epokan", url: "https://epokan.com/" },
     { "@type": "Organization", "@id": ID_CORPUSPROOF, name: "CorpusProof", url: "https://corpusproof.com/" },
   ],
   };
