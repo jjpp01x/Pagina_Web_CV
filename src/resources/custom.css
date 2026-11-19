@@ -1,3 +1,6 @@
+/* Hallmark · checked: 2026-11-19 · genre: editorial (inferred)
+ * floor: fixed 19, 26a, 54, 63 · structural: printed 58 (el párrafo del hero lo decide José)
+ * built: the project (Once UI Magic Portfolio) · redesign: polish · v2.0.0 */
 /* :root {
   /*
   /* Override default variables here */
@@ -151,4 +154,12 @@
   --brand-on-background-weak:   #5eead4;
   --brand-on-background-medium: #5eead4;
   --brand-on-background-strong: #99f6e4;
+}
+
+/* Foco con teclado. Once UI solo se lo pone a sus componentes (.focus-ring);
+   los enlaces y controles propios del sitio no tenian ninguno. Mismo color y
+   grosor que el de Once UI, sin transicion: el anillo aparece al instante. */
+:where(a, button, input, select, textarea, summary, [tabindex]):not(.focus-ring):focus-visible {
+  outline: var(--static-space-2) solid var(--brand-solid-strong);
+  outline-offset: 2px;
 }
