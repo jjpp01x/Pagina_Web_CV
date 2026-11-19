@@ -28,7 +28,6 @@ export type Textos = {
   /** Bloque de cifras de la pagina "Sobre mi". Se cuentan del contenido real. */
   cifras: { titulo: string; articulos: string; proyectos: string; idiomas: string; titulaciones: string; certificaciones: string };
   hero: {
-    saludo: string;
     subtitulo: string;
     titulo: string;
     descripcion: string;
@@ -86,6 +85,7 @@ export type Textos = {
     verRepo: string;
     verDemo: string;
     verMemoria: string;
+    verTodos: string;
   };
   /**
    * `descripcion` es la meta description del indice de articulos.
@@ -101,7 +101,7 @@ export type Textos = {
    * Texto aprobado por Jose el 2026-09-04. Las categorias que se citan son las
    * que existen de verdad en los .mdx.
    */
-  articulos: { titulo: string; volver: string; descripcion: string };
+  articulos: { titulo: string; volver: string; verTodos: string; descripcion: string };
   /**
    * Puestos de la experiencia laboral, indexados por el `id` de persona.ts.
    *
@@ -152,10 +152,9 @@ const ES: Textos = {
   
     sobreMi: "Sobre mí",},
   hero: {
-    saludo: "Hola, soy",
     subtitulo: "Analista Deep Tech & Software Builder",
-    titulo: "Analista Deep Tech en formación — evalúo si una tecnología funciona y qué riesgo conlleva",
-    descripcion: "Estudiante de BSc (Hons) Applied Computing (UWTSD). Combino una base sólida en gestión empresarial con la capacidad de evaluar y construir tecnología: desarrollo de software, IA y analítica de datos. Con base en Zúrich.",
+    titulo: "Evalúo si una tecnología funciona y qué riesgo conlleva.",
+    descripcion: "Estudiante de BSc (Hons) Applied Computing (UWTSD). Combino una base sólida en gestión empresarial con la capacidad de evaluar y construir tecnología: desarrollo de software, IA y analítica de datos.",
     metaDescripcion: "Analista deep tech en Zúrich: gobernanza de IA, evaluación de sistemas y preparación de datos, sobre una base de gestión empresarial y Applied Computing.",
     btn1: "Contactar",
     btn2: "Ver proyectos",
@@ -247,7 +246,7 @@ const ES: Textos = {
       "Me interesa especialmente el lado de la evaluación: entender qué tecnología está lista para usarse en producción y cuál conlleva riesgo real, antes de que una empresa apueste por ella.",
     ],
     disponible: "Abierto a puestos junior: analista de negocio y datos, gobernanza y riesgo de IA, analista tecnológico y de investigación, programas graduate",
-    disponibilidad: "Ciudadano UE (libre circulación Suiza–UE) · En Zúrich · Jornada completa, incorporación inmediata",
+    disponibilidad: "Ciudadano UE, con libre circulación en Suiza. Vivo en Zúrich y puedo incorporarme ya, a jornada completa.",
   },
   skills: {
     titulo: "Habilidades",
@@ -264,10 +263,12 @@ const ES: Textos = {
     verRepo: "Ver el repositorio",
     verDemo: "Ver la demo",
     verMemoria: "Ver la memoria (PDF)",
+    verTodos: "Todos los proyectos",
   },
   articulos: {
     titulo: "Artículos",
     volver: "Volver a artículos",
+    verTodos: "Todos los artículos",
     descripcion: "{n} artículos de José Palacios Beortegui sobre ingeniería de IA, gobernanza y riesgo, evaluación y método, y negocio y estrategia.",
   },
   experiencia: {
@@ -330,10 +331,9 @@ const EN: Textos = {
   
     sobreMi: "About me",},
   hero: {
-    saludo: "Hi, I'm",
     subtitulo: "Deep Tech Analyst & Software Builder",
-    titulo: "Deep Tech Analyst in training — I evaluate whether a technology works and what risk it carries",
-    descripcion: "BSc (Hons) Applied Computing student (UWTSD). I combine a solid background in business management with the ability to evaluate and build technology: software development, AI and data analytics. Zurich-based.",
+    titulo: "I evaluate whether a technology works and what risk it carries.",
+    descripcion: "BSc (Hons) Applied Computing student (UWTSD). I combine a solid background in business management with the ability to evaluate and build technology: software development, AI and data analytics.",
     metaDescripcion: "Deep tech analyst based in Zurich: AI governance, systems evaluation and data readiness, built on a background in business management and computing.",
     btn1: "Contact me",
     btn2: "See projects",
@@ -425,7 +425,7 @@ const EN: Textos = {
       "I'm particularly interested in the evaluation side: understanding which technology is ready for real use and which carries real risk, before a business bets on it.",
     ],
     disponible: "Open to junior roles: Business & Data Analyst, AI Governance & Risk, Technology & Research Analyst, graduate programmes",
-    disponibilidad: "EU citizen (Swiss–EU free movement) · Zurich-based · Available full-time, immediately",
+    disponibilidad: "EU citizen with Swiss–EU free movement. Based in Zurich and available full-time, immediately.",
   },
   skills: {
     titulo: "Skills",
@@ -442,10 +442,12 @@ const EN: Textos = {
     verRepo: "View repository",
     verDemo: "View demo",
     verMemoria: "View the report (PDF)",
+    verTodos: "All projects",
   },
   articulos: {
     titulo: "Articles",
     volver: "Back to articles",
+    verTodos: "All articles",
     descripcion: "{n} articles by José Palacios Beortegui on AI engineering, governance and risk, evaluation and method, and business and strategy.",
   },
   experiencia: {
@@ -508,10 +510,9 @@ const DE: Textos = {
   
     sobreMi: "Über mich",},
   hero: {
-    saludo: "Hallo, ich bin",
     subtitulo: "Deep-Tech-Analyst & Software Builder",
-    titulo: "Deep-Tech-Analyst in Ausbildung — ich bewerte, ob eine Technologie funktioniert und welches Risiko sie birgt",
-    descripcion: "Student des BSc (Hons) Applied Computing (UWTSD). Ich verbinde eine solide Grundlage im Betriebswirtschaftsmanagement mit der Fähigkeit, Technologie zu bewerten und zu entwickeln: Softwareentwicklung, KI und Datenanalyse. Mit Sitz in Zürich.",
+    titulo: "Ich bewerte, ob eine Technologie funktioniert und welches Risiko sie birgt.",
+    descripcion: "Student des BSc (Hons) Applied Computing (UWTSD). Ich verbinde eine solide Grundlage im Betriebswirtschaftsmanagement mit der Fähigkeit, Technologie zu bewerten und zu entwickeln: Softwareentwicklung, KI und Datenanalyse.",
     metaDescripcion: "Deep-Tech-Analyst in Zürich: KI-Governance, Systembewertung und Datenaufbereitung, auf einer Basis aus Betriebswirtschaft und Applied Computing.",
     btn1: "Kontakt",
     btn2: "Projekte ansehen",
@@ -603,7 +604,7 @@ const DE: Textos = {
       "Mich interessiert besonders die Bewertungsseite: zu verstehen, welche Technologie produktionsreif ist und welche echtes Risiko birgt, bevor ein Unternehmen darauf setzt.",
     ],
     disponible: "Offen für Einstiegsstellen: Business- und Datenanalyse, KI-Governance & Risiko, Technologie- und Research-Analyse, Traineeprogramme",
-    disponibilidad: "EU-Bürger (Personenfreizügigkeit Schweiz–EU) · Wohnhaft in Zürich · Vollzeit, ab sofort verfügbar",
+    disponibilidad: "EU-Bürger mit Personenfreizügigkeit Schweiz–EU. Wohnhaft in Zürich, ab sofort in Vollzeit verfügbar.",
   },
   skills: {
     titulo: "Fähigkeiten",
@@ -620,10 +621,12 @@ const DE: Textos = {
     verRepo: "Repository ansehen",
     verDemo: "Demo ansehen",
     verMemoria: "Bericht ansehen (PDF)",
+    verTodos: "Alle Projekte",
   },
   articulos: {
     titulo: "Artikel",
     volver: "Zurück zu den Artikeln",
+    verTodos: "Alle Artikel",
     descripcion: "{n} Artikel von José Palacios Beortegui über KI-Engineering, Governance und Risiko, Evaluation und Methode sowie Business und Strategie.",
   },
   experiencia: {

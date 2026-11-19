@@ -107,9 +107,6 @@ export function Portada({ lang }: { lang: Idioma }) {
         {...ANCHO}
       >
         <Column gap="12" flex={1} style={{ minWidth: "18rem" }}>
-          <Text variant="body-default-s" onBackground="neutral-weak">
-            {t.hero.saludo}
-          </Text>
           <Heading as="h1" variant="display-strong-m" wrap="balance">
             {persona.nombreCompleto}
           </Heading>
@@ -125,12 +122,12 @@ export function Portada({ lang }: { lang: Idioma }) {
           <Text variant="body-default-m" onBackground="neutral-medium" wrap="balance">
             {t.hero.titulo}
           </Text>
+          {/* Permiso y disponibilidad arriba del todo: es lo primero que se filtra. */}
+          <Text variant="body-strong-s" onBackground="brand-medium">
+            {t.sobre.disponibilidad}
+          </Text>
           <Text variant="body-default-s" onBackground="neutral-weak">
             {t.hero.descripcion}
-          </Text>
-          {/* Permiso y disponibilidad arriba del todo: es lo primero que se filtra. */}
-          <Text variant="label-strong-s" onBackground="brand-medium">
-            {t.sobre.disponibilidad}
           </Text>
           <Row gap="8" paddingTop="12" wrap vertical="center">
             <Button href={ruta.contacto(lang)} variant="primary" size="m" className={estilos.cta}>
@@ -181,7 +178,7 @@ export function Portada({ lang }: { lang: Idioma }) {
               {t.empresas.subtitulo}
             </Text>
           </Column>
-          <Grid columns="2" s={{ columns: 1 }} gap="12" fillWidth>
+          <Grid columns={empresas.length > 1 ? "2" : "1"} s={{ columns: 1 }} gap="12" fillWidth>
             {empresas.map((e) => (
               <TarjetaEmpresa
                 key={e.id}
@@ -223,7 +220,7 @@ export function Portada({ lang }: { lang: Idioma }) {
           con su enlace al listado completo. Los titulos son los que ya usaba el
           sitio ("Proyectos", "Articulos"): no se inventa ninguno.
         */}
-        <Seccion titulo={t.proyectos.titulo} pie={{ texto: t.nav.proyectos, href: ruta.proyectos(lang) }}>
+        <Seccion titulo={t.proyectos.titulo} pie={{ texto: t.proyectos.verTodos, href: ruta.proyectos(lang) }}>
           <Grid columns="3" m={{ columns: 2 }} s={{ columns: 1 }} gap="12" fillWidth>
             {proyectos.map((p) => (
               <TarjetaProyecto key={p.slug} proyecto={p} lang={lang} />
@@ -233,7 +230,7 @@ export function Portada({ lang }: { lang: Idioma }) {
 
         <Line background="neutral-alpha-weak" />
 
-        <Seccion titulo={t.articulos.titulo} pie={{ texto: t.nav.articulos, href: ruta.articulos(lang) }}>
+        <Seccion titulo={t.articulos.titulo} pie={{ texto: t.articulos.verTodos, href: ruta.articulos(lang) }}>
           <Column gap="12" fillWidth>
             {articulos.map((a) => (
               <TarjetaArticulo key={a.slug} articulo={a} lang={lang} />
@@ -644,7 +641,7 @@ export function SobreMi({ lang }: { lang: Idioma }) {
                   </Text>
                   <a href={c.verificar} rel="noopener noreferrer" target="_blank">
                     <Text variant="label-default-s" onBackground="brand-medium">
-                      {t.formacion.verificar} →
+                      {t.formacion.verificar}
                     </Text>
                   </a>
                 </Column>
